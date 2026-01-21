@@ -1,0 +1,1 @@
+export { SpeakersProfileSection } from "./SpeakersProfileSection";

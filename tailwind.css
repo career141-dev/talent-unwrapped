@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  button,
+  input,
+  select,
+  textarea {
+    @apply appearance-none bg-transparent border-0 outline-none;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+
+:root {
+  --basewhite: rgba(255, 255, 255, 1);
+  --gray-300: rgba(208, 213, 221, 1);
+  --gray-400: rgba(152, 162, 179, 1);
+  --gray-500: rgba(102, 112, 133, 1);
+  --gray-600: rgba(71, 84, 103, 1);
+  --gray-700: rgba(52, 64, 84, 1);
+  --shadows-shadow-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --body-large-regular-font-family: "Geist", Helvetica, sans-serif;
+  --body-large-regular-font-size: 18px;
+  --body-large-regular-font-style: normal;
+  --body-large-regular-font-weight: 400;
+  --body-large-regular-letter-spacing: 0px;
+  --body-large-regular-line-height: 28px;
+  --body-small-regular-font-family: "Geist", Helvetica, sans-serif;
+  --body-small-regular-font-size: 14px;
+  --body-small-regular-font-style: normal;
+  --body-small-regular-font-weight: 400;
+  --body-small-regular-letter-spacing: 0px;
+  --body-small-regular-line-height: 22px;
+  --neutral-90: rgba(57, 57, 57, 1);
+}
+
+* {
+  font-family: 'Geist', Helvetica, sans-serif;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  position: relative;
+}
+
+:root {
+  --animate-spin: spin 1s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s var(--animation-delay, 0s) ease forwards;
+}
+
+.animate-fade-up {
+  animation: fade-up 1s var(--animation-delay, 0s) ease forwards;
+}
+
+.animate-marquee {
+  animation: marquee var(--duration) infinite linear;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration) linear infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 8s infinite;
+}
+
+.animate-spin {
+  animation: var(--animate-spin);
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 20s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes image-glow {
+  0% {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.74, 0.25, 0.76, 1);
+  }
+
+  10% {
+    opacity: 0.7;
+    animation-timing-function: cubic-bezier(0.12, 0.01, 0.08, 0.99);
+  }
+
+  to {
+    opacity: 0.4;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  90%,
+  to {
+    background-position: calc(-100% - var(--shimmer-width)) 0;
+  }
+
+  30%,
+  60% {
+    background-position: calc(100% + var(--shimmer-width)) 0;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  0% {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  
+  100% {
+    transform: translateX(-33.333%);
+  }
+}

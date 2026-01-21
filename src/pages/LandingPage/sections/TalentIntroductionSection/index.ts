@@ -1,0 +1,1 @@
+export { TalentIntroductionSection } from "./TalentIntroductionSection";
