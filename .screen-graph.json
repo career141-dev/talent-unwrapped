@@ -1,0 +1,164 @@
+{
+  "nodes": [
+    {
+      "id": "src/pages/LandingPage/LandingPage.tsx",
+      "label": "LandingPage",
+      "routes": [
+        "/"
+      ],
+      "dataModelId": "905:6609",
+      "isRoot": true
+    },
+    {
+      "id": "src/pages/SingaporePodcast/SingaporePodcast.tsx",
+      "label": "SingaporePodcast",
+      "routes": [
+        "/singapore"
+      ]
+    },
+    {
+      "id": "src/pages/DubaiPodcast/DubaiPodcast.tsx",
+      "label": "DubaiPodcast",
+      "routes": [
+        "/dubai"
+      ]
+    },
+    {
+      "id": "src/pages/FullEpisode/FullEpisode.tsx",
+      "label": "FullEpisode",
+      "routes": [
+        "/episode/:episodeId"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "src\\components\\GlobalHeader.tsx:55:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<a \n            href=\"/\" \n            className=\"relative w-24 sm:w-32 md:w-40 lg:w-80 h-10 sm:h-12 md:h-16 lg:h-[103px] flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src=\"https://c.animaapp.com/6IK4krLc/img/artboard-3-1.png\"\n            />\n          </a>",
+          "line": 55,
+          "endLine": 69,
+          "column": 10,
+          "endColumn": 14,
+          "sourceFile": "src\\components\\GlobalHeader.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\GlobalHeader.tsx:60:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 60,
+          "endLine": 60,
+          "column": 14,
+          "endColumn": 27,
+          "sourceFile": "src\\components\\GlobalHeader.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\GlobalHeader.tsx:55:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<a \n            href=\"/\" \n            className=\"relative w-24 sm:w-32 md:w-40 lg:w-80 h-10 sm:h-12 md:h-16 lg:h-[103px] flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src=\"https://c.animaapp.com/6IK4krLc/img/artboard-3-1.png\"\n            />\n          </a>",
+          "line": 55,
+          "endLine": 69,
+          "column": 10,
+          "endColumn": 14,
+          "sourceFile": "src\\components\\GlobalHeader.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\GlobalHeader.tsx:60:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 60,
+          "endLine": 60,
+          "column": 14,
+          "endColumn": 27,
+          "sourceFile": "src\\components\\GlobalHeader.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\GlobalHeader.tsx:55:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<a \n            href=\"/\" \n            className=\"relative w-24 sm:w-32 md:w-40 lg:w-80 h-10 sm:h-12 md:h-16 lg:h-[103px] flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src=\"https://c.animaapp.com/6IK4krLc/img/artboard-3-1.png\"\n            />\n          </a>",
+          "line": 55,
+          "endLine": 69,
+          "column": 10,
+          "endColumn": 14,
+          "sourceFile": "src\\components\\GlobalHeader.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\GlobalHeader.tsx:60:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 60,
+          "endLine": 60,
+          "column": 14,
+          "endColumn": 27,
+          "sourceFile": "src\\components\\GlobalHeader.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\GlobalHeader.tsx:55:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<a \n            href=\"/\" \n            className=\"relative w-24 sm:w-32 md:w-40 lg:w-80 h-10 sm:h-12 md:h-16 lg:h-[103px] flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src=\"https://c.animaapp.com/6IK4krLc/img/artboard-3-1.png\"\n            />\n          </a>",
+          "line": 55,
+          "endLine": 69,
+          "column": 10,
+          "endColumn": 14,
+          "sourceFile": "src\\components\\GlobalHeader.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\GlobalHeader.tsx:60:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 60,
+          "endLine": 60,
+          "column": 14,
+          "endColumn": 27,
+          "sourceFile": "src\\components\\GlobalHeader.tsx"
+        }
+      }
+    }
+  ]
+}
