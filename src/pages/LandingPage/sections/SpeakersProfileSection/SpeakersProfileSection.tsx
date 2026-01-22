@@ -174,8 +174,8 @@ export const SpeakersProfileSection = (): JSX.Element => {
   };
 
   return (
-    <section id="speakers" className="relative w-full max-w-[1440px] bg-white py-16 sm:py-20 md:py-24 lg:py-[90px] px-4 sm:px-6 md:px-10 lg:px-[60px] mx-auto overflow-visible">
-      <div className="flex flex-col items-start gap-8 md:gap-10 lg:gap-12 relative w-full">
+    <section id="speakers" className="relative w-full max-w-[1440px] bg-white py-10 sm:py-12 md:py-16 lg:py-[60px] px-4 sm:px-6 md:px-10 lg:px-[60px] mx-auto overflow-visible">
+      <div className="flex flex-col items-start gap-4 md:gap-6 lg:gap-8 relative w-full">
         <header className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
           <h2 className="relative w-full max-w-full lg:max-w-[721px] [font-family:'Geist',Helvetica] font-medium text-transparent text-3xl sm:text-4xl md:text-5xl lg:text-[52px] tracking-[0] leading-tight lg:leading-[70px]">
             <span className="text-[#7cb403]">Our </span>
@@ -183,7 +183,7 @@ export const SpeakersProfileSection = (): JSX.Element => {
           </h2>
         </header>
 
-        <div className="inline-flex flex-col items-start gap-6 md:gap-8 lg:gap-10 relative flex-[0_0_auto] w-full">
+        <div className="inline-flex flex-col items-start gap-3 md:gap-4 lg:gap-6 relative flex-[0_0_auto] w-full">
           <nav
             className="flex flex-col sm:flex-row items-start sm:items-baseline justify-between relative self-stretch w-full flex-[0_0_auto] gap-4 sm:gap-0"
             aria-label="Speaker categories"

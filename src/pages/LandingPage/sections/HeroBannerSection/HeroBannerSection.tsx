@@ -79,7 +79,7 @@ export const HeroBannerSection = (): JSX.Element => {
   };
 
   return (
-    <section className="relative w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:h-[1137px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-8 md:py-12 lg:py-0 mx-auto">
+    <section className="relative w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:min-h-[1137px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-4 md:py-6 lg:py-12 mx-auto">
 
       {/* Mobile Hero Text Container - Innovative Layout */}
       <div className="lg:hidden flex flex-col items-center justify-center gap-4 mb-8 relative z-10">
@@ -153,7 +153,7 @@ export const HeroBannerSection = (): JSX.Element => {
       {/* Video Container - Fully Responsive with Aspect Ratio */}
       <div className="relative lg:absolute top-auto lg:top-[355px] left-0 lg:left-[50%] lg:transform lg:-translate-x-1/2 w-full max-w-[calc(100%-2rem)] lg:max-w-[1320px] mx-auto mt-8 lg:mt-0">
         {/* Aspect Ratio Container - 16:9 for mobile, custom for desktop */}
-        <div className="relative w-full pb-[56.25%] lg:pb-0 lg:h-[700px] bg-[#00000033] rounded-2xl lg:rounded-3xl overflow-hidden">
+        <div className="relative w-full pb-[56.25%] lg:pb-0 lg:h-[700px] bg-[#00000033] rounded-2xl lg:rounded-3xl overflow-hidden will-change-transform">
           {/* Video Slides */}
           <div className="absolute inset-0 w-full h-full">
             {videoSlides.map((slide, index) => (

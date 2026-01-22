@@ -10,10 +10,10 @@ export const GlobalHeader = (): JSX.Element => {
 
   const isEditionPage = location.pathname === "/dubai" || location.pathname === "/singapore";
 
-  const navigationItems = isEditionPage 
+  const navigationItems = isEditionPage  
     ? [
-        { label: "Schedule", href: "#schedule", action: () => scrollToSection("schedule") },
-        { label: "About", href: "#about", action: () => scrollToSection("about") },
+        { label: "About", href: "#about", action: () => scrollToSection("schedule") },
+        { label: "Schedule", href: "#schedule", action: () => scrollToSection("about") },
       ]
     : [
         { label: "About", href: "#about", action: () => scrollToSection("about") },
@@ -25,9 +25,40 @@ export const GlobalHeader = (): JSX.Element => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveNav(navigationItems.find(item => item.action.toString().includes(sectionId))?.label || "");
     }
     setIsMobileMenuOpen(false); // Close menu after navigation
   };
+
+  // Track active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navigationItems.map(item => ({
+        label: item.label,
+        id: item.href.substring(1), // Remove # from href
+      }));
+
+      let currentActive = "";
+      for (const section of sections) {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Only mark as active if section is currently visible in viewport
+          if (rect.top < window.innerHeight && rect.bottom > 100) {
+            currentActive = section.label;
+            break;
+          }
+        }
+      }
+      // Only set active if section is in view, otherwise clear it
+      setActiveNav(currentActive);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    // Run on mount to check initial state
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [navigationItems]);
 
   // Close mobile menu when route changes
   useEffect(() => {

@@ -9,6 +9,12 @@
   textarea {
     @apply appearance-none bg-transparent border-0 outline-none;
   }
+
+  * {
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 @tailwind components;
@@ -47,13 +53,23 @@
   font-family: 'Geist', Helvetica, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
 html, body {
   overflow-x: hidden;
   max-width: 100%;
+  width: 100%;
+  height: auto;
 }
 
 body {
   position: relative;
+  overflow-y: auto;
 }
 
 :root {
@@ -62,10 +78,12 @@ body {
 
 .animate-fade-in {
   animation: fade-in 1s var(--animation-delay, 0s) ease forwards;
+  will-change: opacity, transform;
 }
 
 .animate-fade-up {
   animation: fade-up 1s var(--animation-delay, 0s) ease forwards;
+  will-change: opacity, transform;
 }
 
 .animate-marquee {

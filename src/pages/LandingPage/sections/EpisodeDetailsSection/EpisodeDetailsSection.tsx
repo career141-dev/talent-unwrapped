@@ -78,7 +78,7 @@ export const EpisodeDetailsSection = (): JSX.Element => {
         opacity: 1,
         left: '50%',
         top: '50%',
-        filter: 'brightness(1)',
+        filter: 'none',
       };
     }
     
@@ -89,10 +89,10 @@ export const EpisodeDetailsSection = (): JSX.Element => {
       return {
         transform: `translate(-50%, -50%) scale(${scale})`,
         zIndex: 50 - diff,
-        opacity: 0.85 - (diff * 0.15),
+        opacity: 1,
         left: `calc(50% + ${offset}px)`,
         top: '50%',
-        filter: 'brightness(0.85)',
+        filter: 'none',
       };
     }
     
@@ -103,10 +103,10 @@ export const EpisodeDetailsSection = (): JSX.Element => {
     return {
       transform: `translate(-50%, -50%) scale(${scale})`,
       zIndex: 50 - leftDiff,
-      opacity: 0.85 - (leftDiff * 0.15),
+      opacity: 1,
       left: `calc(50% - ${offset}px)`,
       top: '50%',
-      filter: 'brightness(0.85)',
+      filter: 'none',
     };
   };
 
@@ -152,7 +152,7 @@ export const EpisodeDetailsSection = (): JSX.Element => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full max-w-[1440px] min-h-[900px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-16 sm:py-20 md:py-24 lg:py-[90px] mx-auto mt-12 sm:mt-16 md:mt-20 lg:mt-[120px] overflow-hidden"
+      className="relative w-full max-w-[1440px] min-h-[600px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-8 sm:py-10 md:py-12 lg:py-[50px] mx-auto mt-8 sm:mt-10 md:mt-12 lg:mt-[70px] overflow-hidden"
       aria-labelledby="episode-details-heading"
     >
       <h2
@@ -178,14 +178,14 @@ export const EpisodeDetailsSection = (): JSX.Element => {
       </div>
 
       {/* Image Stack Container */}
-      <div className="hidden lg:block absolute top-[240px] right-0 w-[700px] h-[400px] pointer-events-none">
+      <div className="hidden lg:block absolute top-[240px] right-[100px] w-[700px] h-[400px] pointer-events-none will-change-transform">
         {images.map((image, index) => {
           const style = getImageStyle(index);
           const isActive = (index === activeImageIndex);
           return (
             <div
               key={image.id}
-              className="absolute w-[350px] h-[380px] rounded-3xl overflow-hidden shadow-[0px_8px_24px_rgba(0,0,0,0.15)] transition-all duration-700 ease-in-out"
+              className="absolute w-[350px] h-[380px] rounded-3xl overflow-hidden shadow-[0px_8px_24px_rgba(0,0,0,0.15)] transition-all duration-700 ease-in-out will-change-transform"
               style={{
                 transform: style.transform,
                 zIndex: style.zIndex,
@@ -193,13 +193,10 @@ export const EpisodeDetailsSection = (): JSX.Element => {
                 left: style.left,
                 top: style.top,
                 filter: style.filter,
-                backgroundColor: '#f5f5f5',
               }}
             >
               <img
-                className={`w-full h-full object-cover transition-all duration-700 ${
-                  isActive ? 'brightness-100' : 'brightness-90'
-                }`}
+                className="w-full h-full object-cover transition-all duration-700"
                 alt={image.alt}
                 src={image.src}
                 loading="lazy"
@@ -210,7 +207,7 @@ export const EpisodeDetailsSection = (): JSX.Element => {
       </div>
 
       <nav
-        className="flex flex-col w-full max-w-[400px] items-start gap-5 relative lg:absolute top-auto lg:top-[283px] left-0 lg:left-0 z-10 mb-8 lg:mb-0"
+        className="flex flex-col w-full max-w-[400px] items-start gap-5 relative lg:absolute top-auto lg:top-[283px] left-0 lg:left-6 z-10 mb-8 lg:mb-0"
         aria-label="Episode types"
       >
         {episodeTypes.map((episode) => (
@@ -240,9 +237,9 @@ export const EpisodeDetailsSection = (): JSX.Element => {
               aria-hidden="true"
             >
               <img
-                className="relative w-[33.94px] h-[33.94px] mt-[-0.97px] mb-[-0.97px] ml-[-0.97px] mr-[-0.97px] aspect-[1]"
+                className="relative w-5 h-5 md:w-6 md:h-6 mt-[-1.00px] mb-[-1.00px]"
                 alt=""
-                src="https://c.animaapp.com/6IK4krLc/img/vuesax-linear-arrow-right-6.svg"
+                src="https://c.animaapp.com/6IK4krLc/img/vuesax-linear-arrow-right-2@2x.png"
               />
             </div>
           </button>

@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { GlobalHeader } from "../../components/GlobalHeader";
-import { AboutUsSection } from "./sections/AboutUsSection";
+import { TheThreeChaptersSection } from "./sections/TheThreeChaptersSection";
 import { FooterSection } from "./sections/FooterSection";
-import { PodcastScheduleSection } from "./sections/PodcastScheduleSection";
+import { ContactUsSection } from "./sections/ContactUsSection";
 
 interface Speaker {
   name: string;
@@ -32,7 +32,7 @@ export const DubaiPodcast = (): JSX.Element => {
   const episodes: Episode[] = [
     {
       id: "1",
-      image: "https://c.animaapp.com/mkmm0u1u5wob0l/img/episodelisting.png",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
       category: "EPISODE",
       title: "Building Businesses with Heart",
       description:
@@ -44,26 +44,26 @@ export const DubaiPodcast = (): JSX.Element => {
           name: "Sarah Chen",
           role: "Host",
           avatar:
-            "https://c.animaapp.com/mkmm0u1u5wob0l/img/episodelisting.png",
+            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
         },
         {
           name: "Erik Olawson",
           role: "Guest",
           avatar:
-            "https://c.animaapp.com/mkmm0u1u5wob0l/img/episodelisting.png",
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
         },
         {
           name: "Maria Ruiz",
           role: "Guest",
           avatar:
-            "https://c.animaapp.com/mkmm0u1u5wob0l/img/episodelisting.png",
+            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
         },
       ],
       featured: true,
     },
     {
       id: "2",
-      image: "https://c.animaapp.com/mkmm0u1u5wob0l/img/episodelisting.png",
+      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop",
       category: "GRAPHICS",
       title: "People by Design",
       description:
@@ -75,25 +75,25 @@ export const DubaiPodcast = (): JSX.Element => {
           name: "Theresa Korver",
           role: "Host",
           avatar:
-            "https://c.animaapp.com/mkmm0u1u5wob0l/img/episodelisting.png",
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
         },
         {
           name: "Ola Luki",
           role: "Senior Product Designer",
           avatar:
-            "https://c.animaapp.com/mkmm0u1u5wob0l/img/episodelisting.png",
+            "https://images.unsplash.com/photo-1519085360771-9852046be8f9?w=400&h=400&fit=crop",
         },
         {
           name: "Steve Mao",
           role: "Guest",
           avatar:
-            "https://c.animaapp.com/mkmm0u1u5wob0l/img/episodelisting.png",
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
         },
       ],
     },
     {
       id: "3",
-      image: "https://c.animaapp.com/mkmm0u1u5wob0l/img/episodelisting.png",
+      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop",
       category: "EPISODE",
       title: "The Human Algorithm",
       description:
@@ -105,13 +105,13 @@ export const DubaiPodcast = (): JSX.Element => {
           name: "David Kim",
           role: "Host",
           avatar:
-            "https://c.animaapp.com/mkmm0u1u5wob0l/img/episodelisting.png",
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
         },
         {
           name: "Priya Patel",
           role: "AI Researcher",
           avatar:
-            "https://c.animaapp.com/mkmm0u1u5wob0l/img/episodelisting.png",
+            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
         },
       ],
     },
@@ -244,8 +244,8 @@ export const DubaiPodcast = (): JSX.Element => {
         </div>
       </section>
 
-      <AboutUsSection />
-      <PodcastScheduleSection />
+      <TheThreeChaptersSection />
+      <ContactUsSection />
       <FooterSection />
     </div>
   );

@@ -96,7 +96,10 @@ export const FullEpisode = (): JSX.Element => {
   };
 
   return (
-    <div className="flex flex-col items-center relative bg-white min-h-screen w-full overflow-x-hidden">
+    <main
+      className="flex flex-col items-center relative min-h-screen bg-white w-full overflow-x-hidden"
+      data-model-id="905:6609"
+    >
       <GlobalHeader />
 
       {/* Hero Section with Video Carousel - RESPONSIVE */}
@@ -321,6 +324,6 @@ export const FullEpisode = (): JSX.Element => {
           Privacy Policy
         </a>
       </footer>
-    </div>
+    </main>
   );
 };

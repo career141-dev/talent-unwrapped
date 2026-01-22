@@ -22,8 +22,8 @@ export const AboutSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative w-full max-w-[1440px] bg-white py-16 sm:py-20 md:py-24 lg:py-[90px] px-4 sm:px-6 md:px-10 lg:px-[60px] mx-auto">
-      <div className="relative w-full min-h-[800px] lg:min-h-[1134px]">
+    <section className="relative w-full max-w-[1440px] bg-white py-12 sm:py-16 md:py-20 lg:py-[70px] px-4 sm:px-6 md:px-10 lg:px-[60px] mx-auto">
+      <div className="relative w-full min-h-[700px] lg:min-h-[1000px]">
         <header className="relative lg:absolute top-0 lg:top-20 left-0 lg:left-0 w-full lg:w-[203px] text-center lg:text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-sm md:text-base tracking-[-0.32px] leading-[normal]">
           THE THREE CHAPTERS
         </header>
@@ -60,7 +60,7 @@ export const AboutSection = (): JSX.Element => {
           <img
             className="relative w-5 h-5 md:w-6 md:h-6 mt-[-1.00px] mb-[-1.00px]"
             alt=""
-            src="https://c.animaapp.com/mknspbgaVfvQNA/img/vuesax-linear-arrow-right.png"
+            src="https://c.animaapp.com/6IK4krLc/img/vuesax-linear-arrow-right-2@2x.png"
           />
         </button>
 

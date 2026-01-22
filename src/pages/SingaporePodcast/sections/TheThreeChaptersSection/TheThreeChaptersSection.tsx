@@ -6,7 +6,7 @@ interface Episode {
   exportIcon: string;
 }
 
-export const AboutUsSection = (): JSX.Element => {
+export const TheThreeChaptersSection = (): JSX.Element => {
   const episodes: Episode[] = [
     {
       id: 1,
@@ -39,7 +39,7 @@ export const AboutUsSection = (): JSX.Element => {
   ];
 
   return (
-    <section id="about" className="relative w-full max-w-[1440px] min-h-[800px] md:min-h-[1000px] lg:h-[1134px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-8 md:py-12 lg:py-0 mx-auto overflow-hidden">
+    <section id="about" className="relative w-full max-w-[1440px] min-h-[700px] md:min-h-[900px] lg:h-[1100px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-8 md:py-12 lg:py-0 mx-auto overflow-hidden">
       <h2 className="relative lg:absolute top-0 lg:top-[74px] left-0 lg:left-[94px] w-full lg:w-[203px] text-center lg:text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-sm md:text-base tracking-[-0.32px] leading-[normal]">
         THE THREE CHAPTERS
       </h2>
@@ -75,8 +75,8 @@ export const AboutUsSection = (): JSX.Element => {
 
         <img
           className="relative w-6 h-6 mt-[-1.00px] mb-[-1.00px]"
-          alt=""
-          src="https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-arrow-right.png"
+          alt="Arrow right"
+          src="data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12H19M19 12L12 5M19 12L12 19' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
         />
       </button>
 

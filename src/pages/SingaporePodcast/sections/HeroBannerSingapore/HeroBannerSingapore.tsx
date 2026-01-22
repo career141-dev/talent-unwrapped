@@ -58,7 +58,7 @@ export const HeroBannerSingapore = (): JSX.Element => {
   };
 
   return (
-    <section className="relative w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:h-[1137px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-8 md:py-12 lg:py-0 mx-auto">
+    <section className="relative w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:min-h-[1137px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-8 md:py-12 lg:py-12 mx-auto">
       <div className="hidden lg:inline-flex items-end gap-4 absolute top-[159px] left-[60px]">
         <div className="relative w-[372px] h-[108px] bg-white rounded-xl overflow-hidden rotate-180">
           <img
@@ -95,7 +95,7 @@ export const HeroBannerSingapore = (): JSX.Element => {
         ideas that stay
       </h1>
 
-      <div className="relative lg:absolute top-auto lg:top-[355px] left-0 lg:left-[50%] lg:transform lg:-translate-x-1/2 w-full max-w-[calc(100%-2rem)] lg:max-w-[1320px] h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] bg-[#00000033] rounded-2xl lg:rounded-3xl overflow-hidden mt-8 lg:mt-0 mx-auto">
+      <div className="relative lg:absolute top-auto lg:top-[355px] left-0 lg:left-[50%] lg:transform lg:-translate-x-1/2 w-full max-w-[calc(100%-2rem)] lg:max-w-[1320px] h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] bg-[#00000033] rounded-2xl lg:rounded-3xl overflow-hidden mt-8 lg:mt-0 mx-auto will-change-transform">
         {/* Video Slides */}
         <div className="relative w-full h-full">
           {videoSlides.map((slide, index) => (

@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
-export const PodcastScheduleSection = (): JSX.Element => {
+export const ContactUsSection = (): JSX.Element => {
   const navigate = useNavigate();
   const location = useLocation();
 
