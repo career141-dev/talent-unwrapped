@@ -43,7 +43,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative w-full max-w-[1440px] min-h-[800px] md:min-h-[1000px] lg:h-[1134px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-16 sm:py-20 md:py-24 lg:py-[90px] mx-auto ml-[80px]
+    <section className="relative w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:h-[1050px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-10 sm:py-20 md:py-24 lg:py-[10px] mx-auto ml-[50px] sm:ml-[75px] lg:ml-[150px] mt-8 sm:mt-12 md:mt-16 lg:mt-22
  overflow-hidden">
       
       <header className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-0 w-full lg:w-[203px] text-center lg:text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-sm md:text-base tracking-[-0.32px] leading-[normal]">
@@ -90,7 +90,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
         {chapters.map((chapter) => (
           <article
             key={chapter.id}
-            className="relative w-full max-w-[400px] lg:w-[424px] h-[320px] lg:h-[372px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[28px] overflow-hidden"
+            className="relative w-full max-w-[400px] lg:w-[424px] h-[320px] lg:h-[372px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[28px] overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-white cursor-pointer"
           >
             <div
               className="inline-flex items-center gap-2 lg:gap-2.5 p-2 lg:p-3 absolute top-4 lg:top-6 left-4 lg:left-6 bg-[#7bb302] rounded-[40px]"

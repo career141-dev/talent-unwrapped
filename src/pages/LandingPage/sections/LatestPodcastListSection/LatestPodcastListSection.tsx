@@ -11,7 +11,7 @@ interface PodcastItem {
 
 export const LatestPodcastListSection = (): JSX.Element => {
   const [activeTab] = useState("all");
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [currentView, setCurrentView] = useState(0);
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -35,7 +35,9 @@ export const LatestPodcastListSection = (): JSX.Element => {
     return () => observer.disconnect();
   }, []);
 
-  const allPodcastData: PodcastItem[] = [
+  const allPodcastDataSets: PodcastItem[][] = [
+    // View 1 (Default)
+    [
     {
       id: 1,
       title: "Opening Keynote: Future of Innovation",
@@ -68,6 +70,9 @@ export const LatestPodcastListSection = (): JSX.Element => {
       thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-3@2x.png",
       videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     },
+    ],
+    // View 2 (Alternative set)
+    [
     {
       id: 5,
       title: "AI and the Future of Leadership",
@@ -100,21 +105,17 @@ export const LatestPodcastListSection = (): JSX.Element => {
       thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-3@2x.png",
       videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     },
+    ]
   ];
 
-  const itemsPerPage = 4;
-  const totalSlides = Math.ceil(allPodcastData.length / itemsPerPage);
-  
-  const startIndex = activeSlide * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const podcastData = allPodcastData.slice(startIndex, endIndex);
+  const podcastData = allPodcastDataSets[currentView];
 
   const handlePlayVideo = (id: number) => {
     setPlayingVideo(id);
   };
 
   return (
-    <section ref={sectionRef} id="episodes" className="relative w-full max-w-[1440px] bg-white py-16 sm:py-20 md:py-24 lg:py-[90px] px-4 sm:px-6 md:px-10 lg:px-[60px] mx-auto">
+    <section ref={sectionRef} id="episodes" className="relative w-full max-w-[1440px] bg-white py-16 sm:py-20 md:py-24 lg:py-[40px] px-4 sm:px-6 md:px-10 lg:px-[60px] mx-auto overflow-hidden">
       <div className="w-full">
         <div className={`flex flex-col items-start gap-8 md:gap-10 lg:gap-12 w-full transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <header className="flex flex-col items-start gap-2 relative w-full">
@@ -140,9 +141,10 @@ export const LatestPodcastListSection = (): JSX.Element => {
               <button
                 className="all-[unset] box-border inline-flex items-center gap-1.5 sm:gap-2 md:gap-2.5 cursor-pointer transition-all duration-300 hover:scale-105 group"
                 aria-label="View all podcasts"
+                onClick={() => setCurrentView((prev) => (prev + 1) % allPodcastDataSets.length)}
               >
                 <span className="relative w-fit mt-[-3.00px] font-body-large-regular font-[number:var(--body-large-regular-font-weight)] text-[#7bb302] text-sm sm:text-base md:text-[length:var(--body-large-regular-font-size)] tracking-[var(--body-large-regular-letter-spacing)] leading-[var(--body-large-regular-line-height)] whitespace-nowrap [font-style:var(--body-large-regular-font-style)]">
-                  View all podcast
+                  View all
                 </span>
                 <img
                   className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 transition-transform duration-300 group-hover:translate-x-1"
@@ -232,16 +234,16 @@ export const LatestPodcastListSection = (): JSX.Element => {
           role="tablist"
           aria-label="Podcast carousel pagination"
         >
-          {Array.from({ length: totalSlides }).map((_, index) => (
+          {allPodcastDataSets.map((_, index) => (
             <button
               key={index}
-              onClick={() => setActiveSlide(index)}
+              onClick={() => setCurrentView(index)}
               className={`relative h-1.5 sm:h-2 rounded cursor-pointer transition-all duration-300 hover:scale-125 touch-manipulation ${
-                index === activeSlide ? "bg-[#7bb302] w-6 sm:w-8" : "bg-neutral-90 w-1.5 sm:w-2"
+                index === currentView ? "bg-[#7bb302] w-6 sm:w-8" : "bg-neutral-90 w-1.5 sm:w-2"
               }`}
               role="tab"
-              aria-selected={index === activeSlide}
-              aria-label={`Go to page ${index + 1}`}
+              aria-selected={index === currentView}
+              aria-label={`Go to view ${index + 1}`}
             />
           ))}
         </div>

@@ -78,7 +78,7 @@ export const ReelsSection = (): JSX.Element => {
           {reelVideos.map((reel, index) => (
             <div
               key={reel.id}
-              className="relative w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[850px] bg-black rounded-2xl md:rounded-3xl overflow-hidden shadow-lg group"
+              className="relative w-full h-[480px] sm:h-[580px] md:h-[680px] lg:h-[850px] bg-black rounded-2xl md:rounded-3xl overflow-hidden shadow-lg group"
             >
               {/* Video */}
               <video

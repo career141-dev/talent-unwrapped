@@ -34,7 +34,7 @@
   "edges": [
     {
       "id": "src\\components\\GlobalHeader.tsx:55:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\routes\\SingaporePodcast\\screens\\SingaporePodcast.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
@@ -50,7 +50,7 @@
     },
     {
       "id": "src\\components\\GlobalHeader.tsx:60:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\routes\\SingaporePodcast\\screens\\SingaporePodcast.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
@@ -61,12 +61,44 @@
           "column": 14,
           "endColumn": 27,
           "sourceFile": "src\\components\\GlobalHeader.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\pages\\LandingPage\\sections\\ContactFormSection\\ContactFormSection.tsx:34:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 34,
+          "endLine": 34,
+          "column": 6,
+          "endColumn": 19,
+          "sourceFile": "src\\pages\\LandingPage\\sections\\ContactFormSection\\ContactFormSection.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\pages\\LandingPage\\sections\\ContactFormSection\\ContactFormSection.tsx:47:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 47,
+          "endLine": 47,
+          "column": 6,
+          "endColumn": 19,
+          "sourceFile": "src\\pages\\LandingPage\\sections\\ContactFormSection\\ContactFormSection.tsx"
         }
       }
     },
     {
       "id": "src\\components\\GlobalHeader.tsx:55:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\routes\\SingaporePodcast\\screens\\SingaporePodcast.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
@@ -82,7 +114,7 @@
     },
     {
       "id": "src\\components\\GlobalHeader.tsx:60:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\routes\\SingaporePodcast\\screens\\SingaporePodcast.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
@@ -93,12 +125,60 @@
           "column": 14,
           "endColumn": 27,
           "sourceFile": "src\\components\\GlobalHeader.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\pages\\SingaporePodcast\\sections\\PodcastScheduleSection\\PodcastScheduleSection.tsx:9:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\SingaporePodcast\\SingaporePodcast.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 9,
+          "endLine": 9,
+          "column": 4,
+          "endColumn": 17,
+          "sourceFile": "src\\pages\\SingaporePodcast\\sections\\PodcastScheduleSection\\PodcastScheduleSection.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\pages\\SingaporePodcast\\sections\\PodcastScheduleSection\\PodcastScheduleSection.tsx:15:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\SingaporePodcast\\SingaporePodcast.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 15,
+          "endLine": 15,
+          "column": 4,
+          "endColumn": 17,
+          "sourceFile": "src\\pages\\SingaporePodcast\\sections\\PodcastScheduleSection\\PodcastScheduleSection.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\pages\\SingaporePodcast\\sections\\FooterSection\\FooterSection.tsx:8:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\SingaporePodcast\\SingaporePodcast.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 8,
+          "endLine": 8,
+          "column": 4,
+          "endColumn": 17,
+          "sourceFile": "src\\pages\\SingaporePodcast\\sections\\FooterSection\\FooterSection.tsx"
         }
       }
     },
     {
       "id": "src\\components\\GlobalHeader.tsx:55:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\routes\\SingaporePodcast\\screens\\SingaporePodcast.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
@@ -114,7 +194,7 @@
     },
     {
       "id": "src\\components\\GlobalHeader.tsx:60:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\routes\\SingaporePodcast\\screens\\SingaporePodcast.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
@@ -125,12 +205,60 @@
           "column": 14,
           "endColumn": 27,
           "sourceFile": "src\\components\\GlobalHeader.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\pages\\DubaiPodcast\\sections\\PodcastScheduleSection\\PodcastScheduleSection.tsx:9:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\DubaiPodcast\\DubaiPodcast.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 9,
+          "endLine": 9,
+          "column": 4,
+          "endColumn": 17,
+          "sourceFile": "src\\pages\\DubaiPodcast\\sections\\PodcastScheduleSection\\PodcastScheduleSection.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\pages\\DubaiPodcast\\sections\\PodcastScheduleSection\\PodcastScheduleSection.tsx:15:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\DubaiPodcast\\DubaiPodcast.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 15,
+          "endLine": 15,
+          "column": 4,
+          "endColumn": 17,
+          "sourceFile": "src\\pages\\DubaiPodcast\\sections\\PodcastScheduleSection\\PodcastScheduleSection.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\pages\\DubaiPodcast\\sections\\FooterSection\\FooterSection.tsx:8:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\DubaiPodcast\\DubaiPodcast.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 8,
+          "endLine": 8,
+          "column": 4,
+          "endColumn": 17,
+          "sourceFile": "src\\pages\\DubaiPodcast\\sections\\FooterSection\\FooterSection.tsx"
         }
       }
     },
     {
       "id": "src\\components\\GlobalHeader.tsx:55:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\routes\\SingaporePodcast\\screens\\SingaporePodcast.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
@@ -146,7 +274,7 @@
     },
     {
       "id": "src\\components\\GlobalHeader.tsx:60:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\routes\\SingaporePodcast\\screens\\SingaporePodcast.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
@@ -157,6 +285,38 @@
           "column": 14,
           "endColumn": 27,
           "sourceFile": "src\\components\\GlobalHeader.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\pages\\LandingPage\\sections\\ContactFormSection\\ContactFormSection.tsx:34:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 34,
+          "endLine": 34,
+          "column": 6,
+          "endColumn": 19,
+          "sourceFile": "src\\pages\\LandingPage\\sections\\ContactFormSection\\ContactFormSection.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\pages\\LandingPage\\sections\\ContactFormSection\\ContactFormSection.tsx:47:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 47,
+          "endLine": 47,
+          "column": 6,
+          "endColumn": 19,
+          "sourceFile": "src\\pages\\LandingPage\\sections\\ContactFormSection\\ContactFormSection.tsx"
         }
       }
     }

@@ -52,10 +52,10 @@ export const SubmitFormSection = (): JSX.Element => {
   };
 
   return (
-    <section className="flex w-full max-w-[1440px] flex-col lg:flex-row items-center lg:items-stretch justify-center gap-8 lg:gap-[98px] px-4 sm:px-6 md:px-10 lg:px-[60px] py-16 sm:py-20 md:py-24 lg:py-[90px] relative bg-white mx-auto">
+    <section id="join-us" className="flex w-full max-w-[1440px] flex-col lg:flex-row items-center lg:items-stretch justify-center gap-8 lg:gap-[98px] px-4 sm:px-6 md:px-10 lg:px-[60px] py-16 sm:py-20 md:py-24 lg:py-[90px] relative bg-white mx-auto">
       {/* Left Side - Insights Box */}
       <div className="relative w-full lg:w-[620px] flex-shrink-0">
-        <div className="relative w-full h-auto lg:h-full lg:min-h-[700px] bg-white rounded-3xl shadow-lg p-6 sm:p-8 lg:p-12 flex flex-col justify-between">
+        <div className="relative w-full h-auto lg:h-full lg:min-h-[700px] bg-white rounded-3xl p-6 sm:p-8 lg:p-12 flex flex-col justify-between">
           
           {/* Main Heading */}
           <div className="mb-6 lg:mb-8">
@@ -107,7 +107,7 @@ export const SubmitFormSection = (): JSX.Element => {
       </div>
 
       {/* Right Side - Contact Form */}
-      <div className="flex flex-col items-start justify-center gap-10 relative w-full lg:w-[540px] h-auto lg:h-full lg:min-h-[700px]">
+      <div className="flex flex-col items-start justify-center gap-10 relative w-full lg:w-[540px] h-auto lg:h-full lg:min-h-[700px] bg-white rounded-3xl shadow-lg p-6 sm:p-8 lg:p-12">
         <form
           onSubmit={handleSubmit}
           className="flex flex-col items-start gap-[26px] relative self-stretch w-full"

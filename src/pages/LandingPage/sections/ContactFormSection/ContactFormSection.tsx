@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const ContactFormSection = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,20 +26,49 @@ export const ContactFormSection = (): JSX.Element => {
     return () => observer.disconnect();
   }, []);
 
+  const handleHomeClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
+      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
+    }
+  };
+
+  const handleJoinUsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      const element = document.querySelector("#join-us");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.querySelector("#join-us");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  };
+
   const companyLinks = [
-    { label: "Home", href: "#home" },
-    { label: "Executive Search", href: "#executive-search" },
-    { label: "About", href: "#about" },
-    { label: "Our Culture", href: "#culture" },
-    { label: "Our Journey", href: "#journey" },
+    { label: "Home", href: "/", onClick: handleHomeClick, external: false },
+    { label: "Executive Search", href: "https://career141.com/executive-search/", onClick: undefined, external: true },
+    { label: "Our Culture", href: "https://career141.com/our-culture/", onClick: undefined, external: true },
+    { label: "Our Journey", href: "https://career141.com/our-journey/", onClick: undefined, external: true },
   ];
 
   const informationLinks = [
-    { label: "Jobs & Vacancies", href: "#jobs" },
-    { label: "Join Us", href: "#join" },
+    { label: "Jobs & Vacancies", href: "https://career141.com/job-openings/", onClick: undefined, external: true },
+    { label: "Join Us", href: "#join-us", onClick: handleJoinUsClick, external: false },
   ];
 
-  const supportLinks = [{ label: "Contact Us", href: "#contact" }];
+  const supportLinks = [
+    { label: "Contact Us", href: "https://career141.com/contact-us/", onClick: undefined, external: true }
+  ];
 
   const footerSections = [
     { title: "Company", links: companyLinks },
@@ -93,6 +125,9 @@ export const ContactFormSection = (): JSX.Element => {
                   >
                     <a
                       href={link.href}
+                      onClick={link.onClick || undefined}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
                       className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base tracking-[-0.32px] leading-[20.9px] hover:text-[#222223] transition-all duration-300 hover:translate-x-1 inline-block"
                     >
                       {link.label}

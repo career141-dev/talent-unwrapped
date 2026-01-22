@@ -71,7 +71,7 @@ export const EditionsDropdown = (): JSX.Element => {
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center justify-center gap-2.5 px-4 py-2.5 relative flex-[0_0_auto] hover:bg-gray-50 rounded-md transition-all duration-300 group pb-1"
+        className="inline-flex items-center justify-center gap-2.5 px-4 py-2.5 relative flex-[0_0_auto] hover:bg-gray-50 rounded-md transition-all duration-300 group"
         aria-expanded={isOpen}
         aria-haspopup="true"
       >

@@ -1,18 +1,41 @@
+import { useNavigate, useLocation } from "react-router-dom";
+
 export const PodcastScheduleSection = (): JSX.Element => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate("/");
+    setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
+  };
+
+  const handleJoinUsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate("/");
+    setTimeout(() => {
+      const element = document.querySelector("#join-us");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   const companyLinks = [
-    { label: "Home", href: "#" },
-    { label: "Executive Search", href: "#" },
-    { label: "About", href: "#" },
-    { label: "Our Culture", href: "#" },
-    { label: "Our Journey", href: "#" },
+    { label: "Home", href: "/", onClick: handleHomeClick, external: false },
+    { label: "Executive Search", href: "https://career141.com/executive-search/", external: true },
+    { label: "Our Culture", href: "https://career141.com/our-culture/", external: true },
+    { label: "Our Journey", href: "https://career141.com/our-journey/", external: true },
   ];
 
   const informationLinks = [
-    { label: "Jobs & Vacancies", href: "#" },
-    { label: "Join Us", href: "#" },
+    { label: "Jobs & Vacancies", href: "https://career141.com/job-openings/", external: true },
+    { label: "Join Us", href: "#join-us", onClick: handleJoinUsClick, external: false },
   ];
 
-  const supportLinks = [{ label: "Contact Us", href: "#" }];
+  const supportLinks = [
+    { label: "Contact Us", href: "https://career141.com/contact-us/", external: true }
+  ];
 
   return (
     <section id="schedule" className="flex flex-col lg:flex-row w-full min-h-[520px] items-center justify-center gap-8 lg:gap-[60px] pt-8 sm:pt-10 lg:pt-10 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 md:px-10 lg:px-[60px] relative bg-white">
@@ -64,6 +87,9 @@ export const PodcastScheduleSection = (): JSX.Element => {
                 >
                   <a
                     href={link.href}
+                    onClick={link.onClick}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
                     className={`${index === 0 ? "mt-[-1.00px] " : ""}[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-sm lg:text-base tracking-[-0.32px] leading-[20.9px] hover:text-[#222223] transition-colors`}
                   >
                     {link.label}
@@ -90,6 +116,9 @@ export const PodcastScheduleSection = (): JSX.Element => {
                 >
                   <a
                     href={link.href}
+                    onClick={link.onClick}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
                     className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-sm lg:text-base tracking-[-0.32px] leading-[20.9px] hover:text-[#222223] transition-colors"
                   >
                     {link.label}
@@ -109,6 +138,8 @@ export const PodcastScheduleSection = (): JSX.Element => {
                 <li key={index} className="relative self-stretch">
                   <a
                     href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
                     className="mt-[-1.00px] [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-sm lg:text-base tracking-[-0.32px] leading-[20.9px] hover:text-[#222223] transition-colors"
                   >
                     {link.label}

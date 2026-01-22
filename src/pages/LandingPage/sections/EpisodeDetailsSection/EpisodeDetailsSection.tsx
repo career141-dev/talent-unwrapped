@@ -152,7 +152,7 @@ export const EpisodeDetailsSection = (): JSX.Element => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full max-w-[1440px] min-h-[1071px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-16 sm:py-20 md:py-24 lg:py-[90px] mx-auto overflow-hidden"
+      className="relative w-full max-w-[1440px] min-h-[900px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-16 sm:py-20 md:py-24 lg:py-[90px] mx-auto mt-12 sm:mt-16 md:mt-20 lg:mt-[120px] overflow-hidden"
       aria-labelledby="episode-details-heading"
     >
       <h2

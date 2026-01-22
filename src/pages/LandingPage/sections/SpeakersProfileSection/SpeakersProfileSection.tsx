@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 interface Speaker {
   id: number;
@@ -11,8 +11,11 @@ interface Speaker {
 
 export const SpeakersProfileSection = (): JSX.Element => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [currentView, setCurrentView] = useState(0);
 
-  const speakers: Speaker[] = [
+  const allSpeakersData: Speaker[][] = [
+    // View 1 (Default)
+    [
     {
       id: 1,
       title: "Bridging Sri Lanka's Talent Gap",
@@ -46,6 +49,41 @@ export const SpeakersProfileSection = (): JSX.Element => {
       image: "https://c.animaapp.com/6IK4krLc/img/frame-4449058-1@2x.png",
     },
     {
+      id: 9,
+      title: "Leadership in the Digital Age",
+      views: "25m+ Views",
+      name: "Deepak Patel",
+      position: "CTO - Global Tech",
+      image: "https://c.animaapp.com/6IK4krLc/img/frame-4449055-1@2x.png",
+    },
+    {
+      id: 10,
+      title: "Innovation and Adaptability",
+      views: "33m+ Views",
+      name: "Emma Wilson",
+      position: "VP - Strategy",
+      image: "https://c.animaapp.com/6IK4krLc/img/frame-4449056-1@2x.png",
+    },
+    {
+      id: 11,
+      title: "Talent Retention Best Practices",
+      views: "28m+ Views",
+      name: "James Anderson",
+      position: "HR Director - Fortune 500",
+      image: "https://c.animaapp.com/6IK4krLc/img/frame-4449057-1@2x.png",
+    },
+    {
+      id: 12,
+      title: "Building High-Performance Teams",
+      views: "38m+ Views",
+      name: "Lisa Chen",
+      position: "Chief People Officer",
+      image: "https://c.animaapp.com/6IK4krLc/img/frame-4449058-1@2x.png",
+    },
+    ],
+    // View 2 (Alternative speakers)
+    [
+    {
       id: 5,
       title: "Building Future-Ready Teams",
       views: "28m+ Views",
@@ -77,20 +115,61 @@ export const SpeakersProfileSection = (): JSX.Element => {
       position: "Head of AI Strategy",
       image: "https://c.animaapp.com/6IK4krLc/img/frame-4449058-1@2x.png",
     },
+    {
+      id: 13,
+      title: "Future of Work Trends",
+      views: "31m+ Views",
+      name: "David Kumar",
+      position: "Workforce Analyst",
+      image: "https://c.animaapp.com/6IK4krLc/img/frame-4449055-1@2x.png",
+    },
+    {
+      id: 14,
+      title: "Cross-Cultural Leadership",
+      views: "26m+ Views",
+      name: "Sophia Martinez",
+      position: "Global Executive Coach",
+      image: "https://c.animaapp.com/6IK4krLc/img/frame-4449056-1@2x.png",
+    },
+    {
+      id: 15,
+      title: "Scaling Operations Globally",
+      views: "29m+ Views",
+      name: "Robert Johnson",
+      position: "COO - International Corp",
+      image: "https://c.animaapp.com/6IK4krLc/img/frame-4449057-1@2x.png",
+    },
+    {
+      id: 16,
+      title: "Data-Driven Decision Making",
+      views: "34m+ Views",
+      name: "Victoria Lee",
+      position: "Chief Analyst",
+      image: "https://c.animaapp.com/6IK4krLc/img/frame-4449058-1@2x.png",
+    },
+    ]
   ];
+
+  const speakers = allSpeakersData[currentView];
 
   const handleScroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
-      const scrollAmount = 600; // Scroll by approximately 2 cards
-      const currentScroll = scrollContainerRef.current.scrollLeft;
-      const targetScroll = direction === 'left' 
-        ? currentScroll - scrollAmount 
-        : currentScroll + scrollAmount;
+      const container = scrollContainerRef.current;
+      const cards = Array.from(container.querySelectorAll('article'));
       
-      scrollContainerRef.current.scrollTo({
-        left: targetScroll,
-        behavior: 'smooth'
-      });
+      if (cards.length >= 2) {
+        // Measure the exact distance between first and second card (this includes gap)
+        const firstCardLeft = cards[0].offsetLeft;
+        const secondCardLeft = cards[1].offsetLeft;
+        const scrollAmount = secondCardLeft - firstCardLeft;
+        
+        // Scroll by that amount
+        if (direction === 'left') {
+          container.scrollLeft -= scrollAmount;
+        } else {
+          container.scrollLeft += scrollAmount;
+        }
+      }
     }
   };
 
@@ -121,9 +200,10 @@ export const SpeakersProfileSection = (): JSX.Element => {
               className="all-[unset] box-border inline-flex items-center gap-1.5 sm:gap-2 md:gap-2.5 relative flex-[0_0_auto] cursor-pointer hover:scale-105 transition-transform group"
               type="button"
               aria-label="View all speakers"
+              onClick={() => setCurrentView((prev) => (prev + 1) % allSpeakersData.length)}
             >
               <span className="relative w-fit mt-[-3.00px] font-body-large-regular font-[number:var(--body-large-regular-font-weight)] text-[#7bb302] text-sm sm:text-base md:text-[length:var(--body-large-regular-font-size)] tracking-[var(--body-large-regular-letter-spacing)] leading-[var(--body-large-regular-line-height)] whitespace-nowrap [font-style:var(--body-large-regular-font-style)]">
-                View all Speakers
+                View all
               </span>
 
               <img
@@ -166,7 +246,7 @@ export const SpeakersProfileSection = (): JSX.Element => {
                   key={speaker.id}
                   className="flex flex-col w-[250px] sm:w-[270px] md:w-[282px] items-start relative flex-shrink-0"
                 >
-                  <div className="flex flex-col w-full items-start gap-4 sm:gap-5 md:gap-6 p-4 sm:p-5 md:p-6 relative flex-[0_0_auto] bg-[#f8f8f8] rounded-[20px] md:rounded-[28px]">
+                  <div className="flex flex-col w-full items-start gap-4 sm:gap-5 md:gap-6 p-4 sm:p-5 md:p-6 relative flex-[0_0_auto] bg-[#f8f8f8] rounded-[20px] md:rounded-[28px] transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-white cursor-pointer">
                     <div className="relative w-[120px] h-[120px] sm:w-[130px] sm:h-[130px] md:w-[139px] md:h-[139px] bg-[#00000033] rounded-[100px] overflow-hidden border-2 border-solid border-white aspect-[1]">
                       <img
                         className="absolute top-0 left-0 w-full h-full aspect-[1] object-cover"
@@ -215,6 +295,20 @@ export const SpeakersProfileSection = (): JSX.Element => {
                 aria-hidden="true"
               />
             </button>
+          </div>
+
+          {/* Dot Indicator */}
+          <div className="flex items-center justify-center gap-2 w-full mt-6">
+            {allSpeakersData.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentView(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  currentView === index ? 'bg-[#7bb302] w-6' : 'bg-[#d0d0d0]'
+                }`}
+                aria-label={`View ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>
