@@ -189,7 +189,7 @@ export const EpisodeDetailsSection = (): JSX.Element => {
               style={{
                 transform: style.transform,
                 zIndex: style.zIndex,
-                opacity: style.opacity,
+                opacity: isActive ? 1 : 0.6,
                 left: style.left,
                 top: style.top,
                 filter: style.filter,
