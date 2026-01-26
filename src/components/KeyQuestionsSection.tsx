@@ -170,11 +170,6 @@ export const KeyQuestionsSection = (): JSX.Element => {
     },
   ];
 
-  const paginationDots = [
-    { id: 0, label: "Session 1" },
-    { id: 1, label: "Session 2" },
-  ];
-
   const currentSession = sessionContent[currentPage];
 
   return (
@@ -290,22 +285,6 @@ export const KeyQuestionsSection = (): JSX.Element => {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Pagination Dots */}
-        <div className="flex items-center justify-center gap-2 mt-16">
-          {paginationDots.map((dot) => (
-            <button
-              key={dot.id}
-              onClick={() => setCurrentPage(dot.id)}
-              className={`relative h-2 rounded transition-all duration-300 cursor-pointer touch-manipulation ${
-                dot.id === currentPage ? 'w-8 bg-[#7bb302]' : 'w-2 bg-neutral-300 hover:bg-neutral-400'
-              }`}
-              aria-label={dot.label}
-              aria-current={dot.id === currentPage ? "true" : "false"}
-              type="button"
-            />
-          ))}
         </div>
       </div>
     </section>

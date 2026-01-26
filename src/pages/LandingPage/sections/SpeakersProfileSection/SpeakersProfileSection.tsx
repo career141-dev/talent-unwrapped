@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 interface Speaker {
   id: number;
@@ -11,7 +11,8 @@ interface Speaker {
 
 export const SpeakersProfileSection = (): JSX.Element => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [currentView, setCurrentView] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const isManualScrollRef = useRef(true);
 
   const allSpeakersData: Speaker[][] = [
     // View 1 (Default)
@@ -150,11 +151,90 @@ export const SpeakersProfileSection = (): JSX.Element => {
     ]
   ];
 
-  const speakers = allSpeakersData[currentView];
+  const speakers = allSpeakersData[0]; // Use first dataset
+  const ITEMS_PER_PAGE = 5;
+  const totalPages = Math.ceil(speakers.length / ITEMS_PER_PAGE);
+  const currentPage = Math.floor(currentIndex / ITEMS_PER_PAGE);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    const handleScrollTracking = () => {
+      // Only track scroll if it's manual (not programmatic)
+      if (!isManualScrollRef.current) return;
+
+      clearTimeout(timeoutId);
+      
+      timeoutId = setTimeout(() => {
+        // Get the first article element to measure actual dimensions
+        const firstArticle = container.querySelector('article');
+        if (!firstArticle) return;
+
+        const articleWidth = firstArticle.offsetWidth;
+        
+        // Get computed gap from the container
+        const computedStyle = window.getComputedStyle(container);
+        const gapValue = computedStyle.gap;
+        const gap = parseInt(gapValue) || 16; // default to 16 if can't parse
+        
+        const itemSize = articleWidth + gap;
+        
+        // Calculate current index based on scroll position
+        const scrollPosition = container.scrollLeft;
+        const newIndex = Math.round(scrollPosition / itemSize);
+        const maxIndex = speakers.length - 1;
+        
+        setCurrentIndex(Math.min(newIndex, maxIndex));
+      }, 50);
+    };
+
+    container.addEventListener('scroll', handleScrollTracking, { passive: true });
+    return () => {
+      container.removeEventListener('scroll', handleScrollTracking);
+      clearTimeout(timeoutId);
+    };
+  }, [speakers.length]);
+
+  const handlePaginationClick = (pageIndex: number) => {
+    const newIndex = pageIndex * ITEMS_PER_PAGE;
+    setCurrentIndex(newIndex);
+    
+    // Scroll the container to show the correct item
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const firstArticle = container.querySelector('article');
+      
+      if (firstArticle) {
+        const articleWidth = firstArticle.offsetWidth;
+        const computedStyle = window.getComputedStyle(container);
+        const gapValue = computedStyle.gap;
+        const gap = parseInt(gapValue) || 16;
+        const itemSize = articleWidth + gap;
+        const scrollPosition = newIndex * itemSize;
+        
+        // Disable manual scroll tracking during programmatic scroll
+        isManualScrollRef.current = false;
+        
+        container.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth',
+        });
+        
+        // Re-enable manual scroll tracking after scroll completes
+        setTimeout(() => {
+          isManualScrollRef.current = true;
+        }, 1000);
+      }
+    }
+  };
 
   const handleScroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
+
       const cards = Array.from(container.querySelectorAll('article'));
       
       if (cards.length >= 2) {
@@ -196,23 +276,6 @@ export const SpeakersProfileSection = (): JSX.Element => {
               </div>
             </div>
 
-            <button
-              className="all-[unset] box-border inline-flex items-center gap-1.5 sm:gap-2 md:gap-2.5 relative flex-[0_0_auto] cursor-pointer hover:scale-105 transition-transform group"
-              type="button"
-              aria-label="View all speakers"
-              onClick={() => setCurrentView((prev) => (prev + 1) % allSpeakersData.length)}
-            >
-              <span className="relative w-fit mt-[-3.00px] font-body-large-regular font-[number:var(--body-large-regular-font-weight)] text-[#7bb302] text-sm sm:text-base md:text-[length:var(--body-large-regular-font-size)] tracking-[var(--body-large-regular-letter-spacing)] leading-[var(--body-large-regular-line-height)] whitespace-nowrap [font-style:var(--body-large-regular-font-style)]">
-                View all
-              </span>
-
-              <img
-                className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 transition-transform duration-300 group-hover:translate-x-1"
-                alt=""
-                src="https://c.animaapp.com/6IK4krLc/img/right-arrow---24---outline-1.svg"
-                aria-hidden="true"
-              />
-            </button>
           </nav>
 
           {/* Scrollable Container with Navigation Buttons */}
@@ -246,13 +309,21 @@ export const SpeakersProfileSection = (): JSX.Element => {
                   key={speaker.id}
                   className="flex flex-col w-[250px] sm:w-[270px] md:w-[282px] items-start relative flex-shrink-0"
                 >
-                  <div className="flex flex-col w-full items-start gap-4 sm:gap-5 md:gap-6 p-4 sm:p-5 md:p-6 relative flex-[0_0_auto] bg-[#f8f8f8] rounded-[20px] md:rounded-[28px] transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-white cursor-pointer">
-                    <div className="relative w-[120px] h-[120px] sm:w-[130px] sm:h-[130px] md:w-[139px] md:h-[139px] bg-[#00000033] rounded-[100px] overflow-hidden border-2 border-solid border-white aspect-[1]">
-                      <img
-                        className="absolute top-0 left-0 w-full h-full aspect-[1] object-cover"
-                        alt={speaker.name}
-                        src={speaker.image}
-                      />
+                  <div className="flex flex-col w-full items-start gap-4 sm:gap-5 md:gap-6 p-4 sm:p-5 md:p-6 relative flex-[0_0_auto] bg-[#f8f8f8] rounded-[20px] md:rounded-[28px] border-2 border-[#7bb302] transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-white cursor-pointer">
+                    <div 
+                      className="relative w-[120px] h-[120px] sm:w-[130px] sm:h-[130px] md:w-[139px] md:h-[139px] rounded-full flex-shrink-0"
+                      style={{
+                        border: '4px solid #7bb302',
+                        padding: '4px'
+                      }}
+                    >
+                      <div className="w-full h-full rounded-full overflow-hidden bg-[#00000033]">
+                        <img
+                          className="w-full h-full object-cover"
+                          alt={speaker.name}
+                          src={speaker.image}
+                        />
+                      </div>
                     </div>
 
                     <div className="flex flex-col items-start gap-1 relative self-stretch w-full flex-[0_0_auto]">
@@ -299,14 +370,14 @@ export const SpeakersProfileSection = (): JSX.Element => {
 
           {/* Dot Indicator */}
           <div className="flex items-center justify-center gap-2 w-full mt-6">
-            {allSpeakersData.map((_, index) => (
+            {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentView(index)}
+                onClick={() => handlePaginationClick(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentView === index ? 'bg-[#7bb302] w-6' : 'bg-[#d0d0d0]'
+                  index === currentPage ? 'bg-[#7bb302] w-6' : 'bg-[#d0d0d0]'
                 }`}
-                aria-label={`View ${index + 1}`}
+                aria-label={`Page ${index + 1}`}
               />
             ))}
           </div>

@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { GlobalHeader } from "../../components/GlobalHeader";
 import { ReelsSection } from "../../components/ReelsSection";
 import { SpeakersProfileSection } from "../LandingPage/sections/SpeakersProfileSection";
 import { KeyQuestionsSection } from "../../components/KeyQuestionsSection";
@@ -22,6 +21,7 @@ export const FullEpisode = (): JSX.Element => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
 
   // Determine edition from location state or default to Dubai
   const edition = location.state?.edition || "Dubai";
@@ -70,6 +70,32 @@ export const FullEpisode = (): JSX.Element => {
     setIsPlaying(false);
   }, [currentSlide]);
 
+  // Stop video when section leaves viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          setIsPlaying(false);
+          if (videoRef.current) {
+            videoRef.current.pause();
+            videoRef.current.currentTime = 0;
+          }
+        }
+      },
+      { threshold: 0 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const handlePrevious = () => {
     setIsPlaying(false);
     setCurrentSlide(
@@ -100,59 +126,13 @@ export const FullEpisode = (): JSX.Element => {
       className="flex flex-col items-center relative min-h-screen bg-white w-full overflow-x-hidden"
       data-model-id="905:6609"
     >
-      <GlobalHeader />
 
       {/* Hero Section with Video Carousel - RESPONSIVE */}
-      <section className="relative w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:h-[1200px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-8 md:py-12 lg:py-20 mx-auto">
-        
-        {/* Logo - Hidden on mobile, visible on desktop */}
-        <div className="hidden lg:inline-flex items-end gap-4 absolute top-[159px] left-[60px]">
-          <div className="relative w-[280px] xl:w-[372px] h-[81px] xl:h-[108px] bg-white rounded-xl overflow-hidden rotate-180">
-            <img
-              className="absolute top-0 left-0 w-full h-auto -rotate-180 object-cover"
-              alt="Logo prasperant"
-              src="https://c.animaapp.com/6IK4krLc/img/logo-prasperant-1-1.png"
-            />
-          </div>
-        </div>
-
-        {/* Heading 1 - Responsive */}
-        <h2 className="relative lg:absolute top-0 lg:top-[68px] left-0 lg:left-[35%] xl:left-[506px] w-full lg:w-auto text-center lg:text-left [font-family:'Geist',Helvetica] font-medium text-[#232323] text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[52px] tracking-[-0.8px] sm:tracking-[-1px] lg:tracking-[-2.08px] leading-tight lg:leading-[normal] mb-2 lg:mb-0 px-4 lg:px-0">
-          Conversations that feel
-        </h2>
-
-        {/* Decorative Icon - Hidden on mobile - Clickable to scroll to speakers */}
-        <button
-          onClick={() => {
-            const speakersSection = document.getElementById('speakers');
-            if (speakersSection) {
-              speakersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-          }}
-          className="hidden xl:block absolute top-[66px] left-[1055px] w-[120px] xl:w-[152px] h-auto cursor-pointer hover:scale-110 transition-transform duration-300 bg-transparent border-none p-0"
-          aria-label="Go to speakers section"
-          type="button"
-        >
-          <img
-            className="w-full h-full"
-            alt=""
-            src="https://c.animaapp.com/6IK4krLc/img/frame-1000002831.svg"
-          />
-        </button>
-
-        {/* Main Heading - Responsive */}
-        <h1
-          className={`relative lg:absolute top-4 lg:top-[120px] left-0 lg:left-[35%] xl:left-[496px] w-full lg:w-auto max-w-full lg:max-w-[919px] text-center lg:text-left [font-family:'Geist',Helvetica] font-medium text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-[144px] tracking-[-1.5px] sm:tracking-[-2px] lg:tracking-[-5.76px] leading-tight lg:leading-[normal] mb-6 lg:mb-0 px-4 lg:px-0 ${
-            isDubai ? "text-[#ed2939]" : "text-[#7bb302]"
-          }`}
-        >
-          ideas that stay
-        </h1>
-
+      <section ref={sectionRef} className="relative w-full bg-white pt-6 md:pt-8 lg:pt-10 pb-8 md:pb-12 lg:pb-16">
         {/* Video Container - Fully Responsive */}
-        <div className="relative lg:absolute top-auto lg:top-[355px] left-0 lg:left-[50%] lg:transform lg:-translate-x-1/2 w-full max-w-[calc(100%-2rem)] lg:max-w-[1320px] mx-auto mt-8 lg:mt-0">
+        <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 lg:px-0">
           {/* Aspect Ratio Container - 16:9 */}
-          <div className="relative w-full pb-[56.25%] bg-[#00000033] rounded-2xl lg:rounded-3xl overflow-hidden">
+          <div className="relative w-full pb-[56.25%] bg-[#00000033] rounded-xl lg:rounded-2xl overflow-hidden">
             {/* Video Slides */}
             <div className="absolute inset-0 w-full h-full">
               {videoSlides.map((slide, index) => (

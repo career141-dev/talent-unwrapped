@@ -1,4 +1,8 @@
+import { useState } from "react";
+import { LearnMoreModal } from "../../../../pages/Schedule/components";
+
 export const TalentIntroductionSection = (): JSX.Element => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const chapters = [
     {
       id: 1,
@@ -103,7 +107,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
               />
             </div>
 
-            <div className="flex flex-col w-[calc(100%-2rem)] lg:w-[376px] items-start gap-4 lg:gap-5 absolute top-20 lg:top-28 left-4 lg:left-6">
+            <div className="flex flex-col w-[calc(100%-2rem)] lg:w-[376px] items-start justify-start gap-4 lg:gap-5 absolute top-20 lg:top-28 left-4 lg:left-6">
               <div className="flex items-center gap-2 lg:gap-2.5 pt-0 pb-2 lg:pb-3 px-0 relative self-stretch w-full flex-[0_0_auto] border-b [border-bottom-style:solid] border-neutral-200">
                 <h3 className="relative w-full mt-[-1.00px] [font-family:'Geist',Helvetica] font-medium text-transparent text-lg sm:text-xl lg:text-[27px] tracking-[-0.5px] lg:tracking-[-1.08px] leading-tight lg:leading-[normal]">
                   <span className="text-[#7bb302] tracking-[-0.29px]">
@@ -116,12 +120,12 @@ export const TalentIntroductionSection = (): JSX.Element => {
                 </h3>
               </div>
 
-              <a
-                href={chapter.link}
-                className="relative self-stretch [font-family:'Geist',Helvetica] font-medium text-black text-sm lg:text-base tracking-[-0.32px] leading-[normal] underline hover:text-[#7bb302] transition-colors"
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="[font-family:'Geist',Helvetica] font-medium text-black text-sm lg:text-base tracking-[-0.32px] leading-[normal] underline hover:text-[#7bb302] transition-colors cursor-pointer bg-transparent border-none p-0 whitespace-nowrap"
               >
                 Learn more
-              </a>
+              </button>
             </div>
 
             <a
@@ -154,6 +158,8 @@ export const TalentIntroductionSection = (): JSX.Element => {
           </time>
         </p>
       </div>
+
+      <LearnMoreModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

@@ -136,21 +136,30 @@ export const DubaiPodcast = (): JSX.Element => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-[32px]">
             {episodes.map((episode) => (
-              <article
+              <button
                 key={episode.id}
-                className="flex flex-col bg-white rounded-xl md:rounded-[16px] overflow-hidden shadow-[0px_4px_16px_rgba(0,0,0,0.08)] hover:shadow-[0px_8px_24px_rgba(0,0,0,0.12)] transition-shadow duration-300"
+                onClick={() => handleViewEpisode(episode.id)}
+                className="flex flex-col bg-white rounded-xl md:rounded-[16px] overflow-hidden shadow-[0px_4px_16px_rgba(0,0,0,0.08)] hover:shadow-[0px_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:scale-[1.02] text-left border-none cursor-pointer group"
               >
                 <div className="relative w-full h-[200px] sm:h-[220px] md:h-[240px] bg-[#2d2d2d] overflow-hidden">
                   <img
                     src={episode.image}
                     alt={episode.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   {episode.featured && (
                     <div className="absolute top-[16px] left-[16px] bg-[#7c3] text-white text-[11px] font-bold px-[12px] py-[6px] rounded-[20px] uppercase tracking-[0.05em]">
                       Featured
                     </div>
                   )}
+                  {/* Play Icon Indicator */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-colors duration-300">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-16 h-16 bg-[#7bb302] rounded-full flex items-center justify-center">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="white" className="ml-1">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="flex flex-col p-4 sm:p-5 md:p-6 lg:p-[24px] flex-1">
@@ -229,16 +238,8 @@ export const DubaiPodcast = (): JSX.Element => {
                       ))}
                     </div>
                   </div>
-
-                  <button
-                    onClick={() => handleViewEpisode(episode.id)}
-                    className="mt-3 sm:mt-4 md:mt-[20px] w-full bg-transparent border-0 text-[#7c3] text-xs sm:text-[13px] font-bold tracking-[0.05em] uppercase py-2.5 sm:py-3 md:py-[12px] hover:bg-[#f0f9f0] rounded-lg transition-colors duration-200 cursor-pointer touch-manipulation"
-                    aria-label={`View episode: ${episode.title}`}
-                  >
-                    View Episode →
-                  </button>
                 </div>
-              </article>
+              </button>
             ))}
           </div>
         </div>

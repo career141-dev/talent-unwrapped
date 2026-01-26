@@ -9,13 +9,18 @@ export const GlobalHeader = (): JSX.Element => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const isEditionPage = location.pathname === "/dubai" || location.pathname === "/singapore";
+  const isLandingPage = location.pathname === "/" || location.pathname === "/talent-unwrapped/";
 
   const navigationItems = isEditionPage  
     ? [
-        { label: "About", href: "#about", action: () => scrollToSection("schedule") },
-        { label: "Schedule", href: "#schedule", action: () => scrollToSection("about") },
+        { label: "About", href: "#about", action: () => scrollToSection("about") },
+        { label: "Schedule", href: "/schedule", action: () => {
+          navigate("/schedule");
+          setActiveNav("Schedule");
+        } },
       ]
     : [
+        { label: "Home", href: "/", action: () => navigate("/") },
         { label: "About", href: "#about", action: () => scrollToSection("about") },
         { label: "Episodes", href: "#episodes", action: () => scrollToSection("episodes") },
         { label: "Reels", href: "#reels", action: () => scrollToSection("reels") },
@@ -32,33 +37,43 @@ export const GlobalHeader = (): JSX.Element => {
 
   // Track active section on scroll
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = navigationItems.map(item => ({
-        label: item.label,
-        id: item.href.substring(1), // Remove # from href
-      }));
+    if (isEditionPage) {
+      // Edition page scroll tracking
+      const handleScroll = () => {
+        const sections = navigationItems.map(item => ({
+          label: item.label,
+          id: item.href.substring(1), // Remove # from href
+        }));
 
-      let currentActive = "";
-      for (const section of sections) {
-        const element = document.getElementById(section.id);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          // Only mark as active if section is currently visible in viewport
-          if (rect.top < window.innerHeight && rect.bottom > 100) {
-            currentActive = section.label;
-            break;
+        let currentActive = "";
+        for (const section of sections) {
+          const element = document.getElementById(section.id);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            // Only mark as active if section is currently visible in viewport
+            if (rect.top < window.innerHeight && rect.bottom > 100) {
+              currentActive = section.label;
+              break;
+            }
           }
         }
-      }
-      // Only set active if section is in view, otherwise clear it
-      setActiveNav(currentActive);
-    };
+        // Only set active if section is in view, otherwise clear it
+        setActiveNav(currentActive);
+      };
 
-    window.addEventListener("scroll", handleScroll);
-    // Run on mount to check initial state
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [navigationItems]);
+      window.addEventListener("scroll", handleScroll);
+      // Run on mount to check initial state
+      handleScroll();
+      return () => window.removeEventListener("scroll", handleScroll);
+    } else {
+      // Landing page - set active based on current page
+      if (isLandingPage) {
+        setActiveNav("Home");
+      } else {
+        setActiveNav("");
+      }
+    }
+  }, [navigationItems, isEditionPage, isLandingPage]);
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -80,12 +95,12 @@ export const GlobalHeader = (): JSX.Element => {
   return (
     <>
       <header className="w-full bg-white border-b border-neutral-200 sticky top-0 z-[100] transition-shadow duration-300 hover:shadow-md">
-        <div className="flex w-full max-w-[1440px] min-h-[70px] md:min-h-[90px] lg:h-[145px] items-center justify-between gap-4 px-4 sm:px-6 md:px-10 lg:px-[60px] py-3 lg:py-0 mx-auto">
+        <div className="flex w-full max-w-[1440px] min-h-[70px] md:min-h-[80px] lg:h-[100px] items-center justify-between gap-4 px-4 sm:px-6 md:px-10 lg:px-[60px] py-3 lg:py-0 mx-auto">
           
           {/* Logo */}
           <a 
             href="/" 
-            className="relative w-24 sm:w-32 md:w-40 lg:w-80 h-10 sm:h-12 md:h-16 lg:h-[103px] flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]"
+            className="relative w-24 sm:w-32 md:w-40 lg:w-60 h-10 sm:h-12 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]"
             onClick={(e) => {
               e.preventDefault();
               navigate("/");
@@ -104,10 +119,7 @@ export const GlobalHeader = (): JSX.Element => {
             className="hidden lg:inline-flex items-center gap-8 xl:gap-[60px] relative flex-[0_0_auto]"
             aria-label="Main navigation"
           >
-            <ul className="inline-flex items-center gap-2 xl:gap-4 relative flex-[0_0_auto]">
-              <li className="inline-flex items-center justify-center gap-2.5 px-0 py-2.5 relative self-stretch flex-[0_0_auto]">
-                <EditionsDropdown />
-              </li>
+            <ul className="inline-flex items-center gap-4 xl:gap-6 relative flex-[0_0_auto]">
               {navigationItems.map((item, index) => (
                 <li
                   key={index}
@@ -129,6 +141,9 @@ export const GlobalHeader = (): JSX.Element => {
                   </button>
                 </li>
               ))}
+              <li className="inline-flex items-center justify-center gap-2.5 px-0 py-2.5 relative self-stretch flex-[0_0_auto]">
+                <EditionsDropdown />
+              </li>
             </ul>
           </nav>
 
@@ -219,11 +234,6 @@ export const GlobalHeader = (): JSX.Element => {
 
           {/* Mobile Menu Content */}
           <nav className="flex flex-col p-4 gap-2" aria-label="Mobile navigation">
-            {/* Editions Dropdown in Mobile */}
-            <div className="pb-4 border-b border-neutral-200 mb-2">
-              <EditionsDropdown />
-            </div>
-
             {/* Navigation Links */}
             {navigationItems.map((item, index) => (
               <button
@@ -247,6 +257,11 @@ export const GlobalHeader = (): JSX.Element => {
                 )}
               </button>
             ))}
+
+            {/* Editions Dropdown in Mobile */}
+            <div className="pb-4 border-t border-neutral-200 mt-2">
+              <EditionsDropdown />
+            </div>
 
             {/* Mobile CTA Button (Full Width) */}
             <a

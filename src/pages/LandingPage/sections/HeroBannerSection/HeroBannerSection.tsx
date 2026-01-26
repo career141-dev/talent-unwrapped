@@ -4,6 +4,7 @@ interface VideoSlide {
   id: number;
   thumbnail: string;
   title: string;
+  edition: string;
   videoUrl?: string;
 }
 
@@ -17,24 +18,28 @@ export const HeroBannerSection = (): JSX.Element => {
       id: 1,
       thumbnail: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=675&fit=crop",
       title: "Episode 1: Leadership in the Digital Age",
+      edition: "Dubai",
       videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
     },
     {
       id: 2,
       thumbnail: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=675&fit=crop",
       title: "Episode 2: Building Resilient Teams",
+      edition: "Singapore",
       videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
     },
     {
       id: 3,
       thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=675&fit=crop",
       title: "Episode 3: Innovation and Creativity",
+      edition: "Dubai",
       videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     },
     {
       id: 4,
       thumbnail: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=675&fit=crop",
       title: "Episode 4: Future of Work",
+      edition: "Singapore",
       videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     },
   ];
@@ -184,7 +189,7 @@ export const HeroBannerSection = (): JSX.Element => {
             ))}
           </div>
 
-          {/* Edition Badge - Responsive */}
+          {/* Edition Badge - Responsive - Dynamic based on current slide */}
           <div className="inline-flex items-center justify-center gap-1.5 sm:gap-2 md:gap-2.5 px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 md:py-2.5 absolute top-3 sm:top-4 md:top-6 lg:top-[39px] left-3 sm:left-4 md:left-6 lg:left-[49px] bg-[#ed2939] rounded-[40px] z-20">
             <img
               className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
@@ -192,7 +197,7 @@ export const HeroBannerSection = (): JSX.Element => {
               src="https://c.animaapp.com/6IK4krLc/img/vuesax-bold-play-circle.svg"
             />
             <span className="relative w-fit mt-[-1.00px] [font-family:'Geist',Helvetica] font-semibold text-white text-xs sm:text-sm md:text-base lg:text-xl tracking-[-0.40px] lg:tracking-[-0.80px] leading-[normal]">
-              Singapore Edition
+              {videoSlides[currentSlide].edition} Edition
             </span>
           </div>
 

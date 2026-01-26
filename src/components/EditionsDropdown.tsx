@@ -71,15 +71,15 @@ export const EditionsDropdown = (): JSX.Element => {
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center justify-center gap-2.5 px-4 py-2.5 relative flex-[0_0_auto] hover:bg-gray-50 rounded-md transition-all duration-300 group"
+        className="inline-flex items-end justify-center gap-2.5 px-4 relative flex-[0_0_auto] hover:bg-gray-50 rounded-md transition-all duration-300 group border-none bg-transparent mt-[-1.00px] pb-1 "
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
-        <span className="relative flex items-end justify-center w-fit mt-[-1.00px] [font-family:'Geist',Helvetica] font-normal text-[#232323] text-base text-center tracking-[-0.32px] leading-6 whitespace-nowrap group-hover:text-[#7bb302] transition-colors duration-300">
+        <span className="relative flex items-end justify-center w-fit [font-family:'Geist',Helvetica] font-normal text-[#232323] text-base text-center tracking-[-0.32px] leading-6 whitespace-nowrap group-hover:text-[#7bb302] transition-colors duration-300">
           {isLandingPage ? 'Editions' : currentEdition?.name || 'Editions'}
         </span>
         <img
-          className={`relative w-[10.33px] h-[5.72px] mr-[-0.45px] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          className={`relative w-[10.33px] h-[5.72px] mr-[-0.45px] transition-transform duration-300 self-center ${isOpen ? 'rotate-180' : ''}`}
           alt=""
           src="https://c.animaapp.com/6IK4krLc/img/vector.svg"
         />
@@ -87,7 +87,7 @@ export const EditionsDropdown = (): JSX.Element => {
 
       {isOpen && (
         <div 
-          className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50 animate-fade-in"
+          className="absolute top-full left-0 mt-3 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50 animate-fade-in"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
