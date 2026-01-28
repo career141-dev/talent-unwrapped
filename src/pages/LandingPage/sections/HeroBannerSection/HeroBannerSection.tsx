@@ -84,7 +84,7 @@ export const HeroBannerSection = (): JSX.Element => {
   };
 
   return (
-    <section className="relative w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:min-h-[1137px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-4 md:py-6 lg:py-12 mx-auto">
+    <section className="relative w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:min-h-[1050px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] pt-0 pb-4 md:pb-6 lg:pb-12 mx-auto">
 
       {/* Mobile Hero Text Container - Innovative Layout */}
       <div className="lg:hidden flex flex-col items-center justify-center gap-4 mb-8 relative z-10">
@@ -102,7 +102,7 @@ export const HeroBannerSection = (): JSX.Element => {
           <h2 className="w-full text-center [font-family:'Geist',Helvetica] font-medium text-[#232323] text-lg sm:text-xl tracking-[-0.6px] leading-tight">
             Conversations that feel
           </h2>
-          
+
           {/* Decorative Line */}
           <div className="w-16 h-1 bg-gradient-to-r from-[#7bb302] to-[#ed2939] rounded-full"></div>
         </div>
@@ -116,7 +116,7 @@ export const HeroBannerSection = (): JSX.Element => {
       </div>
 
       {/* Desktop Logo - Hidden on Mobile */}
-      <div className="hidden lg:inline-flex items-end gap-4 absolute top-[159px] left-[60px] z-10">
+      <div className="hidden lg:inline-flex items-end gap-4 absolute top-[110px] left-[60px] z-10">
         <div className="relative w-[280px] xl:w-[372px] h-[81px] xl:h-[108px] bg-white rounded-xl overflow-hidden rotate-180">
           <img
             className="absolute top-0 left-0 w-full h-auto -rotate-180 object-cover"
@@ -127,7 +127,7 @@ export const HeroBannerSection = (): JSX.Element => {
       </div>
 
       {/* Desktop Heading 1 - Hidden on Mobile */}
-      <h2 className="hidden lg:block absolute top-[68px] left-[35%] xl:left-[506px] w-auto [font-family:'Geist',Helvetica] font-medium text-[#232323] text-4xl xl:text-[52px] tracking-[-1px] lg:tracking-[-2.08px] leading-normal z-10">
+      <h2 className="hidden lg:block absolute top-[30px] left-[35%] xl:left-[506px] w-auto [font-family:'Geist',Helvetica] font-medium text-[#232323] text-4xl xl:text-[52px] tracking-[-1px] lg:tracking-[-2.08px] leading-normal z-10">
         Conversations that feel
       </h2>
 
@@ -139,7 +139,7 @@ export const HeroBannerSection = (): JSX.Element => {
             speakersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }}
-        className="hidden xl:block absolute top-[66px] left-[1055px] w-[120px] xl:w-[152px] h-auto cursor-pointer hover:scale-110 transition-transform duration-300 bg-transparent border-none p-0"
+        className="hidden xl:block absolute top-[20px] left-[1055px] w-[120px] xl:w-[152px] h-auto cursor-pointer hover:scale-110 transition-transform duration-300 bg-transparent border-none p-0"
         aria-label="Go to speakers section"
         type="button"
       >
@@ -151,12 +151,12 @@ export const HeroBannerSection = (): JSX.Element => {
       </button>
 
       {/* Desktop Main Heading - Hidden on Mobile */}
-      <h1 className="hidden lg:block absolute top-[120px] left-[35%] xl:left-[496px] w-auto max-w-[919px] [font-family:'Geist',Helvetica] font-medium text-[#7bb302] text-7xl xl:text-[144px] tracking-[-3px] lg:tracking-[-5.76px] leading-[normal] z-10">
+      <h1 className="hidden lg:block absolute top-[100px] left-[35%] xl:left-[496px] w-auto max-w-[919px] [font-family:'Geist',Helvetica] font-medium text-[#7bb302] text-7xl xl:text-[120px] tracking-[-3px] lg:tracking-[-5.76px] leading-[normal] z-10">
         ideas that stay
       </h1>
 
       {/* Video Container - Fully Responsive with Aspect Ratio */}
-      <div className="relative lg:absolute top-auto lg:top-[355px] left-0 lg:left-[50%] lg:transform lg:-translate-x-1/2 w-full max-w-[calc(100%-2rem)] lg:max-w-[1320px] mx-auto mt-8 lg:mt-0">
+      <div className="relative lg:absolute top-auto lg:top-[280px] left-0 lg:left-[50%] lg:transform lg:-translate-x-1/2 w-full max-w-[calc(100%-2rem)] lg:max-w-[1320px] mx-auto mt-8 lg:mt-0">
         {/* Aspect Ratio Container - 16:9 for mobile, custom for desktop */}
         <div className="relative w-full pb-[56.25%] lg:pb-0 lg:h-[700px] bg-[#00000033] rounded-2xl lg:rounded-3xl overflow-hidden will-change-transform">
           {/* Video Slides */}
@@ -164,27 +164,26 @@ export const HeroBannerSection = (): JSX.Element => {
             {videoSlides.map((slide, index) => (
               <div
                 key={slide.id}
-                className={`absolute top-0 left-0 w-full h-full transition-opacity duration-700 ${
-                  index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                }`}
+                className={`absolute top-0 left-0 w-full h-full transition-opacity duration-700 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
               >
-                  {isPlaying && index === currentSlide ? (
-                    <video
-                      ref={videoRef}
-                      className="absolute top-0 left-0 w-full h-full object-cover"
-                      src={slide.videoUrl}
-                      controls
-                      autoPlay
-                      onEnded={handleVideoEnded}
-                      controlsList="nodownload"
-                    />
-                  ) : (
-                    <img
-                      className="absolute top-0 left-0 w-full h-full object-cover"
-                      alt={slide.title}
-                      src={slide.thumbnail}
-                    />
-                  )}
+                {isPlaying && index === currentSlide ? (
+                  <video
+                    ref={videoRef}
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    src={slide.videoUrl}
+                    controls
+                    autoPlay
+                    onEnded={handleVideoEnded}
+                    controlsList="nodownload"
+                  />
+                ) : (
+                  <img
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    alt={slide.title}
+                    src={slide.thumbnail}
+                  />
+                )}
               </div>
             ))}
           </div>
@@ -270,11 +269,10 @@ export const HeroBannerSection = (): JSX.Element => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-1.5 sm:h-2 md:h-2.5 lg:h-3 rounded-full transition-all cursor-pointer touch-manipulation ${
-                  index === currentSlide
+                className={`h-1.5 sm:h-2 md:h-2.5 lg:h-3 rounded-full transition-all cursor-pointer touch-manipulation ${index === currentSlide
                     ? "bg-white w-5 sm:w-6 md:w-7 lg:w-8"
                     : "bg-white/50 hover:bg-white/75 w-1.5 sm:w-2 md:w-2.5 lg:w-3"
-                }`}
+                  }`}
                 aria-label={`Go to video ${index + 1}`}
                 aria-current={index === currentSlide ? "true" : "false"}
               />

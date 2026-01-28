@@ -27,15 +27,15 @@ export const WisdomAndTestimonialsSection = (): JSX.Element => {
     <section
       ref={sectionRef}
       id="about"
-      className="relative w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:min-h-[900px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-16 sm:py-20 md:py-24 lg:py-[90px] mx-auto overflow-hidden"
+      className="relative w-full max-w-[1440px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-10 sm:py-12 md:py-14 lg:py-16 mx-auto overflow-hidden"
       aria-labelledby="about-heading"
     >
       {/* Layout Container - Responsive Flex */}
       <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 w-full h-full">
         
         {/* Left Side - Image */}
-        <div className={`w-full lg:w-[45%] xl:w-[50%] max-w-[595px] lg:max-w-none order-1 lg:order-1 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-          <div className="relative w-full aspect-[0.78] bg-[#cecece] rounded-2xl md:rounded-3xl overflow-hidden rotate-180 shadow-lg hover:shadow-2xl transition-shadow duration-500">
+        <div className={`w-full lg:w-[45%] xl:w-[50%] max-w-[595px] lg:max-w-none order-1 lg:order-1 transition-all duration-700 lg:-ml-8 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+          <div className="relative w-full aspect-[4/5] lg:aspect-[3/4] xl:aspect-[4/5] bg-[#cecece] rounded-2xl md:rounded-3xl overflow-hidden rotate-180 shadow-lg hover:shadow-2xl transition-shadow duration-500">
             <img
               className="w-full h-full -rotate-180 object-cover hover:scale-105 transition-transform duration-500"
               alt="Professional microphone and studio equipment"
@@ -46,7 +46,7 @@ export const WisdomAndTestimonialsSection = (): JSX.Element => {
 
         {/* Right Side - Content */}
         <div className={`w-full lg:w-[55%] xl:w-[50%] max-w-[665px] lg:max-w-none order-2 lg:order-2 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-          <div className="flex flex-col items-start gap-8 sm:gap-10 md:gap-12 lg:gap-[120px] w-full">
+          <div className="flex flex-col items-start gap-8 sm:gap-10 lg:gap-12 w-full">
             
             {/* Top Section - Heading & CTA */}
             <div className="flex flex-col items-start gap-6 sm:gap-8 md:gap-10 w-full">

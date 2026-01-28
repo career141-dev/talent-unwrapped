@@ -98,15 +98,15 @@
       }
     },
     {
-      "id": "src\\components\\sections\\FooterSection\\FooterSection.tsx:20:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\sections\\FooterSection\\FooterSection.tsx:21:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 20,
-          "endLine": 20,
+          "line": 21,
+          "endLine": 21,
           "column": 4,
           "endColumn": 17,
           "sourceFile": "src\\components\\sections\\FooterSection\\FooterSection.tsx"
@@ -242,15 +242,15 @@
       }
     },
     {
-      "id": "src\\components\\sections\\FooterSection\\FooterSection.tsx:20:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\sections\\FooterSection\\FooterSection.tsx:21:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 20,
-          "endLine": 20,
+          "line": 21,
+          "endLine": 21,
           "column": 4,
           "endColumn": 17,
           "sourceFile": "src\\components\\sections\\FooterSection\\FooterSection.tsx"
@@ -354,15 +354,15 @@
       }
     },
     {
-      "id": "src\\components\\sections\\FooterSection\\FooterSection.tsx:20:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\sections\\FooterSection\\FooterSection.tsx:21:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 20,
-          "endLine": 20,
+          "line": 21,
+          "endLine": 21,
           "column": 4,
           "endColumn": 17,
           "sourceFile": "src\\components\\sections\\FooterSection\\FooterSection.tsx"
@@ -466,15 +466,15 @@
       }
     },
     {
-      "id": "src\\components\\sections\\FooterSection\\FooterSection.tsx:20:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\sections\\FooterSection\\FooterSection.tsx:21:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 20,
-          "endLine": 20,
+          "line": 21,
+          "endLine": 21,
           "column": 4,
           "endColumn": 17,
           "sourceFile": "src\\components\\sections\\FooterSection\\FooterSection.tsx"
@@ -578,15 +578,15 @@
       }
     },
     {
-      "id": "src\\components\\sections\\FooterSection\\FooterSection.tsx:20:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\sections\\FooterSection\\FooterSection.tsx:21:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 20,
-          "endLine": 20,
+          "line": 21,
+          "endLine": 21,
           "column": 4,
           "endColumn": 17,
           "sourceFile": "src\\components\\sections\\FooterSection\\FooterSection.tsx"

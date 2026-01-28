@@ -32,10 +32,11 @@ export const PodcastEditionPage = ({
   const episodesContent = (
     <section
       id="episodes"
-      className="w-full max-w-[1440px] bg-white px-4 sm:px-6 md:px-10 lg:px-[80px] py-16 sm:py-20 md:py-24 lg:py-[90px] mx-auto"
+      className="w-full bg-white py-16 sm:py-20 md:py-24 lg:py-[90px]"
       aria-label="Episode Listing"
     >
-      <div className="w-full max-w-[1280px] mx-auto">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full">
         {/* Section Title */}
         <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-10 lg:mb-[40px]">
           <h1 className="[font-family:'Geist',Helvetica] font-medium text-3xl sm:text-4xl md:text-5xl lg:text-[52px] tracking-[0] leading-tight lg:leading-[70px]">
@@ -57,6 +58,7 @@ export const PodcastEditionPage = ({
 
         {/* Optional content slot for page-specific content */}
         {children && <div className="mt-16">{children}</div>}
+        </div>
       </div>
     </section>
   );

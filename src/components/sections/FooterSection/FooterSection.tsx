@@ -13,7 +13,8 @@ interface FooterSectionProps {
 export const FooterSection = ({ variant = "simple" }: FooterSectionProps): JSX.Element => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isEditionPage = location.pathname === "/dubai" || location.pathname === "/singapore";
+  // Updated: Detect edition pages with new route format /edition/:edition
+  const isEditionPage = location.pathname.startsWith("/edition/");
 
   const handleHomeClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -31,34 +32,37 @@ export const FooterSection = ({ variant = "simple" }: FooterSectionProps): JSX.E
   // Simple footer for landing page (no navigation)
   if (variant === "simple" && !isEditionPage) {
     return (
-      <footer className="flex w-full min-h-[80px] md:h-[100px] flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-8 md:px-12 lg:px-20 py-6 sm:py-4 md:py-0 relative bg-white">
-        {footerLinks.map((link, index) =>
-          link.href ? (
-            <a
-              key={index}
-              href={link.href}
-              onClick={link.onClick}
-              className="relative w-fit [font-family:'Geist',Helvetica] font-normal text-[#222223] text-xs sm:text-sm md:text-base tracking-[-0.32px] leading-[20.9px] text-center sm:text-left whitespace-nowrap hover:scale-110 transition-transform"
-              aria-label={link.text}
-            >
-              {link.text}
-            </a>
-          ) : (
-            <div
-              key={index}
-              className="relative w-fit [font-family:'Geist',Helvetica] font-normal text-[#222223] text-xs sm:text-sm md:text-base tracking-[-0.32px] leading-[20.9px] text-center sm:text-left whitespace-nowrap"
-            >
-              {link.text}
-            </div>
-          ),
-        )}
+      <footer className="w-full bg-white border-t border-neutral-200">
+        <div className="w-full max-w-[1440px] mx-auto flex min-h-[80px] md:h-[100px] flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-6 lg:px-8 py-6 sm:py-4 md:py-0">
+          {footerLinks.map((link, index) =>
+            link.href ? (
+              <a
+                key={index}
+                href={link.href}
+                onClick={link.onClick}
+                className="relative w-fit [font-family:'Geist',Helvetica] font-normal text-[#222223] text-xs sm:text-sm md:text-base tracking-[-0.32px] leading-[20.9px] text-center sm:text-left whitespace-nowrap hover:scale-110 transition-transform"
+                aria-label={link.text}
+              >
+                {link.text}
+              </a>
+            ) : (
+              <div
+                key={index}
+                className="relative w-fit [font-family:'Geist',Helvetica] font-normal text-[#222223] text-xs sm:text-sm md:text-base tracking-[-0.32px] leading-[20.9px] text-center sm:text-left whitespace-nowrap"
+              >
+                {link.text}
+              </div>
+            ),
+          )}
+        </div>
       </footer>
     );
   }
 
   // Extended footer for edition pages (Dubai/Singapore)
   return (
-    <footer className="flex w-full min-h-[80px] md:h-[100px] flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-8 md:px-12 lg:px-20 py-6 sm:py-4 md:py-0 relative bg-white">
+    <footer className="w-full bg-white border-t border-neutral-200">
+      <div className="w-full max-w-[1440px] mx-auto flex min-h-[80px] md:h-[100px] flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-6 lg:px-8 py-6 sm:py-4 md:py-0">
       {footerLinks.map((link, index) =>
         link.href ? (
           <a
@@ -79,6 +83,7 @@ export const FooterSection = ({ variant = "simple" }: FooterSectionProps): JSX.E
           </div>
         ),
       )}
+      </div>
     </footer>
   );
 };

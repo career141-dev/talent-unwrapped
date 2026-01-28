@@ -47,8 +47,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:h-[1050px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-10 sm:py-20 md:py-24 lg:py-[10px] mx-auto ml-[50px] sm:ml-[75px] lg:ml-[100px] mt-8 sm:mt-12 md:mt-16 lg:mt-22
- overflow-hidden">
+    <section className="relative w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:h-[1050px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-10 sm:py-20 md:py-24 lg:py-[10px] mx-auto mt-8 sm:mt-12 md:mt-16 lg:mt-22 overflow-hidden">
       
       <header className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-0 w-full lg:w-[203px] text-center lg:text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-sm md:text-base tracking-[-0.32px] leading-[normal]">
         THE THREE CHAPTERS
