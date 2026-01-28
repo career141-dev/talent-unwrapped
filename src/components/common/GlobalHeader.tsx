@@ -8,7 +8,8 @@ export const GlobalHeader = (): JSX.Element => {
   const [activeNav, setActiveNav] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const isEditionPage = location.pathname === "/dubai" || location.pathname === "/singapore";
+  // Detect if we're on an edition page (new path: /edition/singapore or /edition/dubai)
+  const isEditionPage = location.pathname.startsWith("/edition/");
   const isLandingPage = location.pathname === "/" || location.pathname === "/talent-unwrapped/";
 
   const navigationItems = isEditionPage  

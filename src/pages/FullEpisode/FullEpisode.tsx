@@ -1,12 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { ReelsSection, GlobalHeader, KeyQuestionsSection } from "../../components";
+import { EpisodeLayout } from "../../layouts";
+import { ReelsSection, KeyQuestionsSection } from "../../components";
 import { SpeakersProfileSection } from "../LandingPage/sections/SpeakersProfileSection";
 import { EpisodeDetailsSection } from "../LandingPage/sections/EpisodeDetailsSection";
 import { AboutSection, SubmitFormSection } from "../../components";
 import { ContactFormSection } from "../LandingPage/sections/ContactFormSection";
 import { getVideoSlidesByEdition } from "../../data";
 
+/**
+ * Full Episode Page
+ * Displays full episode details with video player, speakers, and related sections
+ * Uses EpisodeLayout for consistent structure without repeating header/footer logic
+ */
 export const FullEpisode = (): JSX.Element => {
   const { episodeId } = useParams();
   const location = useLocation();
@@ -87,9 +93,9 @@ export const FullEpisode = (): JSX.Element => {
     setIsPlaying(false);
   };
 
-  return (
-    <main
-      className="flex flex-col items-center relative min-h-screen bg-white w-full overflow-x-hidden"
+  const content = (
+    <div
+      className="flex flex-col items-center relative w-full"
       data-model-id="905:6609"
     >
 
@@ -270,6 +276,17 @@ export const FullEpisode = (): JSX.Element => {
           Privacy Policy
         </a>
       </footer>
-    </main>
+    </div>
+  );
+
+  return (
+    <EpisodeLayout
+      edition={editionKey}
+      showChapters={false}
+      showContact={false}
+      showFooter={false}
+    >
+      {content}
+    </EpisodeLayout>
   );
 };

@@ -1,5 +1,5 @@
-import { TheThreeChaptersSectionProps } from "../../../types";
-import { getThreeChapters, getPositionsByEdition, getEditionName } from "../../../data";
+import { TheThreeChaptersSectionProps } from "../../../../types";
+import { getThreeChapters, getPositionsByEdition, getEditionName } from "../../../../data";
 
 export const TheThreeChaptersSection = ({ edition = "singapore" }: TheThreeChaptersSectionProps): JSX.Element => {
   const episodes = getThreeChapters();
@@ -22,7 +22,7 @@ export const TheThreeChaptersSection = ({ edition = "singapore" }: TheThreeChapt
         </div>
       </div>
 
-      <p className={`relative lg:absolute top-auto lg:top-20 left-0 ${positions.description} w-full lg:w-[880px] max-w-full text-center lg:text-left mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[44px] tracking-[-1px] lg:tracking-[-1.76px] leading-tight lg:leading-[normal]`}>
+      <p className={`relative lg:absolute top-auto lg:top-20 left-0 ${positions.description} w-full lg:w-[880px] max-w-full text-center lg:text-left [font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[44px] tracking-[-1px] lg:tracking-[-1.76px] leading-tight lg:leading-[normal]`}>
         <span className="text-[#232323] tracking-[-0.77px]">
           Each episode of Talent Unwrapped: {editionName}{" "}
         </span>
@@ -49,7 +49,7 @@ export const TheThreeChaptersSection = ({ edition = "singapore" }: TheThreeChapt
       </button>
 
       <div className={`flex flex-col lg:flex-row items-center gap-4 lg:gap-6 relative lg:absolute top-auto lg:top-[679px] left-0 ${positions.cards} w-full lg:w-auto`}>
-        {episodes.map((episode) => (
+        {episodes.map((episode: typeof episodes[0]) => (
           <article
             key={episode.id}
             className="relative w-full max-w-[400px] lg:w-[424px] h-[320px] lg:h-[372px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[28px] overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-white cursor-pointer"

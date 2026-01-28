@@ -1,4 +1,5 @@
-import { GlobalHeader, SubmitFormSection, ReelsSection, FooterSection } from "../../components";
+import { DefaultLayout } from "../../layouts";
+import { SubmitFormSection, ReelsSection, FooterSection } from "../../components";
 import { ContactFormSection } from "./sections/ContactFormSection";
 import { EpisodeDetailsSection } from "./sections/EpisodeDetailsSection";
 import { HeroBannerSection } from "./sections/HeroBannerSection";
@@ -7,13 +8,14 @@ import { SpeakersProfileSection } from "./sections/SpeakersProfileSection";
 import { TalentIntroductionSection } from "./sections/TalentIntroductionSection";
 import { WisdomAndTestimonialsSection } from "./sections/WisdomAndTestimonialsSection";
 
+/**
+ * Landing Page
+ * Main entry page for the application
+ * Uses DefaultLayout for consistent header structure
+ */
 export const LandingPage = (): JSX.Element => {
   return (
-    <main
-      className="flex flex-col items-center relative min-h-screen bg-white w-full overflow-x-hidden"
-      data-model-id="905:6609"
-    >
-      <GlobalHeader />
+    <DefaultLayout data-model-id="905:6609">
       <HeroBannerSection />
       <WisdomAndTestimonialsSection />
       <TalentIntroductionSection />
@@ -26,6 +28,6 @@ export const LandingPage = (): JSX.Element => {
       <SubmitFormSection />
       <ContactFormSection />
       <FooterSection />
-    </main>
+    </DefaultLayout>
   );
 };

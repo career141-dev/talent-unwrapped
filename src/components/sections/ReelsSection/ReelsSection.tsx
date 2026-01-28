@@ -103,7 +103,6 @@ export const ReelsSection = (): JSX.Element => {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

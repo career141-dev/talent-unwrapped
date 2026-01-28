@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { ROUTES } from "../../constants";
 
 interface Edition {
   name: string;
@@ -17,12 +18,12 @@ export const EditionsDropdown = (): JSX.Element => {
   const editions: Edition[] = [
     {
       name: "Singapore Edition",
-      path: "/singapore",
+      path: ROUTES.SINGAPORE,
       flag: "🇸🇬"
     },
     {
       name: "Dubai Edition", 
-      path: "/dubai",
+      path: ROUTES.DUBAI,
       flag: "🇦🇪"
     }
   ];

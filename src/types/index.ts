@@ -53,3 +53,12 @@ export interface VideoSlide {
 export interface TheThreeChaptersSectionProps {
   edition?: "dubai" | "singapore";
 }
+
+// Contact form data
+export interface ContactFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  company: string;
+  designation: string;
+}

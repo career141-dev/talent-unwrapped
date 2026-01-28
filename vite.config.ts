@@ -2,12 +2,31 @@ import { screenGraphPlugin } from "@animaapp/vite-plugin-screen-graph";
 import react from "@vitejs/plugin-react";
 import tailwind from "tailwindcss";
 import { defineConfig } from "vite";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
   plugins: [react(), ...(mode === "development" ? [screenGraphPlugin()] : [])],
   publicDir: "./static",
   base: "/talent-unwrapped/",
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+      "@components": path.resolve(__dirname, "./src/components"),
+      "@pages": path.resolve(__dirname, "./src/pages"),
+      "@services": path.resolve(__dirname, "./src/services"),
+      "@types": path.resolve(__dirname, "./src/types"),
+      "@utils": path.resolve(__dirname, "./src/utils"),
+      "@constants": path.resolve(__dirname, "./src/constants"),
+      "@hooks": path.resolve(__dirname, "./src/hooks"),
+      "@layouts": path.resolve(__dirname, "./src/layouts"),
+      "@data": path.resolve(__dirname, "./src/data"),
+    },
+  },
   css: {
     postcss: {
       plugins: [tailwind()],

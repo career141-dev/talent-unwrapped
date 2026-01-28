@@ -28,7 +28,7 @@ interface SessionContent {
 }
 
 export const KeyQuestionsSection = (): JSX.Element => {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage] = useState(0);
   const expertProfiles: ExpertProfile[] = [
     {
       id: "echo-wu",
