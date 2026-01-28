@@ -1,50 +1,18 @@
-interface Episode {
-  id: number;
-  title: string;
-  subtitle: string;
-  videoIcon: string;
-  exportIcon: string;
-}
+import { TheThreeChaptersSectionProps } from "../../../types";
+import { getThreeChapters, getPositionsByEdition, getEditionName } from "../../../data";
 
-export const TheThreeChaptersSection = (): JSX.Element => {
-  const episodes: Episode[] = [
-    {
-      id: 1,
-      title: "Leadership Reimagined: ",
-      subtitle:
-        "Building Mental Toughness, Culture, and Agility for the Future of Work",
-      videoIcon:
-        "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle-1.svg",
-      exportIcon:
-        "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
-    },
-    {
-      id: 2,
-      title: "Beyond Resilience: ",
-      subtitle: "Redefining Leadership Strength and Organizational Agility",
-      videoIcon:
-        "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle.svg",
-      exportIcon:
-        "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
-    },
-    {
-      id: 3,
-      title: "The Human Blueprint: ",
-      subtitle: "Rethinking Leadership for an Intelligent Age",
-      videoIcon:
-        "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle.svg",
-      exportIcon:
-        "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
-    },
-  ];
+export const TheThreeChaptersSection = ({ edition = "singapore" }: TheThreeChaptersSectionProps): JSX.Element => {
+  const episodes = getThreeChapters();
+  const positions = getPositionsByEdition(edition);
+  const editionName = getEditionName(edition);
 
   return (
     <section id="about" className="relative w-full max-w-[1440px] min-h-[700px] md:min-h-[900px] lg:h-[1100px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-8 md:py-12 lg:py-0 mx-auto overflow-hidden">
-      <h2 className="relative lg:absolute top-0 lg:top-[74px] left-0 lg:left-[60px] w-full lg:w-[203px] text-center lg:text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-sm md:text-base tracking-[-0.32px] leading-[normal]">
+      <h2 className={`relative lg:absolute top-0 lg:top-[74px] left-0 ${positions.header} w-full lg:w-[203px] text-center lg:text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-sm md:text-base tracking-[-0.32px] leading-[normal]`}>
         THE THREE CHAPTERS
       </h2>
 
-      <div className="flex flex-col w-full lg:w-[203px] items-center lg:items-start gap-2 lg:gap-3 relative lg:absolute top-auto lg:top-[254px] left-0 lg:left-[60px] mb-8 lg:mb-0">
+      <div className={`flex flex-col w-full lg:w-[203px] items-center lg:items-start gap-2 lg:gap-3 relative lg:absolute top-auto lg:top-[254px] left-0 ${positions.viewersCount} mb-8 lg:mb-0`}>
         <div className="relative self-stretch mt-[-1.00px] [font-family:'Geist',Helvetica] font-medium text-[#232323] text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[-1.5px] lg:tracking-[-2.88px] leading-[normal] text-center lg:text-left">
           100K+
         </div>
@@ -54,9 +22,9 @@ export const TheThreeChaptersSection = (): JSX.Element => {
         </div>
       </div>
 
-      <p className="relative lg:absolute top-auto lg:top-20 left-0 lg:left-[476px] w-full lg:w-[880px] max-w-full text-center lg:text-left mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[44px] tracking-[-1px] lg:tracking-[-1.76px] leading-tight lg:leading-[normal]">
+      <p className={`relative lg:absolute top-auto lg:top-20 left-0 ${positions.description} w-full lg:w-[880px] max-w-full text-center lg:text-left mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[44px] tracking-[-1px] lg:tracking-[-1.76px] leading-tight lg:leading-[normal]`}>
         <span className="text-[#232323] tracking-[-0.77px]">
-          Each episode of Talent Unwrapped: Singapore Edition{" "}
+          Each episode of Talent Unwrapped: {editionName}{" "}
         </span>
 
         <span className="text-[#8d8d8d] tracking-[-0.77px]">
@@ -66,7 +34,7 @@ export const TheThreeChaptersSection = (): JSX.Element => {
       </p>
 
       <button
-        className="relative lg:absolute top-auto lg:top-[348px] left-0 lg:left-[476px] inline-flex h-12 md:h-[54px] items-center justify-center gap-2 px-4 md:px-5 py-3 md:py-4 bg-[#7bb302] rounded-[60px] cursor-pointer hover:bg-[#6da002] transition-colors mx-auto lg:mx-0 mb-8 lg:mb-0"
+        className={`relative lg:absolute top-auto lg:top-[348px] left-0 ${positions.button} inline-flex h-12 md:h-[54px] items-center justify-center gap-2 px-4 md:px-5 py-3 md:py-4 bg-[#7bb302] rounded-[60px] cursor-pointer hover:bg-[#6da002] transition-colors mx-auto lg:mx-0 mb-8 lg:mb-0`}
         aria-label="More about the podcast"
       >
         <span className="relative w-fit mt-[-0.50px] [font-family:'Geist',Helvetica] font-semibold text-white text-sm md:text-base tracking-[-0.48px] leading-[normal]">
@@ -80,7 +48,7 @@ export const TheThreeChaptersSection = (): JSX.Element => {
         />
       </button>
 
-      <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-6 relative lg:absolute top-auto lg:top-[679px] left-0 lg:left-[60px] w-full lg:w-auto">
+      <div className={`flex flex-col lg:flex-row items-center gap-4 lg:gap-6 relative lg:absolute top-auto lg:top-[679px] left-0 ${positions.cards} w-full lg:w-auto`}>
         {episodes.map((episode) => (
           <article
             key={episode.id}

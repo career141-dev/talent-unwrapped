@@ -1,8 +1,14 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+interface Link {
+  label: string;
+  href: string;
+  onClick?: (e: React.MouseEvent) => void;
+  external?: boolean;
+}
 
 export const ContactUsSection = (): JSX.Element => {
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleHomeClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -21,19 +27,19 @@ export const ContactUsSection = (): JSX.Element => {
     }, 100);
   };
 
-  const companyLinks = [
+  const companyLinks: Link[] = [
     { label: "Home", href: "/", onClick: handleHomeClick, external: false },
     { label: "Executive Search", href: "https://career141.com/executive-search/", external: true },
     { label: "Our Culture", href: "https://career141.com/our-culture/", external: true },
     { label: "Our Journey", href: "https://career141.com/our-journey/", external: true },
   ];
 
-  const informationLinks = [
+  const informationLinks: Link[] = [
     { label: "Jobs & Vacancies", href: "https://career141.com/job-openings/", external: true },
     { label: "Join Us", href: "#join-us", onClick: handleJoinUsClick, external: false },
   ];
 
-  const supportLinks = [
+  const supportLinks: Link[] = [
     { label: "Contact Us", href: "https://career141.com/contact-us/", external: true }
   ];
 

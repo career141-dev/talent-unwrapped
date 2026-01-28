@@ -1,9 +1,6 @@
-import { GlobalHeader } from "../../components/GlobalHeader";
-import { SubmitFormSection } from "../../components/SubmitFormSection";
-import { ReelsSection } from "../../components/ReelsSection";
+import { GlobalHeader, SubmitFormSection, ReelsSection, FooterSection } from "../../components";
 import { ContactFormSection } from "./sections/ContactFormSection";
 import { EpisodeDetailsSection } from "./sections/EpisodeDetailsSection";
-import { FooterSection } from "./sections/FooterSection";
 import { HeroBannerSection } from "./sections/HeroBannerSection";
 import { LatestPodcastListSection } from "./sections/LatestPodcastListSection";
 import { SpeakersProfileSection } from "./sections/SpeakersProfileSection";

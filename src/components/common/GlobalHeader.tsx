@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { EditionsDropdown } from "./EditionsDropdown";
+import { EditionsDropdown } from "../forms/EditionsDropdown";
 
 export const GlobalHeader = (): JSX.Element => {
   const navigate = useNavigate();
@@ -234,7 +234,6 @@ export const GlobalHeader = (): JSX.Element => {
 
           {/* Mobile Menu Content */}
           <nav className="flex flex-col p-4 gap-2" aria-label="Mobile navigation">
-            {/* Navigation Links */}
             {navigationItems.map((item, index) => (
               <button
                 key={index}
@@ -249,37 +248,19 @@ export const GlobalHeader = (): JSX.Element => {
                     : "text-[#232323] hover:bg-gray-50"
                 }`}
               >
-                <span className="[font-family:'Geist',Helvetica] font-medium text-base">
+                <span className="[font-family:'Geist',Helvetica] font-medium">
                   {item.label}
                 </span>
                 {activeNav === item.label && (
-                  <div className="w-2 h-2 bg-[#7bb302] rounded-full"></div>
+                  <span className="text-[#7bb302]">✓</span>
                 )}
               </button>
             ))}
 
             {/* Editions Dropdown in Mobile */}
-            <div className="pb-4 border-t border-neutral-200 mt-2">
+            <div className="px-4 py-3 border-t border-neutral-200 mt-2">
               <EditionsDropdown />
             </div>
-
-            {/* Mobile CTA Button (Full Width) */}
-            <a
-              href="https://www.career141.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full h-12 px-5 py-3 mt-4 bg-[#222223] rounded-[60px] hover:bg-[#333333] transition-all duration-300"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <span className="[font-family:'Geist',Helvetica] font-semibold text-white text-sm">
-                Visit career141.com
-              </span>
-              <img
-                className="w-4 h-4"
-                alt=""
-                src="https://c.animaapp.com/6IK4krLc/img/vuesax-linear-arrow-right-2@2x.png"
-              />
-            </a>
           </nav>
         </div>
       </div>

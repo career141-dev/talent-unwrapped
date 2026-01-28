@@ -1,19 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { ReelsSection } from "../../components/ReelsSection";
+import { ReelsSection, GlobalHeader, KeyQuestionsSection } from "../../components";
 import { SpeakersProfileSection } from "../LandingPage/sections/SpeakersProfileSection";
-import { KeyQuestionsSection } from "../../components/KeyQuestionsSection";
 import { EpisodeDetailsSection } from "../LandingPage/sections/EpisodeDetailsSection";
-import { AboutSection } from "../../components/AboutSection";
-import { SubmitFormSection } from "../../components/SubmitFormSection";
+import { AboutSection, SubmitFormSection } from "../../components";
 import { ContactFormSection } from "../LandingPage/sections/ContactFormSection";
-
-interface VideoSlide {
-  id: number;
-  thumbnail: string;
-  title: string;
-  videoUrl?: string;
-}
+import { getVideoSlidesByEdition } from "../../data";
 
 export const FullEpisode = (): JSX.Element => {
   const { episodeId } = useParams();
@@ -25,34 +17,8 @@ export const FullEpisode = (): JSX.Element => {
 
   // Determine edition from location state or default to Dubai
   const edition = location.state?.edition || "Dubai";
-  const isDubai = edition === "Dubai";
-
-  const videoSlides: VideoSlide[] = [
-    {
-      id: 1,
-      thumbnail: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=675&fit=crop",
-      title: `Episode 1: ${isDubai ? "Innovation in Dubai" : "Leadership in Singapore"}`,
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    },
-    {
-      id: 2,
-      thumbnail: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=675&fit=crop",
-      title: `Episode 2: ${isDubai ? "Business Excellence" : "Building Resilient Teams"}`,
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    },
-    {
-      id: 3,
-      thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=675&fit=crop",
-      title: `Episode 3: ${isDubai ? "Future Vision" : "Innovation and Creativity"}`,
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    },
-    {
-      id: 4,
-      thumbnail: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=675&fit=crop",
-      title: `Episode 4: ${isDubai ? "Leadership Insights" : "Future of Work"}`,
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    },
-  ];
+  const editionKey = edition.toLowerCase() as "dubai" | "singapore";
+  const videoSlides = getVideoSlidesByEdition(editionKey);
 
   useEffect(() => {
     // Only auto-advance if not playing video

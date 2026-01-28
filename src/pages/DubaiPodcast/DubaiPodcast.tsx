@@ -1,121 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { GlobalHeader } from "../../components/GlobalHeader";
-import { TheThreeChaptersSection } from "./sections/TheThreeChaptersSection";
-import { FooterSection } from "./sections/FooterSection";
-import { ContactUsSection } from "./sections/ContactUsSection";
-
-interface Speaker {
-  name: string;
-  role?: string;
-  avatar: string;
-}
-
-interface Episode {
-  id: string;
-  image: string;
-  category: string;
-  title: string;
-  description: string;
-  duration: string;
-  date: string;
-  speakers: Speaker[];
-  featured?: boolean;
-}
+import { GlobalHeader, FooterSection, ContactUsSection } from "../../components";
+import { TheThreeChaptersSection } from "../PodcastEditions/sections";
+import { getEpisodesByEdition } from "../../data";
 
 export const DubaiPodcast = (): JSX.Element => {
   const navigate = useNavigate();
+  const episodes = getEpisodesByEdition("dubai");
 
   const handleViewEpisode = (episodeId: string) => {
     navigate(`/episode/${episodeId}`, { state: { edition: "Dubai" } });
   };
-
-  const episodes: Episode[] = [
-    {
-      id: "1",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
-      category: "EPISODE",
-      title: "Building Businesses with Heart",
-      description:
-        "The strategies to grow your business with empathy and authenticity. Learn how to build lasting relationships.",
-      duration: "1 hour",
-      date: "Jan 10, 2025",
-      speakers: [
-        {
-          name: "Sarah Chen",
-          role: "Host",
-          avatar:
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
-        },
-        {
-          name: "Erik Olawson",
-          role: "Guest",
-          avatar:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-        },
-        {
-          name: "Maria Ruiz",
-          role: "Guest",
-          avatar:
-            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
-        },
-      ],
-      featured: true,
-    },
-    {
-      id: "2",
-      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop",
-      category: "GRAPHICS",
-      title: "People by Design",
-      description:
-        "The evolution of product design, user experience, and the human-centered approach to creating digital products.",
-      duration: "45 min",
-      date: "Jan 8, 2025",
-      speakers: [
-        {
-          name: "Theresa Korver",
-          role: "Host",
-          avatar:
-            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-        },
-        {
-          name: "Ola Luki",
-          role: "Senior Product Designer",
-          avatar:
-            "https://images.unsplash.com/photo-1519085360771-9852046be8f9?w=400&h=400&fit=crop",
-        },
-        {
-          name: "Steve Mao",
-          role: "Guest",
-          avatar:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-        },
-      ],
-    },
-    {
-      id: "3",
-      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop",
-      category: "EPISODE",
-      title: "The Human Algorithm",
-      description:
-        "Exploring the intersection of artificial intelligence and human creativity. How AI is reshaping our world.",
-      duration: "52 min",
-      date: "Jan 5, 2025",
-      speakers: [
-        {
-          name: "David Kim",
-          role: "Host",
-          avatar:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-        },
-        {
-          name: "Priya Patel",
-          role: "AI Researcher",
-          avatar:
-            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
-        },
-      ],
-    },
-  ];
 
   return (
     <div className="flex flex-col items-center relative bg-white min-h-screen w-full overflow-x-hidden">
@@ -245,7 +139,7 @@ export const DubaiPodcast = (): JSX.Element => {
         </div>
       </section>
 
-      <TheThreeChaptersSection />
+      <TheThreeChaptersSection edition="dubai" />
       <ContactUsSection />
       <FooterSection />
     </div>

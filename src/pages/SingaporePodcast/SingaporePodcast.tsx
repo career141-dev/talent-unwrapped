@@ -1,121 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { GlobalHeader } from "../../components/GlobalHeader";
-import { TheThreeChaptersSection } from "./sections/TheThreeChaptersSection";
-import { FooterSection } from "./sections/FooterSection";
-import { ContactUsSection } from "./sections/ContactUsSection";
-
-interface Speaker {
-  name: string;
-  role?: string;
-  avatar: string;
-}
-
-interface Episode {
-  id: string;
-  image: string;
-  category: string;
-  title: string;
-  description: string;
-  duration: string;
-  date: string;
-  speakers: Speaker[];
-  featured?: boolean;
-}
+import { GlobalHeader, FooterSection, ContactUsSection } from "../../components";
+import { TheThreeChaptersSection } from "../PodcastEditions/sections";
+import { getEpisodesByEdition } from "../../data";
 
 export const SingaporePodcast = (): JSX.Element => {
   const navigate = useNavigate();
+  const episodes = getEpisodesByEdition("singapore");
 
   const handleViewEpisode = (episodeId: string) => {
     navigate(`/episode/${episodeId}`, { state: { edition: "Singapore" } });
   };
-
-  const episodes: Episode[] = [
-    {
-      id: "1",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
-      category: "EPISODE",
-      title: "Leadership in the Digital Age",
-      description:
-        "Exploring how leaders navigate digital transformation and build resilient teams in Singapore's dynamic business landscape.",
-      duration: "1 hour",
-      date: "Jan 15, 2025",
-      speakers: [
-        {
-          name: "Sarah Tan",
-          role: "Host",
-          avatar:
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
-        },
-        {
-          name: "David Lim",
-          role: "Guest",
-          avatar:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-        },
-        {
-          name: "Michelle Wong",
-          role: "Guest",
-          avatar:
-            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
-        },
-      ],
-      featured: true,
-    },
-    {
-      id: "2",
-      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop",
-      category: "GRAPHICS",
-      title: "Innovation in Southeast Asia",
-      description:
-        "Discovering the innovation ecosystem in Singapore and how startups are reshaping industries across the region.",
-      duration: "45 min",
-      date: "Jan 12, 2025",
-      speakers: [
-        {
-          name: "James Koh",
-          role: "Host",
-          avatar:
-            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-        },
-        {
-          name: "Lisa Chen",
-          role: "Startup Founder",
-          avatar:
-            "https://images.unsplash.com/photo-1519085360771-9852046be8f9?w=400&h=400&fit=crop",
-        },
-        {
-          name: "Alex Ng",
-          role: "Guest",
-          avatar:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-        },
-      ],
-    },
-    {
-      id: "3",
-      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop",
-      category: "EPISODE",
-      title: "Building Sustainable Organizations",
-      description:
-        "How Singapore companies are leading the way in sustainability and creating long-term value for stakeholders.",
-      duration: "52 min",
-      date: "Jan 8, 2025",
-      speakers: [
-        {
-          name: "Rachel Goh",
-          role: "Host",
-          avatar:
-            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
-        },
-        {
-          name: "Kevin Tan",
-          role: "Sustainability Expert",
-          avatar:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-        },
-      ],
-    },
-  ];
 
   return (
     <div className="flex flex-col items-center relative bg-white min-h-screen w-full overflow-x-hidden">
@@ -246,7 +140,7 @@ export const SingaporePodcast = (): JSX.Element => {
         </div>
       </section>
 
-      <TheThreeChaptersSection />
+      <TheThreeChaptersSection edition="singapore" />
       <ContactUsSection />
       <FooterSection />
     </div>
