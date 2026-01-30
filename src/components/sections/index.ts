@@ -5,4 +5,5 @@ export { KeyQuestionsSection } from "./KeyQuestionsSection";
 export { FooterSection } from "./FooterSection";
 export { ContactUsSection } from "./ContactUsSection";
 export { EpisodeCard } from "./EpisodeCard";
+export { MobileCarouselSection } from "./MobileCarouselSection";
 

@@ -69,7 +69,11 @@ export const EpisodeDetailsSection = (): JSX.Element => {
   const getImageStyle = (index: number) => {
     const totalImages = images.length;
     const diff = (index - activeImageIndex + totalImages) % totalImages;
-    
+
+    // Use smaller offset for mobile, larger for desktop
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+    const baseOffset = isMobile ? 60 : 140;
+
     // Main image (active) - center, largest, highest z-index
     if (diff === 0) {
       return {
@@ -81,10 +85,10 @@ export const EpisodeDetailsSection = (): JSX.Element => {
         filter: 'none',
       };
     }
-    
+
     // Images to the right
     if (diff <= Math.floor(totalImages / 2)) {
-      const offset = diff * 140;
+      const offset = diff * baseOffset;
       const scale = 1 - (diff * 0.15);
       return {
         transform: `translate(-50%, -50%) scale(${scale})`,
@@ -95,10 +99,10 @@ export const EpisodeDetailsSection = (): JSX.Element => {
         filter: 'none',
       };
     }
-    
+
     // Images to the left
     const leftDiff = totalImages - diff;
-    const offset = leftDiff * 140;
+    const offset = leftDiff * baseOffset;
     const scale = 1 - (leftDiff * 0.15);
     return {
       transform: `translate(-50%, -50%) scale(${scale})`,
@@ -153,8 +157,38 @@ export const EpisodeDetailsSection = (): JSX.Element => {
     <section
       ref={sectionRef}
       className="relative w-full max-w-[1440px] min-h-[900px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-8 sm:py-10 md:py-12 lg:py-[50px] mx-auto mt-8 sm:mt-10 md:mt-12 lg:mt-[70px] overflow-hidden"
+      style={{ overflowX: 'hidden' }}
       aria-labelledby="episode-details-heading"
     >
+      {/* Image Stack Container - Now visible on mobile as first element */}
+      <div className="relative w-full max-w-[500px] h-[300px] sm:h-[350px] md:h-[400px] mx-auto mb-6 lg:max-w-none lg:w-[700px] lg:h-[400px] lg:mx-0 lg:mb-0 lg:absolute lg:top-[240px] lg:right-[100px] pointer-events-none will-change-transform flex items-center justify-center">
+        {images.map((image, index) => {
+          const style = getImageStyle(index);
+          const isActive = (index === activeImageIndex);
+          return (
+            <div
+              key={image.id}
+              className="absolute w-[200px] h-[220px] sm:w-[240px] sm:h-[260px] md:w-[280px] md:h-[300px] lg:w-[350px] lg:h-[380px] rounded-3xl overflow-hidden shadow-[0px_8px_24px_rgba(0,0,0,0.15)] transition-all duration-700 ease-in-out will-change-transform active:scale-95 lg:active:scale-100"
+              style={{
+                transform: style.transform,
+                zIndex: style.zIndex,
+                opacity: isActive ? 1 : 0.6,
+                left: style.left,
+                top: style.top,
+                filter: style.filter,
+              }}
+            >
+              <img
+                className="w-full h-full object-cover transition-all duration-700"
+                alt={image.alt}
+                src={image.src}
+                loading="lazy"
+              />
+            </div>
+          );
+        })}
+      </div>
+
       <h2
         id="episode-details-heading"
         className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-0 w-full max-w-[646px] [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-base tracking-[-0.32px] leading-[normal] mb-4 lg:mb-0"
@@ -177,52 +211,22 @@ export const EpisodeDetailsSection = (): JSX.Element => {
         </div>
       </div>
 
-      {/* Image Stack Container */}
-      <div className="hidden lg:block absolute top-[240px] right-[100px] w-[700px] h-[400px] pointer-events-none will-change-transform">
-        {images.map((image, index) => {
-          const style = getImageStyle(index);
-          const isActive = (index === activeImageIndex);
-          return (
-            <div
-              key={image.id}
-              className="absolute w-[350px] h-[380px] rounded-3xl overflow-hidden shadow-[0px_8px_24px_rgba(0,0,0,0.15)] transition-all duration-700 ease-in-out will-change-transform"
-              style={{
-                transform: style.transform,
-                zIndex: style.zIndex,
-                opacity: isActive ? 1 : 0.6,
-                left: style.left,
-                top: style.top,
-                filter: style.filter,
-              }}
-            >
-              <img
-                className="w-full h-full object-cover transition-all duration-700"
-                alt={image.alt}
-                src={image.src}
-                loading="lazy"
-              />
-            </div>
-          );
-        })}
-      </div>
-
       <nav
         className="flex flex-col w-full max-w-[400px] items-start gap-5 relative lg:absolute top-auto lg:top-[283px] left-0 lg:left-6 z-10 mb-8 lg:mb-0"
         aria-label="Episode types"
       >
         {episodeTypes.map((episode) => (
-            <button
-              key={episode.id}
-              onClick={() => handleEpisodeClick(episode.id)}
-              onKeyDown={(e) => handleEpisodeKeyDown(e, episode.id)}
-              className={`flex h-[60px] items-center justify-between pl-5 pr-1.5 py-5 relative self-stretch w-full rounded-[60px] ${
-                activeEpisode === episode.id
-                  ? "bg-neutral-100"
-                  : "border border-solid border-neutral-200"
-              } transition-all duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#7bb302] focus:ring-offset-2 cursor-pointer z-20`}
-              aria-pressed={activeEpisode === episode.id}
-              type="button"
-            >
+          <button
+            key={episode.id}
+            onClick={() => handleEpisodeClick(episode.id)}
+            onKeyDown={(e) => handleEpisodeKeyDown(e, episode.id)}
+            className={`flex h-[60px] items-center justify-between pl-5 pr-1.5 py-5 relative self-stretch w-full rounded-[60px] ${activeEpisode === episode.id
+              ? "bg-neutral-100"
+              : "border border-solid border-neutral-200"
+              } transition-all duration-200 hover:shadow-md active:scale-95 active:shadow-lg lg:active:scale-100 focus:outline-none focus:ring-2 focus:ring-[#7bb302] focus:ring-offset-2 cursor-pointer z-20 touch-manipulation`}
+            aria-pressed={activeEpisode === episode.id}
+            type="button"
+          >
             <div className="inline-flex items-center gap-5 relative flex-[0_0_auto] mt-[-3.00px] mb-[-3.00px]">
               <div className="relative w-4 h-2.5" aria-hidden="true">
                 <div className="left-0 bg-[#7bb302] absolute top-0 w-2.5 h-2.5 rounded-[5px] aspect-[1]" />

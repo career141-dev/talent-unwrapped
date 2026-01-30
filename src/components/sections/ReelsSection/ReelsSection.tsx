@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface ReelVideo {
   id: number;
@@ -10,6 +10,10 @@ interface ReelVideo {
 export const ReelsSection = (): JSX.Element => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const isScrollingRef = useRef(false);
 
   const reelVideos: ReelVideo[] = [
     {
@@ -73,12 +77,46 @@ export const ReelsSection = (): JSX.Element => {
   return (
     <section ref={sectionRef} className="relative w-full bg-white py-16 sm:py-20 md:py-24 lg:py-[90px] px-4 sm:px-6 md:px-10 lg:px-[60px]">
       <div className="max-w-[1440px] mx-auto w-full">
-        {/* Reels Videos Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 w-full">
+        {/* Mobile Horizontal Carousel */}
+        <div className="lg:hidden w-full overflow-x-scroll overflow-y-hidden snap-x snap-mandatory scrollbar-hide" ref={scrollContainerRef} style={{scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch'}}>
+          <div className="flex gap-4 sm:gap-5 md:gap-6 w-max">
+            {reelVideos.map((reel, index) => (
+              <div
+                key={reel.id}
+                ref={(el) => (slideRefs.current[index] = el)}
+                className="relative w-[260px] sm:w-[320px] md:w-[380px] h-[480px] bg-black rounded-2xl overflow-hidden shadow-lg group snap-start flex-shrink-0"
+              >
+                {/* Video */}
+                <video
+                  ref={(el) => (videoRefs.current[index] = el)}
+                  className="w-full h-full object-cover"
+                  src={reel.videoUrl}
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                />
+
+                {/* Overlay with Title */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-100 flex flex-col justify-end p-4 sm:p-5 md:p-6">
+                  <h3 className="[font-family:'Geist',Helvetica] font-semibold text-white text-lg sm:text-xl md:text-2xl tracking-[-0.40px] leading-[normal] mb-2 sm:mb-3">
+                    {reel.title}
+                  </h3>
+                  <p className="[font-family:'Geist',Helvetica] font-normal text-white/80 text-sm sm:text-base leading-[normal]">
+                    {reel.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid Layout */}
+        <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 w-full">
           {reelVideos.map((reel, index) => (
             <div
               key={reel.id}
-              className="relative w-full h-[480px] sm:h-[580px] md:h-[680px] lg:h-[850px] bg-black rounded-2xl md:rounded-3xl overflow-hidden shadow-lg group"
+              className="relative w-full h-[850px] bg-black rounded-2xl md:rounded-3xl overflow-hidden shadow-lg group"
             >
               {/* Video */}
               <video
@@ -103,6 +141,16 @@ export const ReelsSection = (): JSX.Element => {
             </div>
           ))}
         </div>
+
+        <style>{`
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+          .scrollbar-hide {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+        `}</style>
       </div>
     </section>
   );

@@ -305,7 +305,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
   };
 
   return (
-    <section ref={sectionRef} id="episodes" className="relative w-full max-w-[1440px] bg-white py-16 sm:py-20 md:py-24 lg:py-[40px] px-4 sm:px-6 md:px-10 lg:px-[60px] mx-auto overflow-hidden">
+    <section ref={sectionRef} id="episodes" className="relative w-full max-w-[1440px] bg-white py-2 sm:py-3 md:py-4 lg:py-[8px] px-4 sm:px-6 md:px-10 lg:px-[60px] mx-auto overflow-hidden" style={{overflowX: 'hidden'}}>
       <div className="w-full">
         <div className={`flex flex-col items-start gap-8 md:gap-10 lg:gap-12 w-full transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <header className="flex flex-col items-start gap-2 relative w-full">
@@ -456,7 +456,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
         </div>
 
         {/* Grid Layout for Mobile and Tablet */}
-        <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mt-8 md:mt-10 w-full">
+        <div className="hidden lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mt-8 md:mt-10 w-full">
           {podcastData.map((podcast, index) => (
             <article
               key={podcast.id}

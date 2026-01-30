@@ -77,7 +77,7 @@ export const ContactFormSection = (): JSX.Element => {
   ];
 
   return (
-    <footer ref={sectionRef} className="flex w-full max-w-[1440px] flex-col lg:flex-row items-center justify-center gap-8 lg:gap-[60px] pt-10 pb-20 px-4 sm:px-6 md:px-10 lg:px-[60px] relative bg-white mx-auto">
+    <footer ref={sectionRef} className="flex w-full max-w-[1440px] flex-col lg:flex-row items-center justify-center gap-8 lg:gap-[60px] pt-10 pb-20 px-4 sm:px-6 md:px-10 lg:px-[60px] relative bg-white mx-auto overflow-hidden" style={{overflowX: 'hidden'}}>
       <div className={`relative w-full lg:flex-1 h-[300px] lg:h-[400px] rounded-3xl overflow-hidden bg-[linear-gradient(0deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)] transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
         <img
           className="absolute top-[42px] left-0 w-full max-w-[734px] h-auto object-cover hover:scale-105 transition-transform duration-500"

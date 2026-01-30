@@ -15,7 +15,7 @@ import { WisdomAndTestimonialsSection } from "./sections/WisdomAndTestimonialsSe
  */
 export const LandingPage = (): JSX.Element => {
   return (
-    <DefaultLayout data-model-id="905:6609">
+    <DefaultLayout data-model-id="905:6609" style={{overflowX: 'hidden'}}>
       <HeroBannerSection />
       <WisdomAndTestimonialsSection />
       <TalentIntroductionSection />
