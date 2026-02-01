@@ -305,7 +305,12 @@ export const LatestPodcastListSection = (): JSX.Element => {
   };
 
   return (
-    <section ref={sectionRef} id="episodes" className="relative w-full max-w-[1440px] bg-white py-2 sm:py-3 md:py-4 lg:py-[8px] px-4 sm:px-6 md:px-10 lg:px-[60px] mx-auto overflow-hidden" style={{overflowX: 'hidden'}}>
+    <section
+      ref={sectionRef}
+      id="episodes"
+      className="relative w-full bg-white py-2 sm:py-3 md:py-4 lg:py-[8px] px-0 sm:px-6 md:px-10 lg:px-[60px] mx-auto overflow-hidden"
+      style={{ overflowX: 'hidden', ...(window.innerWidth < 640 ? { maxWidth: '100%' } : { maxWidth: '1440px' }) }}
+    >
       <div className="w-full">
         <div className={`flex flex-col items-start gap-8 md:gap-10 lg:gap-12 w-full transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <header className="flex flex-col items-start gap-2 relative w-full">
@@ -390,7 +395,6 @@ export const LatestPodcastListSection = (): JSX.Element => {
                         src={podcast.thumbnailUrl}
                         alt={podcast.title}
                       />
-                      
                       <button
                         onClick={() => handlePlayVideo(podcast.id)}
                         className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-all duration-300 cursor-pointer touch-manipulation"
@@ -412,7 +416,6 @@ export const LatestPodcastListSection = (): JSX.Element => {
                           </svg>
                         </div>
                       </button>
-
                       <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-black/80 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-md">
                         <span className="[font-family:'Geist',Helvetica] font-medium text-white text-[10px] sm:text-xs">
                           45:30
@@ -421,115 +424,22 @@ export const LatestPodcastListSection = (): JSX.Element => {
                     </>
                   )}
                 </div>
-
                 <div className="flex flex-col gap-1 relative self-stretch w-full flex-[0_0_auto]">
                   <h3 className="relative self-stretch min-h-[24px] sm:min-h-[26px] md:min-h-[30px] mt-[-1.00px] [font-family:'Geist',Helvetica] font-bold text-black text-base sm:text-lg tracking-[0] leading-tight sm:leading-[26px] overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
                     {podcast.title}
                   </h3>
-
                   <p className="relative w-full [font-family:'Geist',Helvetica] font-normal text-[#939393] text-xs sm:text-sm tracking-[0] leading-[1.4]">
                     {podcast.edition}
                   </p>
-
                   <time className="relative w-full [font-family:'Geist',Helvetica] font-normal text-[#939393] text-xs sm:text-sm tracking-[0] leading-[1.4]">
                     {podcast.date}
                   </time>
                 </div>
               </article>
             ))}
-          </div>
-
-          {/* Right Scroll Button */}
-          <button
-            className="hidden lg:block absolute right-[-60px] top-[calc(50%-20px)] w-[120px] h-[120px] cursor-pointer z-10 hover:scale-105 transition-transform"
-            onClick={() => handleScroll('right')}
-            type="button"
-            aria-label="Scroll right"
-          >
-            <img
-              className="w-full h-full"
-              alt=""
-              src="https://c.animaapp.com/6IK4krLc/img/next@2x.png"
-              aria-hidden="true"
-            />
-          </button>
-        </div>
-
-        {/* Grid Layout for Mobile and Tablet */}
-        <div className="hidden lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mt-8 md:mt-10 w-full">
-          {podcastData.map((podcast, index) => (
-            <article
-              key={podcast.id}
-              className={`relative w-full flex flex-col gap-3 md:gap-4 group transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <div className="relative w-full aspect-video bg-black rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                {playingVideo === podcast.id ? (
-                  <video
-                    ref={(el) => {
-                      if (el) videoRefs.current[podcast.id] = el;
-                    }}
-                    className="w-full h-full object-cover"
-                    src={podcast.videoUrl}
-                    controls
-                    autoPlay
-                    onEnded={() => setPlayingVideo(null)}
-                  />
-                ) : (
-                  <>
-                    <img
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      src={podcast.thumbnailUrl}
-                      alt={podcast.title}
-                    />
-                    
-                    <button
-                      onClick={() => handlePlayVideo(podcast.id)}
-                      className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-all duration-300 cursor-pointer touch-manipulation"
-                      aria-label={`Play ${podcast.title}`}
-                    >
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-2xl">
-                        <svg
-                          width="20"
-                          height="20"
-                          className="sm:w-6 sm:h-6 md:w-7 md:h-7 ml-0.5"
-                          viewBox="0 0 32 32"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M10 8L24 16L10 24V8Z"
-                            fill="#7bb302"
-                          />
-                        </svg>
-                      </div>
-                    </button>
-
-                    <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-black/80 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-md">
-                      <span className="[font-family:'Geist',Helvetica] font-medium text-white text-[10px] sm:text-xs">
-                        45:30
-                      </span>
-                    </div>
-                  </>
-                )}
-              </div>
-
-              <div className="flex flex-col gap-1 relative self-stretch w-full flex-[0_0_auto]">
-                <h3 className="relative self-stretch min-h-[24px] sm:min-h-[26px] md:min-h-[30px] mt-[-1.00px] [font-family:'Geist',Helvetica] font-bold text-black text-base sm:text-lg tracking-[0] leading-tight sm:leading-[26px] overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
-                  {podcast.title}
-                </h3>
-
-                <p className="relative w-full [font-family:'Geist',Helvetica] font-normal text-[#939393] text-xs sm:text-sm tracking-[0] leading-[1.4]">
-                  {podcast.edition}
-                </p>
-
-                <time className="relative w-full [font-family:'Geist',Helvetica] font-normal text-[#939393] text-xs sm:text-sm tracking-[0] leading-[1.4]">
-                  {podcast.date}
-                </time>
-              </div>
-            </article>
-          ))}
-        </div>
+          </div> {/* <-- Add this closing div for the scrollable container */}
+        </div> {/* <-- Add this closing div for the parent container */}
+        {/* Grid Layout for Mobile and Tablet has been removed as requested */}
 
         <div
           className="flex w-full h-2 items-start justify-center gap-1.5 sm:gap-2 mt-8 md:mt-10 lg:mt-12"

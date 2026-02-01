@@ -96,9 +96,9 @@ export const EpisodeCard = ({
           <div className="text-[#1a1a1a] text-[11px] font-bold tracking-[0.05em] uppercase mb-[12px]">
             Speakers
           </div>
-          <div className="flex flex-col gap-[12px]">
+          <div className="flex flex-row gap-[12px] overflow-x-auto scrollbar-hide pb-2">
             {episode.speakers?.map((speaker: EpisodeSpeaker, index: number) => (
-              <div key={index} className="flex items-center gap-[12px]">
+              <div key={index} className="flex items-center gap-[12px] flex-shrink-0 w-[180px]">
                 <div className="w-[32px] h-[32px] rounded-full bg-[#e5e5e5] overflow-hidden flex-shrink-0">
                   <img
                     src={speaker.avatar}

@@ -13,14 +13,5 @@
       "@layouts/*": ["src/layouts/*"],
       "@data/*": ["src/data/*"]
     }
-  },
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+  }
 }

@@ -33,19 +33,19 @@ export const EpisodeLayout = ({
   className = "",
 }: EpisodeLayoutProps): JSX.Element => {
   return (
-    <main className="flex flex-col items-center relative bg-white min-h-screen w-full">
+    <main className="flex flex-col items-center relative bg-white min-h-screen w-full overflow-x-hidden">
       {/* Header - Consistent across all pages */}
       <GlobalHeader />
 
       {/* Main Content Area - Constrained width, responsive padding */}
-      {children && (
+      {(children || (showChapters && edition)) && (
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={className}>{children}</div>
+          {children && <div className={className}>{children}</div>}
+
+          {/* Chapters Section - Optional, shown by default */}
+          {showChapters && edition && <TheThreeChaptersSection edition={edition} />}
         </div>
       )}
-
-      {/* Chapters Section - Optional, shown by default */}
-      {showChapters && edition && <TheThreeChaptersSection edition={edition} />}
 
       {/* Contact Section - Optional, shown by default */}
       {showContact && <ContactUsSection />}

@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface Link {
   label: string;
@@ -7,24 +8,62 @@ interface Link {
   external?: boolean;
 }
 
+/**
+ * Unified About Us Section - Used across all pages
+ * Fully responsive with mobile-first design
+ * Includes animations and consistent styling
+ */
 export const ContactUsSection = (): JSX.Element => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleHomeClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    navigate("/");
-    setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
+      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
+    }
   };
 
   const handleJoinUsClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    navigate("/");
-    setTimeout(() => {
+    if (location.pathname === "/") {
       const element = document.querySelector("#join-us");
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
-    }, 100);
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.querySelector("#join-us");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
   };
 
   const companyLinks: Link[] = [
@@ -43,119 +82,76 @@ export const ContactUsSection = (): JSX.Element => {
     { label: "Contact Us", href: "https://career141.com/contact-us/", external: true }
   ];
 
+  const footerSections = [
+    { title: "Company", links: companyLinks },
+    { title: "Information", links: informationLinks },
+    { title: "Support", links: supportLinks },
+  ];
+
   return (
-    <section id="schedule" className="flex flex-col lg:flex-row w-full min-h-[520px] items-center justify-center gap-8 lg:gap-[60px] pt-8 sm:pt-10 lg:pt-10 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 md:px-10 lg:px-[60px] relative bg-white">
-      <div className="relative w-full lg:flex-1 lg:grow h-[300px] sm:h-[350px] lg:h-[400px] rounded-2xl lg:rounded-3xl overflow-hidden bg-[linear-gradient(0deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]">
+    <footer 
+      ref={sectionRef}
+      id="schedule" 
+      className="flex w-full max-w-[1440px] flex-col lg:flex-row items-center justify-center gap-8 lg:gap-[60px] pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 md:px-10 lg:px-[60px] relative bg-white mx-auto"
+    >
+      {/* Image Section - Fully Responsive */}
+      <div className={`relative w-full lg:flex-1 h-[200px] sm:h-[250px] md:h-[300px] lg:h-[400px] rounded-2xl lg:rounded-3xl overflow-hidden bg-[linear-gradient(0deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)] transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
         <img
-          className="absolute top-[42px] left-0 w-full max-w-[734px] h-auto object-cover"
+          className="absolute top-[20px] sm:top-[30px] lg:top-[42px] left-0 w-full max-w-[734px] h-auto object-cover hover:scale-105 transition-transform duration-500"
           alt="Career 4U 20 Years Anniversary Logo"
           src="https://c.animaapp.com/mkmm0u1u5wob0l/img/artboard-3-1.png"
         />
       </div>
 
+      {/* Navigation Section - Fully Responsive */}
       <nav
-        className="flex flex-col w-full lg:w-[510px] items-start justify-between px-0 py-4 relative self-stretch"
+        className={`flex flex-col w-full lg:w-[510px] items-start justify-between px-0 py-4 relative self-stretch transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}
         aria-label="Footer navigation"
       >
-        <header className="flex w-full lg:w-[505px] items-center justify-between px-0 py-4 lg:py-5 relative flex-[0_0_auto] border-b [border-bottom-style:solid] border-[#e5e2e2]">
+        {/* Header with Title and Icon */}
+        <header className="flex w-full items-center justify-between px-0 py-4 lg:py-5 mb-6 lg:mb-8 relative flex-[0_0_auto] border-b [border-bottom-style:solid] border-[#e5e2e2]">
           <h2 className="w-fit text-black text-2xl sm:text-3xl md:text-4xl lg:text-[44px] tracking-[-1px] lg:tracking-[-1.32px] leading-tight lg:leading-[57.6px] whitespace-nowrap relative [font-family:'Geist',Helvetica] font-normal">
             About Us
           </h2>
 
-          <button
-            className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-[60px] lg:h-[60px] cursor-pointer"
-            aria-label="Navigate to About Us"
-            type="button"
-          >
-            <img
-              className="w-full h-full"
-              alt=""
-              src="https://c.animaapp.com/mkmm0u1u5wob0l/img/frame-36853.svg"
-            />
-          </button>
+          <img
+            className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-[60px] lg:h-[60px] hover:rotate-12 transition-transform duration-300"
+            alt="Decorative icon"
+            src="https://c.animaapp.com/mkmm0u1u5wob0l/img/frame-36853.svg"
+            aria-hidden="true"
+          />
         </header>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:inline-flex items-start gap-8 sm:gap-10 lg:gap-[60px] relative flex-[0_0_auto] w-full">
-          <div className="flex flex-col w-full sm:w-[120px] items-start gap-4 lg:gap-5 relative">
-            <h3 className="relative self-stretch mt-[-1.00px] [font-family:'Geist',Helvetica] font-medium text-[#222223] text-sm lg:text-base tracking-[-0.32px] leading-[20.9px]">
-              Company
-            </h3>
+        {/* Links Grid - All columns on same line across all devices */}
+        <div className="grid grid-cols-3 lg:flex lg:flex-row items-start gap-4 sm:gap-8 md:gap-10 lg:gap-[80px] relative flex-[0_0_auto] w-full">
+          {footerSections.map((section, sectionIndex) => (
+            <div
+              key={sectionIndex}
+              className="flex flex-col w-full items-start gap-3 sm:gap-4 lg:gap-5 relative"
+            >
+              <h3 className="relative w-full [font-family:'Geist',Helvetica] font-medium text-[#222223] text-[12px] sm:text-[15px] lg:text-[17px] tracking-[-0.32px] leading-[18px] sm:leading-[20px] lg:leading-[22px]">
+                {section.title}
+              </h3>
 
-            <ul className="flex flex-col items-start gap-2 lg:gap-3 relative self-stretch w-full flex-[0_0_auto] list-none">
-              {companyLinks.map((link, index) => (
-                <li
-                  key={index}
-                  className={
-                    index === 1
-                      ? "relative w-[131px] mr-[-11.00px]"
-                      : "relative self-stretch"
-                  }
-                >
-                  <a
-                    href={link.href}
-                    onClick={link.onClick}
-                    target={link.external ? "_blank" : undefined}
-                    rel={link.external ? "noopener noreferrer" : undefined}
-                    className={`${index === 0 ? "mt-[-1.00px] " : ""}[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-sm lg:text-base tracking-[-0.32px] leading-[20.9px] hover:text-[#222223] transition-colors`}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="flex flex-col w-full sm:w-[120px] items-start gap-4 lg:gap-5 relative">
-            <h3 className="relative self-stretch mt-[-1.00px] [font-family:'Geist',Helvetica] font-medium text-[#222223] text-sm lg:text-base tracking-[-0.32px] leading-[20.9px]">
-              Information
-            </h3>
-
-            <ul className="flex flex-col items-start gap-2 lg:gap-3 relative self-stretch w-full flex-[0_0_auto] list-none">
-              {informationLinks.map((link, index) => (
-                <li
-                  key={index}
-                  className={
-                    index === 0
-                      ? "relative w-[132px] mt-[-1.00px] mr-[-12.00px]"
-                      : "relative self-stretch"
-                  }
-                >
-                  <a
-                    href={link.href}
-                    onClick={link.onClick}
-                    target={link.external ? "_blank" : undefined}
-                    rel={link.external ? "noopener noreferrer" : undefined}
-                    className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-sm lg:text-base tracking-[-0.32px] leading-[20.9px] hover:text-[#222223] transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="flex flex-col w-full sm:w-[120px] items-start gap-4 lg:gap-5 relative">
-            <h3 className="relative self-stretch mt-[-1.00px] [font-family:'Geist',Helvetica] font-medium text-[#222223] text-sm lg:text-base tracking-[-0.32px] leading-[20.9px]">
-              Support
-            </h3>
-
-            <ul className="flex flex-col items-start gap-2 lg:gap-3 relative self-stretch w-full flex-[0_0_auto] list-none">
-              {supportLinks.map((link, index) => (
-                <li key={index} className="relative self-stretch">
-                  <a
-                    href={link.href}
-                    target={link.external ? "_blank" : undefined}
-                    rel={link.external ? "noopener noreferrer" : undefined}
-                    className="mt-[-1.00px] [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-sm lg:text-base tracking-[-0.32px] leading-[20.9px] hover:text-[#222223] transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+              <ul className="flex flex-col items-start gap-2 sm:gap-2.5 lg:gap-3 relative w-full flex-[0_0_auto] list-none">
+                {section.links.map((link, linkIndex) => (
+                  <li key={linkIndex} className="relative w-full">
+                    <a
+                      href={link.href}
+                      onClick={link.onClick}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
+                      className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-[11px] sm:text-[13px] md:text-[15px] lg:text-[16px] tracking-[-0.32px] leading-[16px] sm:leading-[18px] lg:leading-[20.9px] hover:text-[#222223] transition-all duration-300 hover:translate-x-1 inline-block break-words"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </nav>
-    </section>
+    </footer>
   );
 };

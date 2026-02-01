@@ -11,6 +11,7 @@ interface Edition {
 export const EditionsDropdown = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -31,16 +32,28 @@ export const EditionsDropdown = (): JSX.Element => {
   const currentEdition = editions.find(edition => edition.path === location.pathname);
   const isLandingPage = location.pathname === '/' || !currentEdition;
 
+  // Detect mobile device
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
     };
   }, []);
 
@@ -67,12 +80,16 @@ export const EditionsDropdown = (): JSX.Element => {
     <div 
       className="relative inline-block"
       ref={dropdownRef}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={!isMobile ? handleMouseEnter : undefined}
+      onMouseLeave={!isMobile ? handleMouseLeave : undefined}
     >
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-end justify-center gap-2.5 px-4 relative flex-[0_0_auto] hover:bg-gray-50 rounded-md transition-all duration-300 group border-none bg-transparent mt-[-1.00px] pb-1 "
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setIsOpen(!isOpen);
+        }}
+        className="inline-flex items-end justify-center gap-2.5 px-4 relative flex-[0_0_auto] hover:bg-gray-50 rounded-md transition-all duration-300 group border-none bg-transparent mt-[-1.00px] pb-1 touch-manipulation"
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
@@ -88,15 +105,19 @@ export const EditionsDropdown = (): JSX.Element => {
 
       {isOpen && (
         <div 
-          className="absolute top-full left-0 mt-3 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50 animate-fade-in"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          className="absolute top-full left-0 mt-3 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[102] animate-fade-in"
+          onMouseEnter={!isMobile ? () => setIsHovered(true) : undefined}
+          onMouseLeave={!isMobile ? () => setIsHovered(false) : undefined}
         >
           {editions.map((edition) => (
             <button
               key={edition.path}
-              onClick={() => handleEditionSelect(edition)}
-              className={`w-full px-4 py-3 text-left hover:bg-gray-50 transition-all duration-200 flex items-center gap-3 ${
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleEditionSelect(edition);
+              }}
+              className={`w-full px-4 py-3 text-left hover:bg-gray-50 transition-all duration-200 flex items-center gap-3 touch-manipulation ${
                 currentEdition?.path === edition.path ? 'bg-green-50 text-[#7bb302]' : 'text-[#232323]'
               }`}
             >

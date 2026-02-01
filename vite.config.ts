@@ -32,4 +32,13 @@ export default defineConfig(({ mode }) => ({
       plugins: [tailwind()],
     },
   },
+  server: {
+    hmr: {
+      overlay: true,
+    },
+    watch: {
+      usePolling: true,
+      interval: 100,
+    },
+  },
 }));

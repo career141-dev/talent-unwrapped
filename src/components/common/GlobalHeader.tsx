@@ -168,19 +168,19 @@ export const GlobalHeader = (): JSX.Element => {
           </div>
 
           {/* Mobile: CTA Button + Hamburger */}
-          <div className="flex md:hidden items-center gap-2 relative flex-shrink-0 z-[101]">
-            {/* Mobile CTA Button (Compact) - Figma Specs: X:275 Y:11 W:85 H:24 */}
+          <div className="flex md:hidden items-center gap-3 relative flex-shrink-0 z-[101]">
+            {/* Mobile CTA Button (Compact) */}
             <a
               href="https://www.career141.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-[85px] h-6 px-5 py-4 justify-center items-center absolute right-[70px] top-[11px] bg-[#232323] rounded-[60px] hover:bg-[#333333] transition-all duration-300"
+              className="inline-flex h-6 items-center justify-center gap-1 px-3 py-1 bg-[#232323] rounded-[60px] hover:bg-[#333333] transition-all duration-300"
             >
-              <span className="relative w-fit [font-family:'Geist',Helvetica] font-semibold text-white text-xs tracking-[-0.32px] leading-[normal] whitespace-nowrap">
+              <span className="relative [font-family:'Geist',Helvetica] font-semibold text-white text-[10px] tracking-[-0.32px] leading-none whitespace-nowrap">
                 career141
               </span>
               <img
-                className="relative w-4 h-4 transition-transform duration-300 hover:translate-x-0.5"
+                className="relative w-3 h-3 transition-transform duration-300 hover:translate-x-0.5"
                 alt=""
                 src="https://c.animaapp.com/6IK4krLc/img/vuesax-linear-arrow-right-2@2x.png"
               />
@@ -259,7 +259,7 @@ export const GlobalHeader = (): JSX.Element => {
             ))}
 
             {/* Editions Dropdown in Mobile */}
-            <div className="px-4 py-3 border-t border-neutral-200 mt-2">
+            <div className="px-4 py-3 border-t border-neutral-200 mt-2 relative z-[101]">
               <EditionsDropdown />
             </div>
           </nav>

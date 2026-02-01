@@ -37,27 +37,27 @@ export const PodcastEditionPage = ({
     >
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="w-full">
-        {/* Section Title */}
-        <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-10 lg:mb-[40px]">
-          <h1 className="[font-family:'Geist',Helvetica] font-medium text-3xl sm:text-4xl md:text-5xl lg:text-[52px] tracking-[0] leading-tight lg:leading-[70px]">
-            <span className={titleColorClass}>All </span>
-            <span className={subtitleColorClass}>Episodes</span>
-          </h1>
-        </div>
+          {/* Section Title */}
+          <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-10 lg:mb-[40px]">
+            <h1 className="[font-family:'Geist',Helvetica] font-medium text-3xl sm:text-4xl md:text-5xl lg:text-[52px] tracking-[0] leading-tight lg:leading-[70px]">
+              <span className={titleColorClass}>All </span>
+              <span className={subtitleColorClass}>Episodes</span>
+            </h1>
+          </div>
 
-        {/* Episodes Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-[32px]">
-          {episodes.map((episode) => (
-            <EpisodeCard
-              key={episode.id}
-              episode={episode}
-              onViewEpisode={onViewEpisode}
-            />
-          ))}
-        </div>
+          {/* Episodes Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-[32px]">
+            {episodes.map((episode) => (
+              <EpisodeCard
+                key={episode.id}
+                episode={episode}
+                onViewEpisode={onViewEpisode}
+              />
+            ))}
+          </div>
 
-        {/* Optional content slot for page-specific content */}
-        {children && <div className="mt-16">{children}</div>}
+          {/* Optional content slot for page-specific content */}
+          {children && <div className="mt-16">{children}</div>}
         </div>
       </div>
     </section>

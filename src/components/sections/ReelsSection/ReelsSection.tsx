@@ -75,16 +75,16 @@ export const ReelsSection = (): JSX.Element => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-white py-16 sm:py-20 md:py-24 lg:py-[90px] px-4 sm:px-6 md:px-10 lg:px-[60px]">
+    <section id="reels" ref={sectionRef} className="relative w-full bg-white pt-0 pb-16 sm:py-20 md:py-24 lg:py-[90px] px-0 sm:px-6 md:px-10 lg:px-[60px]">
       <div className="max-w-[1440px] mx-auto w-full">
         {/* Mobile Horizontal Carousel */}
-        <div className="lg:hidden w-full overflow-x-scroll overflow-y-hidden snap-x snap-mandatory scrollbar-hide" ref={scrollContainerRef} style={{scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch'}}>
-          <div className="flex gap-4 sm:gap-5 md:gap-6 w-max">
+        <div className="lg:hidden w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide" ref={scrollContainerRef} style={{scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch'}}>
+          <div className="flex w-full gap-x-4">
             {reelVideos.map((reel, index) => (
               <div
                 key={reel.id}
                 ref={(el) => (slideRefs.current[index] = el)}
-                className="relative w-[260px] sm:w-[320px] md:w-[380px] h-[480px] bg-black rounded-2xl overflow-hidden shadow-lg group snap-start flex-shrink-0"
+                className="relative w-full min-w-full max-w-full h-[600px] bg-black rounded-2xl overflow-hidden shadow-lg group snap-center flex-shrink-0"
               >
                 {/* Video */}
                 <video

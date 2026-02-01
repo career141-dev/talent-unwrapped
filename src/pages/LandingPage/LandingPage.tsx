@@ -1,6 +1,5 @@
 import { DefaultLayout } from "../../layouts";
-import { SubmitFormSection, ReelsSection, FooterSection } from "../../components";
-import { ContactFormSection } from "./sections/ContactFormSection";
+import { SubmitFormSection, ReelsSection, FooterSection, ContactUsSection } from "../../components";
 import { EpisodeDetailsSection } from "./sections/EpisodeDetailsSection";
 import { HeroBannerSection } from "./sections/HeroBannerSection";
 import { LatestPodcastListSection } from "./sections/LatestPodcastListSection";
@@ -12,6 +11,7 @@ import { WisdomAndTestimonialsSection } from "./sections/WisdomAndTestimonialsSe
  * Landing Page
  * Main entry page for the application
  * Uses DefaultLayout for consistent header structure
+ * Now uses unified ContactUsSection across all pages
  */
 export const LandingPage = (): JSX.Element => {
   return (
@@ -26,7 +26,7 @@ export const LandingPage = (): JSX.Element => {
       </div>
       <EpisodeDetailsSection />
       <SubmitFormSection />
-      <ContactFormSection />
+      <ContactUsSection />
       <FooterSection />
     </DefaultLayout>
   );

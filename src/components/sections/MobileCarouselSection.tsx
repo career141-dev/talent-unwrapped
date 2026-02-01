@@ -9,13 +9,18 @@ interface PodcastCard {
     subtitle: string;
 }
 
-export const MobileCarouselSection = (): JSX.Element => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const scrollContainerRef = useRef<HTMLDivElement>(null);
-    const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
-    const isScrollingRef = useRef(false);
+interface PodcastCard {
+    id: number;
+    title: string;
+    subtitle: string;
+}
 
-    const podcastCards: PodcastCard[] = [
+interface MobileCarouselSectionProps {
+    podcastCards?: PodcastCard[];
+}
+
+export const MobileCarouselSection = ({
+    podcastCards = [
         {
             id: 1,
             title: "Leadership Reimagined: ",
@@ -40,7 +45,12 @@ export const MobileCarouselSection = (): JSX.Element => {
             subtitle:
                 "Building Mental Toughness, Culture, and Agility for the Future of Work",
         },
-    ];
+    ]
+}: MobileCarouselSectionProps): JSX.Element => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const isScrollingRef = useRef(false);
 
     // Update active index based on scroll position
     useEffect(() => {

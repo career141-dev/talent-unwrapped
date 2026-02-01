@@ -48,13 +48,13 @@ export const TalentIntroductionSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative w-full max-w-[1440px] min-h-[400px] md:min-h-[500px] lg:h-[700px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-2 sm:py-3 md:py-4 lg:py-[8px] mx-auto mt-2 sm:mt-3 md:mt-4 lg:mt-6 overflow-hidden" style={{overflowX: 'hidden'}}>
-      
-      <header className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-0 w-full lg:w-[203px] text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-[10px] md:text-base tracking-[-0.32px] leading-[normal]">
+    <section className="relative w-full max-w-[1440px] min-h-[400px] md:min-h-[500px] lg:h-[1000px] bg-white pl-0 pr-4 sm:pr-6 md:pr-10 lg:pr-[60px] py-2 sm:py-3 md:py-4 lg:py-[8px] ml-0 mt-2 sm:mt-3 md:mt-4 lg:mt-6 mb-8 overflow-hidden" style={{ overflowX: 'hidden' }}>
+
+      <header className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-[120px] w-full lg:w-[203px] text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-[10px] md:text-base tracking-[-0.32px] leading-[normal] animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
         THE THREE CHAPTERS
       </header>
 
-      <div className="flex flex-col w-full lg:w-[203px] items-center lg:items-start gap-2 lg:gap-3 relative lg:absolute top-auto lg:top-[164px] left-0 lg:left-0 mb-8 lg:mb-0">
+      <div className="flex flex-col w-full lg:w-[203px] items-start gap-2 lg:gap-3 relative lg:absolute top-auto lg:top-[164px] left-0 lg:left-[120px] mb-8 lg:mb-0 animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
         <div className="relative self-stretch mt-[-1.00px] [font-family:'Geist',Helvetica] font-medium text-[#232323] text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[-1.5px] lg:tracking-[-2.88px] leading-[normal] text-left">
           100K+
         </div>
@@ -64,7 +64,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
         </div>
       </div>
 
-      <p className="relative lg:absolute top-auto lg:top-0 left-0 lg:left-[476px] w-full lg:w-[904px] max-w-full text-center lg:text-left mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[44px] tracking-[-1px] lg:tracking-[-1.76px] leading-tight lg:leading-[normal]">
+      <p className="relative lg:absolute top-auto lg:top-0 left-0 lg:left-[510px] w-full lg:w-[904px] max-w-full text-center lg:text-left mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[44px] tracking-[-1px] lg:tracking-[-1.76px] leading-tight lg:leading-[normal] animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
         <span className="text-[#232323] tracking-[-0.77px]">
           Each episode of Talent Unwrapped: Singapore Edition{" "}
         </span>
@@ -75,37 +75,42 @@ export const TalentIntroductionSection = (): JSX.Element => {
         </span>
       </p>
 
-      <div className="flex lg:block items-center justify-center lg:items-start lg:justify-start">
+      <div className="flex lg:block items-center justify-center lg:items-start lg:justify-start animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
         <button
-          className="relative lg:absolute top-auto lg:top-[258px] left-0 lg:left-[476px] inline-flex h-12 md:h-[54px] items-center justify-center gap-2 px-4 md:px-5 py-3 md:py-4 bg-[#7bb302] rounded-[60px] cursor-pointer hover:bg-[#6da002] transition-colors mb-8 lg:mb-0"
+          className="relative lg:absolute top-auto lg:top-[258px] left-0 lg:left-[510px] inline-flex h-12 md:h-[54px] items-center justify-center gap-2 px-4 md:px-5 py-3 md:py-4 bg-[#7bb302] rounded-[60px] cursor-pointer hover:bg-[#6da002] transition-colors mb-8 lg:mb-0"
           aria-label="More about the podcast"
         >
-        <span className="relative w-fit mt-[-0.50px] [font-family:'Geist',Helvetica] font-semibold text-white text-sm md:text-base tracking-[-0.48px] leading-[normal]">
-          More about the podcast
-        </span>
+          <span className="relative w-fit mt-[-0.50px] [font-family:'Geist',Helvetica] font-semibold text-white text-sm md:text-base tracking-[-0.48px] leading-[normal]">
+            More about the podcast
+          </span>
 
-        <img
-          className="relative w-5 h-5 md:w-6 md:h-6 mt-[-1.00px] mb-[-1.00px]"
-          alt=""
-          src="https://c.animaapp.com/6IK4krLc/img/vuesax-linear-arrow-right-2@2x.png"
-        />
+          <img
+            className="relative w-5 h-5 md:w-6 md:h-6 mt-[-1.00px] mb-[-1.00px]"
+            alt=""
+            src="https://c.animaapp.com/6IK4krLc/img/vuesax-linear-arrow-right-2@2x.png"
+          />
         </button>
       </div>
 
-      <div className="flex flex-col w-full lg:w-[1200px] items-center lg:items-start gap-2 relative lg:absolute top-auto lg:top-[478px] left-0 lg:left-0 text-center lg:text-left mb-6">
-        <p className="relative w-full max-w-[386px] lg:w-[386px] lg:absolute lg:right-[-92px] [font-family:'Geist',Helvetica] font-medium text-[16px] sm:text-[18px] lg:text-[20px] leading-[18px] sm:leading-[19px] lg:leading-[20.767px]">
+      <div className="flex flex-col w-full items-start gap-2 relative lg:absolute top-auto lg:top-[478px] left-0 lg:left-[120px] text-left mb-6 lg:ml-0 lg:pl-0">
+        <p className="relative w-full max-w-none lg:w-auto lg:absolute lg:left-0 [font-family:'Geist',Helvetica] font-medium text-[20px] sm:text-[24px] lg:text-[32px] leading-[24px] sm:leading-[28px] lg:leading-[36px] whitespace-nowrap">
           <span className="text-[#7cb403]">Pods scheduled for: </span>
-
           <time className="text-[#ed2939]" dateTime="2025-11-12">
             12th, 13th Nov 2025
           </time>
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-6 relative lg:absolute top-auto lg:top-[589px] left-0 lg:left-0 w-full lg:w-auto overflow-x-hidden">
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6 relative lg:absolute top-auto lg:top-[589px] left-0 lg:right-0 lg:mx-auto w-full lg:w-fit overflow-x-hidden scrollbar-hide">
         {/* Mobile Carousel - Only visible on mobile */}
         <div className="lg:hidden w-full mb-8">
-          <MobileCarouselSection />
+          <MobileCarouselSection
+            podcastCards={chapters.map(c => ({
+              id: c.id,
+              title: c.title,
+              subtitle: c.subtitle
+            }))}
+          />
         </div>
 
         {/* Desktop Cards - Only visible on lg+ */}

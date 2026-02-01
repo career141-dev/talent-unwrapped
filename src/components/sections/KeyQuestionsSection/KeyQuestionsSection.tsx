@@ -29,6 +29,13 @@ interface SessionContent {
 
 export const KeyQuestionsSection = (): JSX.Element => {
   const [currentPage] = useState(0);
+  const [activeQuestionIndex, setActiveQuestionIndex] = useState<{[key: number]: number}>({
+    0: 0, // Expert 0 showing question 0
+    1: 0, // Expert 1 showing question 0
+    2: 0, // Expert 2 showing question 0
+  });
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const expertProfiles: ExpertProfile[] = [
     {
       id: "echo-wu",
@@ -172,6 +179,40 @@ export const KeyQuestionsSection = (): JSX.Element => {
 
   const currentSession = sessionContent[currentPage];
 
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (expertIndex: number, totalQuestions: number) => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      // Swipe left - go to next question
+      setActiveQuestionIndex(prev => ({
+        ...prev,
+        [expertIndex]: (prev[expertIndex] + 1) % totalQuestions
+      }));
+    } else if (isRightSwipe) {
+      // Swipe right - go to previous question
+      setActiveQuestionIndex(prev => ({
+        ...prev,
+        [expertIndex]: (prev[expertIndex] - 1 + totalQuestions) % totalQuestions
+      }));
+    }
+  };
+
   return (
     <section className="relative w-full bg-white py-10 sm:py-12 md:py-16 lg:py-[60px] px-4 sm:px-6 md:px-10 lg:px-[60px]">
       <div className="max-w-[1320px] mx-auto w-full">
@@ -236,54 +277,134 @@ export const KeyQuestionsSection = (): JSX.Element => {
             </div>
           </div>
 
-          {/* Expert Profiles with Questions */}
-          <div className="space-y-16">
-            {currentSession.experts.map((expert, expertIndex) => (
-              <div key={expertIndex} className="flex flex-col sm:flex-row gap-6 sm:gap-8">
-                <div className="flex items-start gap-4 flex-shrink-0">
-                  <div className="w-[60px] h-[60px] flex justify-center bg-[#00000033] rounded-full overflow-hidden border-2 border-solid border-white flex-shrink-0">
-                    <img
-                      className={expert.profile.imageStyles}
-                      alt={expert.profile.name}
-                      src={expert.profile.imageUrl}
-                    />
-                  </div>
-                  <div className="flex flex-col">
-                    <p className="[font-family:'Geist',Helvetica] font-medium text-[#222223] text-base sm:text-lg tracking-[-0.14px] leading-tight">
-                      {expert.profile.name}
-                    </p>
-                    <p className="[font-family:'Geist',Helvetica] font-normal text-[#939393] text-sm sm:text-base tracking-[-0.14px] leading-tight">
-                      {expert.profile.title}
-                      {expert.profile.subtitle && (
-                        <>
-                          <br />
-                          {expert.profile.subtitle}
-                        </>
-                      )}
-                    </p>
-                    <a
-                      href={expert.profile.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="[font-family:'Geist',Helvetica] font-light text-[#939393] text-xs sm:text-sm tracking-[-0.14px] leading-tight hover:text-[#7bb302] transition-colors mt-1"
+          {/* Expert Profiles with Questions - Mobile Card Design */}
+          <div className="space-y-4 md:space-y-16">
+            {currentSession.experts.map((expert, expertIndex) => {
+              const currentQuestionIndex = activeQuestionIndex[expertIndex] || 0;
+              const currentQuestion = expert.questions[currentQuestionIndex];
+              
+              return (
+                <div key={expertIndex}>
+                  {/* Mobile Card Layout - Single Card with Slider */}
+                  <div className="md:hidden">
+                    <div 
+                      className="bg-[#f8f8f8] rounded-[25px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] p-[15px] pt-[30px] pb-[50px] relative touch-pan-y"
+                      onTouchStart={handleTouchStart}
+                      onTouchMove={handleTouchMove}
+                      onTouchEnd={() => handleTouchEnd(expertIndex, expert.questions.length)}
                     >
-                      LinkedIn Profile
-                    </a>
+                      {/* Speaker Info */}
+                      <div className="flex items-start gap-4 mb-[42px]">
+                        {/* Profile Image */}
+                        <div className="w-[108px] h-[108px] flex-shrink-0 bg-[rgba(0,0,0,0.2)] rounded-full overflow-hidden border-[3.6px] border-solid border-white">
+                          <img
+                            className="w-full h-full object-cover"
+                            alt={expert.profile.name}
+                            src={expert.profile.imageUrl}
+                          />
+                        </div>
+                        
+                        {/* Speaker Details */}
+                        <div className="flex flex-col pt-2">
+                          <p className="[font-family:'Geist',Helvetica] font-medium text-[#232323] text-[15.426px] tracking-[-0.617px] leading-normal mb-0">
+                            {expert.profile.name}
+                          </p>
+                          <p className="[font-family:'Geist',Helvetica] font-normal text-[#939393] text-[15.426px] leading-normal mb-0">
+                            {expert.profile.title}
+                          </p>
+                          {expert.profile.subtitle && (
+                            <p className="[font-family:'Geist',Helvetica] font-normal text-[#939393] text-[15.426px] leading-normal mb-0">
+                              {expert.profile.subtitle}
+                            </p>
+                          )}
+                          <a
+                            href={expert.profile.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="[font-family:'Geist',Helvetica] font-extralight text-[#939393] text-[15.426px] leading-normal hover:text-[#7bb302] transition-colors mt-1 break-all"
+                          >
+                            {expert.profile.linkedin}
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Question - Shows current question based on slider */}
+                      <div className="mb-4 min-h-[124px] transition-all duration-300">
+                        <p className="[font-family:'Geist',Helvetica] text-[19px] leading-normal tracking-[-0.38px] m-0">
+                          <span className="font-bold text-[#ed2939]">Q{currentQuestionIndex + 1} - </span>
+                          <span className="font-light text-[#232323]">{currentQuestion.q}</span>
+                        </p>
+                      </div>
+
+                      {/* Slide Indicator - Clickable to switch questions */}
+                      <div className="absolute bottom-[16px] left-1/2 -translate-x-1/2 flex items-center gap-[6px]">
+                        {expert.questions.map((_, dotIndex) => (
+                          <button
+                            key={dotIndex}
+                            onClick={() => setActiveQuestionIndex(prev => ({
+                              ...prev,
+                              [expertIndex]: dotIndex
+                            }))}
+                            className={`rounded-full transition-all cursor-pointer border-none ${
+                              dotIndex === currentQuestionIndex
+                                ? 'w-[8px] h-[8px] bg-[#7bb302]'
+                                : 'w-[6px] h-[6px] bg-[#d9d9d9]'
+                            }`}
+                            aria-label={`Show question ${dotIndex + 1}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Desktop Layout */}
+                  <div className="hidden md:flex flex-col sm:flex-row gap-6 sm:gap-8">
+                    <div className="flex items-start gap-4 flex-shrink-0">
+                      <div className="w-[60px] h-[60px] flex justify-center bg-[#00000033] rounded-full overflow-hidden border-2 border-solid border-white flex-shrink-0">
+                        <img
+                          className={expert.profile.imageStyles}
+                          alt={expert.profile.name}
+                          src={expert.profile.imageUrl}
+                        />
+                      </div>
+                      <div className="flex flex-col">
+                        <p className="[font-family:'Geist',Helvetica] font-medium text-[#222223] text-base sm:text-lg tracking-[-0.14px] leading-tight">
+                          {expert.profile.name}
+                        </p>
+                        <p className="[font-family:'Geist',Helvetica] font-normal text-[#939393] text-sm sm:text-base tracking-[-0.14px] leading-tight">
+                          {expert.profile.title}
+                          {expert.profile.subtitle && (
+                            <>
+                              <br />
+                              {expert.profile.subtitle}
+                            </>
+                          )}
+                        </p>
+                        <a
+                          href={expert.profile.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="[font-family:'Geist',Helvetica] font-light text-[#939393] text-xs sm:text-sm tracking-[-0.14px] leading-tight hover:text-[#7bb302] transition-colors mt-1"
+                        >
+                          LinkedIn Profile
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex-1 space-y-6 pl-0 sm:pl-6 border-l-0 sm:border-l border-neutral-200">
+                      {expert.questions.map((question, qIndex) => (
+                        <div key={qIndex}>
+                          <p className="[font-family:'Geist',Helvetica] text-base sm:text-lg md:text-[19px] leading-relaxed">
+                            <span className="font-bold text-[#ed2939]">Q{qIndex + 1} - </span>
+                            <span className="font-light text-[#222223]">{question.q}</span>
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-
-                <div className="flex-1 space-y-6 pl-0 sm:pl-6 border-l-0 sm:border-l border-neutral-200">
-                  {expert.questions.map((question, qIndex) => (
-                    <div key={qIndex}>
-                      <p className="[font-family:'Geist',Helvetica] text-base sm:text-lg md:text-[19px] leading-relaxed">
-                        <span className="font-bold text-[#ed2939]">Q{qIndex + 1} - </span>
-                        <span className="font-light text-[#222223]">{question.q}</span>
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
