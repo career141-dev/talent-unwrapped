@@ -53,7 +53,7 @@ export const SubmitFormSection = (): JSX.Element => {
 
   return (
 
-    <section id="join-us" className="flex w-full max-w-[1500px] flex-col lg:flex-row items-center lg:items-stretch justify-center gap-8 lg:gap-20 px-4 sm:px-6 md:px-10 lg:px-[60px] py-12 lg:py-20 relative bg-white mx-auto">
+    <section id="join-us" className="flex w-full max-w-[1500px] flex-col lg:flex-row items-center lg:items-stretch justify-center gap-8 lg:gap-20 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-12 lg:py-20 relative bg-white mx-auto">
 
       {/* Left Side - Insights Box */}
       <div className="relative w-full lg:w-[620px] flex-shrink-0">

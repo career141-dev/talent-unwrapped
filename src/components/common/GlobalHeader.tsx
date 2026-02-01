@@ -12,20 +12,22 @@ export const GlobalHeader = (): JSX.Element => {
   const isEditionPage = location.pathname.startsWith("/edition/");
   const isLandingPage = location.pathname === "/" || location.pathname === "/talent-unwrapped/";
 
-  const navigationItems = isEditionPage  
+  const navigationItems = isEditionPage
     ? [
-        { label: "About", href: "#about", action: () => scrollToSection("about") },
-        { label: "Schedule", href: "/schedule", action: () => {
+      { label: "About", href: "#about", action: () => scrollToSection("about") },
+      {
+        label: "Schedule", href: "/schedule", action: () => {
           navigate("/schedule");
           setActiveNav("Schedule");
-        } },
-      ]
+        }
+      },
+    ]
     : [
-        { label: "Home", href: "/", action: () => navigate("/") },
-        { label: "About", href: "#about", action: () => scrollToSection("about") },
-        { label: "Episodes", href: "#episodes", action: () => scrollToSection("episodes") },
-        { label: "Reels", href: "#reels", action: () => scrollToSection("reels") },
-      ];
+      { label: "Home", href: "/", action: () => navigate("/") },
+      { label: "About", href: "#about", action: () => scrollToSection("about") },
+      { label: "Episodes", href: "#episodes", action: () => scrollToSection("episodes") },
+      { label: "Reels", href: "#reels", action: () => scrollToSection("reels") },
+    ];
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -96,11 +98,11 @@ export const GlobalHeader = (): JSX.Element => {
   return (
     <>
       <header className="w-full bg-white border-b border-neutral-200 sticky top-0 z-[100] transition-shadow duration-300 hover:shadow-md">
-        <div className="flex w-full max-w-[1440px] min-h-[70px] md:min-h-[80px] lg:h-[100px] items-center justify-between gap-4 px-4 sm:px-6 md:px-10 lg:px-[60px] py-3 lg:py-0 mx-auto">
-          
+        <div className="flex w-full max-w-[1440px] min-h-[70px] md:min-h-[80px] lg:h-[100px] items-center justify-between gap-4 px-4 sm:px-6 md:px-8 lg:px-10 py-3 lg:py-0 mx-auto">
+
           {/* Logo */}
-          <a 
-            href="/" 
+          <a
+            href="/"
             className="relative w-24 sm:w-32 md:w-40 lg:w-60 h-10 sm:h-12 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]"
             onClick={(e) => {
               e.preventDefault();
@@ -132,11 +134,10 @@ export const GlobalHeader = (): JSX.Element => {
                       setActiveNav(item.label);
                       item.action();
                     }}
-                    className={`relative flex items-end justify-center w-fit mt-[-1.00px] [font-family:'Geist',Helvetica] font-normal text-sm xl:text-base text-center tracking-[-0.32px] leading-6 whitespace-nowrap transition-all duration-300 cursor-pointer border-none bg-transparent pb-1 ${
-                      activeNav === item.label 
-                        ? "text-[#7bb302] font-semibold border-b-2 border-[#7bb302]" 
+                    className={`relative flex items-end justify-center w-fit mt-[-1.00px] [font-family:'Geist',Helvetica] font-normal text-sm xl:text-base text-center tracking-[-0.32px] leading-6 whitespace-nowrap transition-all duration-300 cursor-pointer border-none bg-transparent pb-1 ${activeNav === item.label
+                        ? "text-[#7bb302] font-semibold border-b-2 border-[#7bb302]"
                         : "text-[#232323] hover:text-[#7bb302] hover:border-b-2 hover:border-[#7bb302]"
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </button>
@@ -149,7 +150,7 @@ export const GlobalHeader = (): JSX.Element => {
           </nav>
 
           {/* Desktop CTA Button */}
-          <div className="hidden md:inline-flex items-center gap-2 md:gap-4 relative flex-shrink-0">
+          <div className="hidden lg:inline-flex items-center gap-2 md:gap-4 relative flex-shrink-0">
             <a
               href="https://www.career141.com"
               target="_blank"
@@ -167,14 +168,26 @@ export const GlobalHeader = (): JSX.Element => {
             </a>
           </div>
 
-          {/* Mobile: CTA Button + Hamburger */}
-          <div className="flex md:hidden items-center gap-3 relative flex-shrink-0 z-[101]">
-            {/* Mobile CTA Button (Compact) */}
+          {/* Mobile/Tablet: CTA Button + Hamburger */}
+          <div className="flex lg:hidden items-center gap-3 relative flex-shrink-0 z-[101]">
+            {/* Tablet CTA Button (visible on md to lg) */}
             <a
               href="https://www.career141.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-6 items-center justify-center gap-1 px-3 py-1 bg-[#232323] rounded-[60px] hover:bg-[#333333] transition-all duration-300"
+              className="hidden md:inline-flex lg:hidden h-10 items-center justify-center gap-2 px-4 py-2 bg-[#222223] rounded-[60px] hover:bg-[#333333] transition-all duration-300"
+            >
+              <span className="relative [font-family:'Geist',Helvetica] font-semibold text-white text-sm tracking-[-0.32px] leading-none whitespace-nowrap">
+                career141.com
+              </span>
+            </a>
+
+            {/* Mobile CTA Button (Compact, visible only below md) */}
+            <a
+              href="https://www.career141.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex md:hidden h-6 items-center justify-center gap-1 px-3 py-1 bg-[#232323] rounded-[60px] hover:bg-[#333333] transition-all duration-300"
             >
               <span className="relative [font-family:'Geist',Helvetica] font-semibold text-white text-[10px] tracking-[-0.32px] leading-none whitespace-nowrap">
                 career141
@@ -186,7 +199,7 @@ export const GlobalHeader = (): JSX.Element => {
               />
             </a>
 
-            {/* Hamburger Button */}
+            {/* Hamburger Button - Visible up to lg breakpoint */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="flex flex-col items-center justify-center w-10 h-10 gap-1.5 relative bg-transparent border-none cursor-pointer touch-manipulation"
@@ -203,7 +216,7 @@ export const GlobalHeader = (): JSX.Element => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-[99] lg:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
           aria-hidden="true"
@@ -212,9 +225,8 @@ export const GlobalHeader = (): JSX.Element => {
 
       {/* Mobile Menu Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-[280px] sm:w-[320px] bg-white shadow-2xl z-[100] transform transition-transform duration-300 ease-in-out lg:hidden ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed top-0 right-0 h-full w-[280px] sm:w-[320px] bg-white shadow-2xl z-[100] transform transition-transform duration-300 ease-in-out lg:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         <div className="flex flex-col h-full overflow-y-auto">
           {/* Mobile Menu Header */}
@@ -228,7 +240,7 @@ export const GlobalHeader = (): JSX.Element => {
               aria-label="Close menu"
             >
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 5L5 15M5 5L15 15" stroke="#232323" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M15 5L5 15M5 5L15 15" stroke="#232323" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>
@@ -243,11 +255,10 @@ export const GlobalHeader = (): JSX.Element => {
                   setActiveNav(item.label);
                   item.action();
                 }}
-                className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-all duration-200 text-left ${
-                  activeNav === item.label
+                className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-all duration-200 text-left ${activeNav === item.label
                     ? "bg-green-50 text-[#7bb302]"
                     : "text-[#232323] hover:bg-gray-50"
-                }`}
+                  }`}
               >
                 <span className="[font-family:'Geist',Helvetica] font-medium">
                   {item.label}

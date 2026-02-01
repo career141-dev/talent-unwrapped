@@ -33,7 +33,7 @@ export const FooterSection = ({ variant = "simple" }: FooterSectionProps): JSX.E
   if (variant === "simple" && !isEditionPage) {
     return (
       <footer className="w-full bg-white border-t border-neutral-200">
-        <div className="w-full max-w-[1440px] mx-auto flex min-h-[80px] md:h-[100px] flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-6 lg:px-8 py-6 sm:py-4 md:py-0">
+        <div className="w-full max-w-[1440px] mx-auto flex min-h-[80px] md:h-[100px] flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-4 md:py-0">
           {footerLinks.map((link, index) =>
             link.href ? (
               <a

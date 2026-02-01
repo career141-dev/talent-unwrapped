@@ -72,7 +72,8 @@ export const EpisodeDetailsSection = (): JSX.Element => {
 
     // Use smaller offset for mobile, larger for desktop
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
-    const baseOffset = isMobile ? 60 : 140;
+    const isTablet = typeof window !== 'undefined' && window.innerWidth >= 768 && window.innerWidth < 1024;
+    const baseOffset = isMobile ? (isTablet ? 100 : 70) : 140;
 
     // Main image (active) - center, largest, highest z-index
     if (diff === 0) {
@@ -86,28 +87,27 @@ export const EpisodeDetailsSection = (): JSX.Element => {
       };
     }
 
-    // Images to the right
+    // Images to neighbors
     if (diff <= Math.floor(totalImages / 2)) {
       const offset = diff * baseOffset;
       const scale = 1 - (diff * 0.15);
       return {
         transform: `translate(-50%, -50%) scale(${scale})`,
         zIndex: 50 - diff,
-        opacity: 1,
+        opacity: 0.8,
         left: `calc(50% + ${offset}px)`,
         top: '50%',
         filter: 'none',
       };
     }
 
-    // Images to the left
     const leftDiff = totalImages - diff;
     const offset = leftDiff * baseOffset;
     const scale = 1 - (leftDiff * 0.15);
     return {
       transform: `translate(-50%, -50%) scale(${scale})`,
       zIndex: 50 - leftDiff,
-      opacity: 1,
+      opacity: 0.8,
       left: `calc(50% - ${offset}px)`,
       top: '50%',
       filter: 'none',
@@ -156,7 +156,7 @@ export const EpisodeDetailsSection = (): JSX.Element => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full max-w-[1440px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-4 sm:py-8 md:py-12 lg:py-[50px] mx-auto mt-2 sm:mt-8 md:mt-12 lg:mt-[70px] overflow-hidden min-h-0 sm:min-h-[900px]"
+      className="relative w-full max-w-[1440px] bg-white px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-4 sm:py-8 md:py-12 lg:py-[50px] mx-auto mt-2 sm:mt-8 md:mt-12 lg:mt-[70px] overflow-hidden min-h-0 sm:min-h-[900px]"
       style={{ overflowX: 'hidden' }}
       aria-labelledby="episode-details-heading"
     >
@@ -260,24 +260,18 @@ export const EpisodeDetailsSection = (): JSX.Element => {
       <div className="relative lg:absolute top-auto lg:top-[632px] left-0 w-full max-w-none px-0 overflow-hidden z-10 mt-8 lg:mt-0" aria-hidden="true">
         <div className="flex w-full overflow-hidden">
           <div className="flex shrink-0 animate-infinite-scroll whitespace-nowrap">
-            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[200px] tracking-[-10.00px] leading-[normal] px-8">
+            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
               lets unwrap your story
             </span>
-            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[200px] tracking-[-10.00px] leading-[normal] px-8">
-              lets unwrap your story
-            </span>
-            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[200px] tracking-[-10.00px] leading-[normal] px-8">
+            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
               lets unwrap your story
             </span>
           </div>
           <div className="flex shrink-0 animate-infinite-scroll whitespace-nowrap" aria-hidden="true">
-            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[200px] tracking-[-10.00px] leading-[normal] px-8">
+            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
               lets unwrap your story
             </span>
-            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[200px] tracking-[-10.00px] leading-[normal] px-8">
-              lets unwrap your story
-            </span>
-            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[200px] tracking-[-10.00px] leading-[normal] px-8">
+            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
               lets unwrap your story
             </span>
           </div>

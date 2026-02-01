@@ -58,7 +58,7 @@ export const HeroBannerSingapore = (): JSX.Element => {
   };
 
   return (
-    <section className="relative w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:min-h-[1137px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] py-8 md:py-12 lg:py-12 mx-auto">
+    <section className="relative w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:min-h-[1137px] bg-white px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8 md:py-12 lg:py-12 mx-auto">
       <div className="hidden lg:inline-flex items-end gap-4 absolute top-[159px] left-[60px]">
         <div className="relative w-[372px] h-[108px] bg-white rounded-xl overflow-hidden rotate-180">
           <img

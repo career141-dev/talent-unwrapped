@@ -24,137 +24,137 @@ export const LatestPodcastListSection = (): JSX.Element => {
   const allPodcastDataSets: PodcastItem[][] = [
     // View 1 (Default)
     [
-    {
-      id: 1,
-      title: "Opening Keynote: Future of Innovation",
-      edition: "Dubai Edition",
-      date: "January 10, 2026",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    },
-    {
-      id: 2,
-      title: "Panel Discussion on Global Trends",
-      edition: "Singapore Edition",
-      date: "December 15, 2025",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-1@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    },
-    {
-      id: 3,
-      title: "Workshop: Strategic Thinking",
-      edition: "London Edition",
-      date: "November 22, 2025",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-2@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    },
-    {
-      id: 4,
-      title: "Closing Remarks and Reflections",
-      edition: "Dubai Edition",
-      date: "January 12, 2026",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-3@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    },
-    {
-      id: 9,
-      title: "Networking Breakfast Highlights",
-      edition: "Dubai Edition",
-      date: "January 11, 2026",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    },
-    {
-      id: 10,
-      title: "Breakout Sessions Deep Dive",
-      edition: "Singapore Edition",
-      date: "December 20, 2025",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-1@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    },
-    {
-      id: 11,
-      title: "Expert Q&A Session",
-      edition: "London Edition",
-      date: "November 25, 2025",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-2@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    },
-    {
-      id: 12,
-      title: "Award Ceremony Moments",
-      edition: "Dubai Edition",
-      date: "January 13, 2026",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-3@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    },
+      {
+        id: 1,
+        title: "Opening Keynote: Future of Innovation",
+        edition: "Dubai Edition",
+        date: "January 10, 2026",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      },
+      {
+        id: 2,
+        title: "Panel Discussion on Global Trends",
+        edition: "Singapore Edition",
+        date: "December 15, 2025",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-1@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      },
+      {
+        id: 3,
+        title: "Workshop: Strategic Thinking",
+        edition: "London Edition",
+        date: "November 22, 2025",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-2@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      },
+      {
+        id: 4,
+        title: "Closing Remarks and Reflections",
+        edition: "Dubai Edition",
+        date: "January 12, 2026",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-3@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      },
+      {
+        id: 9,
+        title: "Networking Breakfast Highlights",
+        edition: "Dubai Edition",
+        date: "January 11, 2026",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      },
+      {
+        id: 10,
+        title: "Breakout Sessions Deep Dive",
+        edition: "Singapore Edition",
+        date: "December 20, 2025",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-1@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      },
+      {
+        id: 11,
+        title: "Expert Q&A Session",
+        edition: "London Edition",
+        date: "November 25, 2025",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-2@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      },
+      {
+        id: 12,
+        title: "Award Ceremony Moments",
+        edition: "Dubai Edition",
+        date: "January 13, 2026",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-3@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      },
     ],
     // View 2 (Alternative set)
     [
-    {
-      id: 5,
-      title: "AI and the Future of Leadership",
-      edition: "Singapore Edition",
-      date: "January 20, 2026",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    },
-    {
-      id: 6,
-      title: "Building Resilient Teams",
-      edition: "Dubai Edition",
-      date: "January 25, 2026",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-1@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    },
-    {
-      id: 7,
-      title: "Digital Transformation Strategies",
-      edition: "London Edition",
-      date: "February 1, 2026",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-2@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    },
-    {
-      id: 8,
-      title: "Sustainable Business Practices",
-      edition: "Singapore Edition",
-      date: "February 5, 2026",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-3@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    },
-    {
-      id: 13,
-      title: "Tech Innovation Trends",
-      edition: "Dubai Edition",
-      date: "February 8, 2026",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    },
-    {
-      id: 14,
-      title: "Global Market Outlook",
-      edition: "Singapore Edition",
-      date: "February 10, 2026",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-1@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    },
-    {
-      id: 15,
-      title: "Leadership Excellence Workshop",
-      edition: "London Edition",
-      date: "February 12, 2026",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-2@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    },
-    {
-      id: 16,
-      title: "Future of Remote Work",
-      edition: "Dubai Edition",
-      date: "February 15, 2026",
-      thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-3@2x.png",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    },
+      {
+        id: 5,
+        title: "AI and the Future of Leadership",
+        edition: "Singapore Edition",
+        date: "January 20, 2026",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      },
+      {
+        id: 6,
+        title: "Building Resilient Teams",
+        edition: "Dubai Edition",
+        date: "January 25, 2026",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-1@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      },
+      {
+        id: 7,
+        title: "Digital Transformation Strategies",
+        edition: "London Edition",
+        date: "February 1, 2026",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-2@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      },
+      {
+        id: 8,
+        title: "Sustainable Business Practices",
+        edition: "Singapore Edition",
+        date: "February 5, 2026",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-3@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      },
+      {
+        id: 13,
+        title: "Tech Innovation Trends",
+        edition: "Dubai Edition",
+        date: "February 8, 2026",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      },
+      {
+        id: 14,
+        title: "Global Market Outlook",
+        edition: "Singapore Edition",
+        date: "February 10, 2026",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-1@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      },
+      {
+        id: 15,
+        title: "Leadership Excellence Workshop",
+        edition: "London Edition",
+        date: "February 12, 2026",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-2@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      },
+      {
+        id: 16,
+        title: "Future of Remote Work",
+        edition: "Dubai Edition",
+        date: "February 15, 2026",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-3@2x.png",
+        videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      },
     ]
   ];
 
@@ -218,26 +218,26 @@ export const LatestPodcastListSection = (): JSX.Element => {
       if (!isManualScrollRef.current) return;
 
       clearTimeout(timeoutId);
-      
+
       timeoutId = setTimeout(() => {
         // Get the first article element to measure actual dimensions
         const firstArticle = container.querySelector('article');
         if (!firstArticle) return;
 
         const articleWidth = firstArticle.offsetWidth;
-        
+
         // Get computed gap from the container
         const computedStyle = window.getComputedStyle(container);
         const gapValue = computedStyle.gap;
         const gap = parseInt(gapValue) || 16; // default to 16 if can't parse
-        
+
         const itemSize = articleWidth + gap;
-        
+
         // Calculate current index based on scroll position
         const scrollPosition = container.scrollLeft;
         const newIndex = Math.round(scrollPosition / itemSize);
         const maxIndex = podcastData.length - 1;
-        
+
         setCurrentIndex(Math.min(newIndex, maxIndex));
       }, 50);
     };
@@ -274,12 +274,12 @@ export const LatestPodcastListSection = (): JSX.Element => {
   const handlePaginationClick = (pageIndex: number) => {
     const newIndex = pageIndex * ITEMS_PER_PAGE;
     setCurrentIndex(newIndex);
-    
+
     // Scroll the container to show the correct item
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
       const firstArticle = container.querySelector('article');
-      
+
       if (firstArticle) {
         const articleWidth = firstArticle.offsetWidth;
         const computedStyle = window.getComputedStyle(container);
@@ -287,15 +287,15 @@ export const LatestPodcastListSection = (): JSX.Element => {
         const gap = parseInt(gapValue) || 16;
         const itemSize = articleWidth + gap;
         const scrollPosition = newIndex * itemSize;
-        
+
         // Disable manual scroll tracking during programmatic scroll
         isManualScrollRef.current = false;
-        
+
         container.scrollTo({
           left: scrollPosition,
           behavior: 'smooth',
         });
-        
+
         // Re-enable manual scroll tracking after scroll completes
         setTimeout(() => {
           isManualScrollRef.current = true;
@@ -308,8 +308,8 @@ export const LatestPodcastListSection = (): JSX.Element => {
     <section
       ref={sectionRef}
       id="episodes"
-      className="relative w-full bg-white py-2 sm:py-3 md:py-4 lg:py-[8px] px-0 sm:px-6 md:px-10 lg:px-[60px] mx-auto overflow-hidden"
-      style={{ overflowX: 'hidden', ...(window.innerWidth < 640 ? { maxWidth: '100%' } : { maxWidth: '1440px' }) }}
+      className="relative w-full max-w-[1440px] bg-white py-2 sm:py-3 md:py-4 lg:py-[8px] px-0 sm:px-6 md:px-8 lg:px-10 mx-auto overflow-hidden"
+      style={{ overflowX: 'hidden' }}
     >
       <div className="w-full">
         <div className={`flex flex-col items-start gap-8 md:gap-10 lg:gap-12 w-full transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -340,7 +340,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
         <div className="relative w-full mt-8 md:mt-10 lg:mt-12">
           {/* Left Scroll Button */}
           <button
-            className="hidden lg:block absolute left-[-60px] top-[calc(50%-20px)] w-[120px] h-[120px] cursor-pointer z-10 hover:scale-105 transition-transform"
+            className="hidden lg:block absolute left-2 xl:left-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-20 hover:scale-105 transition-transform bg-white/10 backdrop-blur-sm rounded-full xl:bg-transparent"
             onClick={() => handleScroll('left')}
             type="button"
             aria-label="Scroll left"
@@ -437,8 +437,23 @@ export const LatestPodcastListSection = (): JSX.Element => {
                 </div>
               </article>
             ))}
-          </div> {/* <-- Add this closing div for the scrollable container */}
-        </div> {/* <-- Add this closing div for the parent container */}
+          </div>
+
+          {/* Right Scroll Button */}
+          <button
+            className="hidden lg:block absolute right-2 xl:right-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-20 hover:scale-105 transition-transform bg-white/10 backdrop-blur-sm rounded-full xl:bg-transparent"
+            onClick={() => handleScroll('right')}
+            type="button"
+            aria-label="Scroll right"
+          >
+            <img
+              className="w-full h-full"
+              alt=""
+              src="https://c.animaapp.com/6IK4krLc/img/next@2x.png"
+              aria-hidden="true"
+            />
+          </button>
+        </div>
         {/* Grid Layout for Mobile and Tablet has been removed as requested */}
 
         <div
@@ -450,9 +465,8 @@ export const LatestPodcastListSection = (): JSX.Element => {
             <button
               key={index}
               onClick={() => handlePaginationClick(index)}
-              className={`relative h-1.5 sm:h-2 rounded cursor-pointer transition-all duration-300 hover:scale-125 touch-manipulation ${
-                index === currentPage ? "bg-[#7bb302] w-6 sm:w-8" : "bg-neutral-90 w-1.5 sm:w-2"
-              }`}
+              className={`relative h-1.5 sm:h-2 rounded cursor-pointer transition-all duration-300 hover:scale-125 touch-manipulation ${index === currentPage ? "bg-[#7bb302] w-6 sm:w-8" : "bg-neutral-90 w-1.5 sm:w-2"
+                }`}
               role="tab"
               aria-selected={index === currentPage}
               aria-label={`Go to page ${index + 1}`}

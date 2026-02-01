@@ -38,56 +38,56 @@ export const TheThreeChaptersSection = ({
   ];
 
   return (
-    <section className={`relative w-full max-w-[1440px] ${isSingapore ? 'min-h-[400px] md:min-h-[500px] lg:h-[1000px]' : 'min-h-[200px]'} bg-white ${isSingapore ? 'pl-0 pr-4 sm:pr-6 md:pr-10 lg:pr-[60px] py-2 sm:py-3 md:py-4 lg:py-[8px]' : 'px-4 sm:px-6 md:px-10 lg:px-[60px] py-8'} ml-0 mt-2 sm:mt-3 md:mt-4 lg:mt-6 mb-8 overflow-hidden`} style={{ overflowX: 'hidden' }}>
+    <section className={`relative w-full max-w-[1440px] ${isSingapore ? 'min-h-[400px] md:min-h-[500px] lg:h-[1000px]' : 'min-h-[200px]'} bg-white ${isSingapore ? 'pl-0 pr-4 sm:pr-6 md:pr-8 lg:pr-10 xl:pr-12 py-2 sm:py-3 md:py-4 lg:py-[8px]' : 'px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8'} ml-0 mt-2 sm:mt-3 md:mt-4 lg:mt-6 mb-8 overflow-hidden`} style={{ overflowX: 'hidden' }}>
 
       {isSingapore && (
-        <header className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-[120px] w-full lg:w-[203px] text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-[10px] md:text-base tracking-[-0.32px] leading-[normal] animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
-          THE THREE CHAPTERS
-        </header>
-      )}
+        <div className="flex flex-col md:grid md:grid-cols-12 lg:block gap-8 lg:gap-0">
+          <div className="md:col-span-4 lg:contents">
+            <header className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-[120px] w-full lg:w-[203px] text-left mb-4 md:mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-[10px] md:text-base tracking-[-0.32px] leading-[normal] animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
+              THE THREE CHAPTERS
+            </header>
 
-      {isSingapore && (
-        <div className="flex flex-col w-full lg:w-[203px] items-start gap-2 lg:gap-3 relative lg:absolute top-auto lg:top-[164px] left-0 lg:left-[120px] mb-8 lg:mb-0 animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
-          <div className="relative self-stretch mt-[-1.00px] [font-family:'Geist',Helvetica] font-medium text-[#232323] text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[-1.5px] lg:tracking-[-2.88px] leading-[normal] text-left">
-            100K+
+            <div className="flex flex-col w-full lg:w-[203px] items-start gap-2 lg:gap-3 relative lg:absolute top-auto lg:top-[164px] left-0 lg:left-[120px] mb-4 md:mb-0 animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
+              <div className="relative self-stretch mt-[-1.00px] [font-family:'Geist',Helvetica] font-medium text-[#232323] text-4xl sm:text-5xl md:text-5xl lg:text-7xl tracking-[-1.5px] lg:tracking-[-2.88px] leading-[normal] text-left">
+                100K+
+              </div>
+
+              <div className="relative self-stretch [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-sm md:text-base text-left tracking-[-0.32px] lg:tracking-[-0.64px] leading-[normal]">
+                VIEWERS WORLDWIDE
+              </div>
+            </div>
           </div>
 
-          <div className="relative self-stretch [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-sm md:text-base text-left tracking-[-0.32px] lg:tracking-[-0.64px] leading-[normal]">
-          VIEWERS WORLDWIDE
-        </div>
-      </div>
-      )}
+          <div className="md:col-span-8 lg:contents">
+            <p className="relative lg:absolute top-auto lg:top-0 left-0 lg:left-[510px] w-full lg:w-[904px] max-w-full text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[44px] tracking-[-1px] lg:tracking-[-1.76px] leading-tight lg:leading-[normal] animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
+              <span className="text-[#232323] tracking-[-0.77px]">
+                Each episode of Talent Unwrapped: {editionName}{" "}
+              </span>
 
-      {isSingapore && (
-        <p className="relative lg:absolute top-auto lg:top-0 left-0 lg:left-[510px] w-full lg:w-[904px] max-w-full text-center lg:text-left mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[44px] tracking-[-1px] lg:tracking-[-1.76px] leading-tight lg:leading-[normal] animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
-          <span className="text-[#232323] tracking-[-0.77px]">
-            Each episode of Talent Unwrapped: {editionName}{" "}
-          </span>
+              <span className="text-[#8d8d8d] tracking-[-0.77px]">
+                explores a different human dimension of ambition, design, and
+                leadership.
+              </span>
+            </p>
 
-          <span className="text-[#8d8d8d] tracking-[-0.77px]">
-            explores a different human dimension of ambition, design, and
-            leadership.
-          </span>
-        </p>
-      )}
+            <div className="flex lg:block items-center justify-start animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="relative lg:absolute top-auto lg:top-[258px] left-0 lg:left-[510px] inline-flex h-12 md:h-[54px] items-center justify-center gap-2 px-4 md:px-5 py-3 md:py-4 bg-[#7bb302] rounded-[60px] cursor-pointer hover:bg-[#6da002] transition-colors mb-4 md:mb-0"
+                aria-label="More about the podcast"
+              >
+                <span className="relative w-fit mt-[-0.50px] [font-family:'Geist',Helvetica] font-semibold text-white text-sm md:text-base tracking-[-0.48px] leading-[normal]">
+                  More about the podcast
+                </span>
 
-      {isSingapore && (
-        <div className="flex lg:block items-center justify-center lg:items-start lg:justify-start animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="relative lg:absolute top-auto lg:top-[258px] left-0 lg:left-[510px] inline-flex h-12 md:h-[54px] items-center justify-center gap-2 px-4 md:px-5 py-3 md:py-4 bg-[#7bb302] rounded-[60px] cursor-pointer hover:bg-[#6da002] transition-colors mb-8 lg:mb-0"
-            aria-label="More about the podcast"
-          >
-            <span className="relative w-fit mt-[-0.50px] [font-family:'Geist',Helvetica] font-semibold text-white text-sm md:text-base tracking-[-0.48px] leading-[normal]">
-              More about the podcast
-            </span>
-
-            <img
-              className="relative w-5 h-5 md:w-6 md:h-6 mt-[-1.00px] mb-[-1.00px]"
-              alt=""
-              src="https://c.animaapp.com/6IK4krLc/img/vuesax-linear-arrow-right-2@2x.png"
-            />
-          </button>
+                <img
+                  className="relative w-5 h-5 md:w-6 md:h-6 mt-[-1.00px] mb-[-1.00px]"
+                  alt=""
+                  src="https://c.animaapp.com/6IK4krLc/img/vuesax-linear-arrow-right-2@2x.png"
+                />
+              </button>
+            </div>
+          </div>
         </div>
       )}
 

@@ -214,7 +214,7 @@ export const KeyQuestionsSection = (): JSX.Element => {
   };
 
   return (
-    <section className="relative w-full bg-white py-10 sm:py-12 md:py-16 lg:py-[60px] px-4 sm:px-6 md:px-10 lg:px-[60px]">
+    <section className="relative w-full bg-white py-10 sm:py-12 md:py-16 lg:py-[60px] px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
       <div className="max-w-[1320px] mx-auto w-full">
         {/* Header Badge and Title */}
         <div className="mb-8 sm:mb-10">

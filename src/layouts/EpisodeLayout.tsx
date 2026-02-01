@@ -39,7 +39,7 @@ export const EpisodeLayout = ({
 
       {/* Main Content Area - Constrained width, responsive padding */}
       {(children || (showChapters && edition)) && (
-        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
           {children && <div className={className}>{children}</div>}
 
           {/* Chapters Section - Optional, shown by default */}

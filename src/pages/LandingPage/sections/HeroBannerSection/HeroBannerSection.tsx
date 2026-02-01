@@ -84,38 +84,38 @@ export const HeroBannerSection = (): JSX.Element => {
   };
 
   return (
-    <section className="relative w-full max-w-[1440px] min-h-[500px] md:min-h-[800px] lg:min-h-[1050px] bg-white px-4 sm:px-6 md:px-10 lg:px-[60px] pt-0 pb-0 md:pb-6 lg:pb-12 mx-auto overflow-hidden">
+    <section className="relative w-full max-w-[1440px] min-h-[500px] sm:min-h-[600px] md:min-h-[800px] lg:min-h-[1050px] bg-white px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 pt-0 pb-0 md:pb-6 lg:pb-12 mx-auto overflow-hidden">
 
       {/* Mobile Text/Hero Section - Figma Design */}
-      <section className="flex flex-col justify-center items-start absolute top-0 right-0 w-full max-w-[360px] h-[135px] bg-white block md:hidden md:static md:left-0 mr-4 mt-2 mb-0 pointer-events-none z-10">
+      <section className="flex flex-col justify-center items-start absolute top-0 right-0 w-full sm:max-w-[460px] max-w-[360px] h-[135px] sm:h-[165px] bg-white block md:hidden md:static md:left-0 mr-4 sm:mr-8 mt-2 mb-0 pointer-events-none z-10">
         {/* Prasperant Logo */}
         <img
-          className="absolute top-[24px] left-4 w-[135px] h-[34px] aspect-[3.98] pointer-events-none"
+          className="absolute top-[24px] left-4 sm:left-6 w-[135px] sm:w-[165px] h-[34px] sm:h-[42px] aspect-[3.98] pointer-events-none"
           alt="Prasperant Logo"
           src="https://c.animaapp.com/6IK4krLc/img/logo-prasperant-1-1.png"
         />
 
         {/* Main Headline - Part 1 */}
-        <h1 className="absolute top-3 left-[185px] w-[165px] [font-family:'Geist',Helvetica] font-medium text-[#232323] text-[21px] tracking-[-0.84px] leading-[normal]">
+        <h1 className="absolute top-3 sm:top-4 left-[185px] sm:left-[230px] w-[165px] sm:w-[200px] [font-family:'Geist',Helvetica] font-medium text-[#232323] text-[21px] sm:text-[26px] tracking-[-0.84px] sm:tracking-[-1.04px] leading-[normal]">
           Conversations that feel
         </h1>
 
         {/* Decorative Frame Element */}
         <img
-          className="absolute top-9 left-[275px] w-[42px] h-5"
+          className="absolute top-9 sm:top-11 left-[275px] sm:left-[340px] w-[42px] sm:w-[52px] h-5 sm:h-6"
           alt=""
           src="https://c.animaapp.com/6IK4krLc/img/frame-1000002831.svg"
         />
 
         {/* Main Headline - Part 2 (Text) */}
-        <h2 className="absolute bottom-2 left-2 w-[335px] [font-family:'Geist',Helvetica] font-medium text-[#7cb403] text-[52px] tracking-[-2.08px] leading-[normal] text-center">
+        <h2 className="absolute bottom-2 sm:bottom-3 left-2 sm:left-4 w-[335px] sm:w-[420px] [font-family:'Geist',Helvetica] font-medium text-[#7cb403] text-[52px] sm:text-[64px] tracking-[-2.08px] sm:tracking-[-2.56px] leading-[normal] text-center">
           ideas that stay
         </h2>
       </section>
 
       {/* Desktop Logo - Hidden on Mobile (visible from md+) */}
-      <div className="hidden md:inline-flex items-end gap-4 absolute top-[110px] left-[60px] z-10">
-        <div className="relative w-[372px] h-[108px] bg-white rounded-xl overflow-hidden">
+      <div className="hidden md:inline-flex items-end gap-4 absolute top-[110px] md:left-[40px] lg:left-[50px] xl:left-[60px] z-10">
+        <div className="relative md:w-[280px] md:h-[84px] lg:w-[330px] lg:h-[96px] xl:w-[372px] xl:h-[108px] bg-white rounded-xl overflow-hidden">
           <img
             className="w-full h-full object-contain"
             alt="Logo prasperant"
@@ -125,11 +125,11 @@ export const HeroBannerSection = (): JSX.Element => {
       </div>
 
       {/* Desktop Heading 1 - Hidden on Mobile (visible from md+) */}
-      <h2 className="hidden md:block absolute top-[30px] left-[35%] xl:left-[506px] w-auto [font-family:'Geist',Helvetica] font-medium text-[#232323] text-4xl xl:text-[52px] tracking-[-1px] lg:tracking-[-2.08px] leading-normal z-10">
+      <h2 className="hidden md:block absolute top-[30px] md:left-[320px] lg:left-[400px] xl:left-[506px] w-auto [font-family:'Geist',Helvetica] font-medium text-[#232323] text-2xl md:text-3xl lg:text-4xl xl:text-[52px] tracking-[-1px] lg:tracking-[-2.08px] leading-normal z-10">
         Conversations that feel
       </h2>
 
-      {/* Desktop Decorative Icon - Hidden on Mobile (visible from xl+) */}
+      {/* Desktop Decorative Icon - Hidden on Mobile (visible from lg+) */}
       <button
         onClick={() => {
           const speakersSection = document.getElementById('speakers');
@@ -137,7 +137,7 @@ export const HeroBannerSection = (): JSX.Element => {
             speakersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }}
-        className="hidden xl:block absolute top-[20px] left-[1055px] w-[120px] xl:w-[152px] h-auto cursor-pointer hover:scale-110 transition-transform duration-300 bg-transparent border-none p-0"
+        className="hidden lg:block absolute top-[20px] lg:left-[880px] xl:left-[1055px] lg:w-[100px] xl:w-[152px] h-auto cursor-pointer hover:scale-110 transition-transform duration-300 bg-transparent border-none p-0"
         aria-label="Go to speakers section"
         type="button"
       >
@@ -149,12 +149,12 @@ export const HeroBannerSection = (): JSX.Element => {
       </button>
 
       {/* Desktop Main Heading - Hidden on Mobile (visible from md+) */}
-      <h1 className="hidden md:block absolute top-[100px] left-[35%] xl:left-[496px] w-auto max-w-[919px] [font-family:'Geist',Helvetica] font-medium text-[#7bb302] text-7xl xl:text-[120px] tracking-[-3px] lg:tracking-[-5.76px] leading-[normal] z-10">
+      <h1 className="hidden md:block absolute top-[90px] md:left-[320px] lg:left-[380px] xl:left-[496px] w-[calc(100%-340px)] lg:w-auto max-w-[919px] [font-family:'Geist',Helvetica] font-medium text-[#7bb302] text-5xl md:text-6xl lg:text-8xl xl:text-[120px] tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4.5px] xl:tracking-[-5.76px] leading-[0.9] lg:leading-[normal] z-10">
         ideas that stay
       </h1>
 
       {/* Mobile Video Player Section - Figma Design (visible only on mobile, below md) */}
-      <section className="block md:hidden flex flex-col flex-shrink-0 self-stretch w-full max-w-[397px] h-auto aspect-[351/175] items-start justify-around absolute md:static top-[140px] left-[45%] transform -translate-x-1/2 md:left-0 md:top-auto md:transform-none bg-[#00000033] rounded-[7.03px] overflow-hidden mx-4 md:mx-0 mt-0 md:mt-8 z-30">
+      <section className="block md:hidden flex flex-col flex-shrink-0 self-stretch w-full max-w-[397px] sm:max-w-[500px] h-auto aspect-[351/175] items-start justify-around absolute md:static top-[140px] sm:top-[170px] left-[45%] transform -translate-x-1/2 md:left-0 md:top-auto md:transform-none bg-[#00000033] rounded-[7.03px] sm:rounded-[10px] overflow-hidden mx-4 sm:mx-8 md:mx-0 mt-0 md:mt-8 z-30">
         {/* Video Thumbnail */}
         <img
           className="relative self-stretch w-full aspect-[2.01] object-cover"
@@ -163,13 +163,13 @@ export const HeroBannerSection = (): JSX.Element => {
         />
 
         {/* Stay Tuned Badge - Mobile Only */}
-        <div className="inline-flex items-center justify-center gap-[2.93px] px-[5.86px] py-[2.93px] absolute top-[11px] left-3.5 bg-[#ed2939] rounded-[11.72px] z-20">
+        <div className="inline-flex items-center justify-center gap-[2.93px] sm:gap-[3.5px] px-[5.86px] sm:px-[7px] py-[2.93px] sm:py-[3.5px] absolute top-[11px] sm:top-[14px] left-3.5 sm:left-4 bg-[#ed2939] rounded-[11.72px] sm:rounded-[14px] z-20">
           <img
-            className="relative w-[7.03px] h-[7.03px]"
+            className="relative w-[7.03px] sm:w-[8.5px] h-[7.03px] sm:h-[8.5px]"
             alt=""
             src="https://c.animaapp.com/6IK4krLc/img/vuesax-bold-play-circle.svg"
           />
-          <span className="relative w-fit mt-[-0.29px] [font-family:'Geist',Helvetica] font-semibold text-basewhite text-[5.9px] tracking-[-0.23px] leading-[normal]">
+          <span className="relative w-fit mt-[-0.29px] [font-family:'Geist',Helvetica] font-semibold text-basewhite text-[5.9px] sm:text-[7px] tracking-[-0.23px] sm:tracking-[-0.28px] leading-[normal]">
             Stay Tuned
           </span>
         </div>
@@ -177,12 +177,12 @@ export const HeroBannerSection = (): JSX.Element => {
         {/* Play Button - Mobile Only */}
         {!isPlaying && (
           <button
-            className="absolute top-1/2 left-1/2 w-[39px] h-[39px] -translate-x-1/2 -translate-y-1/2 z-50 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-md border border-[#e5e5e5]"
+            className="absolute top-1/2 left-1/2 w-[39px] sm:w-[48px] h-[39px] sm:h-[48px] -translate-x-1/2 -translate-y-1/2 z-50 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-md border border-[#e5e5e5]"
             onClick={handlePlayVideo}
             aria-label="Play video"
             type="button"
           >
-            <svg className="w-6 h-6 text-[#232323]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-6 sm:w-7 h-6 sm:h-7 text-[#232323]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="12" cy="12" r="12" fill="white" />
               <polygon points="10,8 16,12 10,16" fill="#232323" />
             </svg>
@@ -207,19 +207,19 @@ export const HeroBannerSection = (): JSX.Element => {
           <>
             <button
               onClick={handlePrevious}
-              className="absolute top-1/2 left-2 w-10 h-10 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-all z-40 shadow-md border border-[#e5e5e5]"
+              className="absolute top-1/2 left-2 sm:left-3 w-10 sm:w-12 h-10 sm:h-12 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-all z-40 shadow-md border border-[#e5e5e5]"
               aria-label="Previous video"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="20" height="20" className="sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15 18L9 12L15 6" stroke="#232323" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
             <button
               onClick={handleNext}
-              className="absolute top-1/2 right-2 w-10 h-10 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-all z-40 shadow-md border border-[#e5e5e5]"
+              className="absolute top-1/2 right-2 sm:right-3 w-10 sm:w-12 h-10 sm:h-12 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-all z-40 shadow-md border border-[#e5e5e5]"
               aria-label="Next video"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="20" height="20" className="sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 18L15 12L9 6" stroke="#232323" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
@@ -236,7 +236,7 @@ export const HeroBannerSection = (): JSX.Element => {
                 className={`rounded-full transition-all cursor-pointer touch-manipulation ${index === currentSlide
                   ? "bg-white w-4 h-1.5"
                   : "bg-white/50 hover:bg-white/75 w-2 h-1.5"
-                }`}
+                  }`}
                 aria-label={`Go to video ${index + 1}`}
                 aria-current={index === currentSlide ? "true" : "false"}
               />
@@ -246,9 +246,9 @@ export const HeroBannerSection = (): JSX.Element => {
       </section>
 
       {/* Desktop Video Container - Fully Responsive (hidden on mobile, visible from md+) */}
-      <div className="hidden md:block relative lg:absolute top-auto lg:top-[280px] left-0 lg:left-[50%] lg:transform lg:-translate-x-1/2 w-full max-w-[calc(100%-2rem)] lg:max-w-[1320px] mx-auto mt-8 lg:mt-0">
+      <div className="hidden md:block relative lg:absolute top-auto md:top-[240px] lg:top-[280px] left-0 md:left-[50%] md:transform md:-translate-x-1/2 w-full max-w-[calc(100%-4rem)] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1320px] mx-auto mt-8 md:mt-0">
         {/* Aspect Ratio Container - 16:9 for mobile, custom for desktop */}
-        <div className="relative w-full pb-[56.25%] lg:pb-0 lg:h-[700px] bg-[rgba(0,0,0,0.2)] rounded-[7px] sm:rounded-lg lg:rounded-3xl overflow-hidden will-change-transform">
+        <div className="relative w-full pb-[56.25%] md:pb-0 md:h-[450px] lg:h-[550px] xl:h-[700px] bg-[rgba(0,0,0,0.2)] rounded-[7px] sm:rounded-lg lg:rounded-3xl overflow-hidden will-change-transform">
           {/* Video Slides */}
           <div className="absolute inset-0 w-full h-full">
             {videoSlides.map((slide, index) => (
@@ -299,7 +299,7 @@ export const HeroBannerSection = (): JSX.Element => {
               aria-label="Play podcast episode"
             >
               <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-12 lg:h-12 text-[#232323] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 5v14l11-7z"/>
+                <path d="M8 5v14l11-7z" />
               </svg>
             </button>
           )}
@@ -358,8 +358,8 @@ export const HeroBannerSection = (): JSX.Element => {
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`rounded-full transition-all cursor-pointer touch-manipulation ${index === currentSlide
-                    ? "bg-white w-4 sm:w-5 md:w-6 lg:w-8 h-1.5 sm:h-2 md:h-2.5 lg:h-3"
-                    : "bg-white/50 hover:bg-white/75 w-1 sm:w-2 md:w-2 lg:w-3 h-1 sm:h-1.5 md:h-2 lg:h-2"
+                  ? "bg-white w-4 sm:w-5 md:w-6 lg:w-8 h-1.5 sm:h-2 md:h-2.5 lg:h-3"
+                  : "bg-white/50 hover:bg-white/75 w-1 sm:w-2 md:w-2 lg:w-3 h-1 sm:h-1.5 md:h-2 lg:h-2"
                   }`}
                 aria-label={`Go to video ${index + 1}`}
                 aria-current={index === currentSlide ? "true" : "false"}

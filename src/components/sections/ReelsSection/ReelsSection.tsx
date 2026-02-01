@@ -75,7 +75,7 @@ export const ReelsSection = (): JSX.Element => {
   }, []);
 
   return (
-    <section id="reels" ref={sectionRef} className="relative w-full bg-white pt-0 pb-16 sm:py-20 md:py-24 lg:py-[90px] px-0 sm:px-6 md:px-10 lg:px-[60px]">
+    <section id="reels" ref={sectionRef} className="relative w-full bg-white pt-0 pb-16 sm:py-20 md:py-24 lg:py-[90px] px-0 sm:px-6 md:px-8 lg:px-10 xl:px-12">
       <div className="max-w-[1440px] mx-auto w-full">
         {/* Mobile Horizontal Carousel */}
         <div className="lg:hidden w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide" ref={scrollContainerRef} style={{scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch'}}>
