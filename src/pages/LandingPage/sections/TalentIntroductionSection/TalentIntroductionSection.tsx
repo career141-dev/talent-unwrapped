@@ -32,7 +32,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
       src: "https://c.animaapp.com/6IK4krLc/img/man-in-headphones-having-interview-2025-10-26-23-44-27-utc-1@2x.png",
       alt: "Man in headphones",
       containerClass:
-        "absolute top-[290px] left-[0px] w-[100px] h-[70px] z-0 lg:top-[228px] lg:left-[871px] lg:w-[152px] lg:h-[106px] flex rounded-xl overflow-hidden rotate-[-7.30deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
+        "absolute top-[290px] left-[0px] w-[100px] h-[70px] z-0 md:hidden lg:flex lg:top-[228px] lg:left-[871px] lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[-7.30deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
       imageClass:
         "mt-[-6px] w-[107px] h-[82px] ml-[-3.5px] scale-125 lg:mt-[-9.2px] lg:w-[163px] lg:h-[124.13px] lg:ml-[-5.1px] rotate-[7.30deg] aspect-[0.67] object-cover",
     },
@@ -41,7 +41,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
       src: "https://c.animaapp.com/6IK4krLc/img/young-black-man-in-headphones-talking-in-microphon-2025-03-13-12@2x.png",
       alt: "Young black man in headphones",
       containerClass:
-        "absolute top-[50px] left-[180px] w-[120px] h-[84px] z-0 lg:top-72 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[106px] flex rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
+        "absolute top-[50px] left-[180px] w-[120px] h-[84px] z-0 md:hidden lg:flex lg:top-72 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
       imageClass:
         "w-full h-full object-cover scale-110 rotate-[-6.49deg] lg:mt-[-8.2px] lg:w-[162.7px] lg:h-[122.17px] lg:ml-[-5.5px]",
     },
@@ -117,6 +117,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
               title: c.title,
               subtitle: c.subtitle
             }))}
+            onLearnMore={() => setIsModalOpen(true)}
           />
         </div>
 

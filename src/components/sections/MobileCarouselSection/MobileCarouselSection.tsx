@@ -17,6 +17,7 @@ interface PodcastCard {
 
 interface MobileCarouselSectionProps {
     podcastCards?: PodcastCard[];
+    onLearnMore?: () => void;
 }
 
 export const MobileCarouselSection = ({
@@ -45,7 +46,8 @@ export const MobileCarouselSection = ({
             subtitle:
                 "Building Mental Toughness, Culture, and Agility for the Future of Work",
         },
-    ]
+    ],
+    onLearnMore
 }: MobileCarouselSectionProps): JSX.Element => {
     const [activeIndex, setActiveIndex] = useState(0);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -185,12 +187,15 @@ export const MobileCarouselSection = ({
                                             </h3>
                                         </div>
 
-                                        <a
-                                            href="#"
-                                            className="relative self-stretch [font-family:'Geist',Helvetica] font-medium text-black text-[14.3px] tracking-[-0.29px] leading-[normal] underline hover:text-[#7bb302] transition-colors"
+                                        <button
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                onLearnMore?.();
+                                            }}
+                                            className="relative self-stretch [font-family:'Geist',Helvetica] font-medium text-black text-[14.3px] tracking-[-0.29px] leading-[normal] underline hover:text-[#7bb302] transition-colors bg-transparent border-none p-0 text-left cursor-pointer"
                                         >
                                             Learn more
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

@@ -114,8 +114,8 @@ export const HeroBannerSection = (): JSX.Element => {
       </section>
 
       {/* Desktop Logo - Hidden on Mobile (visible from md+) */}
-      <div className="hidden md:inline-flex items-end gap-4 absolute top-[110px] md:left-[40px] lg:left-[50px] xl:left-[60px] z-10">
-        <div className="relative md:w-[280px] md:h-[84px] lg:w-[330px] lg:h-[96px] xl:w-[372px] xl:h-[108px] bg-white rounded-xl overflow-hidden">
+      <div className="hidden md:inline-flex items-end gap-4 absolute md:top-[120px] lg:top-[110px] xl:top-[110px] md:left-[24px] lg:left-[50px] xl:left-[60px] z-10">
+        <div className="relative md:w-[220px] md:h-[66px] lg:w-[330px] lg:h-[96px] xl:w-[372px] xl:h-[108px] bg-white rounded-xl overflow-hidden shadow-sm">
           <img
             className="w-full h-full object-contain"
             alt="Logo prasperant"
@@ -125,11 +125,11 @@ export const HeroBannerSection = (): JSX.Element => {
       </div>
 
       {/* Desktop Heading 1 - Hidden on Mobile (visible from md+) */}
-      <h2 className="hidden md:block absolute top-[30px] md:left-[320px] lg:left-[400px] xl:left-[506px] w-auto [font-family:'Geist',Helvetica] font-medium text-[#232323] text-2xl md:text-3xl lg:text-4xl xl:text-[52px] tracking-[-1px] lg:tracking-[-2.08px] leading-normal z-10">
+      <h2 className="hidden md:block absolute md:top-[30px] lg:top-[30px] xl:top-[30px] md:left-[260px] lg:left-[400px] xl:left-[506px] w-auto [font-family:'Geist',Helvetica] font-medium text-[#232323] text-2xl md:text-2xl lg:text-3xl xl:text-[52px] tracking-[-1px] lg:tracking-[-2.08px] leading-normal z-10">
         Conversations that feel
       </h2>
 
-      {/* Desktop Decorative Icon - Hidden on Mobile (visible from lg+) */}
+      {/* Desktop Decorative Icon - Hidden on Mobile (visible from md+) */}
       <button
         onClick={() => {
           const speakersSection = document.getElementById('speakers');
@@ -137,7 +137,7 @@ export const HeroBannerSection = (): JSX.Element => {
             speakersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }}
-        className="hidden lg:block absolute top-[20px] lg:left-[880px] xl:left-[1055px] lg:w-[100px] xl:w-[152px] h-auto cursor-pointer hover:scale-110 transition-transform duration-300 bg-transparent border-none p-0"
+        className="hidden md:block absolute md:top-[20px] md:right-[20px] lg:top-[20px] lg:left-[880px] xl:left-[1055px] md:w-[80px] lg:w-[100px] xl:w-[152px] h-auto cursor-pointer hover:scale-110 transition-transform duration-300 bg-transparent border-none p-0 z-10"
         aria-label="Go to speakers section"
         type="button"
       >
@@ -149,7 +149,7 @@ export const HeroBannerSection = (): JSX.Element => {
       </button>
 
       {/* Desktop Main Heading - Hidden on Mobile (visible from md+) */}
-      <h1 className="hidden md:block absolute top-[90px] md:left-[320px] lg:left-[380px] xl:left-[496px] w-[calc(100%-340px)] lg:w-auto max-w-[919px] [font-family:'Geist',Helvetica] font-medium text-[#7bb302] text-5xl md:text-6xl lg:text-8xl xl:text-[120px] tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4.5px] xl:tracking-[-5.76px] leading-[0.9] lg:leading-[normal] z-10">
+      <h1 className="hidden md:block absolute md:top-[70px] lg:top-[90px] xl:top-[90px] md:left-[260px] lg:left-[380px] xl:left-[496px] w-[calc(100%-300px)] lg:w-auto max-w-[919px] [font-family:'Geist',Helvetica] font-medium text-[#7bb302] text-5xl md:text-5xl lg:text-8xl xl:text-[120px] tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4.5px] xl:tracking-[-5.76px] leading-[0.9] lg:leading-[normal] z-10">
         ideas that stay
       </h1>
 
@@ -246,7 +246,7 @@ export const HeroBannerSection = (): JSX.Element => {
       </section>
 
       {/* Desktop Video Container - Fully Responsive (hidden on mobile, visible from md+) */}
-      <div className="hidden md:block relative lg:absolute top-auto md:top-[240px] lg:top-[280px] left-0 md:left-[50%] md:transform md:-translate-x-1/2 w-full max-w-[calc(100%-4rem)] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1320px] mx-auto mt-8 md:mt-0">
+      <div className="hidden md:block relative lg:absolute top-auto md:top-[280px] lg:top-[280px] xl:top-[280px] left-0 md:left-[50%] md:transform md:-translate-x-1/2 w-full max-w-[calc(100%-4rem)] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1320px] mx-auto mt-8 md:mt-0">
         {/* Aspect Ratio Container - 16:9 for mobile, custom for desktop */}
         <div className="relative w-full pb-[56.25%] md:pb-0 md:h-[450px] lg:h-[550px] xl:h-[700px] bg-[rgba(0,0,0,0.2)] rounded-[7px] sm:rounded-lg lg:rounded-3xl overflow-hidden will-change-transform">
           {/* Video Slides */}

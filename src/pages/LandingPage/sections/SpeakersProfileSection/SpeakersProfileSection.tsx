@@ -256,7 +256,7 @@ export const SpeakersProfileSection = (): JSX.Element => {
   return (
     <section id="speakers" className="relative w-full bg-white py-10 sm:py-12 md:py-16 lg:py-[60px] overflow-hidden" style={{ overflowX: 'hidden' }}>
       {/* Inner container with responsive padding - matches global layout only on web */}
-      <div className="w-full max-w-[1440px] mx-auto px-0 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         <div className="flex flex-col items-start gap-4 md:gap-6 lg:gap-8 relative w-full">
           <header className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
             <h2 className="relative w-full max-w-full lg:max-w-[721px] [font-family:'Geist',Helvetica] font-medium text-transparent text-3xl sm:text-4xl md:text-5xl lg:text-[52px] tracking-[0] leading-tight lg:leading-[70px]">
