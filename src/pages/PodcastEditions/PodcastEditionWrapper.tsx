@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { PodcastEditionPage } from "../PodcastEditionPage";
+import { PodcastEditionPage } from "./PodcastEditionPage";
 import { useEpisodeEdition } from "../../hooks/useEpisodeEdition";
 
 type EditionType = "singapore" | "dubai";
@@ -24,13 +24,13 @@ export const PodcastEditionWrapper = (): JSX.Element | null => {
   // Validate edition is one of the allowed values
   const validEdition = useMemo(() => {
     const isValid = edition === "singapore" || edition === "dubai";
-    
+
     if (!isValid && edition) {
       // Invalid edition - redirect to singapore
       navigate("/edition/singapore", { replace: true });
       return null;
     }
-    
+
     return isValid ? (edition as EditionType) : null;
   }, [edition, navigate]);
 
@@ -40,9 +40,9 @@ export const PodcastEditionWrapper = (): JSX.Element | null => {
   // Smooth scroll to top when edition changes
   useEffect(() => {
     if (validEdition) {
-      window.scrollTo({ 
-        top: 0, 
-        behavior: "smooth" 
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
       });
     }
   }, [validEdition]);

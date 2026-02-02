@@ -1,4 +1,4 @@
-import { PodcastEditionPage } from "../PodcastEditionPage";
+import { PodcastEditionPage } from "../PodcastEditions/PodcastEditionPage";
 import { useEpisodeEdition } from "../../hooks/useEpisodeEdition";
 
 /**

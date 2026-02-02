@@ -1,1 +1,0 @@
-export { HeroBannerSingapore } from "./HeroBannerSingapore";

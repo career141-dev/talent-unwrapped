@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ROUTES } from "../../constants";
+import { ROUTES } from "../../../constants";
 
 interface Edition {
   name: string;
@@ -23,7 +23,7 @@ export const EditionsDropdown = (): JSX.Element => {
       flag: "🇸🇬"
     },
     {
-      name: "Dubai Edition", 
+      name: "Dubai Edition",
       path: ROUTES.DUBAI,
       flag: "🇦🇪"
     }
@@ -77,7 +77,7 @@ export const EditionsDropdown = (): JSX.Element => {
   };
 
   return (
-    <div 
+    <div
       className="relative inline-block"
       ref={dropdownRef}
       onMouseEnter={!isMobile ? handleMouseEnter : undefined}
@@ -104,7 +104,7 @@ export const EditionsDropdown = (): JSX.Element => {
       </button>
 
       {isOpen && (
-        <div 
+        <div
           className="absolute top-full left-0 mt-3 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[102] animate-fade-in"
           onMouseEnter={!isMobile ? () => setIsHovered(true) : undefined}
           onMouseLeave={!isMobile ? () => setIsHovered(false) : undefined}
@@ -117,9 +117,8 @@ export const EditionsDropdown = (): JSX.Element => {
                 e.stopPropagation();
                 handleEditionSelect(edition);
               }}
-              className={`w-full px-4 py-3 text-left hover:bg-gray-50 transition-all duration-200 flex items-center gap-3 touch-manipulation ${
-                currentEdition?.path === edition.path ? 'bg-green-50 text-[#7bb302]' : 'text-[#232323]'
-              }`}
+              className={`w-full px-4 py-3 text-left hover:bg-gray-50 transition-all duration-200 flex items-center gap-3 touch-manipulation ${currentEdition?.path === edition.path ? 'bg-green-50 text-[#7bb302]' : 'text-[#232323]'
+                }`}
             >
               <span className="text-lg transition-transform duration-200 hover:scale-125">{edition.flag}</span>
               <div className="flex flex-col">

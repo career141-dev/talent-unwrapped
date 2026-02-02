@@ -14,7 +14,6 @@ export const LatestPodcastListSection = (): JSX.Element => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isManualScrollRef = useRef(true);

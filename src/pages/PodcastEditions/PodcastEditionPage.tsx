@@ -1,6 +1,6 @@
-import { EpisodeLayout, EditionType } from "../layouts/EpisodeLayout";
-import { Episode } from "../types";
-import { EpisodeCard } from "../components/sections/EpisodeCard";
+import { EpisodeLayout, EditionType } from "../../layouts/EpisodeLayout";
+import { Episode } from "../../types";
+import { EpisodeCard } from "./Components/EpisodeCard";
 
 interface PodcastEditionPageProps {
   edition: EditionType;

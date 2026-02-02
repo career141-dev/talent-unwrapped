@@ -1,1 +1,1 @@
-export { Schedule } from "./screens/Schedule";
+export { Schedule } from "./Screens/Schedule";

@@ -1,4 +1,4 @@
-import { Episode, EpisodeSpeaker } from "../../../types";
+import { Episode, EpisodeSpeaker } from "../../../../types";
 
 interface EpisodeCardProps {
   episode: Episode;

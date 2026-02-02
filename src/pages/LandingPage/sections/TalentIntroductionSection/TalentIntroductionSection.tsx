@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { LearnMoreModal } from "../../../../pages/Schedule/components";
-import { MobileCarouselSection } from "../../../../components/sections/MobileCarouselSection";
+import { LearnMoreModal } from "../../../../pages/Schedule/Components";
+import { MobileCarouselSection } from "../../../../components/Sections/MobileCarouselSection";
 
 export const TalentIntroductionSection = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,7 +41,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
       src: "https://c.animaapp.com/6IK4krLc/img/young-black-man-in-headphones-talking-in-microphon-2025-03-13-12@2x.png",
       alt: "Young black man in headphones",
       containerClass:
-        "absolute top-[50px] left-[180px] w-[120px] h-[84px] lg:top-72 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[106px] flex rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
+        "absolute top-[50px] left-[180px] w-[120px] h-[84px] z-0 lg:top-72 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[106px] flex rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
       imageClass:
         "w-full h-full object-cover scale-110 rotate-[-6.49deg] lg:mt-[-8.2px] lg:w-[162.7px] lg:h-[122.17px] lg:ml-[-5.5px]",
     },
@@ -51,7 +51,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
     <section className="relative w-full max-w-[1440px] min-h-[400px] md:min-h-[500px] lg:h-[1000px] bg-white pl-0 pr-4 sm:pr-6 md:pr-8 lg:pr-10 xl:pr-12 py-2 sm:py-3 md:py-4 lg:py-[8px] ml-0 mt-2 sm:mt-3 md:mt-4 lg:mt-6 mb-8 overflow-hidden" style={{ overflowX: 'hidden' }}>
 
       {/* Main Content Layout - Responsive Grid for Tablet, Absolute for Desktop */}
-      <div className="flex flex-col md:grid md:grid-cols-12 lg:block gap-8 lg:gap-0">
+      <div className="relative z-10 flex flex-col md:grid md:grid-cols-12 lg:block gap-8 lg:gap-0">
         <div className="md:col-span-4 lg:contents">
           <header className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-[120px] w-full lg:w-[203px] text-left mb-4 md:mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-[10px] md:text-base tracking-[-0.32px] leading-[normal] animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
             THE THREE CHAPTERS
@@ -69,7 +69,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
         </div>
 
         <div className="md:col-span-8 lg:contents">
-          <p className="relative lg:absolute top-auto lg:top-0 left-0 lg:left-[510px] w-full lg:w-[904px] max-w-full text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[44px] tracking-[-1px] lg:tracking-[-1.76px] leading-tight lg:leading-[normal] animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
+          <p className="relative lg:absolute top-auto lg:top-0 left-0 lg:left-[510px] w-full lg:w-[904px] max-w-full text-center lg:text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[44px] tracking-[-1px] lg:tracking-[-1.76px] leading-tight lg:leading-[normal] animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
             <span className="text-[#232323] tracking-[-0.77px]">
               Each episode of Talent Unwrapped: Singapore Edition{" "}
             </span>
@@ -80,9 +80,9 @@ export const TalentIntroductionSection = (): JSX.Element => {
             </span>
           </p>
 
-          <div className="flex lg:block items-center justify-start animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
+          <div className="flex lg:block items-center justify-center lg:justify-start animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
             <button
-              className="relative lg:absolute top-auto lg:top-[258px] left-0 lg:left-[510px] inline-flex h-12 md:h-[54px] items-center justify-center gap-2 px-4 md:px-5 py-3 md:py-4 bg-[#7bb302] rounded-[60px] cursor-pointer hover:bg-[#6da002] transition-colors mb-4 md:mb-0"
+              className="relative lg:absolute top-auto lg:top-[258px] left-0 lg:left-[510px] inline-flex h-12 md:h-[54px] items-center justify-center gap-2 px-4 md:px-5 py-3 md:py-4 bg-[#7bb302] rounded-[60px] cursor-pointer hover:bg-[#6da002] transition-colors mb-4 md:mb-0 mx-auto lg:mx-0"
               aria-label="More about the podcast"
             >
               <span className="relative w-fit mt-[-0.50px] [font-family:'Geist',Helvetica] font-semibold text-white text-sm md:text-base tracking-[-0.48px] leading-[normal]">

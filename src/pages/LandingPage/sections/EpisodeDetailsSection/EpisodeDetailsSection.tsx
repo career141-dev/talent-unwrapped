@@ -50,7 +50,6 @@ export const EpisodeDetailsSection = (): JSX.Element => {
 
   const [activeEpisode, setActiveEpisode] = useState<number>(1);
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -123,13 +122,11 @@ export const EpisodeDetailsSection = (): JSX.Element => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setIsAnimating(true);
             // Start the loop
             intervalRef.current = setInterval(() => {
               setActiveImageIndex((prev) => (prev + 1) % images.length);
             }, 3000); // Change image every 3 seconds
           } else {
-            setIsAnimating(false);
             // Stop the loop
             if (intervalRef.current) {
               clearInterval(intervalRef.current);

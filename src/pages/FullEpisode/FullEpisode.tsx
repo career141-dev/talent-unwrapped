@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { EpisodeLayout } from "../../layouts";
-import { ReelsSection, KeyQuestionsSection, ContactUsSection } from "../../components";
-import { SpeakersProfileSection } from "../LandingPage/sections/SpeakersProfileSection";
-import { EpisodeDetailsSection } from "../LandingPage/sections/EpisodeDetailsSection";
-import { TalentIntroductionSection } from "../LandingPage/sections/TalentIntroductionSection";
+import { ReelsSection, ContactUsSection } from "../../components";
+import { KeyQuestionsSection } from "./Sections/KeyQuestionsSection";
+import {
+  SpeakersProfileSection,
+  EpisodeDetailsSection,
+  TalentIntroductionSection
+} from "../LandingPage/Sections";
 import { SubmitFormSection } from "../../components";
 import { getVideoSlidesByEdition } from "../../data";
 
@@ -15,7 +18,7 @@ import { getVideoSlidesByEdition } from "../../data";
  * Now uses unified ContactUsSection across all pages
  */
 export const FullEpisode = (): JSX.Element => {
-  const { episodeId } = useParams();
+  useParams();
   const location = useLocation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -102,7 +105,7 @@ export const FullEpisode = (): JSX.Element => {
 
       {/* Hero Section with Video Carousel - RESPONSIVE */}
       <section ref={sectionRef} className="relative w-full bg-white pt-6 md:pt-8 lg:pt-10 pb-8 md:pb-12 lg:pb-16">
-        
+
         {/* Mobile Video Player - Matching Landing Page Design (visible only on mobile) */}
         <section className="block md:hidden flex flex-col flex-shrink-0 self-stretch w-full max-w-[397px] h-auto aspect-[351/175] items-start justify-around bg-[#00000033] rounded-[7.03px] overflow-hidden mx-auto mt-0 z-30 relative">
           {/* Video Thumbnail */}
@@ -183,11 +186,10 @@ export const FullEpisode = (): JSX.Element => {
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`rounded-full transition-all cursor-pointer touch-manipulation ${
-                    index === currentSlide
-                      ? "bg-white w-4 h-1.5"
-                      : "bg-white/50 hover:bg-white/75 w-2 h-1.5"
-                  }`}
+                  className={`rounded-full transition-all cursor-pointer touch-manipulation ${index === currentSlide
+                    ? "bg-white w-4 h-1.5"
+                    : "bg-white/50 hover:bg-white/75 w-2 h-1.5"
+                    }`}
                   aria-label={`Go to video ${index + 1}`}
                   aria-current={index === currentSlide ? "true" : "false"}
                 />
@@ -205,9 +207,8 @@ export const FullEpisode = (): JSX.Element => {
               {videoSlides.map((slide, index) => (
                 <div
                   key={slide.id}
-                  className={`absolute top-0 left-0 w-full h-full transition-opacity duration-700 ${
-                    index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-                  }`}
+                  className={`absolute top-0 left-0 w-full h-full transition-opacity duration-700 ${index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                    }`}
                 >
                   {isPlaying && index === currentSlide ? (
                     <video
@@ -311,11 +312,10 @@ export const FullEpisode = (): JSX.Element => {
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`h-1.5 sm:h-2 md:h-2.5 lg:h-3 rounded-full transition-all cursor-pointer touch-manipulation ${
-                    index === currentSlide
-                      ? "bg-white w-5 sm:w-6 md:w-7 lg:w-8"
-                      : "bg-white/50 hover:bg-white/75 w-1.5 sm:w-2 md:w-2.5 lg:w-3"
-                  }`}
+                  className={`h-1.5 sm:h-2 md:h-2.5 lg:h-3 rounded-full transition-all cursor-pointer touch-manipulation ${index === currentSlide
+                    ? "bg-white w-5 sm:w-6 md:w-7 lg:w-8"
+                    : "bg-white/50 hover:bg-white/75 w-1.5 sm:w-2 md:w-2.5 lg:w-3"
+                    }`}
                   aria-label={`Go to video ${index + 1}`}
                   aria-current={index === currentSlide ? "true" : "false"}
                 />

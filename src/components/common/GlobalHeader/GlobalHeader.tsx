@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { EditionsDropdown } from "../forms/EditionsDropdown";
+import { EditionsDropdown } from "../../Forms/EditionsDropdown";
 
 export const GlobalHeader = (): JSX.Element => {
   const navigate = useNavigate();
@@ -135,8 +135,8 @@ export const GlobalHeader = (): JSX.Element => {
                       item.action();
                     }}
                     className={`relative flex items-end justify-center w-fit mt-[-1.00px] [font-family:'Geist',Helvetica] font-normal text-sm xl:text-base text-center tracking-[-0.32px] leading-6 whitespace-nowrap transition-all duration-300 cursor-pointer border-none bg-transparent pb-1 ${activeNav === item.label
-                        ? "text-[#7bb302] font-semibold border-b-2 border-[#7bb302]"
-                        : "text-[#232323] hover:text-[#7bb302] hover:border-b-2 hover:border-[#7bb302]"
+                      ? "text-[#7bb302] font-semibold border-b-2 border-[#7bb302]"
+                      : "text-[#232323] hover:text-[#7bb302] hover:border-b-2 hover:border-[#7bb302]"
                       }`}
                   >
                     {item.label}
@@ -256,8 +256,8 @@ export const GlobalHeader = (): JSX.Element => {
                   item.action();
                 }}
                 className={`flex items-center justify-between w-full px-4 py-3 rounded-lg transition-all duration-200 text-left ${activeNav === item.label
-                    ? "bg-green-50 text-[#7bb302]"
-                    : "text-[#232323] hover:bg-gray-50"
+                  ? "bg-green-50 text-[#7bb302]"
+                  : "text-[#232323] hover:bg-gray-50"
                   }`}
               >
                 <span className="[font-family:'Geist',Helvetica] font-medium">

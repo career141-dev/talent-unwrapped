@@ -125,7 +125,7 @@ export const SubmitFormSection = (): JSX.Element => {
 
 
       {/* Right Side - Contact Form */}
-      <div className="flex flex-col items-start justify-center gap-0 relative w-full lg:w-[540px] h-auto lg:h-full lg:min-h-[550px] bg-white rounded-3xl shadow-lg p-0 lg:ml-0 mt-0 lg:mt-0 pb-14 lg:pb-20">
+      <div className="flex flex-col items-start justify-center gap-0 relative w-full lg:w-[540px] h-auto lg:h-full lg:min-h-[550px] bg-white rounded-3xl shadow-[0px_10px_30px_rgba(0,0,0,0.08)] p-6 sm:p-10 lg:p-12 lg:ml-0 mt-0 lg:mt-0">
         <form
           onSubmit={handleSubmit}
           className="flex flex-col items-start gap-[26px] relative self-stretch w-full"

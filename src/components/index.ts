@@ -1,8 +1,8 @@
 // Common components
-export { GlobalHeader } from "./common";
+export { GlobalHeader } from "./Common";
 
 // Section components
-export { ReelsSection, SubmitFormSection, AboutSection, KeyQuestionsSection, FooterSection, ContactUsSection } from "./sections";
+export { ReelsSection, SubmitFormSection, FooterSection, ContactUsSection } from "./Sections";
 
 // Form components
-export { EditionsDropdown } from "./forms";
+export { EditionsDropdown } from "./Forms";
