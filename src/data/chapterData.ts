@@ -1,36 +1,85 @@
 import { Episode } from "../types";
 
-// The Three Chapters data - used in TheThreeChaptersSection
-export const THREE_CHAPTERS: Episode[] = [
-  {
-    id: 1,
-    title: "Leadership Reimagined: ",
-    subtitle:
-      "Building Mental Toughness, Culture, and Agility for the Future of Work",
-    videoIcon:
-      "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle-1.svg",
-    exportIcon:
-      "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+// Edition-specific content structure
+export const EDITION_CONTENT = {
+  singapore: {
+    name: "Singapore",
+    schedule: {
+      date: "12th, 13th Nov 2025",
+      dateTime: "2025-11-12",
+    },
+    chapters: [
+      {
+        id: 1,
+        title: "Leadership Reimagined: ",
+        subtitle:
+          "Building Mental Toughness, Culture, and Agility for the Future of Work",
+        videoIcon:
+          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle-1.svg",
+        exportIcon:
+          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+      },
+      {
+        id: 2,
+        title: "Beyond Resilience: ",
+        subtitle: "Redefining Leadership Strength and Organizational Agility",
+        videoIcon:
+          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle.svg",
+        exportIcon:
+          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+      },
+      {
+        id: 3,
+        title: "The Human Blueprint: ",
+        subtitle: "Rethinking Leadership for an Intelligent Age",
+        videoIcon:
+          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle.svg",
+        exportIcon:
+          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+      },
+    ],
   },
-  {
-    id: 2,
-    title: "Beyond Resilience: ",
-    subtitle: "Redefining Leadership Strength and Organizational Agility",
-    videoIcon:
-      "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle.svg",
-    exportIcon:
-      "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+  dubai: {
+    name: "Dubai",
+    schedule: {
+      date: "15th, 16th Dec 2025",
+      dateTime: "2025-12-15",
+    },
+    chapters: [
+      {
+        id: 1,
+        title: "Innovation in Leadership: ",
+        subtitle:
+          "Transforming Business Culture in the Middle East",
+        videoIcon:
+          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle-1.svg",
+        exportIcon:
+          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+      },
+      {
+        id: 2,
+        title: "Digital Transformation: ",
+        subtitle: "Leading Change in a Rapidly Evolving Landscape",
+        videoIcon:
+          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle.svg",
+        exportIcon:
+          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+      },
+      {
+        id: 3,
+        title: "Global Vision: ",
+        subtitle: "Building Bridges Between East and West",
+        videoIcon:
+          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle.svg",
+        exportIcon:
+          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+      },
+    ],
   },
-  {
-    id: 3,
-    title: "The Human Blueprint: ",
-    subtitle: "Rethinking Leadership for an Intelligent Age",
-    videoIcon:
-      "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle.svg",
-    exportIcon:
-      "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
-  },
-];
+};
+
+// Legacy export for backwards compatibility
+export const THREE_CHAPTERS: Episode[] = EDITION_CONTENT.singapore.chapters;
 
 // Position map for layout adjustments by edition
 export const POSITION_MAP = {
@@ -60,4 +109,8 @@ export const getPositionsByEdition = (
 
 export const getEditionName = (edition: "dubai" | "singapore"): string => {
   return edition === "dubai" ? "Dubai Edition" : "Singapore Edition";
+};
+
+export const getEditionContent = (edition: "dubai" | "singapore") => {
+  return EDITION_CONTENT[edition] || EDITION_CONTENT.singapore;
 };

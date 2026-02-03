@@ -4,8 +4,7 @@ import { EpisodeLayout } from "../../layouts/EpisodeLayout";
 import { EpisodeCard } from "../PodcastEditions/Components/EpisodeCard";
 import { DUBAI_EPISODES, SINGAPORE_EPISODES } from "../../data/episodeData";
 import { ReelsSection } from "../../components/Sections/ReelsSection";
-
-import { TheThreeChaptersSection } from "../../pages/PodcastEditions/Sections/TheThreeChaptersSection/TheThreeChaptersSection";
+import { TalentIntroductionSection } from "../LandingPage/Sections/TalentIntroductionSection/TalentIntroductionSection";
 
 export const EpisodesPage = (): JSX.Element => {
     const navigate = useNavigate();
@@ -24,6 +23,7 @@ export const EpisodesPage = (): JSX.Element => {
     };
 
     return (
+        <>
         <EpisodeLayout showChapters={false} showContact showFooter>
             <section
                 id="episodes"
@@ -96,11 +96,9 @@ export const EpisodesPage = (): JSX.Element => {
                 <ReelsSection />
             </section>
 
-            {/* The Three Chapters Section - "Three Chapter" */}
-            <TheThreeChaptersSection edition={filter === "singapore" ? "singapore" : "dubai"} />
-
-
-
+            {/* The Three Chapters Section with Edition Filter */}
+            <TalentIntroductionSection isEpisodesPage={true} />
         </EpisodeLayout >
+    </>
     );
 };

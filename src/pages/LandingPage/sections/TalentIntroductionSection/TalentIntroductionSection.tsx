@@ -1,30 +1,15 @@
 import { useState } from "react";
 import { LearnMoreModal } from "../../../../pages/Schedule/Components";
 import { MobileCarouselSection } from "../../../../components/Sections/MobileCarouselSection";
+import { EditionFilter } from "../../../../components/UI/EditionFilter";
+import { getEditionContent } from "../../../../data";
 
 export const TalentIntroductionSection = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const chapters = [
-    {
-      id: 1,
-      title: "Leadership Reimagined:",
-      subtitle:
-        "Building Mental Toughness, Culture, and Agility for the Future of Work",
-      link: "#",
-    },
-    {
-      id: 2,
-      title: "Beyond Resilience:",
-      subtitle: "Redefining Leadership Strength and Organizational Agility",
-      link: "#",
-    },
-    {
-      id: 3,
-      title: "The Human Blueprint:",
-      subtitle: "Rethinking Leadership for an Intelligent Age",
-      link: "#",
-    },
-  ];
+  const [selectedEdition, setSelectedEdition] = useState<"singapore" | "dubai">("singapore");
+  
+  const editionData = getEditionContent(selectedEdition);
+  const { name: editionName, schedule, chapters } = editionData;
 
   const decorativeImages = [
     {
@@ -41,7 +26,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
       src: "https://c.animaapp.com/6IK4krLc/img/young-black-man-in-headphones-talking-in-microphon-2025-03-13-12@2x.png",
       alt: "Young black man in headphones",
       containerClass:
-        "absolute top-[60px] left-[180px] w-[120px] h-[84px] z-0 md:hidden lg:flex lg:top-52 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
+        "absolute top-[30px] left-[200px] w-[120px] h-[84px] z-0 md:hidden lg:flex lg:top-52 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
       imageClass:
         "w-full h-full object-cover scale-110 rotate-[-6.49deg] lg:mt-[-8.2px] lg:w-[162.7px] lg:h-[122.17px] lg:ml-[-5.5px]",
     },
@@ -54,9 +39,9 @@ export const TalentIntroductionSection = (): JSX.Element => {
         overflowX: 'hidden',
         paddingLeft: 'clamp(16px, 4vw, 120px)',
         paddingRight: 'clamp(16px, 4vw, 120px)',
-        paddingTop: 'clamp(32px, 6vw, 80px)',
-        paddingBottom: 'clamp(30px, 4vw, 60px)',
-        marginTop: 'clamp(16px, 3vw, 48px)',
+        paddingTop: 'clamp(8px, 1vw, 20px)',
+        paddingBottom: 'clamp(8px, 1vw, 20px)',
+        marginTop: '40px',
         marginBottom: '0px',
         minHeight: 'clamp(400px, 50vh, 600px)',
       }}
@@ -84,7 +69,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
         <div className="md:col-span-8 lg:contents">
           <p className="relative lg:absolute top-auto lg:top-0 left-0 lg:left-[400px] w-full lg:w-[904px] max-w-full text-center lg:text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-medium text-transparent text-[18px] sm:text-[22px] md:text-[26px] lg:text-[32px] xl:text-[36px] tracking-[-0.02em] sm:tracking-[-0.025em] lg:tracking-[-0.03em] leading-[1.3] sm:leading-[1.35] lg:leading-[1.4] animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
             <span className="text-[#232323] tracking-[-0.77px]">
-              Each episode of Talent Unwrapped: Singapore Edition{" "}
+              Each episode of Talent Unwrapped: {editionName} Edition{" "}
             </span>
 
             <span className="text-[#8d8d8d] tracking-[-0.77px]">
@@ -95,6 +80,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
 
           <div className="flex lg:block items-center justify-center lg:justify-start animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
             <button
+              onClick={() => setIsModalOpen(true)}
               className="relative lg:absolute top-auto lg:top-[258px] left-0 lg:left-[400px] inline-flex h-12 md:h-[54px] items-center justify-center gap-2 px-4 md:px-5 py-3 md:py-4 bg-[#7bb302] rounded-[60px] cursor-pointer hover:bg-[#6da002] transition-colors mb-4 md:mb-0 mx-auto lg:mx-0"
               aria-label="More about the podcast"
             >
@@ -112,34 +98,43 @@ export const TalentIntroductionSection = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="flex flex-col w-full items-start gap-2 relative lg:absolute top-auto lg:top-[478px] left-0 lg:left-[120px] text-left mb-6 lg:ml-0 lg:pl-0">
-        <p className="relative w-full max-w-none lg:w-auto lg:absolute lg:left-0 [font-family:'Geist',Helvetica] font-medium text-[16px] sm:text-[20px] lg:text-[26px] leading-[20px] sm:leading-[24px] lg:leading-[32px] whitespace-nowrap">
-          <span className="text-[#7cb403]">Pods scheduled for: </span>
-          <time className="text-[#ed2939]" dateTime="2025-11-12">
-            12th, 13th Nov 2025
+      {/* Edition Filter - Right Aligned */}
+      <div className="relative lg:absolute top-auto lg:top-[478px] right-0 lg:right-[10px] mb-4 lg:mb-0 flex justify-center sm:justify-end px-4 sm:px-6 md:px-8 lg:px-0">
+        <EditionFilter 
+          selectedEdition={selectedEdition} 
+          onEditionChange={setSelectedEdition} 
+        />
+      </div>
+
+      <div className="flex flex-col w-full items-start gap-2 relative lg:absolute top-auto lg:top-[478px] left-0 lg:left-[120px] text-left mb-6 lg:ml-0 px-4 sm:px-6 md:px-8 lg:px-0">
+        <p className="relative w-full max-w-none lg:w-auto lg:absolute lg:left-0 [font-family:'Geist',Helvetica] font-medium text-[20px] sm:text-[24px] lg:text-[32px] leading-[24px] sm:leading-[28px] lg:leading-[38px] whitespace-normal lg:whitespace-nowrap">
+          <span className="text-[#7cb403]">Pods scheduled for: {editionName} Edition </span>
+          <time className="text-[#ed2939]" dateTime={schedule.dateTime}>
+            {schedule.date}
           </time>
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6 relative lg:absolute top-auto lg:top-[589px] left-0 lg:right-0 lg:mx-auto w-full lg:w-fit overflow-x-hidden scrollbar-hide">
+      <div className="flex flex-col lg:flex-row items-center justify-start gap-4 lg:gap-8 relative lg:absolute top-auto lg:top-[589px] left-0 lg:right-0 lg:left-[120px] w-full lg:w-auto overflow-x-hidden scrollbar-hide pl-4 sm:pl-6 md:pl-8 lg:pl-0">
         {/* Mobile Carousel - Only visible on mobile */}
         <div className="lg:hidden w-full mb-8">
           <MobileCarouselSection
             podcastCards={chapters.map(c => ({
-              id: c.id,
+              id: Number(c.id),
               title: c.title,
-              subtitle: c.subtitle
+              subtitle: c.subtitle || ""
             }))}
             onLearnMore={() => setIsModalOpen(true)}
           />
         </div>
 
         {/* Desktop Cards - Only visible on lg+ */}
-        <div className="hidden lg:flex gap-6 w-full lg:w-auto">
+        <div className="hidden lg:flex gap-8 w-full lg:w-auto">
           {chapters.map((chapter) => (
             <article
               key={chapter.id}
-              className="relative w-full max-w-[400px] lg:w-[424px] h-[320px] lg:h-[372px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[28px] overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-white cursor-pointer"
+              className="relative w-full max-w-[360px] lg:w-[380px] h-[260px] lg:h-[280px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[24px] transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-white cursor-pointer"
+              style={{ overflow: 'visible' }}
             >
               <div
                 className="inline-flex items-center gap-2 lg:gap-2.5 p-2 lg:p-3 absolute top-4 lg:top-6 left-4 lg:left-6 bg-[#7bb302] rounded-[40px]"
@@ -148,11 +143,11 @@ export const TalentIntroductionSection = (): JSX.Element => {
                 <img
                   className="relative w-5 h-5 lg:w-6 lg:h-6"
                   alt=""
-                  src="https://c.animaapp.com/6IK4krLc/img/vuesax-bold-video-circle-2.svg"
+                  src={chapter.videoIcon || "https://c.animaapp.com/6IK4krLc/img/vuesax-bold-video-circle-2.svg"}
                 />
               </div>
 
-              <div className="flex flex-col w-[calc(100%-2rem)] lg:w-[376px] items-start justify-start gap-4 lg:gap-5 absolute top-20 lg:top-28 left-4 lg:left-6">
+              <div className="flex flex-col w-[calc(100%-2rem)] lg:w-[340px] items-start justify-start gap-3 lg:gap-4 absolute top-16 lg:top-20 left-4 lg:left-6" style={{ overflow: 'hidden' }}>
                 <div className="flex items-center gap-2 lg:gap-2.5 pt-0 pb-2 lg:pb-3 px-0 relative self-stretch w-full flex-[0_0_auto] border-b [border-bottom-style:solid] border-neutral-200">
                   <h3 className="relative w-full mt-[-1.00px] [font-family:'Geist',Helvetica] font-medium text-transparent text-base sm:text-lg lg:text-[22px] tracking-[-0.5px] lg:tracking-[-0.88px] leading-tight lg:leading-[normal]">
                     <span className="text-[#7bb302] tracking-[-0.29px]">
@@ -174,14 +169,14 @@ export const TalentIntroductionSection = (): JSX.Element => {
               </div>
 
               <a
-                href={chapter.link}
+                href="#"
                 className="absolute top-6 lg:top-9 right-4 lg:right-6 w-5 h-5 lg:w-6 lg:h-6"
                 aria-label={`External link for ${chapter.title}`}
               >
                 <img
                   className="w-full h-full"
                   alt=""
-                  src="https://c.animaapp.com/6IK4krLc/img/vuesax-linear-export-2.svg"
+                  src={chapter.exportIcon || "https://c.animaapp.com/6IK4krLc/img/vuesax-linear-export-2.svg"}
                 />
               </a>
             </article>

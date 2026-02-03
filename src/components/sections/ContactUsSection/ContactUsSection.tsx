@@ -123,7 +123,7 @@ export const ContactUsSection = (): JSX.Element => {
         </header>
 
         {/* Links Grid - All columns on same line across all devices */}
-        <div className="grid grid-cols-3 lg:flex lg:flex-row items-start gap-16 sm:gap-28 md:gap-32 lg:gap-[260px] relative flex-[0_0_auto] w-full">
+        <div className="grid grid-cols-3 lg:flex lg:flex-row items-start gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16 relative flex-[0_0_auto] w-full">
           {footerSections.map((section, sectionIndex) => (
             <div
               key={sectionIndex}
@@ -141,7 +141,7 @@ export const ContactUsSection = (): JSX.Element => {
                       onClick={link.onClick}
                       target={link.external ? "_blank" : undefined}
                       rel={link.external ? "noopener noreferrer" : undefined}
-                      className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px] tracking-[-0.32px] leading-[18px] sm:leading-[20px] lg:leading-[24px] hover:text-[#222223] transition-all duration-300 hover:translate-x-1 inline-block break-words"
+                      className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px] tracking-[-0.32px] leading-[18px] sm:leading-[20px] lg:leading-[24px] hover:text-[#222223] transition-all duration-300 hover:translate-x-1 inline-block break-words whitespace-normal"
                     >
                       {link.label}
                     </a>

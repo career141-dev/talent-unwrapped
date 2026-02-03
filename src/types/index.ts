@@ -52,6 +52,7 @@ export interface VideoSlide {
 // Props for TheThreeChaptersSection component
 export interface TheThreeChaptersSectionProps {
   edition?: "dubai" | "singapore";
+  hideTopSection?: boolean;
 }
 
 // Contact form data

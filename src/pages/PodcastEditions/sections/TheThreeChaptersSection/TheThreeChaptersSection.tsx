@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { TheThreeChaptersSectionProps } from "../../../../types";
-import { getThreeChapters, getEditionName } from "../../../../data";
+import { getEditionContent } from "../../../../data";
 import { MobileCarouselSection } from "../../../../components/Sections/MobileCarouselSection";
 import { LearnMoreModal } from "../../../../pages/Schedule/Components";
 
 /**
- * TheThreeChaptersSection - Matches TalentIntroductionSection layout exactly
- * Only edition name and dates change dynamically
+ * TheThreeChaptersSection - Complete section
+ * Shows specific edition content without filter
  */
 export const TheThreeChaptersSection = ({
   edition = "singapore",
+  hideTopSection = false,
 }: TheThreeChaptersSectionProps): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const episodes = getThreeChapters();
-  const editionName = getEditionName(edition);
+  
+  const editionData = getEditionContent(edition);
+  const { name: editionName, schedule, chapters } = editionData;
 
   const decorativeImages = [
     {
@@ -43,17 +45,19 @@ export const TheThreeChaptersSection = ({
         overflowX: 'hidden',
         paddingLeft: 'clamp(16px, 4vw, 120px)',
         paddingRight: 'clamp(16px, 4vw, 120px)',
-        paddingTop: 'clamp(32px, 6vw, 80px)',
-        paddingBottom: 'clamp(30px, 4vw, 60px)',
-        marginTop: 'clamp(16px, 3vw, 48px)',
+        paddingTop: 'clamp(8px, 1vw, 20px)',
+        paddingBottom: 'clamp(8px, 1vw, 20px)',
+        marginTop: '40px',
         marginBottom: '0px',
         minHeight: 'clamp(400px, 50vh, 600px)',
       }}
     >
-      <div className="lg:h-auto lg:min-h-[900px]">
+      <div className={hideTopSection ? 'lg:h-auto' : 'lg:h-auto lg:min-h-[900px]'}>
 
       {/* Main Content Layout - Responsive Grid for Tablet, Absolute for Desktop */}
-      <div className="relative z-10 flex flex-col md:grid md:grid-cols-12 lg:block gap-8 lg:gap-0">
+      <div className={`relative z-10 flex flex-col md:grid md:grid-cols-12 lg:block ${hideTopSection ? '' : 'gap-8 lg:gap-0'}`}>
+        {!hideTopSection && (
+        <>
         <div className="md:col-span-4 lg:contents">
           <header className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-[10px] w-full lg:w-[203px] text-left mb-4 md:mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-[8px] md:text-sm tracking-[-0.32px] leading-[normal] animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
             THE THREE CHAPTERS
@@ -100,22 +104,24 @@ export const TheThreeChaptersSection = ({
             </button>
           </div>
         </div>
+        </>
+        )}
       </div>
 
-      <div className="flex flex-col w-full items-start gap-2 relative lg:absolute top-auto lg:top-[478px] left-0 lg:left-[10px] text-left mt-8 sm:mt-10 md:mt-12 lg:mt-0 mb-6 lg:ml-0 pl-4 sm:pl-6 md:pl-8 lg:pl-0">
-        <p className="relative w-full max-w-none lg:w-auto lg:absolute lg:left-0 [font-family:'Geist',Helvetica] font-medium text-[16px] sm:text-[18px] md:text-[22px] lg:text-[28px] leading-[22px] sm:leading-[24px] md:leading-[26px] lg:leading-[32px] whitespace-normal lg:whitespace-nowrap">
+      <div className={`flex flex-col w-full items-start gap-2 relative lg:absolute top-auto ${hideTopSection ? 'lg:top-0' : 'lg:top-[478px]'} left-0 lg:left-[120px] text-left ${hideTopSection ? 'mt-0' : 'mt-8 sm:mt-10 md:mt-12 lg:mt-0'} mb-6 lg:ml-0 pl-4 sm:pl-6 md:pl-8 lg:pl-0`}>
+        <p className="relative w-full max-w-none lg:w-auto [font-family:'Geist',Helvetica] font-medium text-[20px] sm:text-[24px] md:text-[28px] lg:text-[36px] leading-[24px] sm:leading-[28px] md:leading-[32px] lg:leading-[42px] whitespace-normal lg:whitespace-nowrap">
           <span className="text-[#7cb403]">Pods scheduled for: {editionName} Edition </span>
-          <time className="text-[#ed2939]" dateTime="2025-11-12">
-            12th, 13th Nov 2025
+          <time className="text-[#ed2939]" dateTime={schedule.dateTime}>
+            {schedule.date}
           </time>
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6 relative lg:absolute top-auto lg:top-[589px] left-0 lg:right-0 lg:mx-auto w-full lg:w-fit overflow-x-hidden scrollbar-hide">
+      <div className={`flex flex-col lg:flex-row items-center justify-start gap-4 lg:gap-8 relative lg:absolute top-auto ${hideTopSection ? 'lg:top-[60px]' : 'lg:top-[589px]'} left-0 lg:left-[120px] w-full lg:w-auto overflow-x-hidden scrollbar-hide pl-4 sm:pl-6 md:pl-8 lg:pl-0`}>
         {/* Mobile Carousel - Only visible on mobile */}
         <div className="lg:hidden w-full mb-8">
           <MobileCarouselSection
-            podcastCards={episodes.map(ep => ({
+            podcastCards={chapters.map(ep => ({
               id: Number(ep.id),
               title: ep.title,
               subtitle: ep.subtitle || ""
@@ -125,11 +131,12 @@ export const TheThreeChaptersSection = ({
         </div>
 
         {/* Desktop Cards - Only visible on lg+ */}
-        <div className="hidden lg:flex gap-6 w-full lg:w-auto">
-          {episodes.map((episode) => (
+        <div className="hidden lg:flex gap-8 w-full lg:w-auto">
+          {chapters.map((episode) => (
             <article
               key={episode.id}
-              className="relative w-full max-w-[400px] lg:w-[424px] h-[320px] lg:h-[372px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[28px] overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-white cursor-pointer"
+              className="relative w-full max-w-[360px] lg:w-[380px] h-[260px] lg:h-[280px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[24px] transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-white cursor-pointer"
+              style={{ overflow: 'visible' }}
             >
               <div
                 className="inline-flex items-center gap-2 lg:gap-2.5 p-2 lg:p-3 absolute top-4 lg:top-6 left-4 lg:left-6 bg-[#7bb302] rounded-[40px]"
@@ -142,7 +149,7 @@ export const TheThreeChaptersSection = ({
                 />
               </div>
 
-              <div className="flex flex-col w-[calc(100%-2rem)] lg:w-[376px] items-start justify-start gap-4 lg:gap-5 absolute top-20 lg:top-28 left-4 lg:left-6">
+              <div className="flex flex-col w-[calc(100%-2rem)] lg:w-[340px] items-start justify-start gap-3 lg:gap-4 absolute top-16 lg:top-20 left-4 lg:left-6" style={{ overflow: 'hidden' }}>
                 <div className="flex items-center gap-2 lg:gap-2.5 pt-0 pb-2 lg:pb-3 px-0 relative self-stretch w-full flex-[0_0_auto] border-b [border-bottom-style:solid] border-neutral-200">
                   <h3 className="relative w-full mt-[-1.00px] [font-family:'Geist',Helvetica] font-medium text-transparent text-base sm:text-lg lg:text-[22px] tracking-[-0.5px] lg:tracking-[-1.08px] leading-tight lg:leading-[normal]">
                     <span className="text-[#7bb302] tracking-[-0.29px]">
@@ -179,7 +186,7 @@ export const TheThreeChaptersSection = ({
         </div>
       </div>
 
-      {decorativeImages.map((image) => (
+      {!hideTopSection && decorativeImages.map((image) => (
         <div key={image.id} className={`${image.containerClass}`} aria-hidden="true">
           <img className={image.imageClass} alt={image.alt} src={image.src} />
         </div>

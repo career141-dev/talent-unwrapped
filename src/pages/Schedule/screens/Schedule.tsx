@@ -22,7 +22,7 @@ export const Schedule = (): JSX.Element => {
         <TheThreeChaptersSection edition="singapore" />
 
         {/* Dubai Edition - Three Chapters */}
-        <TheThreeChaptersSection edition="dubai" />
+        <TheThreeChaptersSection edition="dubai" hideTopSection={true} />
       </div>
 
       {/* About Us Section */}

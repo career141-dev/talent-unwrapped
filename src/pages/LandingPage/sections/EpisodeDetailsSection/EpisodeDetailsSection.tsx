@@ -158,11 +158,11 @@ export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetails
     <>
     <section
       ref={sectionRef}
-      className={`relative w-full bg-white py-4 sm:py-8 md:py-12 lg:py-[50px] mt-2 sm:mt-8 md:mt-12 lg:mt-[70px] min-h-0 ${isEpisodesPage ? "sm:min-h-[500px]" : "sm:min-h-[900px]"
+      className={`relative w-full bg-white py-4 sm:py-8 md:py-12 lg:py-[50px] mt-2 sm:mt-8 md:mt-12 lg:mt-[70px] min-h-0 overflow-hidden ${isEpisodesPage ? "sm:min-h-[500px]" : "sm:min-h-[900px]"
         }`}
       aria-labelledby="episode-details-heading"
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative">
       {/* Blockquote and Heading side by side on large screens */}
       {/* Blockquote and Heading side by side on large screens - Hidden on Episodes Page */}
       {!isEpisodesPage && (
@@ -185,7 +185,7 @@ export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetails
               </p>
             </div>
           </div>
-          <blockquote className="block static w-full max-w-full sm:max-w-[400px] md:max-w-[500px] lg:max-w-[420px] ml-0 mr-auto [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg tracking-[-0.64px] leading-[normal] z-10 p-3 sm:p-4 bg-white/80 rounded-xl shadow-md mb-4 lg:mb-0">
+          <blockquote className="block static w-full max-w-full sm:max-w-[400px] md:max-w-[500px] lg:max-w-[420px] ml-0 mr-auto [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg tracking-[-0.64px] leading-[normal] z-10 mb-4 lg:mb-0">
             &quot;Be seen, not as a speaker — but as a story. Join a curated circle
             of founders, thinkers, and changemakers shaping how humans thrive in
             work and life. We&apos;re looking for voices who don&apos;t just lead —
@@ -270,6 +270,12 @@ export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetails
       {!isEpisodesPage && (
         <div className="relative w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden z-10 mt-8 lg:mt-[-200px]" aria-hidden="true">
           <div className="flex animate-infinite-scroll whitespace-nowrap">
+            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
+              lets unwrap your story
+            </span>
+            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
+              lets unwrap your story
+            </span>
             <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
               lets unwrap your story
             </span>
