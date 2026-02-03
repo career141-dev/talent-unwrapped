@@ -95,9 +95,9 @@ export const ContactUsSection = (): JSX.Element => {
       className="flex w-full max-w-[1440px] flex-col lg:flex-row items-center justify-center gap-8 lg:gap-[60px] pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative bg-white mx-auto"
     >
       {/* Image Section - Fully Responsive */}
-      <div className={`relative w-full lg:flex-1 h-[200px] sm:h-[250px] md:h-[300px] lg:h-[400px] rounded-2xl lg:rounded-3xl overflow-hidden bg-[linear-gradient(0deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)] transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+      <div className={`relative w-full lg:flex-1 h-[150px] sm:h-[180px] md:h-[220px] lg:h-[280px] rounded-2xl lg:rounded-3xl overflow-hidden bg-[linear-gradient(0deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)] transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
         <img
-          className="absolute top-[20px] sm:top-[30px] lg:top-[42px] left-0 w-full max-w-[734px] h-auto object-cover hover:scale-105 transition-transform duration-500"
+          className="absolute top-[15px] sm:top-[20px] lg:top-[30px] left-0 w-full max-w-[734px] h-auto object-cover hover:scale-105 transition-transform duration-500"
           alt="Career 4U 20 Years Anniversary Logo"
           src="https://c.animaapp.com/mkmm0u1u5wob0l/img/artboard-3-1.png"
         />
@@ -110,7 +110,7 @@ export const ContactUsSection = (): JSX.Element => {
       >
         {/* Header with Title and Icon */}
         <header className="flex w-full items-center justify-between px-0 py-4 lg:py-5 mb-6 lg:mb-8 relative flex-[0_0_auto] border-b [border-bottom-style:solid] border-[#e5e2e2]">
-          <h2 className="w-fit text-black text-2xl sm:text-3xl md:text-4xl lg:text-[44px] tracking-[-1px] lg:tracking-[-1.32px] leading-tight lg:leading-[57.6px] whitespace-nowrap relative [font-family:'Geist',Helvetica] font-normal">
+          <h2 className="w-fit text-black text-3xl sm:text-4xl md:text-5xl lg:text-[56px] tracking-[-1px] lg:tracking-[-1.32px] leading-tight lg:leading-[57.6px] whitespace-nowrap relative [font-family:'Geist',Helvetica] font-normal">
             About Us
           </h2>
 
@@ -123,13 +123,13 @@ export const ContactUsSection = (): JSX.Element => {
         </header>
 
         {/* Links Grid - All columns on same line across all devices */}
-        <div className="grid grid-cols-3 lg:flex lg:flex-row items-start gap-4 sm:gap-8 md:gap-10 lg:gap-[80px] relative flex-[0_0_auto] w-full">
+        <div className="grid grid-cols-3 lg:flex lg:flex-row items-start gap-16 sm:gap-28 md:gap-32 lg:gap-[260px] relative flex-[0_0_auto] w-full">
           {footerSections.map((section, sectionIndex) => (
             <div
               key={sectionIndex}
               className="flex flex-col w-full items-start gap-3 sm:gap-4 lg:gap-5 relative"
             >
-              <h3 className="relative w-full [font-family:'Geist',Helvetica] font-medium text-[#222223] text-[12px] sm:text-[15px] lg:text-[17px] tracking-[-0.32px] leading-[18px] sm:leading-[20px] lg:leading-[22px]">
+              <h3 className="relative w-full [font-family:'Geist',Helvetica] font-medium text-[#222223] text-[14px] sm:text-[17px] lg:text-[20px] tracking-[-0.32px] leading-[20px] sm:leading-[22px] lg:leading-[26px]">
                 {section.title}
               </h3>
 
@@ -141,7 +141,7 @@ export const ContactUsSection = (): JSX.Element => {
                       onClick={link.onClick}
                       target={link.external ? "_blank" : undefined}
                       rel={link.external ? "noopener noreferrer" : undefined}
-                      className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-[11px] sm:text-[13px] md:text-[15px] lg:text-[16px] tracking-[-0.32px] leading-[16px] sm:leading-[18px] lg:leading-[20.9px] hover:text-[#222223] transition-all duration-300 hover:translate-x-1 inline-block break-words"
+                      className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-[13px] sm:text-[15px] md:text-[17px] lg:text-[18px] tracking-[-0.32px] leading-[18px] sm:leading-[20px] lg:leading-[24px] hover:text-[#222223] transition-all duration-300 hover:translate-x-1 inline-block break-words"
                     >
                       {link.label}
                     </a>

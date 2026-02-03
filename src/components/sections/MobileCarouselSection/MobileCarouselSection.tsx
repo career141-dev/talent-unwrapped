@@ -59,37 +59,31 @@ export const MobileCarouselSection = ({
         const container = scrollContainerRef.current;
         if (!container) return;
 
-        let timeoutId: NodeJS.Timeout;
-
         const handleScroll = () => {
             if (isScrollingRef.current) return;
 
-            clearTimeout(timeoutId);
-            timeoutId = setTimeout(() => {
-                const containerCenter = container.scrollLeft + container.offsetWidth / 2;
+            const containerCenter = container.scrollLeft + container.offsetWidth / 2;
 
-                let closestIndex = 0;
-                let closestDistance = Infinity;
+            let closestIndex = 0;
+            let closestDistance = Infinity;
 
-                slideRefs.current.forEach((slide, index) => {
-                    if (!slide) return;
-                    const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
-                    const distance = Math.abs(containerCenter - slideCenter);
+            slideRefs.current.forEach((slide, index) => {
+                if (!slide) return;
+                const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+                const distance = Math.abs(containerCenter - slideCenter);
 
-                    if (distance < closestDistance) {
-                        closestDistance = distance;
-                        closestIndex = index;
-                    }
-                });
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIndex = index;
+                }
+            });
 
-                setActiveIndex(closestIndex);
-            }, 100);
+            setActiveIndex(closestIndex);
         };
 
-        container.addEventListener("scroll", handleScroll);
+        container.addEventListener("scroll", handleScroll, { passive: true });
         return () => {
             container.removeEventListener("scroll", handleScroll);
-            clearTimeout(timeoutId);
         };
     }, []);
 
@@ -99,6 +93,8 @@ export const MobileCarouselSection = ({
         const slide = slideRefs.current[index];
         if (!container || !slide) return;
 
+        // Set active immediately
+        setActiveIndex(index);
         isScrollingRef.current = true;
 
         const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
@@ -112,8 +108,7 @@ export const MobileCarouselSection = ({
 
         setTimeout(() => {
             isScrollingRef.current = false;
-            setActiveIndex(index);
-        }, 500);
+        }, 150);
     };
 
     // Hide scrollbar and enable smooth scrolling
@@ -135,36 +130,37 @@ export const MobileCarouselSection = ({
     }, []);
 
     return (
-        <div className="relative w-full h-[283px] bg-white overflow-hidden">
+        <div className="relative w-full h-[310px] bg-white overflow-visible flex flex-col items-center justify-start py-2">
             {/* Carousel Container */}
             <div
                 ref={scrollContainerRef}
-                className="relative w-full h-[260px] overflow-x-scroll overflow-y-hidden snap-x snap-mandatory scrollbar-hide px-4"
+                className="relative w-full h-[275px] overflow-x-scroll overflow-y-visible snap-x snap-mandatory scrollbar-hide flex items-center px-[calc((100vw-320px)/2)]"
                 style={{
                     scrollbarWidth: "none",
                     msOverflowStyle: "none",
                     WebkitOverflowScrolling: "touch",
                 }}
             >
-                <div className="flex items-center gap-4 h-full">
+                <div className="flex items-center gap-6 h-full">
                     {podcastCards.map((card, index) => {
                         const isActive = index === activeIndex;
-                        const scale = isActive ? "scale-100" : "scale-[0.88]";
-                        const opacity = isActive ? "opacity-100" : "opacity-70";
+                        const scale = isActive ? "scale-100" : "scale-[0.90]";
+                        const opacity = isActive ? "opacity-100" : "opacity-60";
                         const zIndex = isActive ? "z-20" : "z-10";
 
                         return (
                             <div
                                 key={card.id}
                                 ref={(el) => (slideRefs.current[index] = el)}
-                                className={`flex-shrink-0 snap-center transition-all duration-300 ${scale} ${opacity} ${zIndex}`}
+                                className={`flex-shrink-0 snap-center transition-all duration-75 ease-out ${scale} ${opacity} ${zIndex} my-auto`}
                                 style={{
-                                    width: "297px",
+                                    width: "320px",
+                                    height: "265px",
                                 }}
                             >
-                                <div className="w-[297px] h-[248px] bg-[#f8f8f8] rounded-[25.04px] overflow-hidden shadow-[0px_4px_4px_#00000040]">
+                                <div className="w-full h-full bg-[#f8f8f8] rounded-[25.04px] overflow-visible shadow-[0px_4px_4px_#00000040] relative">
                                     <div
-                                        className="inline-flex items-center gap-[8.94px] p-[10.73px] absolute top-[21px] left-[21px] bg-[#7bb302] rounded-[35.78px]"
+                                        className="inline-flex items-center gap-[8.94px] p-[10.73px] absolute top-[22px] left-[22px] bg-[#7bb302] rounded-[35.78px] z-10"
                                         aria-label="Video content"
                                     >
                                         <img
@@ -175,9 +171,9 @@ export const MobileCarouselSection = ({
                                         />
                                     </div>
 
-                                    <div className="flex flex-col w-[255px] items-start gap-[17.89px] absolute top-[100px] left-[21px]">
-                                        <div className="flex w-[255px] h-[79px] items-center gap-[8.94px] pt-0 pb-[10.73px] px-0 relative border-b-[0.89px] [border-bottom-style:solid] border-neutral-200">
-                                            <h3 className="relative w-[255px] mt-[-18.76px] mb-[-16.97px] [font-family:'Geist',Helvetica] font-medium text-transparent text-xl tracking-[-0.80px] leading-[normal]">
+                                    <div className="flex flex-col w-[275px] items-start gap-[17.89px] absolute top-[108px] left-[22px]">
+                                        <div className="flex w-[275px] h-[82px] items-center gap-[8.94px] pt-0 pb-[10.73px] px-0 relative border-b-[0.89px] [border-bottom-style:solid] border-neutral-200">
+                                            <h3 className="relative w-[275px] mt-[-18.76px] mb-[-16.97px] [font-family:'Geist',Helvetica] font-medium text-transparent text-[20.5px] tracking-[-0.80px] leading-[normal]">
                                                 <span className="text-[#7bb302] tracking-[-0.16px]">
                                                     {card.title}
                                                 </span>
@@ -206,14 +202,14 @@ export const MobileCarouselSection = ({
 
             {/* Pagination Dots */}
             <div
-                className="flex w-full h-1 items-start justify-center gap-[3.97px] relative mt-4"
+                className="flex w-full h-1 items-start justify-center gap-[6px] relative mt-2"
                 role="tablist"
                 aria-label="Carousel navigation"
             >
                 {podcastCards.map((_, index) => (
                     <button
                         key={index}
-                        className={`relative w-[3.97px] h-[3.97px] rounded-[1.99px] transition-colors duration-300 ${index === activeIndex ? "bg-[#7bb302]" : "bg-neutral-90"
+                        className={`relative w-[6px] h-[6px] rounded-full transition-colors duration-300 ${index === activeIndex ? "bg-[#7bb302]" : "bg-neutral-90"
                             }`}
                         onClick={() => scrollToSlide(index)}
                         role="tab"

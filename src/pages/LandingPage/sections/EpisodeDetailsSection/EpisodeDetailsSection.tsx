@@ -12,7 +12,11 @@ interface ImageItem {
   alt: string;
 }
 
-export const EpisodeDetailsSection = (): JSX.Element => {
+interface EpisodeDetailsSectionProps {
+  isEpisodesPage?: boolean;
+}
+
+export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetailsSectionProps): JSX.Element => {
   const episodeTypes: EpisodeType[] = [
     { id: 1, title: "Fireside Chats", isActive: true },
     { id: 2, title: "1 on 1 Interviews", isActive: false },
@@ -151,42 +155,48 @@ export const EpisodeDetailsSection = (): JSX.Element => {
   }, [images.length]);
 
   return (
+    <>
     <section
       ref={sectionRef}
-      className="relative w-full max-w-[1440px] bg-white px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-4 sm:py-8 md:py-12 lg:py-[50px] mx-auto mt-2 sm:mt-8 md:mt-12 lg:mt-[70px] overflow-hidden min-h-0 sm:min-h-[900px]"
-      style={{ overflowX: 'hidden' }}
+      className={`relative w-full bg-white py-4 sm:py-8 md:py-12 lg:py-[50px] mt-2 sm:mt-8 md:mt-12 lg:mt-[70px] min-h-0 ${isEpisodesPage ? "sm:min-h-[500px]" : "sm:min-h-[900px]"
+        }`}
       aria-labelledby="episode-details-heading"
     >
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
       {/* Blockquote and Heading side by side on large screens */}
-      <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 mb-4 sm:mb-6 items-start w-full">
-        <div className="flex flex-col gap-2 sm:gap-3 flex-1">
-          <h2
-            id="episode-details-heading"
-            className="[font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-sm sm:text-base md:text-lg lg:text-xl tracking-[-0.32px] leading-[normal] text-left"
-          >
-            WHY BE A GUEST?
-          </h2>
-          <p className="[font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[48px] tracking-[-1.1px] sm:tracking-[-1.3px] lg:tracking-[-2px] leading-tight lg:leading-[normal] whitespace-nowrap flex flex-col items-start justify-start text-left">
-            <span className="text-[#232323] tracking-[-1.1px] whitespace-nowrap">Your words, Your wisdom</span>
-          </p>
-          <div className="relative w-full flex items-center gap-1 sm:gap-3 lg:gap-4 text-left">
-            <span className="inline-block w-8 h-6 sm:w-[70px] sm:h-9 lg:w-[120px] lg:h-[48px] bg-[#00000033] rounded-[80px] flex-shrink-0" aria-hidden="true"></span>
-            <p className="[font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[48px] tracking-[-1.1px] sm:tracking-[-1.3px] lg:tracking-[-2px] leading-6 sm:leading-[2.5rem] lg:leading-[48px] whitespace-nowrap h-8 sm:h-10 lg:h-[48px] flex items-center text-left">
-              <span className="text-[#232323] tracking-[-1.1px]">Your </span>
-              <span className="text-[#ed2939] tracking-[-1.1px]">unwrapped moment</span>
+      {/* Blockquote and Heading side by side on large screens - Hidden on Episodes Page */}
+      {!isEpisodesPage && (
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 mb-4 sm:mb-6 items-start w-full">
+          <div className="flex flex-col gap-2 sm:gap-3 flex-1">
+            <h2
+              id="episode-details-heading"
+              className="[font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-sm sm:text-base md:text-lg lg:text-xl tracking-[-0.32px] leading-[normal] text-left"
+            >
+              WHY BE A GUEST?
+            </h2>
+            <p className="[font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[48px] tracking-[-1.1px] sm:tracking-[-1.3px] lg:tracking-[-2px] leading-tight lg:leading-[normal] whitespace-normal lg:whitespace-nowrap flex flex-col items-start justify-start text-left">
+              <span className="text-[#232323] tracking-[-1.1px] whitespace-normal lg:whitespace-nowrap">Your words, Your wisdom</span>
             </p>
+            <div className="relative w-full flex items-center gap-1 sm:gap-3 lg:gap-4 text-left">
+              <span className="inline-block w-8 h-6 sm:w-[70px] sm:h-9 lg:w-[120px] lg:h-[48px] bg-[#00000033] rounded-[80px] flex-shrink-0" aria-hidden="true"></span>
+              <p className="[font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[48px] tracking-[-1.1px] sm:tracking-[-1.3px] lg:tracking-[-2px] leading-6 sm:leading-[2.5rem] lg:leading-[48px] whitespace-normal lg:whitespace-nowrap min-h-8 sm:min-h-10 lg:min-h-[48px] h-auto flex items-center text-left">
+                <span className="text-[#232323] tracking-[-1.1px]">Your </span>
+                <span className="text-[#ed2939] tracking-[-1.1px]">unwrapped moment</span>
+              </p>
+            </div>
           </div>
+          <blockquote className="block static w-full max-w-full sm:max-w-[400px] md:max-w-[500px] lg:max-w-[420px] ml-0 mr-auto [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg tracking-[-0.64px] leading-[normal] z-10 p-3 sm:p-4 bg-white/80 rounded-xl shadow-md mb-4 lg:mb-0">
+            &quot;Be seen, not as a speaker — but as a story. Join a curated circle
+            of founders, thinkers, and changemakers shaping how humans thrive in
+            work and life. We&apos;re looking for voices who don&apos;t just lead —
+            they inspire.&quot;
+          </blockquote>
         </div>
-        <blockquote className="block static w-full max-w-[315px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[420px] ml-0 mr-auto [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg tracking-[-0.64px] leading-[normal] z-10 p-3 sm:p-4 bg-white/80 rounded-xl shadow-md mb-4 lg:mb-0">
-          &quot;Be seen, not as a speaker — but as a story. Join a curated circle
-          of founders, thinkers, and changemakers shaping how humans thrive in
-          work and life. We&apos;re looking for voices who don&apos;t just lead —
-          they inspire.&quot;
-        </blockquote>
-      </div>
+      )}
 
       {/* Image Stack Container - Now below the blockquote */}
-      <div className="relative w-full max-w-xs h-[220px] sm:max-w-[500px] sm:h-[350px] md:h-[400px] mx-auto mb-6 lg:max-w-none lg:w-[560px] lg:h-[320px] lg:mx-0 lg:mb-0 lg:absolute lg:top-[240px] lg:right-[100px] pointer-events-none will-change-transform flex items-center justify-center overflow-visible">
+      <div className={`relative w-full max-w-[240px] h-[200px] sm:max-w-[320px] sm:h-[280px] md:max-w-[400px] md:h-[350px] mx-auto mb-6 px-4 sm:px-0 lg:max-w-none lg:w-[560px] lg:h-[320px] lg:mx-0 lg:mb-0 lg:px-0 lg:absolute ${isEpisodesPage ? "lg:top-[50px]" : "lg:top-[240px]"
+        } lg:right-[100px] pointer-events-none will-change-transform flex items-center justify-center overflow-visible`}>
         {images.map((image, index) => {
           const style = getImageStyle(index);
           const isActive = (index === activeImageIndex);
@@ -215,7 +225,8 @@ export const EpisodeDetailsSection = (): JSX.Element => {
       </div>
 
       <nav
-        className="flex flex-col w-full max-w-[400px] items-start gap-3 sm:gap-5 relative lg:absolute top-auto lg:top-[283px] left-0 lg:left-6 z-10 mb-6 sm:mb-8 lg:mb-0"
+        className={`flex flex-col w-full max-w-[400px] items-start gap-3 sm:gap-5 relative lg:absolute top-auto ${isEpisodesPage ? "lg:top-[93px]" : "lg:top-[283px]"
+          } left-0 lg:left-20 z-10 mb-6 sm:mb-8 lg:mb-0`}
         aria-label="Episode types"
       >
         {episodeTypes.map((episode) => (
@@ -252,19 +263,13 @@ export const EpisodeDetailsSection = (): JSX.Element => {
           </button>
         ))}
       </nav>
+      </div>
+    </section>
 
-
-      <div className="relative lg:absolute top-auto lg:top-[632px] left-0 w-full max-w-none px-0 overflow-hidden z-10 mt-8 lg:mt-0" aria-hidden="true">
-        <div className="flex w-full overflow-hidden">
-          <div className="flex shrink-0 animate-infinite-scroll whitespace-nowrap">
-            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
-              lets unwrap your story
-            </span>
-            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
-              lets unwrap your story
-            </span>
-          </div>
-          <div className="flex shrink-0 animate-infinite-scroll whitespace-nowrap" aria-hidden="true">
+      {/* Full-width scrolling text - completely outside section */}
+      {!isEpisodesPage && (
+        <div className="relative w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden z-10 mt-8 lg:mt-[-200px]" aria-hidden="true">
+          <div className="flex animate-infinite-scroll whitespace-nowrap">
             <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
               lets unwrap your story
             </span>
@@ -273,8 +278,7 @@ export const EpisodeDetailsSection = (): JSX.Element => {
             </span>
           </div>
         </div>
-      </div>
-
-    </section>
+      )}
+    </>
   );
 };

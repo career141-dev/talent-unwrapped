@@ -41,7 +41,15 @@ export const LandingPage = (): JSX.Element => {
           <div id="reels" className="w-full">
             <ReelsSection />
           </div>
+        </div>
+
+        {/* Full-width episode details section */}
+        <div className="w-full">
           <EpisodeDetailsSection />
+        </div>
+
+        {/* Constrained content sections */}
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0" style={{ overflowX: 'hidden' }}>
           <SubmitFormSection />
           <ContactUsSection />
           <FooterSection />

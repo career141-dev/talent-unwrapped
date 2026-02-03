@@ -160,7 +160,7 @@ body {
 }
 
 .animate-infinite-scroll {
-  animation: infinite-scroll 6s linear infinite;
+  animation: infinite-scroll 20s linear infinite;
 }
 
 @keyframes spin {
@@ -249,7 +249,7 @@ body {
   }
 
   100% {
-    transform: translateX(-33.333%);
+    transform: translateX(-50%);
   }
 }
 

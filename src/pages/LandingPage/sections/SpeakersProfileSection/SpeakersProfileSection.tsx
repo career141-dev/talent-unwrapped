@@ -259,7 +259,7 @@ export const SpeakersProfileSection = (): JSX.Element => {
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         <div className="flex flex-col items-start gap-4 md:gap-6 lg:gap-8 relative w-full">
           <header className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
-            <h2 className="relative w-full max-w-full lg:max-w-[721px] [font-family:'Geist',Helvetica] font-medium text-transparent text-3xl sm:text-4xl md:text-5xl lg:text-[52px] tracking-[0] leading-tight lg:leading-[70px]">
+            <h2 className="relative w-full max-w-full lg:max-w-[721px] [font-family:'Geist',Helvetica] font-medium text-transparent text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] xl:text-[52px] tracking-[-0.02em] sm:tracking-[-0.025em] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">
               <span className="text-[#7cb403]">Our </span>
               <span className="text-[#ed2939]">Speakers</span>
             </h2>
@@ -283,7 +283,7 @@ export const SpeakersProfileSection = (): JSX.Element => {
             <div className="relative w-full">
               {/* Left Scroll Button - positioned outside container only on XL desktop */}
               <button
-                className="hidden lg:block absolute left-2 xl:left-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-10 hover:scale-105 transition-transform bg-white/10 backdrop-blur-sm rounded-full xl:bg-transparent"
+                className="hidden lg:block absolute left-2 xl:left-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-10 hover:scale-105 transition-transform bg-white/10 rounded-full xl:bg-transparent"
                 onClick={() => handleScroll('left')}
                 type="button"
                 aria-label="Scroll left"
@@ -355,7 +355,7 @@ export const SpeakersProfileSection = (): JSX.Element => {
 
               {/* Right Scroll Button - positioned outside container only on XL desktop */}
               <button
-                className="hidden lg:block absolute right-2 xl:right-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-10 hover:scale-105 transition-transform bg-white/10 backdrop-blur-sm rounded-full xl:bg-transparent"
+                className="hidden lg:block absolute right-2 xl:right-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-10 hover:scale-105 transition-transform bg-white/10 rounded-full xl:bg-transparent"
                 onClick={() => handleScroll('right')}
                 type="button"
                 aria-label="Scroll right"

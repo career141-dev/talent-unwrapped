@@ -25,7 +25,7 @@ export const GlobalHeader = (): JSX.Element => {
     : [
       { label: "Home", href: "/", action: () => navigate("/") },
       { label: "About", href: "#about", action: () => scrollToSection("about") },
-      { label: "Episodes", href: "#episodes", action: () => scrollToSection("episodes") },
+      { label: "Episodes", href: "/episodes", action: () => navigate("/episodes") },
       { label: "Reels", href: "#reels", action: () => scrollToSection("reels") },
     ];
 

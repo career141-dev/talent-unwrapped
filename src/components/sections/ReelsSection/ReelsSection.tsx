@@ -74,12 +74,43 @@ export const ReelsSection = (): JSX.Element => {
     };
   }, []);
 
+  // Track active slide on scroll
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      if (!container) return;
+
+      // Calculate active index based on scroll position
+      const scrollLeft = container.scrollLeft;
+      const width = container.offsetWidth;
+      // Use round to find the closest slide
+      const newIndex = Math.round(scrollLeft / width);
+
+      if (newIndex !== activeIndex) {
+        setActiveIndex(newIndex);
+      }
+    };
+
+    // Add scroll listener with passive option for better performance
+    container.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+    };
+  }, [activeIndex]);
+
   return (
     <section id="reels" ref={sectionRef} className="relative w-full bg-white pt-0 pb-16 sm:py-20 md:py-24 lg:py-[90px] px-0 sm:px-6 md:px-8 lg:px-10 xl:px-12">
       <div className="max-w-[1440px] mx-auto w-full">
         {/* Mobile Horizontal Carousel */}
-        <div className="lg:hidden w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide" ref={scrollContainerRef} style={{scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch'}}>
-          <div className="flex w-full gap-x-4">
+        <div
+          className="lg:hidden w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide relative"
+          ref={scrollContainerRef}
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+        >
+          <div className="flex w-full gap-x-4 px-4 sm:px-6 md:px-8">
             {reelVideos.map((reel, index) => (
               <div
                 key={reel.id}
@@ -109,6 +140,31 @@ export const ReelsSection = (): JSX.Element => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Mobile Pagination Indicator */}
+        <div className="flex lg:hidden justify-center items-center gap-2 mt-4">
+          {reelVideos.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                const container = scrollContainerRef.current;
+                if (container) {
+                  const width = container.offsetWidth; // Use offsetWidth instead of slide reference for safer calculation
+                  container.scrollTo({
+                    left: index * width,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+              className={`transition-all duration-300 rounded-full ${activeIndex === index
+                ? "w-8 h-2 bg-[#7bb302]"
+                : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
+                }`}
+              aria-label={`Go to reel ${index + 1}`}
+              aria-current={activeIndex === index ? 'step' : undefined}
+            />
+          ))}
         </div>
 
         {/* Desktop Grid Layout */}

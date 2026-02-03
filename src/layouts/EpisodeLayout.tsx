@@ -38,14 +38,14 @@ export const EpisodeLayout = ({
       <GlobalHeader />
 
       {/* Main Content Area - Constrained width, responsive padding */}
-      {(children || (showChapters && edition)) && (
+      {children && (
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
-          {children && <div className={className}>{children}</div>}
-
-          {/* Chapters Section - Optional, shown by default */}
-          {showChapters && edition && <TheThreeChaptersSection edition={edition} />}
+          <div className={className}>{children}</div>
         </div>
       )}
+
+      {/* Chapters Section - Optional, shown by default - Full width without wrapper */}
+      {showChapters && edition && <TheThreeChaptersSection edition={edition} />}
 
       {/* Contact Section - Optional, shown by default */}
       {showContact && <ContactUsSection />}

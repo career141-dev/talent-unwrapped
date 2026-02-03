@@ -313,7 +313,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
       <div className="w-full">
         <div className={`flex flex-col items-start gap-8 md:gap-10 lg:gap-12 w-full transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <header className="flex flex-col items-start gap-2 relative w-full">
-            <h2 className="relative w-full max-w-full lg:max-w-[721px] [font-family:'Geist',Helvetica] font-medium text-transparent text-3xl sm:text-4xl md:text-5xl lg:text-[52px] tracking-[0] leading-tight lg:leading-[70px]">
+            <h2 className="relative w-full max-w-full lg:max-w-[721px] [font-family:'Geist',Helvetica] font-medium text-transparent text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] xl:text-[52px] tracking-[-0.02em] sm:tracking-[-0.025em] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">
               <span className="text-[#ed2939]">Latest</span>
               <span className="text-[#7cb403]"> Podcast</span>
             </h2>
@@ -339,7 +339,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
         <div className="relative w-full mt-8 md:mt-10 lg:mt-12">
           {/* Left Scroll Button */}
           <button
-            className="hidden lg:block absolute left-2 xl:left-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-20 hover:scale-105 transition-transform bg-white/10 backdrop-blur-sm rounded-full xl:bg-transparent"
+            className="hidden lg:block absolute left-2 xl:left-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-20 hover:scale-105 transition-transform bg-white/10 rounded-full xl:bg-transparent"
             onClick={() => handleScroll('left')}
             type="button"
             aria-label="Scroll left"
@@ -440,7 +440,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
 
           {/* Right Scroll Button */}
           <button
-            className="hidden lg:block absolute right-2 xl:right-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-20 hover:scale-105 transition-transform bg-white/10 backdrop-blur-sm rounded-full xl:bg-transparent"
+            className="hidden lg:block absolute right-2 xl:right-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-20 hover:scale-105 transition-transform bg-white/10 rounded-full xl:bg-transparent"
             onClick={() => handleScroll('right')}
             type="button"
             aria-label="Scroll right"
