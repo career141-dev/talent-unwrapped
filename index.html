@@ -5,6 +5,23 @@
     <title>Talent Unwrapped - Podcast Series</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="Talent Unwrapped podcast series featuring conversations about leadership, innovation, and the future of work across Singapore and Dubai editions." />
+    
+    <!-- GitHub Pages SPA Redirect Script -->
+    <script>
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap");
     </style>

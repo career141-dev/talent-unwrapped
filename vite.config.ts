@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 export default defineConfig(({ mode }) => ({
   plugins: [react(), ...(mode === "development" ? [screenGraphPlugin()] : [])],
   publicDir: "./static",
-  base: "/talent-unwrapped/",
+  base: mode === "production" ? "/talent-unwrapped/" : "/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
