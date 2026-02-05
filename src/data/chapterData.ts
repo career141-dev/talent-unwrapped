@@ -1,4 +1,5 @@
 import { Episode } from "../types";
+import { ICONS } from "../assets";
 
 // Edition-specific content structure
 export const EDITION_CONTENT = {
@@ -14,28 +15,22 @@ export const EDITION_CONTENT = {
         title: "Leadership Reimagined: ",
         subtitle:
           "Building Mental Toughness, Culture, and Agility for the Future of Work",
-        videoIcon:
-          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle-1.svg",
-        exportIcon:
-          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+        videoIcon: ICONS.videoCircleAlt3,
+        exportIcon: ICONS.exportAlt2,
       },
       {
         id: 2,
         title: "Beyond Resilience: ",
         subtitle: "Redefining Leadership Strength and Organizational Agility",
-        videoIcon:
-          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle.svg",
-        exportIcon:
-          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+        videoIcon: ICONS.videoCircleAlt2,
+        exportIcon: ICONS.exportAlt2,
       },
       {
         id: 3,
         title: "The Human Blueprint: ",
         subtitle: "Rethinking Leadership for an Intelligent Age",
-        videoIcon:
-          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle.svg",
-        exportIcon:
-          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+        videoIcon: ICONS.videoCircleAlt2,
+        exportIcon: ICONS.exportAlt2,
       },
     ],
   },
@@ -51,28 +46,22 @@ export const EDITION_CONTENT = {
         title: "Innovation in Leadership: ",
         subtitle:
           "Transforming Business Culture in the Middle East",
-        videoIcon:
-          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle-1.svg",
-        exportIcon:
-          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+        videoIcon: ICONS.videoCircleAlt3,
+        exportIcon: ICONS.exportAlt2,
       },
       {
         id: 2,
         title: "Digital Transformation: ",
         subtitle: "Leading Change in a Rapidly Evolving Landscape",
-        videoIcon:
-          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle.svg",
-        exportIcon:
-          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+        videoIcon: ICONS.videoCircleAlt2,
+        exportIcon: ICONS.exportAlt2,
       },
       {
         id: 3,
         title: "Global Vision: ",
         subtitle: "Building Bridges Between East and West",
-        videoIcon:
-          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle.svg",
-        exportIcon:
-          "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
+        videoIcon: ICONS.videoCircleAlt2,
+        exportIcon: ICONS.exportAlt2,
       },
     ],
   },

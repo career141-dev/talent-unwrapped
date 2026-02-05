@@ -17,7 +17,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
       src: "https://c.animaapp.com/6IK4krLc/img/man-in-headphones-having-interview-2025-10-26-23-44-27-utc-1@2x.png",
       alt: "Man in headphones",
       containerClass:
-        "absolute top-[200px] left-[0px] w-[100px] h-[70px] z-0 md:hidden lg:flex lg:top-[150px] lg:left-[871px] lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[-7.30deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
+        "absolute top-[260px] left-[0px] w-[100px] h-[70px] z-0 md:hidden lg:flex lg:top-[150px] lg:left-[871px] lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[-7.30deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
       imageClass:
         "mt-[-6px] w-[107px] h-[82px] ml-[-3.5px] scale-125 lg:mt-[-9.2px] lg:w-[163px] lg:h-[124.13px] lg:ml-[-5.1px] rotate-[7.30deg] aspect-[0.67] object-cover",
     },
@@ -26,7 +26,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
       src: "https://c.animaapp.com/6IK4krLc/img/young-black-man-in-headphones-talking-in-microphon-2025-03-13-12@2x.png",
       alt: "Young black man in headphones",
       containerClass:
-        "absolute top-[30px] left-[200px] w-[120px] h-[84px] z-0 md:hidden lg:flex lg:top-52 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
+        "absolute top-[75px] left-[200px] w-[120px] h-[84px] z-0 md:hidden lg:flex lg:top-52 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
       imageClass:
         "w-full h-full object-cover scale-110 rotate-[-6.49deg] lg:mt-[-8.2px] lg:w-[162.7px] lg:h-[122.17px] lg:ml-[-5.5px]",
     },
@@ -41,15 +41,23 @@ export const TalentIntroductionSection = (): JSX.Element => {
         paddingRight: 'clamp(16px, 4vw, 120px)',
         paddingTop: 'clamp(8px, 1vw, 20px)',
         paddingBottom: 'clamp(8px, 1vw, 20px)',
-        marginTop: '40px',
+        marginTop: '20px',
         marginBottom: '0px',
         minHeight: 'clamp(400px, 50vh, 600px)',
       }}
     >
       <div className="lg:h-auto lg:min-h-[900px]">
 
+      {/* Edition Filter - Mobile: Top of section, Desktop: Right aligned */}
+      <div className="relative lg:absolute top-0 lg:top-[478px] right-0 lg:right-[10px] mb-6 lg:mb-0 flex justify-center sm:justify-end px-4 sm:px-6 md:px-8 lg:px-0 z-20">
+        <EditionFilter 
+          selectedEdition={selectedEdition} 
+          onEditionChange={setSelectedEdition} 
+        />
+      </div>
+
       {/* Main Content Layout - Responsive Grid for Tablet, Absolute for Desktop */}
-      <div className="relative z-10 flex flex-col md:grid md:grid-cols-12 lg:block gap-8 lg:gap-0">
+      <div className="relative z-10 flex flex-col md:grid md:grid-cols-12 lg:block gap-8 lg:gap-0 mt-4 lg:mt-0">
         <div className="md:col-span-4 lg:contents">
           <header className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-[10px] w-full lg:w-[203px] text-left mb-4 md:mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-[8px] md:text-sm tracking-[-0.32px] leading-[normal] animate-slide-in-left" style={{ transition: 'transform 0.7s cubic-bezier(0.4,0,0.2,1)', transform: 'translateX(0)' }}>
             THE THREE CHAPTERS
@@ -96,14 +104,6 @@ export const TalentIntroductionSection = (): JSX.Element => {
             </button>
           </div>
         </div>
-      </div>
-
-      {/* Edition Filter - Right Aligned */}
-      <div className="relative lg:absolute top-auto lg:top-[478px] right-0 lg:right-[10px] mb-4 lg:mb-0 flex justify-center sm:justify-end px-4 sm:px-6 md:px-8 lg:px-0">
-        <EditionFilter 
-          selectedEdition={selectedEdition} 
-          onEditionChange={setSelectedEdition} 
-        />
       </div>
 
       <div className="flex flex-col w-full items-start gap-2 relative lg:absolute top-auto lg:top-[478px] left-0 lg:left-[120px] text-left mb-6 lg:ml-0 px-4 sm:px-6 md:px-8 lg:px-0">

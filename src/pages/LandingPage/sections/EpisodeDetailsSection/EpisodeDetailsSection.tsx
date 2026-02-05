@@ -195,7 +195,7 @@ export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetails
       )}
 
       {/* Image Stack Container - Now below the blockquote */}
-      <div className={`relative w-full max-w-[240px] h-[200px] sm:max-w-[320px] sm:h-[280px] md:max-w-[400px] md:h-[350px] mx-auto mb-6 px-4 sm:px-0 lg:max-w-none lg:w-[560px] lg:h-[320px] lg:mx-0 lg:mb-0 lg:px-0 lg:absolute ${isEpisodesPage ? "lg:top-[50px]" : "lg:top-[240px]"
+      <div className={`relative w-full max-w-[160px] h-[200px] sm:max-w-[320px] sm:h-[280px] md:max-w-[400px] md:h-[350px] mx-auto mb-6 px-4 sm:px-0 lg:max-w-none lg:w-[560px] lg:h-[320px] lg:mx-0 lg:mb-0 lg:px-0 lg:absolute ${isEpisodesPage ? "lg:top-[50px]" : "lg:top-[240px]"
         } lg:right-[100px] pointer-events-none will-change-transform flex items-center justify-center overflow-visible`}>
         {images.map((image, index) => {
           const style = getImageStyle(index);
@@ -203,7 +203,7 @@ export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetails
           return (
             <div
               key={image.id}
-              className="absolute w-[200px] h-[220px] sm:w-[240px] sm:h-[260px] md:w-[280px] md:h-[300px] lg:w-[280px] lg:h-[320px] rounded-3xl overflow-hidden shadow-[0px_8px_24px_rgba(0,0,0,0.15)] transition-all duration-700 ease-in-out will-change-transform active:scale-95 lg:active:scale-100"
+              className="absolute w-[160px] h-[180px] sm:w-[240px] sm:h-[260px] md:w-[280px] md:h-[300px] lg:w-[280px] lg:h-[320px] rounded-3xl overflow-hidden shadow-[0px_8px_24px_rgba(0,0,0,0.15)] transition-all duration-700 ease-in-out will-change-transform active:scale-95 lg:active:scale-100"
               style={{
                 transform: style.transform,
                 zIndex: style.zIndex,

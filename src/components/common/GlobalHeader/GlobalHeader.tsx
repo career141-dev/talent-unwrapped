@@ -27,6 +27,12 @@ export const GlobalHeader = (): JSX.Element => {
       { label: "About", href: "#about", action: () => scrollToSection("about") },
       { label: "Episodes", href: "/episodes", action: () => navigate("/episodes") },
       { label: "Reels", href: "#reels", action: () => scrollToSection("reels") },
+      {
+        label: "Schedule", href: "/schedule", action: () => {
+          navigate("/schedule");
+          setActiveNav("Schedule");
+        }
+      },
     ];
 
   const scrollToSection = (sectionId: string) => {
@@ -103,7 +109,7 @@ export const GlobalHeader = (): JSX.Element => {
           {/* Logo */}
           <a
             href="/"
-            className="relative w-24 sm:w-32 md:w-40 lg:w-60 h-10 sm:h-12 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]"
+            className="relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]"
             onClick={(e) => {
               e.preventDefault();
               navigate("/");
