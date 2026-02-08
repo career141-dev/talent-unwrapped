@@ -1,1 +1,1 @@
-export { EditionsDropdown } from './EditionsDropdown';
+export { EditionsDropdown } from "./EditionsDropdown";

@@ -1,10 +1,149 @@
-import { Episode } from "../types";
+import { Episode, Podcast } from "../types";
+import { VIDEO_THUMBNAILS, SAMPLE_VIDEOS, EPISODE_IMAGES, EPISODE_AVATARS } from "../assets";
+
+// Latest Podcasts data for Landing Page
+export const LATEST_PODCASTS_DATA: Podcast[][] = [
+  // View 1 (Default)
+  [
+    {
+      id: 1,
+      title: "Opening Keynote: Future of Innovation",
+      edition: "Dubai Edition",
+      date: "January 10, 2026",
+      thumbnailUrl: VIDEO_THUMBNAILS.video1,
+      videoUrl: SAMPLE_VIDEOS.bigBuckBunny,
+    },
+    {
+      id: 2,
+      title: "Panel Discussion on Global Trends",
+      edition: "Singapore Edition",
+      date: "December 15, 2025",
+      thumbnailUrl: VIDEO_THUMBNAILS.video2,
+      videoUrl: SAMPLE_VIDEOS.elephantsDream,
+    },
+    {
+      id: 3,
+      title: "Workshop: Strategic Thinking",
+      edition: "London Edition",
+      date: "November 22, 2025",
+      thumbnailUrl: VIDEO_THUMBNAILS.video3,
+      videoUrl: SAMPLE_VIDEOS.forBiggerBlazes,
+    },
+    {
+      id: 4,
+      title: "Closing Remarks and Reflections",
+      edition: "Dubai Edition",
+      date: "January 12, 2026",
+      thumbnailUrl: VIDEO_THUMBNAILS.video4,
+      videoUrl: SAMPLE_VIDEOS.forBiggerEscapes,
+    },
+    {
+      id: 9,
+      title: "Networking Breakfast Highlights",
+      edition: "Dubai Edition",
+      date: "January 11, 2026",
+      thumbnailUrl: VIDEO_THUMBNAILS.video1,
+      videoUrl: SAMPLE_VIDEOS.bigBuckBunny,
+    },
+    {
+      id: 10,
+      title: "Breakout Sessions Deep Dive",
+      edition: "Singapore Edition",
+      date: "December 20, 2025",
+      thumbnailUrl: VIDEO_THUMBNAILS.video2,
+      videoUrl: SAMPLE_VIDEOS.elephantsDream,
+    },
+    {
+      id: 11,
+      title: "Expert Q&A Session",
+      edition: "London Edition",
+      date: "November 25, 2025",
+      thumbnailUrl: VIDEO_THUMBNAILS.video3,
+      videoUrl: SAMPLE_VIDEOS.forBiggerBlazes,
+    },
+    {
+      id: 12,
+      title: "Award Ceremony Moments",
+      edition: "Dubai Edition",
+      date: "January 13, 2026",
+      thumbnailUrl: VIDEO_THUMBNAILS.video4,
+      videoUrl: SAMPLE_VIDEOS.forBiggerEscapes,
+    },
+  ],
+  // View 2 (Alternative set)
+  [
+    {
+      id: 5,
+      title: "AI and the Future of Leadership",
+      edition: "Singapore Edition",
+      date: "January 20, 2026",
+      thumbnailUrl: VIDEO_THUMBNAILS.video1,
+      videoUrl: SAMPLE_VIDEOS.bigBuckBunny,
+    },
+    {
+      id: 6,
+      title: "Building Resilient Teams",
+      edition: "Dubai Edition",
+      date: "January 25, 2026",
+      thumbnailUrl: VIDEO_THUMBNAILS.video2,
+      videoUrl: SAMPLE_VIDEOS.elephantsDream,
+    },
+    {
+      id: 7,
+      title: "Digital Transformation Strategies",
+      edition: "London Edition",
+      date: "February 1, 2026",
+      thumbnailUrl: VIDEO_THUMBNAILS.video3,
+      videoUrl: SAMPLE_VIDEOS.forBiggerBlazes,
+    },
+    {
+      id: 8,
+      title: "Sustainable Business Practices",
+      edition: "Singapore Edition",
+      date: "February 5, 2026",
+      thumbnailUrl: VIDEO_THUMBNAILS.video4,
+      videoUrl: SAMPLE_VIDEOS.forBiggerEscapes,
+    },
+    {
+      id: 13,
+      title: "Tech Innovation Trends",
+      edition: "Dubai Edition",
+      date: "February 8, 2026",
+      thumbnailUrl: VIDEO_THUMBNAILS.video1,
+      videoUrl: SAMPLE_VIDEOS.bigBuckBunny,
+    },
+    {
+      id: 14,
+      title: "Global Market Outlook",
+      edition: "Singapore Edition",
+      date: "February 10, 2026",
+      thumbnailUrl: VIDEO_THUMBNAILS.video2,
+      videoUrl: SAMPLE_VIDEOS.elephantsDream,
+    },
+    {
+      id: 15,
+      title: "Leadership Excellence Workshop",
+      edition: "London Edition",
+      date: "February 12, 2026",
+      thumbnailUrl: VIDEO_THUMBNAILS.video3,
+      videoUrl: SAMPLE_VIDEOS.forBiggerBlazes,
+    },
+    {
+      id: 16,
+      title: "Future of Remote Work",
+      edition: "Dubai Edition",
+      date: "February 15, 2026",
+      thumbnailUrl: VIDEO_THUMBNAILS.video4,
+      videoUrl: SAMPLE_VIDEOS.forBiggerEscapes,
+    },
+  ],
+];
 
 // Singapore Edition Episodes
 export const SINGAPORE_EPISODES: Episode[] = [
   {
     id: "1",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
+    image: EPISODE_IMAGES.leadershipWorkshop,
     category: "EPISODE",
     title: "Leadership in the Digital Age",
     description:
@@ -15,27 +154,24 @@ export const SINGAPORE_EPISODES: Episode[] = [
       {
         name: "Sarah Tan",
         role: "Host",
-        avatar:
-          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.sarahTan,
       },
       {
         name: "David Lim",
         role: "Guest",
-        avatar:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.davidLim,
       },
       {
         name: "Michelle Wong",
         role: "Guest",
-        avatar:
-          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.michelleWong,
       },
     ],
     featured: true,
   },
   {
     id: "2",
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop",
+    image: EPISODE_IMAGES.innovationSoutheastAsia,
     category: "GRAPHICS",
     title: "Innovation in Southeast Asia",
     description:
@@ -46,26 +182,23 @@ export const SINGAPORE_EPISODES: Episode[] = [
       {
         name: "James Koh",
         role: "Host",
-        avatar:
-          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.jamesKoh,
       },
       {
         name: "Lisa Chen",
         role: "Startup Founder",
-        avatar:
-          "https://images.unsplash.com/photo-1519085360771-9852046be8f9?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.lisaChen,
       },
       {
         name: "Alex Ng",
         role: "Guest",
-        avatar:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.davidLim,
       },
     ],
   },
   {
     id: "3",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop",
+    image: EPISODE_IMAGES.sustainableOrganizations,
     category: "EPISODE",
     title: "Building Sustainable Organizations",
     description:
@@ -76,14 +209,12 @@ export const SINGAPORE_EPISODES: Episode[] = [
       {
         name: "Rachel Goh",
         role: "Host",
-        avatar:
-          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.michelleWong,
       },
       {
         name: "Kevin Tan",
         role: "Sustainability Expert",
-        avatar:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.davidLim,
       },
     ],
   },
@@ -93,7 +224,7 @@ export const SINGAPORE_EPISODES: Episode[] = [
 export const DUBAI_EPISODES: Episode[] = [
   {
     id: "1",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
+    image: EPISODE_IMAGES.leadershipWorkshop,
     category: "EPISODE",
     title: "Building Businesses with Heart",
     description:
@@ -104,27 +235,24 @@ export const DUBAI_EPISODES: Episode[] = [
       {
         name: "Sarah Chen",
         role: "Host",
-        avatar:
-          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.sarahTan,
       },
       {
         name: "Erik Olawson",
         role: "Guest",
-        avatar:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.davidLim,
       },
       {
         name: "Maria Ruiz",
         role: "Guest",
-        avatar:
-          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.michelleWong,
       },
     ],
     featured: true,
   },
   {
     id: "2",
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop",
+    image: EPISODE_IMAGES.innovationSoutheastAsia,
     category: "GRAPHICS",
     title: "People by Design",
     description:
@@ -135,26 +263,23 @@ export const DUBAI_EPISODES: Episode[] = [
       {
         name: "Theresa Korver",
         role: "Host",
-        avatar:
-          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.jamesKoh,
       },
       {
         name: "Ola Luki",
         role: "Senior Product Designer",
-        avatar:
-          "https://images.unsplash.com/photo-1519085360771-9852046be8f9?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.lisaChen,
       },
       {
         name: "Steve Mao",
         role: "Guest",
-        avatar:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.davidLim,
       },
     ],
   },
   {
     id: "3",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop",
+    image: EPISODE_IMAGES.sustainableOrganizations,
     category: "EPISODE",
     title: "The Human Algorithm",
     description:
@@ -165,14 +290,12 @@ export const DUBAI_EPISODES: Episode[] = [
       {
         name: "David Kim",
         role: "Host",
-        avatar:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.davidLim,
       },
       {
         name: "Priya Patel",
         role: "AI Researcher",
-        avatar:
-          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+        avatar: EPISODE_AVATARS.michelleWong,
       },
     ],
   },
@@ -184,7 +307,7 @@ export const DUBAI_EPISODES: Episode[] = [
  * @returns Array of episodes for the specified edition
  */
 export const getEpisodesByEdition = (
-  edition: "dubai" | "singapore"
+  edition: "dubai" | "singapore",
 ): Episode[] => {
   return edition === "dubai" ? DUBAI_EPISODES : SINGAPORE_EPISODES;
 };
@@ -194,7 +317,11 @@ export const getEpisodesByEdition = (
  * @param episodeId - The episode ID
  * @returns The episode object or undefined
  */
-export const getEpisodeById = (episodeId: string | number): Episode | undefined => {
+export const getEpisodeById = (
+  episodeId: string | number,
+): Episode | undefined => {
   const allEpisodes = [...DUBAI_EPISODES, ...SINGAPORE_EPISODES];
-  return allEpisodes.find((ep) => ep.id === episodeId || ep.id === String(episodeId));
+  return allEpisodes.find(
+    (ep) => ep.id === episodeId || ep.id === String(episodeId),
+  );
 };

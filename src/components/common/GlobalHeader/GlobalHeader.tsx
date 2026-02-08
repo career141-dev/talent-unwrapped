@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { EditionsDropdown } from "../../Forms/EditionsDropdown";
+import { LOGOS, ICONS } from "@/assets";
+import { EXTERNAL_LINKS } from "@/constants";
+import { NAV_LABELS } from "@/constants/copy";
 
 export const GlobalHeader = (): JSX.Element => {
   const navigate = useNavigate();
@@ -10,28 +13,49 @@ export const GlobalHeader = (): JSX.Element => {
 
   // Detect if we're on an edition page (new path: /edition/singapore or /edition/dubai)
   const isEditionPage = location.pathname.startsWith("/edition/");
-  const isLandingPage = location.pathname === "/" || location.pathname === "/talent-unwrapped/";
+  const isLandingPage =
+    location.pathname === "/" || location.pathname === "/talent-unwrapped/";
 
   const navigationItems = isEditionPage
     ? [
-      { label: "About", href: "#about", action: () => scrollToSection("about") },
       {
-        label: "Schedule", href: "/schedule", action: () => {
+        label: "About",
+        href: "#about",
+        action: () => scrollToSection("about"),
+      },
+      {
+        label: NAV_LABELS.SCHEDULE,
+        href: "/schedule",
+        action: () => {
           navigate("/schedule");
-          setActiveNav("Schedule");
-        }
+          setActiveNav(NAV_LABELS.SCHEDULE);
+        },
       },
     ]
     : [
-      { label: "Home", href: "/", action: () => navigate("/") },
-      { label: "About", href: "#about", action: () => scrollToSection("about") },
-      { label: "Episodes", href: "/episodes", action: () => navigate("/episodes") },
-      { label: "Reels", href: "#reels", action: () => scrollToSection("reels") },
+      { label: NAV_LABELS.HOME, href: "/", action: () => navigate("/") },
       {
-        label: "Schedule", href: "/schedule", action: () => {
+        label: NAV_LABELS.ABOUT,
+        href: "#about",
+        action: () => scrollToSection("about"),
+      },
+      {
+        label: NAV_LABELS.EPISODES,
+        href: "/episodes",
+        action: () => navigate("/episodes"),
+      },
+      {
+        label: NAV_LABELS.REELS,
+        href: "#reels",
+        action: () => scrollToSection("reels"),
+      },
+      {
+        label: NAV_LABELS.SCHEDULE,
+        href: "/schedule",
+        action: () => {
           navigate("/schedule");
-          setActiveNav("Schedule");
-        }
+          setActiveNav(NAV_LABELS.SCHEDULE);
+        },
       },
     ];
 
@@ -39,7 +63,11 @@ export const GlobalHeader = (): JSX.Element => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setActiveNav(navigationItems.find(item => item.action.toString().includes(sectionId))?.label || "");
+      setActiveNav(
+        navigationItems.find((item) =>
+          item.action.toString().includes(sectionId),
+        )?.label || "",
+      );
     }
     setIsMobileMenuOpen(false); // Close menu after navigation
   };
@@ -49,7 +77,7 @@ export const GlobalHeader = (): JSX.Element => {
     if (isEditionPage) {
       // Edition page scroll tracking
       const handleScroll = () => {
-        const sections = navigationItems.map(item => ({
+        const sections = navigationItems.map((item) => ({
           label: item.label,
           id: item.href.substring(1), // Remove # from href
         }));
@@ -77,7 +105,7 @@ export const GlobalHeader = (): JSX.Element => {
     } else {
       // Landing page - set active based on current page
       if (isLandingPage) {
-        setActiveNav("Home");
+        setActiveNav(NAV_LABELS.HOME);
       } else {
         setActiveNav("");
       }
@@ -92,12 +120,12 @@ export const GlobalHeader = (): JSX.Element => {
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isMobileMenuOpen]);
 
@@ -105,7 +133,6 @@ export const GlobalHeader = (): JSX.Element => {
     <>
       <header className="w-full bg-white border-b border-neutral-200 sticky top-0 z-[100] transition-shadow duration-300 hover:shadow-md">
         <div className="flex w-full max-w-[1440px] min-h-[70px] md:min-h-[80px] lg:h-[100px] items-center justify-between gap-4 px-4 sm:px-6 md:px-8 lg:px-10 py-3 lg:py-0 mx-auto">
-
           {/* Logo */}
           <a
             href="/"
@@ -119,7 +146,7 @@ export const GlobalHeader = (): JSX.Element => {
             <img
               className="w-full h-full object-contain"
               alt="Career141 Logo"
-              src="https://c.animaapp.com/6IK4krLc/img/artboard-3-1.png"
+              src={LOGOS.career141}
             />
           </a>
 
@@ -155,21 +182,20 @@ export const GlobalHeader = (): JSX.Element => {
             </ul>
           </nav>
 
-          {/* Desktop CTA Button */}
           <div className="hidden lg:inline-flex items-center gap-2 md:gap-4 relative flex-shrink-0">
             <a
-              href="https://www.career141.com"
+              href={EXTERNAL_LINKS.CAREER141}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-10 md:h-12 lg:h-[54px] items-center justify-center gap-1 md:gap-2 px-3 md:px-4 lg:px-5 py-2 md:py-3 lg:py-4 relative flex-[0_0_auto] bg-[#222223] rounded-[60px] hover:bg-[#333333] transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               <span className="relative w-fit mt-[-0.50px] [font-family:'Geist',Helvetica] font-semibold text-white text-xs md:text-sm lg:text-base tracking-[-0.48px] leading-[normal] whitespace-nowrap">
-                career141.com
+                {NAV_LABELS.CAREER_LINK}
               </span>
               <img
                 className="relative w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 mt-[-1.00px] mb-[-1.00px] transition-transform duration-300 group-hover:translate-x-1"
                 alt=""
-                src="https://c.animaapp.com/6IK4krLc/img/vuesax-linear-arrow-right-2@2x.png"
+                src={ICONS.arrowRight}
               />
             </a>
           </div>
@@ -178,19 +204,19 @@ export const GlobalHeader = (): JSX.Element => {
           <div className="flex lg:hidden items-center gap-3 relative flex-shrink-0 z-[101]">
             {/* Tablet CTA Button (visible on md to lg) */}
             <a
-              href="https://www.career141.com"
+              href={EXTERNAL_LINKS.CAREER141}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:inline-flex lg:hidden h-10 items-center justify-center gap-2 px-4 py-2 bg-[#222223] rounded-[60px] hover:bg-[#333333] transition-all duration-300"
             >
               <span className="relative [font-family:'Geist',Helvetica] font-semibold text-white text-sm tracking-[-0.32px] leading-none whitespace-nowrap">
-                career141.com
+                {NAV_LABELS.CAREER_LINK}
               </span>
             </a>
 
             {/* Mobile CTA Button (Compact, visible only below md) */}
             <a
-              href="https://www.career141.com"
+              href={EXTERNAL_LINKS.CAREER141}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex md:hidden h-6 items-center justify-center gap-1 px-3 py-1 bg-[#232323] rounded-[60px] hover:bg-[#333333] transition-all duration-300"
@@ -201,7 +227,7 @@ export const GlobalHeader = (): JSX.Element => {
               <img
                 className="relative w-3 h-3 transition-transform duration-300 hover:translate-x-0.5"
                 alt=""
-                src="https://c.animaapp.com/6IK4krLc/img/vuesax-linear-arrow-right-2@2x.png"
+                src={ICONS.arrowRight}
               />
             </a>
 
@@ -212,9 +238,15 @@ export const GlobalHeader = (): JSX.Element => {
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
             >
-              <span className={`w-6 h-0.5 bg-[#232323] rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-              <span className={`w-6 h-0.5 bg-[#232323] rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-              <span className={`w-6 h-0.5 bg-[#232323] rounded-full transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+              <span
+                className={`w-6 h-0.5 bg-[#232323] rounded-full transition-all duration-300 ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}
+              ></span>
+              <span
+                className={`w-6 h-0.5 bg-[#232323] rounded-full transition-all duration-300 ${isMobileMenuOpen ? "opacity-0" : "opacity-100"}`}
+              ></span>
+              <span
+                className={`w-6 h-0.5 bg-[#232323] rounded-full transition-all duration-300 ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}
+              ></span>
             </button>
           </div>
         </div>
@@ -231,28 +263,33 @@ export const GlobalHeader = (): JSX.Element => {
 
       {/* Mobile Menu Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-[280px] sm:w-[320px] bg-white shadow-2xl z-[100] transform transition-transform duration-300 ease-in-out lg:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed top-0 right-0 h-full w-[280px] sm:w-[320px] bg-white shadow-2xl z-[100] transform transition-transform duration-300 ease-in-out lg:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
         <div className="flex flex-col h-full overflow-y-auto">
           {/* Mobile Menu Header */}
           <div className="flex items-center justify-between p-4 border-b border-neutral-200">
             <span className="[font-family:'Geist',Helvetica] font-semibold text-[#232323] text-lg">
-              Menu
+              {NAV_LABELS.MENU}
             </span>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 transition-colors"
               aria-label="Close menu"
             >
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 5L5 15M5 5L15 15" stroke="#232323" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <img
+                src={ICONS.close}
+                alt="Close"
+                className="w-5 h-5"
+              />
             </button>
           </div>
 
           {/* Mobile Menu Content */}
-          <nav className="flex flex-col p-4 gap-2" aria-label="Mobile navigation">
+          <nav
+            className="flex flex-col p-4 gap-2"
+            aria-label="Mobile navigation"
+          >
             {navigationItems.map((item, index) => (
               <button
                 key={index}

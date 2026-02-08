@@ -21,7 +21,7 @@ export const DefaultLayout = ({
   return (
     <main className="flex flex-col items-center relative min-h-screen bg-white w-full">
       <GlobalHeader />
-      
+
       {/* Constrained content wrapper - prevents overflow */}
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0">
         <div className={className}>{children}</div>

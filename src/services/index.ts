@@ -5,7 +5,11 @@
 
 // API client and configuration
 export { apiClient, API_CONFIG, getApiUrl } from "./api";
-export type { RequestInterceptor, ResponseInterceptor, ErrorInterceptor } from "./api";
+export type {
+  RequestInterceptor,
+  ResponseInterceptor,
+  ErrorInterceptor,
+} from "./api";
 
 // Domain-specific services
 export {
@@ -34,4 +38,8 @@ export {
   getAuthToken,
 } from "./domains/auth.service";
 
-export type { LoginCredentials, AuthResponse, UserProfile } from "./domains/auth.service";
+export type {
+  LoginCredentials,
+  AuthResponse,
+  UserProfile,
+} from "./domains/auth.service";

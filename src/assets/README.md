@@ -25,11 +25,11 @@ src/assets/
 
 ```typescript
 // Import all assets
-import { IMAGES, VIDEOS } from '@/assets';
+import { IMAGES, VIDEOS } from "@/assets";
 
 // Import specific categories
-import { DECORATIVE_IMAGES, ICONS, SPEAKER_IMAGES } from '@/assets';
-import { SAMPLE_VIDEOS } from '@/assets';
+import { DECORATIVE_IMAGES, ICONS, SPEAKER_IMAGES } from "@/assets";
+import { SAMPLE_VIDEOS } from "@/assets";
 ```
 
 ### Use in Components
@@ -48,6 +48,7 @@ import { SAMPLE_VIDEOS } from '@/assets';
 ## Asset Categories
 
 ### Images
+
 - **decorative**: Background and decorative images
 - **speakers**: Speaker profile photos
 - **episodes**: Episode thumbnail images
@@ -58,6 +59,7 @@ import { SAMPLE_VIDEOS } from '@/assets';
 - **navigation**: Navigation arrows (back/next)
 
 ### Videos
+
 - **samples**: Sample/demo videos (currently using Google Storage)
 - **episodes**: Production episode videos
 - **reels**: Short-form reel videos
@@ -74,14 +76,17 @@ import { SAMPLE_VIDEOS } from '@/assets';
 ## Migration Status
 
 ### ✅ Completed
+
 - Created assets folder structure
 - Created centralized configuration files
 - Updated data files (chapterData.ts, videoSlideData.ts)
 
 ### 🔄 In Progress
+
 - Updating component files to use centralized assets
 
 ### ⏳ Pending
+
 - Replace external URLs with local assets (when available)
 - Add image optimization
 - Implement lazy loading

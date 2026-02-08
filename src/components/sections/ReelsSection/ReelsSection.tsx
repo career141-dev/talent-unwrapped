@@ -1,11 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
-interface ReelVideo {
-  id: number;
-  videoUrl: string;
-  title: string;
-  description: string;
-}
+import { REELS_DATA } from "@/data";
 
 export const ReelsSection = (): JSX.Element => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -13,28 +7,8 @@ export const ReelsSection = (): JSX.Element => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
-  const isScrollingRef = useRef(false);
 
-  const reelVideos: ReelVideo[] = [
-    {
-      id: 1,
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      title: "Leadership Insights",
-      description: "Key moments from our leadership discussions",
-    },
-    {
-      id: 2,
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-      title: "Innovation Stories",
-      description: "Inspiring stories of innovation and change",
-    },
-    {
-      id: 3,
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-      title: "Future of Work",
-      description: "Exploring the evolving workplace landscape",
-    },
-  ];
+  const reelVideos = REELS_DATA;
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -64,7 +38,7 @@ export const ReelsSection = (): JSX.Element => {
       },
       {
         threshold: 0.3, // Trigger when 30% of section is visible
-      }
+      },
     );
 
     observer.observe(section);
@@ -94,21 +68,29 @@ export const ReelsSection = (): JSX.Element => {
     };
 
     // Add scroll listener with passive option for better performance
-    container.addEventListener('scroll', handleScroll, { passive: true });
+    container.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      container.removeEventListener('scroll', handleScroll);
+      container.removeEventListener("scroll", handleScroll);
     };
   }, [activeIndex]);
 
   return (
-    <section id="reels" ref={sectionRef} className="relative w-full bg-white pt-0 pb-16 sm:py-20 md:py-24 lg:py-[90px] px-0 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+    <section
+      id="reels"
+      ref={sectionRef}
+      className="relative w-full bg-white pt-0 pb-16 sm:py-20 md:py-24 lg:py-[90px] px-0 sm:px-6 md:px-8 lg:px-10 xl:px-12"
+    >
       <div className="max-w-[1440px] mx-auto w-full">
         {/* Mobile Horizontal Carousel */}
         <div
           className="lg:hidden w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide relative"
           ref={scrollContainerRef}
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+            WebkitOverflowScrolling: "touch",
+          }}
         >
           <div className="flex w-full gap-x-4 px-4 sm:px-6 md:px-8">
             {reelVideos.map((reel, index) => (
@@ -153,7 +135,7 @@ export const ReelsSection = (): JSX.Element => {
                   const width = container.offsetWidth; // Use offsetWidth instead of slide reference for safer calculation
                   container.scrollTo({
                     left: index * width,
-                    behavior: 'smooth'
+                    behavior: "smooth",
                   });
                 }
               }}
@@ -162,7 +144,7 @@ export const ReelsSection = (): JSX.Element => {
                 : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
                 }`}
               aria-label={`Go to reel ${index + 1}`}
-              aria-current={activeIndex === index ? 'step' : undefined}
+              aria-current={activeIndex === index ? "step" : undefined}
             />
           ))}
         </div>

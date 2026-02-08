@@ -1,155 +1,13 @@
 import { useRef, useState, useEffect } from "react";
-
-interface Speaker {
-  id: number;
-  title: string;
-  views: string;
-  name: string;
-  position: string;
-  image: string;
-}
+import { LANDING_SPEAKERS_DATA } from "@/data/speakerData";
+import { NAVIGATION_ICONS } from "@/assets";
 
 export const SpeakersProfileSection = (): JSX.Element => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const isManualScrollRef = useRef(true);
 
-  const allSpeakersData: Speaker[][] = [
-    // View 1 (Default)
-    [
-      {
-        id: 1,
-        title: "Bridging Sri Lanka's Talent Gap",
-        views: "40m+ Views",
-        name: "Ashan Ransilige",
-        position: "CEO - Link Natural",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449055-1@2x.png",
-      },
-      {
-        id: 2,
-        title: 'Avoid "cut- And-paste" Leadership',
-        views: "32m+ Views",
-        name: "Surani Amarasinghe",
-        position: "Director - LSEG",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449056-1@2x.png",
-      },
-      {
-        id: 3,
-        title: "Sri Lanka's True Talent Gap",
-        views: "19m+ Views",
-        name: "Ayin Shah Jahan",
-        position: "Head - EY",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449057-1@2x.png",
-      },
-      {
-        id: 4,
-        title: "Sri Lankan Talent: Potential vs Retention",
-        views: "15m+ Views",
-        name: "Inoka Dias",
-        position: "Director - Virtusa",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449058-1@2x.png",
-      },
-      {
-        id: 9,
-        title: "Leadership in the Digital Age",
-        views: "25m+ Views",
-        name: "Deepak Patel",
-        position: "CTO - Global Tech",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449055-1@2x.png",
-      },
-      {
-        id: 10,
-        title: "Innovation and Adaptability",
-        views: "33m+ Views",
-        name: "Emma Wilson",
-        position: "VP - Strategy",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449056-1@2x.png",
-      },
-      {
-        id: 11,
-        title: "Talent Retention Best Practices",
-        views: "28m+ Views",
-        name: "James Anderson",
-        position: "HR Director - Fortune 500",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449057-1@2x.png",
-      },
-      {
-        id: 12,
-        title: "Building High-Performance Teams",
-        views: "38m+ Views",
-        name: "Lisa Chen",
-        position: "Chief People Officer",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449058-1@2x.png",
-      },
-    ],
-    // View 2 (Alternative speakers)
-    [
-      {
-        id: 5,
-        title: "Building Future-Ready Teams",
-        views: "28m+ Views",
-        name: "Rajesh Kumar",
-        position: "VP - Tech Solutions",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449055-1@2x.png",
-      },
-      {
-        id: 6,
-        title: "Digital Transformation Leadership",
-        views: "35m+ Views",
-        name: "Priya Sharma",
-        position: "CTO - Innovation Labs",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449056-1@2x.png",
-      },
-      {
-        id: 7,
-        title: "Sustainable Business Practices",
-        views: "22m+ Views",
-        name: "Michael Chen",
-        position: "Director - Sustainability",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449057-1@2x.png",
-      },
-      {
-        id: 8,
-        title: "AI and Human Collaboration",
-        views: "45m+ Views",
-        name: "Sarah Williams",
-        position: "Head of AI Strategy",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449058-1@2x.png",
-      },
-      {
-        id: 13,
-        title: "Future of Work Trends",
-        views: "31m+ Views",
-        name: "David Kumar",
-        position: "Workforce Analyst",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449055-1@2x.png",
-      },
-      {
-        id: 14,
-        title: "Cross-Cultural Leadership",
-        views: "26m+ Views",
-        name: "Sophia Martinez",
-        position: "Global Executive Coach",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449056-1@2x.png",
-      },
-      {
-        id: 15,
-        title: "Scaling Operations Globally",
-        views: "29m+ Views",
-        name: "Robert Johnson",
-        position: "COO - International Corp",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449057-1@2x.png",
-      },
-      {
-        id: 16,
-        title: "Data-Driven Decision Making",
-        views: "34m+ Views",
-        name: "Victoria Lee",
-        position: "Chief Analyst",
-        image: "https://c.animaapp.com/6IK4krLc/img/frame-4449058-1@2x.png",
-      },
-    ]
-  ];
+  const allSpeakersData = LANDING_SPEAKERS_DATA;
 
   const speakers = allSpeakersData[0]; // Use first dataset
   const ITEMS_PER_PAGE = 5;
@@ -170,7 +28,7 @@ export const SpeakersProfileSection = (): JSX.Element => {
 
       timeoutId = setTimeout(() => {
         // Get the first article element to measure actual dimensions
-        const firstArticle = container.querySelector('article');
+        const firstArticle = container.querySelector("article");
         if (!firstArticle) return;
 
         const articleWidth = firstArticle.offsetWidth;
@@ -191,9 +49,11 @@ export const SpeakersProfileSection = (): JSX.Element => {
       }, 50);
     };
 
-    container.addEventListener('scroll', handleScrollTracking, { passive: true });
+    container.addEventListener("scroll", handleScrollTracking, {
+      passive: true,
+    });
     return () => {
-      container.removeEventListener('scroll', handleScrollTracking);
+      container.removeEventListener("scroll", handleScrollTracking);
       clearTimeout(timeoutId);
     };
   }, [speakers.length]);
@@ -205,7 +65,7 @@ export const SpeakersProfileSection = (): JSX.Element => {
     // Scroll the container to show the correct item
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const firstArticle = container.querySelector('article');
+      const firstArticle = container.querySelector("article");
 
       if (firstArticle) {
         const articleWidth = firstArticle.offsetWidth;
@@ -220,7 +80,7 @@ export const SpeakersProfileSection = (): JSX.Element => {
 
         container.scrollTo({
           left: scrollPosition,
-          behavior: 'smooth',
+          behavior: "smooth",
         });
 
         // Re-enable manual scroll tracking after scroll completes
@@ -231,11 +91,11 @@ export const SpeakersProfileSection = (): JSX.Element => {
     }
   };
 
-  const handleScroll = (direction: 'left' | 'right') => {
+  const handleScroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
 
-      const cards = Array.from(container.querySelectorAll('article'));
+      const cards = Array.from(container.querySelectorAll("article"));
 
       if (cards.length >= 2) {
         // Measure the exact distance between first and second card (this includes gap)
@@ -244,7 +104,7 @@ export const SpeakersProfileSection = (): JSX.Element => {
         const scrollAmount = secondCardLeft - firstCardLeft;
 
         // Scroll by that amount
-        if (direction === 'left') {
+        if (direction === "left") {
           container.scrollLeft -= scrollAmount;
         } else {
           container.scrollLeft += scrollAmount;
@@ -254,7 +114,11 @@ export const SpeakersProfileSection = (): JSX.Element => {
   };
 
   return (
-    <section id="speakers" className="relative w-full bg-white py-10 sm:py-12 md:py-16 lg:py-[60px] overflow-hidden" style={{ overflowX: 'hidden' }}>
+    <section
+      id="speakers"
+      className="relative w-full bg-white py-10 sm:py-12 md:py-16 lg:py-[60px] overflow-hidden"
+      style={{ overflowX: "hidden" }}
+    >
       {/* Inner container with responsive padding - matches global layout only on web */}
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         <div className="flex flex-col items-start gap-4 md:gap-6 lg:gap-8 relative w-full">
@@ -284,14 +148,14 @@ export const SpeakersProfileSection = (): JSX.Element => {
               {/* Left Scroll Button - positioned outside container only on XL desktop */}
               <button
                 className="hidden lg:block absolute left-2 xl:left-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-10 hover:scale-105 transition-transform bg-white/10 rounded-full xl:bg-transparent"
-                onClick={() => handleScroll('left')}
+                onClick={() => handleScroll("left")}
                 type="button"
                 aria-label="Scroll left"
               >
                 <img
                   className="w-full h-full"
                   alt=""
-                  src="https://c.animaapp.com/6IK4krLc/img/back@2x.png"
+                  src={NAVIGATION_ICONS.back}
                   aria-hidden="true"
                 />
               </button>
@@ -301,8 +165,8 @@ export const SpeakersProfileSection = (): JSX.Element => {
                 ref={scrollContainerRef}
                 className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-auto scroll-smooth scrollbar-hide relative pb-4"
                 style={{
-                  scrollbarWidth: 'none',
-                  msOverflowStyle: 'none',
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
                 }}
               >
                 {speakers.map((speaker) => (
@@ -314,8 +178,8 @@ export const SpeakersProfileSection = (): JSX.Element => {
                       <div
                         className="relative w-[120px] h-[120px] sm:w-[130px] sm:h-[130px] md:w-[139px] md:h-[139px] rounded-full flex-shrink-0"
                         style={{
-                          border: '4px solid #7bb302',
-                          padding: '4px'
+                          border: "4px solid #7bb302",
+                          padding: "4px",
                         }}
                       >
                         <div className="w-full h-full rounded-full overflow-hidden bg-[#00000033]">
@@ -356,14 +220,14 @@ export const SpeakersProfileSection = (): JSX.Element => {
               {/* Right Scroll Button - positioned outside container only on XL desktop */}
               <button
                 className="hidden lg:block absolute right-2 xl:right-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-10 hover:scale-105 transition-transform bg-white/10 rounded-full xl:bg-transparent"
-                onClick={() => handleScroll('right')}
+                onClick={() => handleScroll("right")}
                 type="button"
                 aria-label="Scroll right"
               >
                 <img
                   className="w-full h-full"
                   alt=""
-                  src="https://c.animaapp.com/6IK4krLc/img/next@2x.png"
+                  src={NAVIGATION_ICONS.next}
                   aria-hidden="true"
                 />
               </button>
@@ -375,7 +239,7 @@ export const SpeakersProfileSection = (): JSX.Element => {
                 <button
                   key={index}
                   onClick={() => handlePaginationClick(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentPage ? 'bg-[#7bb302] w-6' : 'bg-[#d0d0d0]'
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentPage ? "bg-[#7bb302] w-6" : "bg-[#d0d0d0]"
                     }`}
                   aria-label={`Page ${index + 1}`}
                 />

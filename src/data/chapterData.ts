@@ -44,8 +44,7 @@ export const EDITION_CONTENT = {
       {
         id: 1,
         title: "Innovation in Leadership: ",
-        subtitle:
-          "Transforming Business Culture in the Middle East",
+        subtitle: "Transforming Business Culture in the Middle East",
         videoIcon: ICONS.videoCircleAlt3,
         exportIcon: ICONS.exportAlt2,
       },
@@ -91,7 +90,7 @@ export const POSITION_MAP = {
 export const getThreeChapters = (): Episode[] => THREE_CHAPTERS;
 
 export const getPositionsByEdition = (
-  edition: "dubai" | "singapore"
+  edition: "dubai" | "singapore",
 ): typeof POSITION_MAP.dubai => {
   return POSITION_MAP[edition] || POSITION_MAP.singapore;
 };

@@ -1,11 +1,17 @@
-import { FooterSection, GlobalHeader, ReelsSection, ContactUsSection, SubmitFormSection } from "../../components";
+import {
+  FooterSection,
+  GlobalHeader,
+  ReelsSection,
+  ContactUsSection,
+  SubmitFormSection,
+} from "../../components";
 import {
   EpisodeDetailsSection,
   HeroBannerSection,
   LatestPodcastListSection,
   SpeakersProfileSection,
   TalentIntroductionSection,
-  WisdomAndTestimonialsSection
+  WisdomAndTestimonialsSection,
 } from "./Sections";
 
 /**
@@ -24,7 +30,10 @@ export const LandingPage = (): JSX.Element => {
         </div>
 
         {/* Constrained content sections */}
-        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0" style={{ overflowX: 'hidden' }}>
+        <div
+          className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0"
+          style={{ overflowX: "hidden" }}
+        >
           <HeroBannerSection />
           <WisdomAndTestimonialsSection />
           <TalentIntroductionSection />
@@ -37,7 +46,10 @@ export const LandingPage = (): JSX.Element => {
         </div>
 
         {/* Constrained content sections */}
-        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0" style={{ overflowX: 'hidden' }}>
+        <div
+          className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0"
+          style={{ overflowX: "hidden" }}
+        >
           <div id="reels" className="w-full">
             <ReelsSection />
           </div>
@@ -49,7 +61,10 @@ export const LandingPage = (): JSX.Element => {
         </div>
 
         {/* Constrained content sections */}
-        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0" style={{ overflowX: 'hidden' }}>
+        <div
+          className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0"
+          style={{ overflowX: "hidden" }}
+        >
           <SubmitFormSection />
           <ContactUsSection />
           <FooterSection />

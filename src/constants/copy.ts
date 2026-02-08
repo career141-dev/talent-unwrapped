@@ -11,11 +11,23 @@ export const SECTION_TITLES = {
   SPEAKERS: "Speakers",
   CONTACT_US: "Contact Us",
   ABOUT_US: "About Us",
+  LETS_UNWRAP_YOUR_STORY: "lets unwrap your story",
+  WHY_BE_A_GUEST: "WHY BE A GUEST?",
+  READY_TO_UNWRAP: "Ready to unwrap your insights?",
+  KEY_QUESTIONS: "Key Questions",
+  DISCUSSED: "Discussed",
 };
 
 export const SECTION_DESCRIPTIONS = {
   VIEWERS_WORLDWIDE: "100K+ VIEWERS WORLDWIDE",
-  PROFESSIONAL_COMMUNITY: "Share your perspective with a community of 100K+ professionals worldwide",
+  PROFESSIONAL_COMMUNITY:
+    "Share your perspective with a community of 100K+ professionals worldwide",
+  CHAPTER_EXPLORATION:
+    "explores a different human dimension of ambition, design, and leadership.",
+  GUEST_INVITATION:
+    "Be seen, not as a speaker — but as a story. Join a curated circle of founders, thinkers, and changemakers shaping how humans thrive in work and life. We're looking for voices who don't just lead — they inspire.",
+  SUBMIT_FORM_DESC:
+    "If you're shaping ideas, leading teams, or driving transformation — we'd love to connect. Share your details with us here — our team will reach you personally.",
 };
 
 export const BUTTONS = {
@@ -29,6 +41,8 @@ export const BUTTONS = {
   CLOSE: "Close",
   NEXT: "Next",
   PREVIOUS: "Previous",
+  EXPLORE: "Explore",
+  MORE_ABOUT_PODCAST: "More about the podcast",
 };
 
 export const FORM_LABELS = {
@@ -39,6 +53,8 @@ export const FORM_LABELS = {
   DESIGNATION: "Designation",
   MESSAGE: "Message",
   PHONE: "Phone Number",
+  FIRST_NAME_ALT: "First name",
+  LAST_NAME_ALT: "Last name",
 };
 
 export const FORM_PLACEHOLDERS = {
@@ -49,6 +65,7 @@ export const FORM_PLACEHOLDERS = {
   DESIGNATION: "Enter your designation",
   MESSAGE: "Enter your message",
   PHONE: "Enter your phone number",
+  EMAIL_INPUT: "you@company.com",
 };
 
 export const VALIDATION_MESSAGES = {
@@ -65,6 +82,8 @@ export const FEEDBACK_MESSAGES = {
   LOADING: "Loading...",
   NO_DATA: "No data available",
   TRY_AGAIN: "Try Again",
+  FORM_SUCCESS: "Thank you! Your message has been sent successfully.",
+  NO_EPISODES_FOUND: "No episodes found matching your criteria.",
 };
 
 export const FOOTER_LINKS = {
@@ -84,4 +103,75 @@ export const METADATA = {
 export const EDITION_NAMES = {
   DUBAI: "Dubai",
   SINGAPORE: "Singapore",
+};
+
+export const HERO_CONTENT = {
+  FEEL_HEADING: "Conversations that feel",
+  STAY_HEADING: "ideas that stay",
+  EDITION_SUFFIX: "Edition",
+};
+
+export const TALENT_INTRO_CONTENT = {
+  VIEWER_COUNT: "100K+",
+  SCHEDULE_FOR: "Pods scheduled for: ",
+  CHAPTER_PREFIX: "Each episode of Talent Unwrapped: ",
+};
+
+export const WISDOM_CONTENT = {
+  TAGLINE: "Because talent isn't found. It's designed, felt, and lived.",
+  DIRECTOR_NAME: "M A Azeemusham",
+  DIRECTOR_ROLE: "Managing Director",
+  QUOTATION:
+    "For over two decades, Career141 has connected people to opportunity. Now, through Talent Unwrapped, we're creating space for unfiltered conversations — about how corporate change-makers lead transformation, how digital disruption redefines collaboration, and how AI reshapes decision-making. It's where the next era of leadership is decoded — exploring how foresight, agility, and emotional intelligence empower leaders to thrive amid constant evolution.",
+};
+
+export const GUEST_SECTION_CONTENT = {
+  SUBTITLE: "Your words, Your wisdom",
+  UNWRAPPED_PREFIX: "Your ",
+  UNWRAPPED_TEXT: "unwrapped moment",
+  FIRESIDE_CHATS: "Fireside Chats",
+  ONE_ON_ONE: "1 on 1 Interviews",
+  GUEST_PANEL: "2 - 3 Guest Panel",
+  ROUNDTABLE: "Roundtable Discussions",
+};
+
+export const FORMS_CONTENT = {
+  HEADING_READY: "Ready to ",
+  HEADING_UNWRAP: "unwrap",
+  HEADING_YOUR: "your ",
+  HEADING_INSIGHTS: "insights?",
+  FEATURE_TITLE_1: "Be part of a meaningful exchange.",
+  FEATURE_TITLE_2: "Build lasting connections.",
+  FEATURE_TITLE_3: "Grow together.",
+  FEATURE_DESC_2:
+    "Join conversations with leaders shaping the next era of business.",
+  FEATURE_DESC_3:
+    "Explore partnership opportunities that create impact beyond the episode.",
+  SEND_MESSAGE: "Send Message",
+  LEADERSHIP_MEANING: "What It Means for Leadership",
+  TODAYS_LEADERS: "For today's leaders:",
+  LINKEDIN_PROFILE: "LinkedIn Profile",
+};
+
+export const NAV_LABELS = {
+  HOME: "Home",
+  ABOUT: "About",
+  EPISODES: "Episodes",
+  REELS: "Reels",
+  SCHEDULE: "Schedule",
+  EXECUTIVE_SEARCH: "Executive Search",
+  CULTURE: "Our Culture",
+  OUR_JOURNEY: "Our Journey",
+  JOBS: "Jobs & Vacancies",
+  JOIN_US: "Join Us",
+  COMPANY: "Company",
+  INFORMATION: "Information",
+  SUPPORT: "Support",
+  CONTACT_US: "Contact Us",
+  CAREER_LINK: "career141.com",
+  MENU: "Menu",
+  EDITIONS: "Editions",
+  CURRENT: "Current",
+  SPEAKERS: "Speakers",
+  ALL: "All",
 };

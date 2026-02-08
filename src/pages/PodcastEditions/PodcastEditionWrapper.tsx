@@ -35,14 +35,16 @@ export const PodcastEditionWrapper = (): JSX.Element | null => {
   }, [edition, navigate]);
 
   // Load data for current edition (hook handles caching internally)
-  const { episodes, handleViewEpisode } = useEpisodeEdition(validEdition || "singapore");
+  const { episodes, handleViewEpisode } = useEpisodeEdition(
+    validEdition || "singapore",
+  );
 
   // Smooth scroll to top when edition changes
   useEffect(() => {
     if (validEdition) {
       window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   }, [validEdition]);

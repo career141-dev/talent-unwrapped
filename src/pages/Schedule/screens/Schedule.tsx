@@ -1,4 +1,8 @@
-import { GlobalHeader, ContactUsSection, FooterSection } from "../../../components";
+import {
+  GlobalHeader,
+  ContactUsSection,
+  FooterSection,
+} from "../../../components";
 import { TheThreeChaptersSection } from "../../PodcastEditions/Sections";
 
 /**

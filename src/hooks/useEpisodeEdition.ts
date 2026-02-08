@@ -21,7 +21,7 @@ interface UseEpisodeEditionReturn {
  * - Only recalculates when edition changes
  */
 export const useEpisodeEdition = (
-  edition: EditionType
+  edition: EditionType,
 ): UseEpisodeEditionReturn => {
   const navigate = useNavigate();
 

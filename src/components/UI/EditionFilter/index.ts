@@ -1,1 +1,1 @@
-export { EditionFilter } from './EditionFilter';
+export { EditionFilter } from "./EditionFilter";

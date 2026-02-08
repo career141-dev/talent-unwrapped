@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ROUTES } from "../../../constants";
+import { ICONS } from "@/assets";
+import { NAV_LABELS, EDITION_NAMES } from "@/constants/copy";
 
 interface Edition {
   name: string;
@@ -18,19 +20,21 @@ export const EditionsDropdown = (): JSX.Element => {
 
   const editions: Edition[] = [
     {
-      name: "Singapore Edition",
+      name: `${EDITION_NAMES.SINGAPORE} Edition`,
       path: ROUTES.SINGAPORE,
-      flag: "🇸🇬"
+      flag: "🇸🇬",
     },
     {
-      name: "Dubai Edition",
+      name: `${EDITION_NAMES.DUBAI} Edition`,
       path: ROUTES.DUBAI,
-      flag: "🇦🇪"
-    }
+      flag: "🇦🇪",
+    },
   ];
 
-  const currentEdition = editions.find(edition => edition.path === location.pathname);
-  const isLandingPage = location.pathname === '/' || !currentEdition;
+  const currentEdition = editions.find(
+    (edition) => edition.path === location.pathname,
+  );
+  const isLandingPage = location.pathname === "/" || !currentEdition;
 
   // Detect mobile device
   useEffect(() => {
@@ -38,13 +42,16 @@ export const EditionsDropdown = (): JSX.Element => {
       setIsMobile(window.innerWidth < 1024);
     };
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -94,12 +101,12 @@ export const EditionsDropdown = (): JSX.Element => {
         aria-haspopup="true"
       >
         <span className="relative flex items-end justify-center w-fit [font-family:'Geist',Helvetica] font-normal text-[#232323] text-base text-center tracking-[-0.32px] leading-6 whitespace-nowrap group-hover:text-[#7bb302] transition-colors duration-300">
-          {isLandingPage ? 'Editions' : currentEdition?.name || 'Editions'}
+          {isLandingPage ? NAV_LABELS.EDITIONS : currentEdition?.name || NAV_LABELS.EDITIONS}
         </span>
         <img
-          className={`relative w-[10.33px] h-[5.72px] mr-[-0.45px] transition-transform duration-300 self-center ${isOpen ? 'rotate-180' : ''}`}
+          className={`relative w-[10.33px] h-[5.72px] mr-[-0.45px] transition-transform duration-300 self-center ${isOpen ? "rotate-180" : ""}`}
           alt=""
-          src="https://c.animaapp.com/6IK4krLc/img/vector.svg"
+          src={ICONS.chevronDown}
         />
       </button>
 
@@ -117,17 +124,21 @@ export const EditionsDropdown = (): JSX.Element => {
                 e.stopPropagation();
                 handleEditionSelect(edition);
               }}
-              className={`w-full px-4 py-3 text-left hover:bg-gray-50 transition-all duration-200 flex items-center gap-3 touch-manipulation ${currentEdition?.path === edition.path ? 'bg-green-50 text-[#7bb302]' : 'text-[#232323]'
+              className={`w-full px-4 py-3 text-left hover:bg-gray-50 transition-all duration-200 flex items-center gap-3 touch-manipulation ${currentEdition?.path === edition.path
+                ? "bg-green-50 text-[#7bb302]"
+                : "text-[#232323]"
                 }`}
             >
-              <span className="text-lg transition-transform duration-200 hover:scale-125">{edition.flag}</span>
+              <span className="text-lg transition-transform duration-200 hover:scale-125">
+                {edition.flag}
+              </span>
               <div className="flex flex-col">
                 <span className="[font-family:'Geist',Helvetica] font-medium text-sm">
                   {edition.name}
                 </span>
                 {currentEdition?.path === edition.path && (
                   <span className="[font-family:'Geist',Helvetica] font-normal text-xs text-[#7bb302]">
-                    Current
+                    {NAV_LABELS.CURRENT}
                   </span>
                 )}
               </div>

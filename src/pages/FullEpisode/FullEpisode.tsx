@@ -6,10 +6,13 @@ import { KeyQuestionsSection } from "./Sections/KeyQuestionsSection";
 import {
   SpeakersProfileSection,
   EpisodeDetailsSection,
-  TalentIntroductionSection
+  TalentIntroductionSection,
 } from "../LandingPage/Sections";
 import { SubmitFormSection } from "../../components";
-import { getVideoSlidesByEdition } from "../../data";
+import { getVideoSlidesByEdition } from "@/data";
+import { ICONS } from "@/assets";
+import { HERO_CONTENT, FOOTER_LINKS } from "@/constants/copy";
+import { EXTERNAL_LINKS } from "@/constants/links";
 
 /**
  * Full Episode Page
@@ -58,7 +61,7 @@ export const FullEpisode = (): JSX.Element => {
           }
         }
       },
-      { threshold: 0 }
+      { threshold: 0 },
     );
 
     if (sectionRef.current) {
@@ -75,7 +78,7 @@ export const FullEpisode = (): JSX.Element => {
   const handlePrevious = () => {
     setIsPlaying(false);
     setCurrentSlide(
-      (prev) => (prev - 1 + videoSlides.length) % videoSlides.length
+      (prev) => (prev - 1 + videoSlides.length) % videoSlides.length,
     );
   };
 
@@ -102,16 +105,17 @@ export const FullEpisode = (): JSX.Element => {
       className="flex flex-col items-center relative w-full"
       data-model-id="905:6609"
     >
-
       {/* Hero Section with Video Carousel - RESPONSIVE */}
-      <section ref={sectionRef} className="relative w-full bg-white pt-6 md:pt-8 lg:pt-10 pb-8 md:pb-12 lg:pb-16">
-
+      <section
+        ref={sectionRef}
+        className="relative w-full bg-white pt-6 md:pt-8 lg:pt-10 pb-8 md:pb-12 lg:pb-16"
+      >
         {/* Mobile Video Player - Matching Landing Page Design (visible only on mobile) */}
         <div className="block md:hidden relative w-full">
-          <div 
+          <div
             className="relative w-full bg-[rgba(0,0,0,0.2)] rounded-lg overflow-hidden mx-auto"
             style={{
-              height: 'clamp(200px, 52vw, 280px)',
+              height: "clamp(200px, 52vw, 280px)",
             }}
           >
             {/* Video Slides */}
@@ -119,9 +123,10 @@ export const FullEpisode = (): JSX.Element => {
               {videoSlides.map((slide, index) => (
                 <div
                   key={slide.id}
-                  className={`absolute inset-0 transition-opacity duration-700 ${
-                    index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                  }`}
+                  className={`absolute inset-0 transition-opacity duration-700 ${index === currentSlide
+                    ? "opacity-100 z-10"
+                    : "opacity-0 z-0"
+                    }`}
                 >
                   {isPlaying && index === currentSlide ? (
                     <video
@@ -145,138 +150,135 @@ export const FullEpisode = (): JSX.Element => {
               ))}
             </div>
 
-          {/* Edition Badge - Mobile */}
-          <div 
-            className="inline-flex items-center justify-center gap-1 absolute bg-[#ed2939] rounded-full z-20"
-            style={{
-              top: 'clamp(0.5rem, 2vw, 0.875rem)',
-              left: 'clamp(0.5rem, 2vw, 0.875rem)',
-              padding: 'clamp(0.25rem, 0.8vw, 0.375rem) clamp(0.5rem, 1.8vw, 0.75rem)',
-            }}
-          >
-            <img
+            {/* Edition Badge - Mobile */}
+            <div
+              className="inline-flex items-center justify-center gap-1 absolute bg-[#ed2939] rounded-full z-20"
               style={{
-                width: 'clamp(10px, 2.8vw, 14px)',
-                height: 'clamp(10px, 2.8vw, 14px)',
-              }}
-              alt=""
-              src="https://c.animaapp.com/6IK4krLc/img/vuesax-bold-play-circle.svg"
-            />
-            <span 
-              className="font-['Geist',Helvetica] font-semibold text-white whitespace-nowrap leading-none"
-              style={{
-                fontSize: 'clamp(0.5rem, 2vw, 0.625rem)',
-                letterSpacing: '-0.01em',
+                top: "clamp(0.5rem, 2vw, 0.875rem)",
+                left: "clamp(0.5rem, 2vw, 0.875rem)",
+                padding:
+                  "clamp(0.25rem, 0.8vw, 0.375rem) clamp(0.5rem, 1.8vw, 0.75rem)",
               }}
             >
-              {edition} Edition
-            </span>
-          </div>
-
-          {/* Play Button - Mobile */}
-          {!isPlaying && (
-            <button
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-md border border-[#e5e5e5] transition-all"
-              onClick={handlePlayVideo}
-              aria-label="Play video"
-              type="button"
-              style={{
-                width: 'clamp(40px, 10vw, 60px)',
-                height: 'clamp(40px, 10vw, 60px)',
-              }}
-            >
-              <svg 
-                className="text-[#232323]" 
+              <img
                 style={{
-                  width: 'clamp(24px, 6vw, 36px)',
-                  height: 'clamp(24px, 6vw, 36px)',
+                  width: "clamp(10px, 2.8vw, 14px)",
+                  height: "clamp(10px, 2.8vw, 14px)",
                 }}
-                viewBox="0 0 24 24" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="12" cy="12" r="12" fill="white" />
-                <polygon points="10,8 16,12 10,16" fill="#232323" />
-              </svg>
-            </button>
-          )}
-
-          {/* Navigation Arrows - Mobile */}
-          {!isPlaying && (
-            <>
-              <button
-                onClick={handlePrevious}
-                className="absolute top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-all z-40 shadow-md border border-[#e5e5e5]"
-                aria-label="Previous video"
+                alt=""
+                src={ICONS.playCircle}
+              />
+              <span
+                className="font-['Geist',Helvetica] font-semibold text-white whitespace-nowrap leading-none"
                 style={{
-                  left: 'clamp(0.5rem, 2vw, 1rem)',
-                  width: 'clamp(32px, 8vw, 40px)',
-                  height: 'clamp(32px, 8vw, 40px)',
+                  fontSize: "clamp(0.5rem, 2vw, 0.625rem)",
+                  letterSpacing: "-0.01em",
                 }}
               >
-                <svg 
-                  style={{
-                    width: 'clamp(16px, 4vw, 20px)',
-                    height: 'clamp(16px, 4vw, 20px)',
-                  }}
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M15 18L9 12L15 6" stroke="#232323" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-              <button
-                onClick={handleNext}
-                className="absolute top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-all z-40 shadow-md border border-[#e5e5e5]"
-                aria-label="Next video"
-                style={{
-                  right: 'clamp(0.5rem, 2vw, 1rem)',
-                  width: 'clamp(32px, 8vw, 40px)',
-                  height: 'clamp(32px, 8vw, 40px)',
-                }}
-              >
-                <svg 
-                  style={{
-                    width: 'clamp(16px, 4vw, 20px)',
-                    height: 'clamp(16px, 4vw, 20px)',
-                  }}
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M9 18L15 12L9 6" stroke="#232323" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-            </>
-          )}
-
-          {/* Pagination Indicators - Mobile */}
-          {!isPlaying && (
-            <div 
-              className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-2 z-40"
-              style={{
-                bottom: 'clamp(0.5rem, 2vw, 1rem)',
-                gap: 'clamp(0.25rem, 0.8vw, 0.5rem)',
-              }}
-            >
-              {videoSlides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`rounded-full transition-all cursor-pointer touch-manipulation ${
-                    index === currentSlide ? "bg-white" : "bg-white/50 hover:bg-white/75"
-                  }`}
-                  style={{
-                    width: index === currentSlide ? 'clamp(12px, 3.5vw, 16px)' : 'clamp(6px, 2vw, 8px)',
-                    height: 'clamp(6px, 1.5vw, 8px)',
-                  }}
-                  aria-label={`Go to video ${index + 1}`}
-                  aria-current={index === currentSlide ? "true" : "false"}
-                />
-              ))}
+                {edition} {HERO_CONTENT.EDITION_SUFFIX}
+              </span>
             </div>
-          )}
+
+            {/* Play Button - Mobile */}
+            {!isPlaying && (
+              <button
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-md border border-[#e5e5e5] transition-all"
+                onClick={handlePlayVideo}
+                aria-label="Play video"
+                type="button"
+                style={{
+                  width: "clamp(40px, 10vw, 60px)",
+                  height: "clamp(40px, 10vw, 60px)",
+                }}
+              >
+                <img
+                  className="w-full h-full"
+                  src={ICONS.playTriangle}
+                  alt="Play"
+                  style={{
+                    width: "clamp(24px, 6vw, 36px)",
+                    height: "clamp(24px, 6vw, 36px)",
+                  }}
+                />
+              </button>
+            )}
+
+            {/* Navigation Arrows - Mobile */}
+            {!isPlaying && (
+              <>
+                <button
+                  onClick={handlePrevious}
+                  className="absolute top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-all z-40 shadow-md border border-[#e5e5e5]"
+                  aria-label="Previous video"
+                  style={{
+                    left: "clamp(0.5rem, 2vw, 1rem)",
+                    width: "clamp(32px, 8vw, 40px)",
+                    height: "clamp(32px, 8vw, 40px)",
+                  }}
+                >
+                  <img
+                    className="w-full h-full"
+                    src={ICONS.chevronLeft}
+                    alt="Back"
+                    style={{
+                      width: "clamp(16px, 4vw, 20px)",
+                      height: "clamp(16px, 4vw, 20px)",
+                    }}
+                  />
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="absolute top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-all z-40 shadow-md border border-[#e5e5e5]"
+                  aria-label="Next video"
+                  style={{
+                    right: "clamp(0.5rem, 2vw, 1rem)",
+                    width: "clamp(32px, 8vw, 40px)",
+                    height: "clamp(32px, 8vw, 40px)",
+                  }}
+                >
+                  <img
+                    className="w-full h-full"
+                    src={ICONS.chevronRight}
+                    alt="Next"
+                    style={{
+                      width: "clamp(16px, 4vw, 20px)",
+                      height: "clamp(16px, 4vw, 20px)",
+                    }}
+                  />
+                </button>
+              </>
+            )}
+
+            {/* Pagination Indicators - Mobile */}
+            {!isPlaying && (
+              <div
+                className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-2 z-40"
+                style={{
+                  bottom: "clamp(0.5rem, 2vw, 1rem)",
+                  gap: "clamp(0.25rem, 0.8vw, 0.5rem)",
+                }}
+              >
+                {videoSlides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`rounded-full transition-all cursor-pointer touch-manipulation ${index === currentSlide
+                      ? "bg-white"
+                      : "bg-white/50 hover:bg-white/75"
+                      }`}
+                    style={{
+                      width:
+                        index === currentSlide
+                          ? "clamp(12px, 3.5vw, 16px)"
+                          : "clamp(6px, 2vw, 8px)",
+                      height: "clamp(6px, 1.5vw, 8px)",
+                    }}
+                    aria-label={`Go to video ${index + 1}`}
+                    aria-current={index === currentSlide ? "true" : "false"}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -289,7 +291,9 @@ export const FullEpisode = (): JSX.Element => {
               {videoSlides.map((slide, index) => (
                 <div
                   key={slide.id}
-                  className={`absolute top-0 left-0 w-full h-full transition-opacity duration-700 ${index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                  className={`absolute top-0 left-0 w-full h-full transition-opacity duration-700 ${index === currentSlide
+                    ? "opacity-100 z-10"
+                    : "opacity-0 z-0"
                     }`}
                 >
                   {isPlaying && index === currentSlide ? (
@@ -318,10 +322,10 @@ export const FullEpisode = (): JSX.Element => {
               <img
                 className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
                 alt=""
-                src="https://c.animaapp.com/6IK4krLc/img/vuesax-bold-play-circle.svg"
+                src={ICONS.playCircle}
               />
               <span className="relative w-fit mt-[-1.00px] [font-family:'Geist',Helvetica] font-semibold text-white text-xs sm:text-sm md:text-base lg:text-xl tracking-[-0.40px] lg:tracking-[-0.80px] leading-[normal]">
-                {edition} Edition
+                {edition} {HERO_CONTENT.EDITION_SUFFIX}
               </span>
             </div>
 
@@ -336,7 +340,7 @@ export const FullEpisode = (): JSX.Element => {
                 <img
                   className="w-full h-full"
                   alt=""
-                  src="https://c.animaapp.com/6IK4krLc/img/vuesax-linear-play.svg"
+                  src={ICONS.playButton}
                 />
               </button>
             )}
@@ -427,45 +431,49 @@ export const FullEpisode = (): JSX.Element => {
 
   return (
     <>
-    <EpisodeLayout
-      edition={editionKey}
-      showChapters={false}
-      showContact={false}
-      showFooter={false}
-    >
-      {content}
-    </EpisodeLayout>
-
-    {/* Episode Details Section - Outside layout for full-width scrolling text */}
-    <EpisodeDetailsSection isEpisodesPage={false} />
-
-    {/* About Section - The Three Chapters */}
-    <TalentIntroductionSection />
-
-    {/* Submit Form Section */}
-    <SubmitFormSection />
-
-    {/* About Us Section */}
-    <ContactUsSection />
-
-    {/* Footer - Responsive */}
-    <footer className="flex w-full min-h-[80px] md:h-[100px] flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-8 md:px-12 lg:px-20 py-6 sm:py-4 md:py-0 bg-white border-t border-neutral-200">
-      <a
-        href="#terms"
-        className="relative w-fit [font-family:'Geist',Helvetica] font-normal text-[#222223] text-xs sm:text-sm md:text-base tracking-[-0.32px] leading-[20.9px] text-center sm:text-left whitespace-nowrap hover:underline touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#7bb302] focus:ring-offset-2 rounded"
+      <EpisodeLayout
+        edition={editionKey}
+        showChapters={false}
+        showContact={false}
+        showFooter={false}
       >
-        Terms & Conditions
-      </a>
-      <div className="relative w-fit [font-family:'Geist',Helvetica] font-normal text-[#222223] text-xs sm:text-sm md:text-base tracking-[-0.32px] leading-[20.9px] text-center sm:text-left whitespace-nowrap">
-        © 2025 All rights reserved.
-      </div>
-      <a
-        href="#privacy"
-        className="relative w-fit [font-family:'Geist',Helvetica] font-normal text-[#222223] text-xs sm:text-sm md:text-base tracking-[-0.32px] leading-[20.9px] text-center sm:text-left whitespace-nowrap hover:underline touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#7bb302] focus:ring-offset-2 rounded"
-      >
-        Privacy Policy
-      </a>
-    </footer>
+        {content}
+      </EpisodeLayout>
+
+      {/* Episode Details Section - Outside layout for full-width scrolling text */}
+      <EpisodeDetailsSection isEpisodesPage={false} />
+
+      {/* About Section - The Three Chapters */}
+      <TalentIntroductionSection />
+
+      {/* Submit Form Section */}
+      <SubmitFormSection />
+
+      {/* About Us Section */}
+      <ContactUsSection />
+
+      {/* Footer - Responsive */}
+      <footer className="flex w-full min-h-[80px] md:h-[100px] flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-8 md:px-12 lg:px-20 py-6 sm:py-4 md:py-0 bg-white border-t border-neutral-200">
+        <a
+          href={EXTERNAL_LINKS.CAREER141}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative w-fit [font-family:'Geist',Helvetica] font-normal text-[#222223] text-xs sm:text-sm md:text-base tracking-[-0.32px] leading-[20.9px] text-center sm:text-left whitespace-nowrap hover:underline touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#7bb302] focus:ring-offset-2 rounded"
+        >
+          {FOOTER_LINKS.TERMS}
+        </a>
+        <div className="relative w-fit [font-family:'Geist',Helvetica] font-normal text-[#222223] text-xs sm:text-sm md:text-base tracking-[-0.32px] leading-[20.9px] text-center sm:text-left whitespace-nowrap">
+          {FOOTER_LINKS.COPYRIGHT}
+        </div>
+        <a
+          href={EXTERNAL_LINKS.CAREER141}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative w-fit [font-family:'Geist',Helvetica] font-normal text-[#222223] text-xs sm:text-sm md:text-base tracking-[-0.32px] leading-[20.9px] text-center sm:text-left whitespace-nowrap hover:underline touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#7bb302] focus:ring-offset-2 rounded"
+        >
+          {FOOTER_LINKS.PRIVACY}
+        </a>
+      </footer>
     </>
   );
 };

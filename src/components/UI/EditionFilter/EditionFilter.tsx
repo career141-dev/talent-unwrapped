@@ -3,7 +3,10 @@ interface EditionFilterProps {
   onEditionChange: (edition: "singapore" | "dubai") => void;
 }
 
-export const EditionFilter = ({ selectedEdition, onEditionChange }: EditionFilterProps): JSX.Element => {
+export const EditionFilter = ({
+  selectedEdition,
+  onEditionChange,
+}: EditionFilterProps): JSX.Element => {
   return (
     <div className="inline-flex items-center gap-2 bg-white rounded-full p-1 shadow-sm border border-gray-200">
       <button

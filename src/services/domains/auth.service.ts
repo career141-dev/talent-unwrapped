@@ -42,12 +42,12 @@ export interface UserProfile {
  * Login user
  */
 export const login = async (
-  credentials: LoginCredentials
+  credentials: LoginCredentials,
 ): Promise<{ success: boolean; data?: AuthResponse; message?: string }> => {
   try {
     const response = await apiClient.post<AuthResponse>(
       API_CONFIG.ENDPOINTS.AUTH_LOGIN,
-      credentials
+      credentials,
     );
 
     if (response?.token) {
@@ -101,7 +101,7 @@ export const refreshToken = async (): Promise<{
 
     const response = await apiClient.post<AuthResponse>(
       API_CONFIG.ENDPOINTS.AUTH_REFRESH,
-      { refreshToken: currentRefreshToken }
+      { refreshToken: currentRefreshToken },
     );
 
     if (response?.token) {
@@ -133,14 +133,15 @@ export const getUserProfile = async (): Promise<{
 }> => {
   try {
     const response = await apiClient.get<UserProfile>(
-      API_CONFIG.ENDPOINTS.AUTH_PROFILE
+      API_CONFIG.ENDPOINTS.AUTH_PROFILE,
     );
     return { success: true, data: response };
   } catch (error) {
     console.error("Error fetching user profile:", error);
     return {
       success: false,
-      message: error instanceof Error ? error.message : "Failed to fetch profile",
+      message:
+        error instanceof Error ? error.message : "Failed to fetch profile",
     };
   }
 };

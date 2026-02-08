@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-
   button,
   input,
   select,
@@ -106,7 +105,7 @@
 }
 
 * {
-  font-family: 'Geist', Helvetica, sans-serif;
+  font-family: "Geist", Helvetica, sans-serif;
 }
 
 html {
@@ -210,7 +209,6 @@ body {
 }
 
 @keyframes shimmer {
-
   0%,
   90%,
   to {
@@ -252,8 +250,6 @@ body {
     transform: translateX(-50%);
   }
 }
-
-
 
 @layer base {
   * {

@@ -21,7 +21,10 @@ export const ScheduleHeroSection = (): JSX.Element => {
         </div>
       </section>
 
-      <LearnMoreModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <LearnMoreModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </>
   );
 };

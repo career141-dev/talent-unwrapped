@@ -1,1 +1,1 @@
-export { MobileCarouselSection } from './MobileCarouselSection';
+export { MobileCarouselSection } from "./MobileCarouselSection";

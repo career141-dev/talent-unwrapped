@@ -5,7 +5,10 @@ interface LearnMoreModalProps {
   onClose: () => void;
 }
 
-export const LearnMoreModal = ({ isOpen, onClose }: LearnMoreModalProps): JSX.Element | null => {
+export const LearnMoreModal = ({
+  isOpen,
+  onClose,
+}: LearnMoreModalProps): JSX.Element | null => {
   if (!isOpen) return null;
 
   return (
@@ -18,15 +21,24 @@ export const LearnMoreModal = ({ isOpen, onClose }: LearnMoreModalProps): JSX.El
 
       {/* Modal Content */}
       <div className="relative w-full max-w-[580px] bg-white rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh] animate-in fade-in zoom-in duration-300 mx-auto">
-
         {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-100 transition-colors z-10"
           aria-label="Close modal"
         >
-          <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+          <svg
+            className="w-6 h-6 text-gray-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
 
@@ -40,7 +52,8 @@ export const LearnMoreModal = ({ isOpen, onClose }: LearnMoreModalProps): JSX.El
             <span className="text-[#ed2939]">insights?</span>
           </h2>
           <p className="[font-family:'Geist',Helvetica] font-normal text-gray-600 text-base leading-relaxed">
-            Interested in being a part of Talent Unwrapped? Share your details below and our team will get back to you shortly.
+            Interested in being a part of Talent Unwrapped? Share your details
+            below and our team will get back to you shortly.
           </p>
         </div>
 

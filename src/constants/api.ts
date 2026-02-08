@@ -39,6 +39,6 @@ export const API_CONFIG = {
   // Headers
   DEFAULT_HEADERS: {
     "Content-Type": "application/json",
-    "Accept": "application/json",
+    Accept: "application/json",
   },
 };

@@ -1,22 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-
-interface VideoSlide {
-  id: number;
-  thumbnail: string;
-  title: string;
-  edition: string;
-  videoUrl?: string;
-}
-
-// Asset URLs from Figma
-const imgArtboard31 = "https://www.figma.com/api/mcp/asset/75cfbe74-897f-4614-9e93-ca874a8a048c";
-const imgFrame44490371 = "https://www.figma.com/api/mcp/asset/0a8b37b9-f00c-48b5-88b3-36f461bb95d9";
-const imgLogoPrasperant11 = "https://www.figma.com/api/mcp/asset/d98dae20-f0e6-4e4d-9431-bc269421027f";
-const imgBusinesswoman = "https://www.figma.com/api/mcp/asset/2ee760b3-04b8-4a93-b16f-cbcec3b2a9cb";
-const imgPortrait = "https://www.figma.com/api/mcp/asset/bb40f991-4eec-44fe-bfca-d99be432d2f3";
-const imgPlayCircle = "https://www.figma.com/api/mcp/asset/b592122a-014f-4e80-91d9-fb6ac215e456";
-const imgArrowRight = "https://www.figma.com/api/mcp/asset/3b117d5b-b455-463a-bd06-00175a9001ae";
-const imgArrowUp = "https://www.figma.com/api/mcp/asset/eb54e5fb-0d9e-496f-8621-362c26783e53";
+import { LANDING_VIDEO_SLIDES } from "@/data/videoSlideData";
+import { LOGOS, ICONS } from "@/assets";
+import { HERO_CONTENT } from "@/constants/copy";
 
 /**
  * HeroBannerSection - Exact Figma Design Recreation
@@ -28,36 +13,7 @@ export const HeroBannerSection = (): JSX.Element => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const videoSlides: VideoSlide[] = [
-    {
-      id: 1,
-      thumbnail: imgFrame44490371,
-      title: "Episode 1: Leadership in the Digital Age",
-      edition: "Singapore",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    },
-    {
-      id: 2,
-      thumbnail: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=675&fit=crop",
-      title: "Episode 2: Building Resilient Teams",
-      edition: "Dubai",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    },
-    {
-      id: 3,
-      thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=675&fit=crop",
-      title: "Episode 3: Innovation and Creativity",
-      edition: "Singapore",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    },
-    {
-      id: 4,
-      thumbnail: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=675&fit=crop",
-      title: "Episode 4: Future of Work",
-      edition: "Dubai",
-      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    },
-  ];
+  const videoSlides = LANDING_VIDEO_SLIDES;
 
   useEffect(() => {
     if (!isPlaying) {
@@ -74,7 +30,9 @@ export const HeroBannerSection = (): JSX.Element => {
 
   const handlePrevious = () => {
     setIsPlaying(false);
-    setCurrentSlide((prev) => (prev - 1 + videoSlides.length) % videoSlides.length);
+    setCurrentSlide(
+      (prev) => (prev - 1 + videoSlides.length) % videoSlides.length,
+    );
   };
 
   const handleNext = () => {
@@ -96,18 +54,18 @@ export const HeroBannerSection = (): JSX.Element => {
   };
 
   const scrollToSpeakers = () => {
-    const speakersSection = document.getElementById('speakers');
+    const speakersSection = document.getElementById("speakers");
     if (speakersSection) {
-      speakersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      speakersSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   return (
-    <section 
+    <section
       className="relative w-full bg-white mx-auto overflow-visible"
       style={{
-        maxWidth: '1440px',
-        paddingBottom: 'clamp(20px, 4vw, 40px)',
+        maxWidth: "1440px",
+        paddingBottom: "clamp(20px, 4vw, 40px)",
       }}
     >
       {/* ========== MOBILE LAYOUT (< 768px) ========== */}
@@ -117,17 +75,17 @@ export const HeroBannerSection = (): JSX.Element => {
           {/* First Line: Logo + Heading + Icon Button */}
           <div className="flex items-center gap-2 mb-2">
             {/* Logo */}
-            <div 
+            <div
               className="bg-white rounded-lg overflow-hidden shadow-sm flex-shrink-0"
               style={{
-                width: 'clamp(126px, 46vw, 165px)',
-                height: 'clamp(32px, 11.8vw, 42px)',
+                width: "clamp(126px, 46vw, 165px)",
+                height: "clamp(32px, 11.8vw, 42px)",
               }}
             >
               <img
                 className="w-full h-full object-contain p-1.5"
                 alt="Prasperant Logo"
-                src="https://c.animaapp.com/6IK4krLc/img/logo-prasperant-1-1.png"
+                src={LOGOS.prasperant}
               />
             </div>
 
@@ -141,9 +99,9 @@ export const HeroBannerSection = (): JSX.Element => {
                   letterSpacing: "-0.03em",
                 }}
               >
-                Conversations that feel
+                {HERO_CONTENT.FEEL_HEADING}
               </h2>
-              
+
               {/* Decorative Icon - inline after "feel" */}
               <button
                 onClick={scrollToSpeakers}
@@ -153,13 +111,13 @@ export const HeroBannerSection = (): JSX.Element => {
                 style={{
                   width: "clamp(4.5rem, 19.5vw, 8.5rem)",
                   height: "auto",
-                  marginLeft: 'clamp(4px, 1.5vw, 8px)',
-                  verticalAlign: 'middle',
-                  transform: 'translateY(clamp(-6px, -1.2vw, -4px))',
+                  marginLeft: "clamp(4px, 1.5vw, 8px)",
+                  verticalAlign: "middle",
+                  transform: "translateY(clamp(-6px, -1.2vw, -4px))",
                 }}
               >
                 <img
-                  src="https://c.animaapp.com/6IK4krLc/img/frame-1000002831.svg"
+                  src={ICONS.heroActionButtonIcon}
                   alt=""
                   className="block w-full h-auto"
                 />
@@ -169,25 +127,25 @@ export const HeroBannerSection = (): JSX.Element => {
 
           {/* Second Line: Green Heading - Full Width */}
           <div className="w-full -mx-0">
-            <h1 
+            <h1
               className="font-['Geist',Helvetica] font-medium text-[#7bb302] leading-[0.85] block"
               style={{
-                fontSize: 'clamp(3rem, 14vw, 4.75rem)',
-                letterSpacing: '-0.03em',
-                width: '100%',
+                fontSize: "clamp(3rem, 14vw, 4.75rem)",
+                letterSpacing: "-0.03em",
+                width: "100%",
               }}
             >
-              ideas that stay
+              {HERO_CONTENT.STAY_HEADING}
             </h1>
           </div>
         </div>
 
         {/* Mobile Video Player */}
         <div className="relative w-full">
-          <div 
+          <div
             className="relative w-full bg-[rgba(0,0,0,0.2)] rounded-lg overflow-hidden"
             style={{
-              height: 'clamp(200px, 52vw, 280px)',
+              height: "clamp(200px, 52vw, 280px)",
             }}
           >
             {/* Video Slides */}
@@ -195,9 +153,10 @@ export const HeroBannerSection = (): JSX.Element => {
               {videoSlides.map((slide, index) => (
                 <div
                   key={slide.id}
-                  className={`absolute inset-0 transition-opacity duration-700 ${
-                    index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                  }`}
+                  className={`absolute inset-0 transition-opacity duration-700 ${index === currentSlide
+                    ? "opacity-100 z-10"
+                    : "opacity-0 z-0"
+                    }`}
                 >
                   {isPlaying && index === currentSlide ? (
                     <video
@@ -222,30 +181,31 @@ export const HeroBannerSection = (): JSX.Element => {
             </div>
 
             {/* Edition Badge - Mobile */}
-            <div 
+            <div
               className="inline-flex items-center justify-center gap-1 absolute bg-[#ed2939] rounded-full z-20"
               style={{
-                top: 'clamp(0.5rem, 2vw, 0.875rem)',
-                left: 'clamp(0.5rem, 2vw, 0.875rem)',
-                padding: 'clamp(0.25rem, 0.8vw, 0.375rem) clamp(0.5rem, 1.8vw, 0.75rem)',
+                top: "clamp(0.5rem, 2vw, 0.875rem)",
+                left: "clamp(0.5rem, 2vw, 0.875rem)",
+                padding:
+                  "clamp(0.25rem, 0.8vw, 0.375rem) clamp(0.5rem, 1.8vw, 0.75rem)",
               }}
             >
               <img
                 style={{
-                  width: 'clamp(10px, 2.8vw, 14px)',
-                  height: 'clamp(10px, 2.8vw, 14px)',
+                  width: "clamp(10px, 2.8vw, 14px)",
+                  height: "clamp(10px, 2.8vw, 14px)",
                 }}
                 alt=""
-                src="https://c.animaapp.com/6IK4krLc/img/vuesax-bold-play-circle.svg"
+                src={ICONS.playCircle}
               />
-              <span 
+              <span
                 className="font-['Geist',Helvetica] font-semibold text-white whitespace-nowrap leading-none"
                 style={{
-                  fontSize: 'clamp(0.5rem, 2vw, 0.625rem)',
-                  letterSpacing: '-0.01em',
+                  fontSize: "clamp(0.5rem, 2vw, 0.625rem)",
+                  letterSpacing: "-0.01em",
                 }}
               >
-                {videoSlides[currentSlide].edition} Edition
+                {videoSlides[currentSlide].edition} {HERO_CONTENT.EDITION_SUFFIX}
               </span>
             </div>
 
@@ -257,20 +217,19 @@ export const HeroBannerSection = (): JSX.Element => {
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/95 active:bg-white rounded-full flex items-center justify-center cursor-pointer active:scale-95 transition-all duration-200 z-20 shadow-lg"
                 aria-label="Play podcast episode"
                 style={{
-                  width: 'clamp(48px, 13vw, 60px)',
-                  height: 'clamp(48px, 13vw, 60px)',
+                  width: "clamp(48px, 13vw, 60px)",
+                  height: "clamp(48px, 13vw, 60px)",
                 }}
               >
-                <svg 
-                  className="text-[#232323] fill-current" 
-                  viewBox="0 0 24 24"
+                <img
+                  className="w-full h-full"
+                  src={ICONS.playTriangle}
+                  alt="Play"
                   style={{
-                    width: 'clamp(20px, 5.5vw, 26px)',
-                    height: 'clamp(20px, 5.5vw, 26px)',
+                    width: "clamp(20px, 5.5vw, 26px)",
+                    height: "clamp(20px, 5.5vw, 26px)",
                   }}
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
+                />
               </button>
             )}
 
@@ -282,27 +241,20 @@ export const HeroBannerSection = (): JSX.Element => {
                   className="absolute top-1/2 -translate-y-1/2 bg-white/95 active:bg-white backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer active:scale-95 transition-all z-20 shadow-md touch-manipulation"
                   aria-label="Previous video"
                   style={{
-                    left: 'clamp(0.5rem, 2.2vw, 0.75rem)',
-                    width: 'clamp(36px, 9.5vw, 44px)',
-                    height: 'clamp(36px, 9.5vw, 44px)',
+                    left: "clamp(0.5rem, 2.2vw, 0.75rem)",
+                    width: "clamp(36px, 9.5vw, 44px)",
+                    height: "clamp(36px, 9.5vw, 44px)",
                   }}
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
+                  <img
+                    className="w-full h-full"
+                    src={ICONS.chevronLeft}
+                    alt="Back"
                     style={{
-                      width: 'clamp(16px, 4.2vw, 20px)',
-                      height: 'clamp(16px, 4.2vw, 20px)',
+                      width: "clamp(16px, 4.2vw, 20px)",
+                      height: "clamp(16px, 4.2vw, 20px)",
                     }}
-                  >
-                    <path
-                      d="M15 18L9 12L15 6"
-                      stroke="#232323"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  />
                 </button>
 
                 <button
@@ -310,50 +262,47 @@ export const HeroBannerSection = (): JSX.Element => {
                   className="absolute top-1/2 -translate-y-1/2 bg-white/95 active:bg-white backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer active:scale-95 transition-all z-20 shadow-md touch-manipulation"
                   aria-label="Next video"
                   style={{
-                    right: 'clamp(0.5rem, 2.2vw, 0.75rem)',
-                    width: 'clamp(36px, 9.5vw, 44px)',
-                    height: 'clamp(36px, 9.5vw, 44px)',
+                    right: "clamp(0.5rem, 2.2vw, 0.75rem)",
+                    width: "clamp(36px, 9.5vw, 44px)",
+                    height: "clamp(36px, 9.5vw, 44px)",
                   }}
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
+                  <img
+                    className="w-full h-full"
+                    src={ICONS.chevronRight}
+                    alt="Next"
                     style={{
-                      width: 'clamp(16px, 4.2vw, 20px)',
-                      height: 'clamp(16px, 4.2vw, 20px)',
+                      width: "clamp(16px, 4.2vw, 20px)",
+                      height: "clamp(16px, 4.2vw, 20px)",
                     }}
-                  >
-                    <path
-                      d="M9 18L15 12L9 6"
-                      stroke="#232323"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  />
                 </button>
               </>
             )}
 
             {/* Pagination - Mobile */}
             {!isPlaying && (
-              <div 
+              <div
                 className="absolute left-1/2 -translate-x-1/2 flex items-center z-20"
                 style={{
-                  bottom: 'clamp(0.5rem, 2.2vw, 0.75rem)',
-                  gap: 'clamp(0.375rem, 1.6vw, 0.5rem)',
+                  bottom: "clamp(0.5rem, 2.2vw, 0.75rem)",
+                  gap: "clamp(0.375rem, 1.6vw, 0.5rem)",
                 }}
               >
                 {videoSlides.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`rounded-full transition-all duration-300 cursor-pointer touch-manipulation ${
-                      index === currentSlide ? "bg-white" : "bg-white/50 active:bg-white/75"
-                    }`}
+                    className={`rounded-full transition-all duration-300 cursor-pointer touch-manipulation ${index === currentSlide
+                      ? "bg-white"
+                      : "bg-white/50 active:bg-white/75"
+                      }`}
                     style={{
-                      width: index === currentSlide ? 'clamp(16px, 4vw, 20px)' : 'clamp(6px, 2vw, 8px)',
-                      height: 'clamp(5px, 1.5vw, 6px)',
+                      width:
+                        index === currentSlide
+                          ? "clamp(16px, 4vw, 20px)"
+                          : "clamp(6px, 2vw, 8px)",
+                      height: "clamp(5px, 1.5vw, 6px)",
                     }}
                     aria-label={`Go to video ${index + 1}`}
                     aria-current={index === currentSlide ? "true" : "false"}
@@ -366,24 +315,27 @@ export const HeroBannerSection = (): JSX.Element => {
       </div>
 
       {/* ========== TABLET & DESKTOP LAYOUT (>= 768px) ========== */}
-      <div className="hidden md:flex items-end w-full" style={{ 
-        minHeight: 'clamp(120px, 15vh, 180px)',
-        paddingLeft: 'clamp(16px, 2vw, 30px)',
-        paddingRight: 'clamp(16px, 2vw, 30px)',
-        gap: 'clamp(20px, 3vw, 40px)',
-      }}>
+      <div
+        className="hidden md:flex items-end w-full"
+        style={{
+          minHeight: "clamp(120px, 15vh, 180px)",
+          paddingLeft: "clamp(16px, 2vw, 30px)",
+          paddingRight: "clamp(16px, 2vw, 30px)",
+          gap: "clamp(20px, 3vw, 40px)",
+        }}
+      >
         {/* Logo - Far Left */}
-        <div 
+        <div
           className="flex-shrink-0 bg-white rounded-xl overflow-hidden"
           style={{
-            width: 'clamp(280px, 28vw, 420px)',
-            height: 'clamp(84px, 8.5vw, 126px)',
+            width: "clamp(280px, 28vw, 420px)",
+            height: "clamp(84px, 8.5vw, 126px)",
           }}
         >
           <img
             className="w-full h-full object-contain"
             alt="Prasperant Logo"
-            src="https://c.animaapp.com/6IK4krLc/img/logo-prasperant-1-1.png"
+            src={LOGOS.prasperant}
           />
         </div>
 
@@ -391,16 +343,16 @@ export const HeroBannerSection = (): JSX.Element => {
         <div className="flex flex-col gap-0 flex-1">
           {/* First line: "Conversations that feel" + Button */}
           <div className="flex items-center gap-3">
-            <h2 
+            <h2
               className="font-['Geist',Helvetica] font-medium text-[#232323] leading-tight"
               style={{
-                fontSize: 'clamp(28px, 3.5vw, 60px)',
-                letterSpacing: '-0.04em',
+                fontSize: "clamp(28px, 3.5vw, 60px)",
+                letterSpacing: "-0.04em",
               }}
             >
-              Conversations that feel
+              {HERO_CONTENT.FEEL_HEADING}
             </h2>
-            
+
             {/* Decorative Icon - Right after text */}
             <button
               onClick={scrollToSpeakers}
@@ -408,234 +360,220 @@ export const HeroBannerSection = (): JSX.Element => {
               aria-label="Go to speakers section"
               type="button"
               style={{
-                width: 'clamp(60px, 7vw, 100px)',
-                height: 'auto',
+                width: "clamp(60px, 7vw, 100px)",
+                height: "auto",
               }}
             >
               <img
                 className="w-full h-full"
                 alt=""
-                src="https://c.animaapp.com/6IK4krLc/img/frame-1000002831.svg"
+                src={ICONS.heroActionButtonIcon}
               />
             </button>
           </div>
-          
+
           {/* Second line: "ideas that stay" */}
-          <h1 
+          <h1
             className="font-['Geist',Helvetica] font-medium text-[#7bb302] leading-[1] whitespace-nowrap"
             style={{
-              fontSize: 'clamp(62px, 9vw, 160px)',
-              letterSpacing: '-0.04em',
+              fontSize: "clamp(62px, 9vw, 160px)",
+              letterSpacing: "-0.04em",
             }}
           >
-            ideas that stay
+            {HERO_CONTENT.STAY_HEADING}
           </h1>
         </div>
       </div>
 
       {/* Desktop Video Player - Positioned Below Header */}
-      <div className="hidden md:block w-full" style={{ marginTop: 'clamp(40px, 6vw, 80px)' }}>
-        <div 
-            className="relative w-full bg-[rgba(0,0,0,0.2)] rounded-xl lg:rounded-3xl overflow-hidden"
+      <div
+        className="hidden md:block w-full"
+        style={{ marginTop: "clamp(40px, 6vw, 80px)" }}
+      >
+        <div
+          className="relative w-full bg-[rgba(0,0,0,0.2)] rounded-xl lg:rounded-3xl overflow-hidden"
+          style={{
+            height: "clamp(450px, 42vw, 700px)",
+            maxHeight: "80vh",
+          }}
+        >
+          {/* Video Slides */}
+          <div className="absolute inset-0 w-full h-full">
+            {videoSlides.map((slide, index) => (
+              <div
+                key={slide.id}
+                className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                  }`}
+              >
+                {isPlaying && index === currentSlide ? (
+                  <video
+                    ref={videoRef}
+                    className="w-full h-full object-cover"
+                    src={slide.videoUrl}
+                    controls
+                    autoPlay
+                    onEnded={handleVideoEnded}
+                    controlsList="nodownload"
+                  />
+                ) : (
+                  <img
+                    className="w-full h-full object-cover"
+                    alt={slide.title}
+                    src={slide.thumbnail}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Edition Badge - Desktop */}
+          <div
+            className="inline-flex items-center justify-center gap-2 px-3 md:px-4 lg:px-5 py-1.5 md:py-2 lg:py-2.5 absolute bg-[#ed2939] rounded-full z-20"
             style={{
-              height: 'clamp(450px, 42vw, 700px)',
-              maxHeight: '80vh',
+              top: "clamp(1rem, 2vw, 2.5rem)",
+              left: "clamp(1rem, 2vw, 3rem)",
             }}
           >
-            {/* Video Slides */}
-            <div className="absolute inset-0 w-full h-full">
-              {videoSlides.map((slide, index) => (
-                <div
-                  key={slide.id}
-                  className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${
-                    index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                  }`}
-                >
-                  {isPlaying && index === currentSlide ? (
-                    <video
-                      ref={videoRef}
-                      className="w-full h-full object-cover"
-                      src={slide.videoUrl}
-                      controls
-                      autoPlay
-                      onEnded={handleVideoEnded}
-                      controlsList="nodownload"
-                    />
-                  ) : (
-                    <img
-                      className="w-full h-full object-cover"
-                      alt={slide.title}
-                      src={slide.thumbnail}
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* Edition Badge - Desktop */}
-            <div 
-              className="inline-flex items-center justify-center gap-2 px-3 md:px-4 lg:px-5 py-1.5 md:py-2 lg:py-2.5 absolute bg-[#ed2939] rounded-full z-20"
+            <img
+              className="flex-shrink-0"
               style={{
-                top: 'clamp(1rem, 2vw, 2.5rem)',
-                left: 'clamp(1rem, 2vw, 3rem)',
+                width: "clamp(16px, 1.8vw, 24px)",
+                height: "clamp(16px, 1.8vw, 24px)",
+              }}
+              alt=""
+              src={ICONS.playCircle}
+            />
+            <span
+              className="font-['Geist',Helvetica] font-semibold text-white whitespace-nowrap leading-none"
+              style={{
+                fontSize: "clamp(0.75rem, 1.1vw, 1.25rem)",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              {videoSlides[currentSlide].edition} {HERO_CONTENT.EDITION_SUFFIX}
+            </span>
+          </div>
+
+          {/* Play Button - Desktop */}
+          {!isPlaying && (
+            <button
+              type="button"
+              onClick={handlePlayVideo}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all duration-300 z-20 shadow-xl"
+              aria-label="Play podcast episode"
+              style={{
+                width: "clamp(80px, 9vw, 134px)",
+                height: "clamp(80px, 9vw, 134px)",
               }}
             >
               <img
-                className="flex-shrink-0"
+                className="w-full h-full"
+                src={ICONS.playTriangle}
+                alt="Play"
                 style={{
-                  width: 'clamp(16px, 1.8vw, 24px)',
-                  height: 'clamp(16px, 1.8vw, 24px)',
+                  width: "clamp(32px, 3.5vw, 48px)",
+                  height: "clamp(32px, 3.5vw, 48px)",
                 }}
-                alt=""
-                src="https://c.animaapp.com/6IK4krLc/img/vuesax-bold-play-circle.svg"
               />
-              <span 
-                className="font-['Geist',Helvetica] font-semibold text-white whitespace-nowrap leading-none"
-                style={{
-                  fontSize: 'clamp(0.75rem, 1.1vw, 1.25rem)',
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                {videoSlides[currentSlide].edition} Edition
-              </span>
-            </div>
+            </button>
+          )}
 
-            {/* Play Button - Desktop */}
-            {!isPlaying && (
+          {/* Navigation Arrows - Desktop */}
+          {!isPlaying && (
+            <>
               <button
-                type="button"
-                onClick={handlePlayVideo}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all duration-300 z-20 shadow-xl"
-                aria-label="Play podcast episode"
+                onClick={handlePrevious}
+                className="absolute top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 z-20 shadow-lg"
+                aria-label="Previous video"
                 style={{
-                  width: 'clamp(80px, 9vw, 134px)',
-                  height: 'clamp(80px, 9vw, 134px)',
+                  left: "clamp(1rem, 2vw, 1.875rem)",
+                  width: "clamp(50px, 4.5vw, 60px)",
+                  height: "clamp(50px, 4.5vw, 60px)",
                 }}
               >
-                <svg 
-                  className="text-[#232323] fill-current" 
-                  viewBox="0 0 24 24" 
-                  xmlns="http://www.w3.org/2000/svg"
+                <img
+                  className="w-full h-full"
+                  src={ICONS.chevronLeft}
+                  alt="Back"
                   style={{
-                    width: 'clamp(32px, 3.5vw, 48px)',
-                    height: 'clamp(32px, 3.5vw, 48px)',
+                    width: "clamp(20px, 2.2vw, 28px)",
+                    height: "clamp(20px, 2.2vw, 28px)",
                   }}
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
+                />
               </button>
-            )}
 
-            {/* Navigation Arrows - Desktop */}
-            {!isPlaying && (
-              <>
-                <button
-                  onClick={handlePrevious}
-                  className="absolute top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 z-20 shadow-lg"
-                  aria-label="Previous video"
-                  style={{
-                    left: 'clamp(1rem, 2vw, 1.875rem)',
-                    width: 'clamp(50px, 4.5vw, 60px)',
-                    height: 'clamp(50px, 4.5vw, 60px)',
-                  }}
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{
-                      width: 'clamp(20px, 2.2vw, 28px)',
-                      height: 'clamp(20px, 2.2vw, 28px)',
-                    }}
-                  >
-                    <path
-                      d="M15 18L9 12L15 6"
-                      stroke="#232323"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-
-                <button
-                  onClick={handleNext}
-                  className="absolute top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 z-20 shadow-lg"
-                  aria-label="Next video"
-                  style={{
-                    right: 'clamp(1rem, 2vw, 1.875rem)',
-                    width: 'clamp(50px, 4.5vw, 60px)',
-                    height: 'clamp(50px, 4.5vw, 60px)',
-                  }}
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{
-                      width: 'clamp(20px, 2.2vw, 28px)',
-                      height: 'clamp(20px, 2.2vw, 28px)',
-                    }}
-                  >
-                    <path
-                      d="M9 18L15 12L9 6"
-                      stroke="#232323"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              </>
-            )}
-
-            {/* Pagination - Desktop */}
-            {!isPlaying && (
-              <div 
-                className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 z-20"
+              <button
+                onClick={handleNext}
+                className="absolute top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 z-20 shadow-lg"
+                aria-label="Next video"
                 style={{
-                  bottom: 'clamp(1rem, 2vw, 1.875rem)',
+                  right: "clamp(1rem, 2vw, 1.875rem)",
+                  width: "clamp(50px, 4.5vw, 60px)",
+                  height: "clamp(50px, 4.5vw, 60px)",
                 }}
               >
-                {videoSlides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    className={`rounded-full transition-all duration-300 cursor-pointer ${
-                      index === currentSlide
-                        ? "bg-white"
-                        : "bg-white/50 hover:bg-white/75"
-                    }`}
-                    style={{
-                      width: index === currentSlide ? 'clamp(24px, 2.5vw, 32px)' : 'clamp(10px, 1.2vw, 12px)',
-                      height: 'clamp(8px, 0.9vw, 12px)',
-                    }}
-                    aria-label={`Go to video ${index + 1}`}
-                    aria-current={index === currentSlide ? "true" : "false"}
-                  />
-                ))}
-              </div>
-            )}
+                <img
+                  className="w-full h-full"
+                  src={ICONS.chevronRight}
+                  alt="Next"
+                  style={{
+                    width: "clamp(20px, 2.2vw, 28px)",
+                    height: "clamp(20px, 2.2vw, 28px)",
+                  }}
+                />
+              </button>
+            </>
+          )}
 
-            {/* Video Counter - Desktop */}
-            <div 
-              className="absolute bg-black/60 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full z-20"
+          {/* Pagination - Desktop */}
+          {!isPlaying && (
+            <div
+              className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 z-20"
               style={{
-                bottom: 'clamp(1rem, 2vw, 1.875rem)',
-                right: 'clamp(1rem, 2vw, 1.875rem)',
+                bottom: "clamp(1rem, 2vw, 1.875rem)",
               }}
             >
-              <span 
-                className="font-['Geist',Helvetica] font-medium text-white"
-                style={{
-                  fontSize: 'clamp(0.625rem, 0.9vw, 0.875rem)',
-                }}
-              >
-                {currentSlide + 1} / {videoSlides.length}
-              </span>
+              {videoSlides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`rounded-full transition-all duration-300 cursor-pointer ${index === currentSlide
+                    ? "bg-white"
+                    : "bg-white/50 hover:bg-white/75"
+                    }`}
+                  style={{
+                    width:
+                      index === currentSlide
+                        ? "clamp(24px, 2.5vw, 32px)"
+                        : "clamp(10px, 1.2vw, 12px)",
+                    height: "clamp(8px, 0.9vw, 12px)",
+                  }}
+                  aria-label={`Go to video ${index + 1}`}
+                  aria-current={index === currentSlide ? "true" : "false"}
+                />
+              ))}
             </div>
+          )}
+
+          {/* Video Counter - Desktop */}
+          <div
+            className="absolute bg-black/60 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full z-20"
+            style={{
+              bottom: "clamp(1rem, 2vw, 1.875rem)",
+              right: "clamp(1rem, 2vw, 1.875rem)",
+            }}
+          >
+            <span
+              className="font-['Geist',Helvetica] font-medium text-white"
+              style={{
+                fontSize: "clamp(0.625rem, 0.9vw, 0.875rem)",
+              }}
+            >
+              {currentSlide + 1} / {videoSlides.length}
+            </span>
           </div>
         </div>
+      </div>
     </section>
   );
 };

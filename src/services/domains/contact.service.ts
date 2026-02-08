@@ -10,7 +10,7 @@ import { ContactFormData } from "../../types";
  * Submit a contact form
  */
 export const submitContactForm = async (
-  data: ContactFormData
+  data: ContactFormData,
 ): Promise<{ success: boolean; message?: string }> => {
   try {
     const response = await apiClient.post<{
@@ -23,8 +23,7 @@ export const submitContactForm = async (
     console.error("Error submitting contact form:", error);
     return {
       success: false,
-      message:
-        error instanceof Error ? error.message : "Failed to submit form",
+      message: error instanceof Error ? error.message : "Failed to submit form",
     };
   }
 };
@@ -34,9 +33,7 @@ export const submitContactForm = async (
  */
 export const getContactSubmissions = async (): Promise<any[]> => {
   try {
-    const data = await apiClient.get<any[]>(
-      API_CONFIG.ENDPOINTS.CONTACT_LIST
-    );
+    const data = await apiClient.get<any[]>(API_CONFIG.ENDPOINTS.CONTACT_LIST);
     return data || [];
   } catch (error) {
     console.error("Error fetching contact submissions:", error);
@@ -48,7 +45,7 @@ export const getContactSubmissions = async (): Promise<any[]> => {
  * Delete a contact submission by ID (admin only)
  */
 export const deleteContactSubmission = async (
-  id: string | number
+  id: string | number,
 ): Promise<boolean> => {
   try {
     await apiClient.delete(`${API_CONFIG.ENDPOINTS.CONTACT_LIST}/${id}`);

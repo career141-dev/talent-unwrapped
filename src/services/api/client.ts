@@ -7,7 +7,7 @@ export class ApiError extends Error {
   constructor(
     public statusCode: number,
     public data: any,
-    message: string
+    message: string,
   ) {
     super(message);
     this.name = "ApiError";
@@ -18,14 +18,14 @@ export class ApiError extends Error {
  * Request interceptor type
  */
 export type RequestInterceptor = (
-  config: RequestInit
+  config: RequestInit,
 ) => RequestInit | Promise<RequestInit>;
 
 /**
  * Response interceptor type
  */
 export type ResponseInterceptor = (
-  response: Response
+  response: Response,
 ) => Response | Promise<Response>;
 
 /**
@@ -66,7 +66,7 @@ export class HttpClient {
    * Execute request interceptors
    */
   private async executeRequestInterceptors(
-    config: RequestInit
+    config: RequestInit,
   ): Promise<RequestInit> {
     let finalConfig = config;
     for (const interceptor of this.requestInterceptors) {
@@ -79,7 +79,7 @@ export class HttpClient {
    * Execute response interceptors
    */
   private async executeResponseInterceptors(
-    response: Response
+    response: Response,
   ): Promise<Response> {
     let finalResponse = response;
     for (const interceptor of this.responseInterceptors) {
@@ -105,7 +105,7 @@ export class HttpClient {
   private async retryRequest(
     url: string,
     config: RequestInit,
-    attempt: number = 0
+    attempt: number = 0,
   ): Promise<Response> {
     try {
       return await fetch(url, config);
@@ -145,7 +145,7 @@ export class HttpClient {
   async post<T>(
     endpoint: string,
     body?: any,
-    options?: RequestInit
+    options?: RequestInit,
   ): Promise<T> {
     const url = getApiUrl(endpoint);
     const config: RequestInit = {
@@ -167,7 +167,7 @@ export class HttpClient {
   async put<T>(
     endpoint: string,
     body?: any,
-    options?: RequestInit
+    options?: RequestInit,
   ): Promise<T> {
     const url = getApiUrl(endpoint);
     const config: RequestInit = {
@@ -222,7 +222,7 @@ export class HttpClient {
         const error = new ApiError(
           response.status,
           errorData,
-          `HTTP ${response.status}: ${response.statusText}`
+          `HTTP ${response.status}: ${response.statusText}`,
         );
 
         throw error;
@@ -234,7 +234,9 @@ export class HttpClient {
     } catch (error) {
       // Execute error interceptors
       const finalError =
-        error instanceof Error ? await this.executeErrorInterceptors(error) : error;
+        error instanceof Error
+          ? await this.executeErrorInterceptors(error)
+          : error;
       throw finalError;
     }
   }

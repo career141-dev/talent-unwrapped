@@ -46,6 +46,7 @@ export interface VideoSlide {
   id: number;
   thumbnail: string;
   title: string;
+  edition?: string;
   videoUrl?: string;
 }
 

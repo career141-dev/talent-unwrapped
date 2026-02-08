@@ -18,7 +18,8 @@ export const validateEmail = (email: string): boolean => {
 };
 
 export const validatePhone = (phone: string): boolean => {
-  const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+  const phoneRegex =
+    /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
   return phoneRegex.test(phone);
 };
 
@@ -30,6 +31,8 @@ export const scrollToSection = (sectionId: string): void => {
   }
 };
 
-export const classNameJoin = (...classes: (string | undefined | false)[]): string => {
+export const classNameJoin = (
+  ...classes: (string | undefined | false)[]
+): string => {
   return classes.filter(Boolean).join(" ");
 };
