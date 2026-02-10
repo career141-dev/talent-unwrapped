@@ -1,9 +1,13 @@
 import { useState } from "react";
-import { SESSION_CONTENT } from "@/data/fullEpisodeData";
-import { ICONS } from "@/assets";
+import { getSessionContentByEdition } from "@/data/fullEpisodeData";
+import { VideoCircleFilledIcon, ExportIcon } from "@/components/Common/Icons";
 import { SECTION_TITLES, FORMS_CONTENT } from "@/constants/copy";
 
-export const KeyQuestionsSection = (): JSX.Element => {
+interface KeyQuestionsSectionProps {
+  edition?: "dubai" | "singapore";
+}
+
+export const KeyQuestionsSection = ({ edition = "dubai" }: KeyQuestionsSectionProps): JSX.Element => {
   const [currentPage] = useState(0);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState<{
     [key: number]: number;
@@ -15,7 +19,7 @@ export const KeyQuestionsSection = (): JSX.Element => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
-  const sessionContent = SESSION_CONTENT;
+  const sessionContent = getSessionContentByEdition(edition);
 
   const currentSession = sessionContent[currentPage];
 
@@ -61,10 +65,9 @@ export const KeyQuestionsSection = (): JSX.Element => {
         <div className="mb-8 sm:mb-10">
           <div className="flex items-center gap-2.5 sm:gap-3 md:gap-4 mb-6 sm:mb-8">
             <div className="inline-flex items-center gap-2.5 p-3 bg-[#7bb302] rounded-[40px]">
-              <img
-                className="relative w-6 h-6"
-                alt="Video icon"
-                src={ICONS.videoCircleAlt}
+              <VideoCircleFilledIcon
+                className="text-white"
+                size={24}
               />
             </div>
             <h2 className="[font-family:'Geist',Helvetica] font-medium text-2xl sm:text-3xl md:text-4xl lg:text-[42px] tracking-[-0.8px] lg:tracking-[-1.68px] leading-tight lg:leading-[60px]">
@@ -91,11 +94,7 @@ export const KeyQuestionsSection = (): JSX.Element => {
               aria-label="Export session"
               className="flex-shrink-0 w-6 h-6 cursor-pointer hover:scale-110 transition-transform"
             >
-              <img
-                className="w-full h-full"
-                alt="Export"
-                src={ICONS.exportAlt}
-              />
+              <ExportIcon className="w-full h-full text-[#7bb302]" />
             </button>
           </div>
 
@@ -211,8 +210,8 @@ export const KeyQuestionsSection = (): JSX.Element => {
                   </div>
 
                   {/* Desktop Layout */}
-                  <div className="hidden md:flex flex-col sm:flex-row gap-6 sm:gap-8">
-                    <div className="flex items-start gap-4 flex-shrink-0">
+                  <div className="hidden md:flex flex-row gap-6 sm:gap-8 items-start">
+                    <div className="flex items-start gap-4 flex-shrink-0 w-[280px]">
                       <div className="w-[60px] h-[60px] flex justify-center bg-[#00000033] rounded-full overflow-hidden border-2 border-solid border-white flex-shrink-0">
                         <img
                           className={expert.profile.imageStyles}
@@ -244,7 +243,7 @@ export const KeyQuestionsSection = (): JSX.Element => {
                       </div>
                     </div>
 
-                    <div className="flex-1 space-y-6 pl-0 sm:pl-6 border-l-0 sm:border-l border-neutral-200">
+                    <div className="flex-1 space-y-6 pl-6 border-l border-neutral-200">
                       {expert.questions.map((question, qIndex) => (
                         <div key={qIndex}>
                           <p className="[font-family:'Geist',Helvetica] text-base sm:text-lg md:text-[19px] leading-relaxed">

@@ -1,4 +1,6 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
+import { CheckCircle2, X } from "lucide-react";
 import { FORM_LABELS, FORM_PLACEHOLDERS, FEEDBACK_MESSAGES, FORMS_CONTENT } from "@/constants/copy";
 
 export const JoinUsForm = (): JSX.Element => {
@@ -10,6 +12,15 @@ export const JoinUsForm = (): JSX.Element => {
     designation: "",
   });
 
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    if (status === "success") {
+      setShowModal(true);
+    }
+  }, [status]);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -18,17 +29,50 @@ export const JoinUsForm = (): JSX.Element => {
     }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert(FEEDBACK_MESSAGES.FORM_SUCCESS);
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      company: "",
-      designation: "",
-    });
+    setStatus("sending");
+
+    try {
+      const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+        console.error("EmailJS credentials are missing in .env");
+        throw new Error("Missing configuration");
+      }
+
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        to_name: "Admin",
+        email: formData.email,
+        company: formData.company,
+        designation: formData.designation,
+        message: `New message from ${formData.firstName} ${formData.lastName} (${formData.email})
+        Company: ${formData.company}
+        Designation: ${formData.designation}`,
+      };
+
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+
+      setStatus("success");
+      console.log("Form submitted successfully");
+
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        designation: "",
+      });
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      setStatus("error");
+      alert("Failed to send message. Please ensure your .env file is configured correctly and try again.");
+    } finally {
+      setTimeout(() => setStatus("idle"), 5000);
+    }
   };
 
   return (
@@ -151,12 +195,51 @@ export const JoinUsForm = (): JSX.Element => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="flex w-full h-12 items-center justify-center gap-2 px-8 py-2 relative bg-[#7cb403] rounded-xl cursor-pointer hover:bg-[#6da002] transition-all duration-300 hover:shadow-lg border-none touch-manipulation"
+        disabled={status === "sending"}
+        className={`flex w-full h-12 items-center justify-center gap-2 px-8 py-2 relative rounded-xl cursor-pointer transition-all duration-300 hover:shadow-lg border-none touch-manipulation ${status === "sending"
+          ? "bg-gray-400 cursor-not-allowed"
+          : "bg-[#7cb403] hover:bg-[#6da002]"
+          }`}
       >
         <span className="relative w-fit [font-family:'Geist',Helvetica] font-medium text-white text-base tracking-[0] leading-[normal]">
-          {FORMS_CONTENT.SEND_MESSAGE}
+          {status === "sending" ? "Sending..." : FORMS_CONTENT.SEND_MESSAGE}
         </span>
       </button>
+
+      {/* Success Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity duration-300">
+          <div className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl transform transition-all duration-300 scale-100 flex flex-col items-center text-center relative overflow-hidden">
+            {/* Background Decorative Element */}
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#7bb302] to-[#ed2939]" />
+
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <X size={20} />
+            </button>
+
+            <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6 animate-bounce-short">
+              <CheckCircle2 className="text-[#7bb302] w-12 h-12" />
+            </div>
+
+            <h3 className="text-2xl font-bold text-gray-900 mb-2 [font-family:'Geist',Helvetica]">
+              Thank You!
+            </h3>
+            <p className="text-gray-600 mb-8 [font-family:'Geist',Helvetica]">
+              {FEEDBACK_MESSAGES.FORM_SUCCESS}
+            </p>
+
+            <button
+              onClick={() => setShowModal(false)}
+              className="bg-[#7bb302] hover:bg-[#6da002] text-white px-8 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg shadow-green-100"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </form>
   );
 };

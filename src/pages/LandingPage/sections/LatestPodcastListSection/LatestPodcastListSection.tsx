@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { LATEST_PODCASTS_DATA } from "@/data/episodeData";
-import { NAVIGATION_ICONS } from "@/assets";
+import { BackArrowIcon, NextArrowIcon, PlayIcon } from "@/components/Common/Icons";
 
 export const LatestPodcastListSection = (): JSX.Element => {
   const [activeTab] = useState("all");
@@ -10,7 +10,6 @@ export const LatestPodcastListSection = (): JSX.Element => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isManualScrollRef = useRef(true);
-  const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
 
   const allPodcastDataSets = LATEST_PODCASTS_DATA;
 
@@ -18,6 +17,25 @@ export const LatestPodcastListSection = (): JSX.Element => {
   const ITEMS_PER_PAGE = 5;
   const totalPages = Math.ceil(podcastData.length / ITEMS_PER_PAGE);
   const currentPage = Math.floor(currentIndex / ITEMS_PER_PAGE);
+
+  const getEmbedUrl = (url: string) => {
+    try {
+      // Handle youtu.be short URLs
+      if (url.includes("youtu.be")) {
+        const videoId = url.split("youtu.be/")[1]?.split("?")[0];
+        return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1` : url;
+      }
+      // Handle youtube.com/watch URLs
+      if (url.includes("youtube.com/watch")) {
+        const urlObj = new URL(url);
+        const videoId = urlObj.searchParams.get("v");
+        return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1` : url;
+      }
+      return url;
+    } catch (e) {
+      return url;
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,31 +55,6 @@ export const LatestPodcastListSection = (): JSX.Element => {
 
     return () => observer.disconnect();
   }, []);
-
-  // Pause video when scrolled out of view using Intersection Observer
-  useEffect(() => {
-    const videoObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const video = entry.target as HTMLVideoElement;
-          if (!entry.isIntersecting) {
-            // Video is out of view - pause it
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0.5 }, // Pause when less than 50% visible
-    );
-
-    // Observe all video elements
-    Object.values(videoRefs.current).forEach((video) => {
-      if (video) {
-        videoObserver.observe(video);
-      }
-    });
-
-    return () => videoObserver.disconnect();
-  }, [playingVideo]);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -106,10 +99,6 @@ export const LatestPodcastListSection = (): JSX.Element => {
       clearTimeout(timeoutId);
     };
   }, [podcastData.length]);
-
-  const handlePlayVideo = (id: number) => {
-    setPlayingVideo(id);
-  };
 
   const handleScroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
@@ -199,16 +188,14 @@ export const LatestPodcastListSection = (): JSX.Element => {
         <div className="relative w-full mt-8 md:mt-10 lg:mt-12">
           {/* Left Scroll Button */}
           <button
-            className="hidden lg:block absolute left-2 xl:left-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-20 hover:scale-105 transition-transform bg-white/10 rounded-full xl:bg-transparent"
+            className="hidden xl:flex absolute left-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-20 transition-transform"
             onClick={() => handleScroll("left")}
             type="button"
             aria-label="Scroll left"
           >
-            <img
-              className="w-full h-full"
-              alt=""
-              src={NAVIGATION_ICONS.back}
-              aria-hidden="true"
+            <BackArrowIcon
+              className="w-full h-full object-contain pointer-events-none"
+              size="100%"
             />
           </button>
 
@@ -227,57 +214,42 @@ export const LatestPodcastListSection = (): JSX.Element => {
                 className={`relative w-[250px] sm:w-[270px] md:w-[282px] flex flex-col gap-3 md:gap-4 group transition-all duration-500 flex-shrink-0 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="relative w-full aspect-video bg-black rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                  {podcast === podcastData[0] ? (
-                    <video
-                      ref={(el) => {
-                        if (el) videoRefs.current[podcast.id] = el;
-                      }}
-                      className="w-full h-full object-cover"
-                      src={podcast.videoUrl}
-                      controls
-                      autoPlay
-                      onEnded={() => setPlayingVideo(null)}
-                    />
-                  ) : playingVideo === podcast.id ? (
-                    <video
-                      className="w-full h-full object-cover"
-                      src={podcast.videoUrl}
-                      controls
-                      autoPlay
-                      onEnded={() => setPlayingVideo(null)}
+                <div className="relative w-full h-[150px] sm:h-[160px] md:h-[180px] bg-black rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
+                  {playingVideo === podcast.id ? (
+                    <iframe
+                      className="w-full h-full"
+                      src={getEmbedUrl(podcast.videoUrl)}
+                      title={podcast.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
                     />
                   ) : (
-                    <>
+                    <div className="block w-full h-full relative">
                       <img
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         src={podcast.thumbnailUrl}
                         alt={podcast.title}
                       />
                       <button
-                        onClick={() => handlePlayVideo(podcast.id)}
-                        className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-all duration-300 cursor-pointer touch-manipulation"
+                        onClick={() => setPlayingVideo(podcast.id)}
+                        className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-all duration-300 cursor-pointer touch-manipulation z-10"
                         aria-label={`Play ${podcast.title}`}
                       >
                         <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-2xl">
-                          <svg
-                            width="20"
-                            height="20"
+                          <PlayIcon
                             className="sm:w-6 sm:h-6 md:w-7 md:h-7 ml-0.5"
-                            viewBox="0 0 32 32"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M10 8L24 16L10 24V8Z" fill="#7bb302" />
-                          </svg>
+                            fill="#7bb302"
+                            stroke="none"
+                            size={20}
+                          />
                         </div>
                       </button>
-                      <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-black/80 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-md">
+                      <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-black/80 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-md pointer-events-none">
                         <span className="[font-family:'Geist',Helvetica] font-medium text-white text-[10px] sm:text-xs">
-                          45:30
+                          Watch
                         </span>
                       </div>
-                    </>
+                    </div>
                   )}
                 </div>
                 <div className="flex flex-col gap-1 relative self-stretch w-full flex-[0_0_auto]">
@@ -297,16 +269,14 @@ export const LatestPodcastListSection = (): JSX.Element => {
 
           {/* Right Scroll Button */}
           <button
-            className="hidden lg:block absolute right-2 xl:right-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-20 hover:scale-105 transition-transform bg-white/10 rounded-full xl:bg-transparent"
+            className="hidden xl:flex absolute right-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-20 hover:scale-105 transition-transform"
             onClick={() => handleScroll("right")}
             type="button"
             aria-label="Scroll right"
           >
-            <img
-              className="w-full h-full"
-              alt=""
-              src={NAVIGATION_ICONS.next}
-              aria-hidden="true"
+            <NextArrowIcon
+              className="w-full h-full object-contain pointer-events-none"
+              size="100%"
             />
           </button>
         </div>

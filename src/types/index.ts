@@ -15,6 +15,8 @@ export interface Speaker {
   name: string;
   position: string;
   image: string;
+  linkedinUrl?: string;
+  edition?: string;
 }
 
 // Episode interface with all possible properties

@@ -3,7 +3,8 @@ import { LearnMoreModal } from "../../../../pages/Schedule/Components";
 import { MobileCarouselSection } from "../../../../components/Sections/MobileCarouselSection";
 import { EditionFilter } from "../../../../components/UI/EditionFilter";
 import { getEditionContent } from "../../../../data";
-import { DECORATIVE_IMAGES, ICONS } from "@/assets";
+import { DECORATIVE_IMAGES } from "@/assets";
+import { ArrowRightIcon, VideoCircleFilledIcon, ExportIcon } from "@/components/Common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, BUTTONS, TALENT_INTRO_CONTENT } from "@/constants/copy";
 
 export const TalentIntroductionSection = (): JSX.Element => {
@@ -97,11 +98,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
                   {BUTTONS.MORE_ABOUT_PODCAST}
                 </span>
 
-                <img
-                  className="relative w-5 h-5 md:w-6 md:h-6 mt-[-1.00px] mb-[-1.00px]"
-                  alt=""
-                  src={ICONS.arrowRight}
-                />
+                <ArrowRightIcon className="text-white" size={24} />
               </button>
             </div>
           </div>
@@ -116,7 +113,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center justify-start gap-4 lg:gap-8 relative lg:absolute top-auto lg:top-[589px] left-0 lg:right-0 lg:left-[120px] w-full lg:w-auto overflow-x-hidden scrollbar-hide pl-4 sm:pl-6 md:pl-8 lg:pl-0">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-8 relative lg:absolute top-auto lg:top-[589px] left-0 lg:left-1/2 lg:-translate-x-1/2 w-full lg:w-auto overflow-x-hidden scrollbar-hide pl-4 sm:pl-6 md:pl-8 lg:pl-0">
           {/* Mobile Carousel - Only visible on mobile */}
           <div className="lg:hidden w-full mb-8">
             <MobileCarouselSection
@@ -130,7 +127,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
           </div>
 
           {/* Desktop Cards - Only visible on lg+ */}
-          <div className="hidden lg:flex gap-8 w-full lg:w-auto">
+          <div className="hidden lg:flex gap-8 w-full lg:w-auto justify-center">
             {chapters.map((chapter) => (
               <article
                 key={chapter.id}
@@ -141,11 +138,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
                   className="inline-flex items-center gap-2 lg:gap-2.5 p-2 lg:p-3 absolute top-4 lg:top-6 left-4 lg:left-6 bg-[#7bb302] rounded-[40px]"
                   aria-label="Video content"
                 >
-                  <img
-                    className="relative w-5 h-5 lg:w-6 lg:h-6"
-                    alt=""
-                    src={chapter.videoIcon || ICONS.videoCircle}
-                  />
+                  <VideoCircleFilledIcon className="text-white" size={24} />
                 </div>
 
                 <div className="flex flex-col w-[calc(100%-2rem)] lg:w-[340px] items-start justify-start gap-3 lg:gap-4 absolute top-16 lg:top-20 left-4 lg:left-6" style={{ overflow: 'hidden' }}>
@@ -174,11 +167,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
                   className="absolute top-6 lg:top-9 right-4 lg:right-6 w-5 h-5 lg:w-6 lg:h-6"
                   aria-label={`External link for ${chapter.title}`}
                 >
-                  <img
-                    className="w-full h-full"
-                    alt=""
-                    src={chapter.exportIcon || ICONS.export}
-                  />
+                  <ExportIcon className="text-[#7bb302]" size={24} />
                 </a>
               </article>
             ))}

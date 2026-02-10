@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { EPISODE_IMAGES, ICONS } from "@/assets";
+import { EPISODE_IMAGES } from "@/assets";
+import { ArrowRightIcon } from "@/components/Common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, GUEST_SECTION_CONTENT } from "@/constants/copy";
 
 interface EpisodeType {
@@ -253,11 +254,7 @@ export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetails
                   className="flex w-8 h-8 sm:w-12 sm:h-12 items-center justify-center gap-2.5 p-2 relative mt-[-8.00px] mb-[-8.00px] sm:mt-[-14.00px] sm:mb-[-14.00px] bg-[#7bb302] rounded-[40px] aspect-[1]"
                   aria-hidden="true"
                 >
-                  <img
-                    className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mt-[-1.00px] mb-[-1.00px]"
-                    alt=""
-                    src={ICONS.arrowRight}
-                  />
+                  <ArrowRightIcon className="text-white" size={24} />
                 </div>
               </button>
             ))}

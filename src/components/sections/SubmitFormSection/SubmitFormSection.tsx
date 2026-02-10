@@ -1,21 +1,20 @@
 import { JoinUsForm } from "../../Forms";
-import { FORM_ICONS } from "@/assets";
 import { SECTION_DESCRIPTIONS, FORMS_CONTENT } from "@/constants/copy";
 
 export const SubmitFormSection = (): JSX.Element => {
   const features = [
     {
-      icon: FORM_ICONS.dynamicForm,
+      iconUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770695204/Shape_w7nadm.png",
       title: FORMS_CONTENT.FEATURE_TITLE_1,
       description: SECTION_DESCRIPTIONS.PROFESSIONAL_COMMUNITY,
     },
     {
-      icon: FORM_ICONS.assignmentInd,
+      iconUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770695203/Shape_1_ecf4ja.png",
       title: FORMS_CONTENT.FEATURE_TITLE_2,
       description: FORMS_CONTENT.FEATURE_DESC_2,
     },
     {
-      icon: FORM_ICONS.shape,
+      iconUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770695203/Shape_2_exgueq.png",
       title: FORMS_CONTENT.FEATURE_TITLE_3,
       description: FORMS_CONTENT.FEATURE_DESC_3,
     },
@@ -75,9 +74,9 @@ export const SubmitFormSection = (): JSX.Element => {
               >
                 <div className="flex-shrink-0 w-7 h-7 lg:w-[30px] lg:h-7 flex items-center justify-center">
                   <img
-                    className="w-full h-full object-contain"
+                    src={feature.iconUrl}
                     alt={feature.title}
-                    src={feature.icon}
+                    className="w-full h-full object-contain"
                   />
                 </div>
 

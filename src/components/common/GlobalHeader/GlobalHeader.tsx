@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { EditionsDropdown } from "../../Forms/EditionsDropdown";
-import { LOGOS, ICONS } from "@/assets";
+import { LOGOS } from "@/assets";
+import { ArrowRightIcon, CloseIcon } from "../../Common/Icons";
 import { EXTERNAL_LINKS } from "@/constants";
 import { NAV_LABELS } from "@/constants/copy";
 
@@ -131,7 +132,7 @@ export const GlobalHeader = (): JSX.Element => {
 
   return (
     <>
-      <header className="w-full bg-white border-b border-neutral-200 sticky top-0 z-[100] transition-shadow duration-300 hover:shadow-md">
+      <header className="w-full bg-white border-b border-neutral-200 sticky top-0 z-[100] transition-shadow duration-300 hover:shadow-md mb-6 md:mb-8 lg:mb-10">
         <div className="flex w-full max-w-[1440px] min-h-[70px] md:min-h-[80px] lg:h-[100px] items-center justify-between gap-4 px-4 sm:px-6 md:px-8 lg:px-10 py-3 lg:py-0 mx-auto">
           {/* Logo */}
           <a
@@ -192,11 +193,7 @@ export const GlobalHeader = (): JSX.Element => {
               <span className="relative w-fit mt-[-0.50px] [font-family:'Geist',Helvetica] font-semibold text-white text-xs md:text-sm lg:text-base tracking-[-0.48px] leading-[normal] whitespace-nowrap">
                 {NAV_LABELS.CAREER_LINK}
               </span>
-              <img
-                className="relative w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 mt-[-1.00px] mb-[-1.00px] transition-transform duration-300 group-hover:translate-x-1"
-                alt=""
-                src={ICONS.arrowRight}
-              />
+              <ArrowRightIcon className="text-white" size={24} />
             </a>
           </div>
 
@@ -224,11 +221,7 @@ export const GlobalHeader = (): JSX.Element => {
               <span className="relative [font-family:'Geist',Helvetica] font-semibold text-white text-[10px] tracking-[-0.32px] leading-none whitespace-nowrap">
                 career141
               </span>
-              <img
-                className="relative w-3 h-3 transition-transform duration-300 hover:translate-x-0.5"
-                alt=""
-                src={ICONS.arrowRight}
-              />
+              <ArrowRightIcon className="text-white" size={12} />
             </a>
 
             {/* Hamburger Button - Visible up to lg breakpoint */}
@@ -277,11 +270,7 @@ export const GlobalHeader = (): JSX.Element => {
               className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 transition-colors"
               aria-label="Close menu"
             >
-              <img
-                src={ICONS.close}
-                alt="Close"
-                className="w-5 h-5"
-              />
+              <CloseIcon className="w-5 h-5" />
             </button>
           </div>
 

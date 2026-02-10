@@ -1,15 +1,27 @@
 import { useRef, useState, useEffect } from "react";
 import { LANDING_SPEAKERS_DATA } from "@/data/speakerData";
-import { NAVIGATION_ICONS } from "@/assets";
+import {
+  BackArrowIcon, NextArrowIcon,
+  PlayCircleFilledIcon,
+  LinkedinIcon,
+} from "@/components/Common/Icons";
 
-export const SpeakersProfileSection = (): JSX.Element => {
+interface SpeakersProfileSectionProps {
+  edition?: "Dubai" | "Singapore";
+}
+
+export const SpeakersProfileSection = ({ edition }: SpeakersProfileSectionProps): JSX.Element => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const isManualScrollRef = useRef(true);
 
   const allSpeakersData = LANDING_SPEAKERS_DATA;
 
-  const speakers = allSpeakersData[0]; // Use first dataset
+  // Filter speakers based on edition if provided
+  const speakers = edition
+    ? allSpeakersData[0].filter((s) => s.edition === edition)
+    : allSpeakersData[0];
+
   const ITEMS_PER_PAGE = 5;
   const totalPages = Math.ceil(speakers.length / ITEMS_PER_PAGE);
   const currentPage = Math.floor(currentIndex / ITEMS_PER_PAGE);
@@ -123,7 +135,7 @@ export const SpeakersProfileSection = (): JSX.Element => {
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         <div className="flex flex-col items-start gap-4 md:gap-6 lg:gap-8 relative w-full">
           <header className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
-            <h2 className="relative w-full max-w-full lg:max-w-[721px] [font-family:'Geist',Helvetica] font-medium text-transparent text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] xl:text-[52px] tracking-[-0.02em] sm:tracking-[-0.025em] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">
+            <h2 className="relative w-full max-w-full lg:max-w-none [font-family:'Geist',Helvetica] font-medium text-transparent text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] xl:text-[52px] tracking-[-0.02em] sm:tracking-[-0.025em] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">
               <span className="text-[#7cb403]">Our </span>
               <span className="text-[#ed2939]">Speakers</span>
             </h2>
@@ -143,108 +155,222 @@ export const SpeakersProfileSection = (): JSX.Element => {
               </div>
             </nav>
 
-            {/* Scrollable Container with Navigation Buttons */}
-            <div className="relative w-full">
-              {/* Left Scroll Button - positioned outside container only on XL desktop */}
-              <button
-                className="hidden lg:block absolute left-2 xl:left-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-10 hover:scale-105 transition-transform bg-white/10 rounded-full xl:bg-transparent"
-                onClick={() => handleScroll("left")}
-                type="button"
-                aria-label="Scroll left"
-              >
-                <img
-                  className="w-full h-full"
-                  alt=""
-                  src={NAVIGATION_ICONS.back}
-                  aria-hidden="true"
-                />
-              </button>
-
-              {/* Scrollable Speakers Container */}
-              <div
-                ref={scrollContainerRef}
-                className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-auto scroll-smooth scrollbar-hide relative pb-4"
-                style={{
-                  scrollbarWidth: "none",
-                  msOverflowStyle: "none",
-                }}
-              >
+            {/* Conditional Layout: Grid for Edition (3 items), Carousel for Landing (many items) */}
+            {edition ? (
+              /* Grid Layout for Full Episode Page */
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                 {speakers.map((speaker) => (
                   <article
                     key={speaker.id}
-                    className="flex flex-col w-[250px] sm:w-[270px] md:w-[282px] items-start relative flex-shrink-0"
+                    className="flex flex-col w-full h-full items-start relative"
                   >
-                    <div className="flex flex-col w-full items-start gap-4 sm:gap-5 md:gap-6 p-4 sm:p-5 md:p-6 relative flex-[0_0_auto] bg-[#f8f8f8] rounded-[20px] md:rounded-[28px] border-2 border-[#7bb302] transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-white cursor-pointer">
-                      <div
-                        className="relative w-[120px] h-[120px] sm:w-[130px] sm:h-[130px] md:w-[139px] md:h-[139px] rounded-full flex-shrink-0"
-                        style={{
-                          border: "4px solid #7bb302",
-                          padding: "4px",
-                        }}
-                      >
-                        <div className="w-full h-full rounded-full overflow-hidden bg-[#00000033]">
-                          <img
-                            className="w-full h-full object-cover"
-                            alt={speaker.name}
-                            src={speaker.image}
-                          />
+                    <div className="flex flex-col w-full items-start gap-1.5 sm:gap-5 md:gap-6 p-3 sm:p-5 md:p-6 relative h-full min-h-[240px] sm:min-h-[360px] md:min-h-[380px] bg-[#f8f8f8] rounded-[20px] md:rounded-[28px] border-2 border-[#7bb302] transition-all duration-300 hover:shadow-xl cursor-pointer">
+                      <div className="flex justify-between items-start w-full relative">
+                        <div
+                          className="relative w-[90px] h-[90px] sm:w-[130px] sm:h-[130px] md:w-[139px] md:h-[139px] rounded-full flex-shrink-0"
+                          style={{
+                            border: "4px solid #7bb302",
+                            padding: "4px",
+                          }}
+                        >
+                          <div className="w-full h-full rounded-full overflow-hidden bg-[#00000033]">
+                            <img
+                              className="w-full h-full object-cover"
+                              alt={speaker.name}
+                              src={speaker.image}
+                            />
+                          </div>
                         </div>
+
+                        {speaker.edition && (
+                          <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border bg-white shadow-sm ${speaker.edition === "Singapore" ? "border-[#7bb302]/20" : "border-[#ed2939]/20"
+                            }`}>
+                            <PlayCircleFilledIcon
+                              size={14}
+                              fill={speaker.edition === "Singapore" ? "#7bb302" : "#ed2939"}
+                            />
+                            <span className={`text-[11px] sm:text-xs font-semibold tracking-wide ${speaker.edition === "Singapore" ? "text-[#7bb302]" : "text-[#ed2939]"
+                              }`}>
+                              {speaker.edition}
+                            </span>
+                          </div>
+                        )}
                       </div>
 
-                      <div className="flex flex-col items-start gap-1 relative self-stretch w-full flex-[0_0_auto]">
-                        <h3 className="relative self-stretch min-h-[24px] sm:min-h-[26px] md:min-h-[30px] mt-[-1.00px] [font-family:'Geist',Helvetica] font-bold text-black text-base sm:text-lg tracking-[0] leading-tight sm:leading-[26px] overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
-                          {speaker.title}
+                      <div className="flex flex-col items-start gap-1 relative self-stretch w-full mb-1 sm:mb-4">
+                        <h3
+                          className="relative self-stretch [font-family:'Geist',Helvetica] font-bold text-black text-sm sm:text-base md:text-lg tracking-[0] leading-tight sm:leading-[22px] md:leading-[24px] overflow-hidden text-ellipsis line-clamp-2"
+                          title={speaker.name}
+                        >
+                          {speaker.name}
                         </h3>
 
-                        <p className="relative w-full font-body-small-regular font-[number:var(--body-small-regular-font-weight)] text-[#939393] text-xs sm:text-[length:var(--body-small-regular-font-size)] tracking-[var(--body-small-regular-letter-spacing)] leading-[var(--body-small-regular-line-height)] [font-style:var(--body-small-regular-font-style)]">
+                        <p className="relative w-full font-body-small-regular font-[number:var(--body-small-regular-font-weight)] text-[#939393] text-xs sm:text-[length:var(--body-small-regular-font-size)] tracking-[var(--body-small-regular-letter-spacing)] leading-[var(--body-small-regular-line-height)]">
                           {speaker.views}
                         </p>
                       </div>
 
-                      <div className="inline-flex items-center gap-2 sm:gap-3 relative flex-[0_0_auto]">
-                        <div className="inline-flex flex-col items-start relative flex-[0_0_auto]">
-                          <p className="relative mt-[-1.00px] [font-family:'Geist',Helvetica] font-bold text-black text-sm sm:text-base tracking-[0] leading-5 sm:leading-6">
-                            {speaker.name}
+                      <div className="flex items-end justify-between relative self-stretch w-full mt-auto">
+                        <div className="inline-flex flex-col items-start relative flex-1 min-w-0 mr-2">
+                          <p className="relative w-full mt-[-1.00px] [font-family:'Geist',Helvetica] font-bold text-black text-sm sm:text-base tracking-[0] leading-5 sm:leading-6 truncate">
+                            {speaker.title}
                           </p>
 
-                          <p className="relative font-body-small-regular font-[number:var(--body-small-regular-font-weight)] text-[#939393] text-xs sm:text-[length:var(--body-small-regular-font-size)] tracking-[var(--body-small-regular-letter-spacing)] leading-[var(--body-small-regular-line-height)] [font-style:var(--body-small-regular-font-style)]">
+                          <p className="relative w-full font-body-small-regular font-[number:var(--body-small-regular-font-weight)] text-[#939393] text-xs sm:text-[length:var(--body-small-regular-font-size)] tracking-[var(--body-small-regular-letter-spacing)] leading-tight line-clamp-2 h-[2.5em]">
                             {speaker.position}
                           </p>
                         </div>
+
+                        {speaker.linkedinUrl && (
+                          <a
+                            href={speaker.linkedinUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-[#7bb302] rounded-full flex items-center justify-center text-white hover:bg-[#689902] transition-colors"
+                            aria-label={`${speaker.name}'s LinkedIn profile`}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <LinkedinIcon size={14} className="sm:size-4" />
+                          </a>
+                        )}
                       </div>
                     </div>
                   </article>
                 ))}
               </div>
+            ) : (
+              /* Carousel Layout for Landing Page */
+              <>
+                <div className="relative w-full">
+                  {/* Left Scroll Button - positioned outside container only on XL desktop */}
+                  <button
+                    className="hidden xl:flex absolute left-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-10 transition-all"
+                    onClick={() => handleScroll("left")}
+                    type="button"
+                    aria-label="Scroll left"
+                  >
+                    <BackArrowIcon
+                      className="w-full h-full object-contain pointer-events-none"
+                      size="100%"
+                    />
+                  </button>
 
-              {/* Right Scroll Button - positioned outside container only on XL desktop */}
-              <button
-                className="hidden lg:block absolute right-2 xl:right-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 xl:w-[120px] xl:h-[120px] cursor-pointer z-10 hover:scale-105 transition-transform bg-white/10 rounded-full xl:bg-transparent"
-                onClick={() => handleScroll("right")}
-                type="button"
-                aria-label="Scroll right"
-              >
-                <img
-                  className="w-full h-full"
-                  alt=""
-                  src={NAVIGATION_ICONS.next}
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
+                  <div
+                    ref={scrollContainerRef}
+                    className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-auto scroll-smooth scrollbar-hide relative pb-4"
+                    style={{
+                      scrollbarWidth: "none",
+                      msOverflowStyle: "none",
+                    }}
+                  >
+                    {speakers.map((speaker) => (
+                      <article
+                        key={speaker.id}
+                        className="flex flex-col w-[250px] sm:w-[270px] md:w-[282px] h-full items-start relative flex-shrink-0"
+                      >
+                        <div className="flex flex-col w-full items-start gap-1.5 sm:gap-5 md:gap-6 p-3 sm:p-5 md:p-6 relative h-full min-h-[240px] sm:min-h-[360px] md:min-h-[380px] bg-[#f8f8f8] rounded-[20px] md:rounded-[28px] border-2 border-[#7bb302] transition-all duration-300 hover:shadow-xl cursor-pointer">
+                          <div className="flex justify-between items-start w-full relative">
+                            <div
+                              className="relative w-[90px] h-[90px] sm:w-[130px] sm:h-[130px] md:w-[139px] md:h-[139px] rounded-full flex-shrink-0"
+                              style={{
+                                border: "4px solid #7bb302",
+                                padding: "4px",
+                              }}
+                            >
+                              <div className="w-full h-full rounded-full overflow-hidden bg-[#00000033]">
+                                <img
+                                  className="w-full h-full object-cover"
+                                  alt={speaker.name}
+                                  src={speaker.image}
+                                />
+                              </div>
+                            </div>
 
-            {/* Dot Indicator */}
-            <div className="flex items-center justify-center gap-2 w-full mt-6">
-              {Array.from({ length: totalPages }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => handlePaginationClick(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentPage ? "bg-[#7bb302] w-6" : "bg-[#d0d0d0]"
-                    }`}
-                  aria-label={`Page ${index + 1}`}
-                />
-              ))}
-            </div>
+                            {speaker.edition && (
+                              <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border bg-white shadow-sm ${speaker.edition === "Singapore" ? "border-[#7bb302]/20" : "border-[#ed2939]/20"
+                                }`}>
+                                <PlayCircleFilledIcon
+                                  size={14}
+                                  fill={speaker.edition === "Singapore" ? "#7bb302" : "#ed2939"}
+                                />
+                                <span className={`text-[11px] sm:text-xs font-semibold tracking-wide ${speaker.edition === "Singapore" ? "text-[#7bb302]" : "text-[#ed2939]"
+                                  }`}>
+                                  {speaker.edition}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="flex flex-col items-start gap-1 relative self-stretch w-full mb-1 sm:mb-4">
+                            <h3
+                              className="relative self-stretch [font-family:'Geist',Helvetica] font-bold text-black text-sm sm:text-base md:text-lg tracking-[0] leading-tight sm:leading-[22px] md:leading-[24px] overflow-hidden text-ellipsis line-clamp-2"
+                              title={speaker.name}
+                            >
+                              {speaker.name}
+                            </h3>
+
+                            <p className="relative w-full font-body-small-regular font-[number:var(--body-small-regular-font-weight)] text-[#939393] text-xs sm:text-[length:var(--body-small-regular-font-size)] tracking-[var(--body-small-regular-letter-spacing)] leading-[var(--body-small-regular-line-height)]">
+                              {speaker.views}
+                            </p>
+                          </div>
+
+                          <div className="flex items-end justify-between relative self-stretch w-full mt-auto">
+                            <div className="inline-flex flex-col items-start relative flex-1 min-w-0 mr-2">
+                              <p className="relative w-full mt-[-1.00px] [font-family:'Geist',Helvetica] font-bold text-black text-sm sm:text-base tracking-[0] leading-5 sm:leading-6 truncate">
+                                {speaker.title}
+                              </p>
+
+                              <p className="relative w-full font-body-small-regular font-[number:var(--body-small-regular-font-weight)] text-[#939393] text-xs sm:text-[length:var(--body-small-regular-font-size)] tracking-[var(--body-small-regular-letter-spacing)] leading-tight line-clamp-2 h-[2.5em]">
+                                {speaker.position}
+                              </p>
+                            </div>
+
+                            {speaker.linkedinUrl && (
+                              <a
+                                href={speaker.linkedinUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-[#7bb302] rounded-full flex items-center justify-center text-white hover:bg-[#689902] transition-colors"
+                                aria-label={`${speaker.name}'s LinkedIn profile`}
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <LinkedinIcon size={18} className="sm:size-5" />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+
+                  {/* Right Scroll Button - positioned outside container only on XL desktop */}
+                  <button
+                    className="hidden xl:flex absolute right-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-10 transition-all"
+                    onClick={() => handleScroll("right")}
+                    type="button"
+                    aria-label="Scroll right"
+                  >
+                    <NextArrowIcon
+                      className="w-full h-full object-contain pointer-events-none"
+                      size="100%"
+                    />
+                  </button>
+                </div>
+
+                {/* Dot Indicator */}
+                <div className="flex items-center justify-center gap-2 w-full mt-6">
+                  {Array.from({ length: totalPages }).map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handlePaginationClick(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentPage ? "bg-[#7bb302] w-6" : "bg-[#d0d0d0]"
+                        }`}
+                      aria-label={`Page ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

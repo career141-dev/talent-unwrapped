@@ -55,9 +55,36 @@ export const EXPERT_PROFILES: ExpertProfile[] = [
         imageUrl: EXPERT_IMAGES.ellaSherman,
         imageStyles: "mt-[5px] w-[59px] h-[55px] object-cover",
     },
+    {
+        id: "mohammed-haffejee",
+        name: "Mohammed Haffejee",
+        title: "AVP Senior HRBP",
+        subtitle: "Emirates NBD",
+        linkedin: "https://www.linkedin.com/in/mohammed-haffejee-6b26543/",
+        imageUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618640/1756292060602_1_df82j8.png",
+        imageStyles: "w-[60px] h-[60px] object-cover",
+    },
+    {
+        id: "gargi-bannerjee",
+        name: "Gargi Bannerjee",
+        title: "VP HR",
+        subtitle: "SkipperSeil Limited",
+        linkedin: "https://www.linkedin.com/in/gargi-banerjee-strategichr/",
+        imageUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618639/1621657233961_1_helgwf.png",
+        imageStyles: "w-[60px] h-[60px] object-cover",
+    },
+    {
+        id: "franklyn-henriques",
+        name: "Franklyn Henriques",
+        title: "Regional HR Director",
+        subtitle: "SGS (Middle East)",
+        linkedin: "https://www.linkedin.com/in/franklyn-henriques-chartered-fcipd-339aa05/",
+        imageUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618638/1545386579437_1_vl1nrk.png",
+        imageStyles: "w-[60px] h-[60px] object-cover",
+    },
 ];
 
-export const SESSION_CONTENT: SessionContent[] = [
+export const SINGAPORE_SESSION_CONTENT: SessionContent[] = [
     {
         id: 0,
         sessionTitle: "Session 01 - Beyond Resilience: ",
@@ -113,54 +140,57 @@ export const SESSION_CONTENT: SessionContent[] = [
             },
         ],
     },
+];
+
+export const DUBAI_SESSION_CONTENT: SessionContent[] = [
     {
-        id: 1,
-        sessionTitle: "Session 02 - Future Ready Leaders: ",
-        sessionSubtitle: "Navigating Digital Transformation and Human Connection",
+        id: 0,
+        sessionTitle: "Session 01 - From HR to Business Impact: ",
+        sessionSubtitle: "Building Future-Ready Teams in GCC",
         sessionDescription:
-            "In an era of rapid technological advancement, leaders must balance innovation with empathy. Future-ready leaders understand that digital transformation is not just about technology — it's about people, culture, and the human experience.",
+            "The GCC region is undergoing rapid economic transformation. HR leaders are no longer just support functions but strategic partners driving business impact. This session explores how to build teams that are ready for the future challenges of the region.",
         sessionPoints: [
-            "Embracing digital transformation while maintaining human connection.",
-            "Building psychological safety in remote and hybrid work environments.",
-            "Developing digital literacy across all leadership levels.",
-            "Creating sustainable performance cultures in the age of AI and automation.",
+            "Aligning HR strategy with national vision and business goals.",
+            "Navigating talent acquisition and retention in a competitive market.",
+            "Fostering a culture of innovation and continuous learning.",
+            "Leveraging data and technology to drive workforce planning.",
         ],
         experts: [
             {
-                profile: EXPERT_PROFILES[0],
+                profile: EXPERT_PROFILES[3],
                 questions: [
                     {
-                        q: "As organizations accelerate digital transformation, how do leaders maintain psychological safety and build trust when the work environment is constantly evolving?",
+                        q: "From your experience across global HR operations, what do you see as the biggest shift happening in the HR function today—and how should organisations prepare for it?",
                         answer: "",
                     },
                     {
-                        q: "What are the key mindset shifts leaders need to make to embrace uncertainty and lead through continuous change?",
+                        q: "What practical advice would you give companies in the UAE and GCC trying to balance efficiency, employee experience, and nationalisation goals all at once?",
                         answer: "",
                     },
                 ],
             },
             {
-                profile: EXPERT_PROFILES[1],
+                profile: EXPERT_PROFILES[4],
                 questions: [
                     {
-                        q: "How can executives strategically integrate AI and automation into their operations while keeping human talent and growth at the center?",
+                        q: "You strongly believe HR is a business engine. In simple terms, what makes HR truly commercial—and why do some organisations still miss this link?",
                         answer: "",
                     },
                     {
-                        q: "What role does storytelling and culture play in leading people through technological disruption?",
+                        q: "From your 20+ years across multiple sectors, what have you learned about building future-ready talent pipelines that leaders can actually rely on?",
                         answer: "",
                     },
                 ],
             },
             {
-                profile: EXPERT_PROFILES[2],
+                profile: EXPERT_PROFILES[5],
                 questions: [
                     {
-                        q: "How should HR evolve to become a strategic partner in digital transformation and talent innovation?",
+                        q: "From your regional experience, what are the top challenges organisations face when trying to transform, and what separates the ones that succeed from the ones that stagnate?",
                         answer: "",
                     },
                     {
-                        q: "What skills and competencies will be most valued in leaders 5-10 years from now, and how do we develop them today?",
+                        q: "What does it truly take for a professional to thrive in the GCC today — in terms of skills, readiness, and the mindset required to stay competitive in this fast-evolving market?",
                         answer: "",
                     },
                 ],
@@ -168,3 +198,10 @@ export const SESSION_CONTENT: SessionContent[] = [
         ],
     },
 ];
+
+export const getSessionContentByEdition = (edition: "dubai" | "singapore" = "dubai") => {
+    return edition === "singapore" ? SINGAPORE_SESSION_CONTENT : DUBAI_SESSION_CONTENT;
+};
+
+// Deprecated: default export for backward compatibility
+export const SESSION_CONTENT = SINGAPORE_SESSION_CONTENT;

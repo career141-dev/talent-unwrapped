@@ -40,98 +40,50 @@
   ],
   "edges": [
     {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\FooterSection\\FooterSection.tsx:23:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
+          "line": 23,
+          "endLine": 23,
+          "column": 4,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\Sections\\FooterSection\\FooterSection.tsx"
         }
       }
     },
     {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
+          "line": 50,
+          "endLine": 50,
+          "column": 6,
+          "endColumn": 19,
+          "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 63,
+          "endLine": 63,
+          "column": 6,
+          "endColumn": 19,
+          "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
         }
       }
     },
@@ -152,15 +104,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -168,114 +120,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -296,15 +152,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -312,114 +168,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -440,15 +200,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -456,114 +216,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -584,15 +248,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -600,114 +264,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -728,15 +296,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -744,114 +312,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -872,15 +344,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -888,114 +360,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -1016,15 +392,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -1032,114 +408,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -1160,15 +440,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -1176,114 +456,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -1304,15 +488,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -1320,114 +504,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -1448,15 +536,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -1464,114 +552,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -1592,15 +584,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -1608,114 +600,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -1736,15 +632,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -1752,114 +648,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -1880,15 +680,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -1896,114 +696,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -2024,15 +728,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -2040,114 +744,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -2168,15 +776,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -2184,114 +792,18 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
         }
       }
     },
@@ -2312,15 +824,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:50:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
+          "line": 50,
+          "endLine": 50,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
@@ -2328,159 +840,15 @@
       }
     },
     {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:63:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
       "source": "src\\pages\\LandingPage\\LandingPage.tsx",
       "target": "src\\pages\\LandingPage\\LandingPage.tsx",
       "data": {
         "viaRoute": "/",
         "trigger": {
           "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
-          "column": 6,
-          "endColumn": 19,
-          "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:30:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 30,
-          "endLine": 30,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:36:57-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 36,
-          "endLine": 36,
-          "column": 57,
-          "endColumn": 70,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:45:22-to-src\\pages\\Episodes\\EpisodesPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Episodes\\EpisodesPage.tsx",
-      "data": {
-        "viaRoute": "/episodes",
-        "trigger": {
-          "element": "navigate(\"/episodes\")",
-          "line": 45,
-          "endLine": 45,
-          "column": 22,
-          "endColumn": 43,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:56:10-to-src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\Schedule\\Screens\\Schedule.tsx",
-      "data": {
-        "viaRoute": "/schedule",
-        "trigger": {
-          "element": "navigate(\"/schedule\")",
-          "line": 56,
-          "endLine": 56,
-          "column": 10,
-          "endColumn": 31,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:137:10-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "<a\n            href=\"/\"\n            className=\"relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]\"\n            onClick={(e) => {\n              e.preventDefault();\n              navigate(\"/\");\n              setIsMobileMenuOpen(false);\n            }}\n          >\n            <img\n              className=\"w-full h-full object-contain\"\n              alt=\"Career141 Logo\"\n              src={LOGOS.career141}\n            />\n          </a>",
-          "line": 137,
-          "endLine": 151,
-          "column": 10,
-          "endColumn": 14,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx:142:14-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 142,
-          "endLine": 142,
-          "column": 14,
-          "endColumn": 27,
-          "sourceFile": "src\\components\\Common\\GlobalHeader\\GlobalHeader.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Sections\\FooterSection\\FooterSection.tsx:23:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 23,
-          "endLine": 23,
-          "column": 4,
-          "endColumn": 17,
-          "sourceFile": "src\\components\\Sections\\FooterSection\\FooterSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:49:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 49,
-          "endLine": 49,
-          "column": 6,
-          "endColumn": 19,
-          "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
-        }
-      }
-    },
-    {
-      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:62:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
-      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
-      "data": {
-        "viaRoute": "/",
-        "trigger": {
-          "element": "navigate(\"/\")",
-          "line": 62,
-          "endLine": 62,
+          "line": 63,
+          "endLine": 63,
           "column": 6,
           "endColumn": 19,
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"

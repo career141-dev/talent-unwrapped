@@ -80,52 +80,46 @@ export const KEY_QUESTIONS_IMAGES = {
 
 // Logo Images
 export const LOGOS = {
-  prasperant: "https://c.animaapp.com/6IK4krLc/img/logo-prasperant-1-1.png",
+  prasperant: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770609977/Artboard_1_copy_2x_xhwixf.png",
   career141: "https://c.animaapp.com/6IK4krLc/img/artboard-3-1.png",
+  contactBanner: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770627360/Artboard_3_1_4_tihw3f.png",
 } as const;
 
-// Icon Images
+// Icon Images - Replaced by Lucide and local SVG components in src/components/Common/Icons.tsx
 export const ICONS = {
-  chevronDown: "https://c.animaapp.com/6IK4krLc/img/vector.svg",
-  arrowRight:
-    "https://c.animaapp.com/6IK4krLc/img/vuesax-linear-arrow-right-2@2x.png",
-  playCircle: "https://c.animaapp.com/6IK4krLc/img/vuesax-bold-play-circle.svg",
-  playButton: "https://c.animaapp.com/6IK4krLc/img/vuesax-linear-play.svg",
-  videoCircle:
-    "https://c.animaapp.com/6IK4krLc/img/vuesax-bold-video-circle-2.svg",
-  videoCircleAlt:
-    "https://c.animaapp.com/mknscg4zvttudp/img/vuesax-bold-video-circle.svg",
-  videoCircleAlt2:
-    "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle.svg",
-  videoCircleAlt3:
-    "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-bold-video-circle-1.svg",
-  videoCircleAlt4:
-    "https://c.animaapp.com/JrnespQo/img/vuesax-bold-video-circle.svg",
-  export: "https://c.animaapp.com/6IK4krLc/img/vuesax-linear-export-2.svg",
-  exportAlt:
-    "https://c.animaapp.com/mknscg4zvttudp/img/vuesax-linear-export.svg",
-  exportAlt2:
-    "https://c.animaapp.com/mkmm0u1u5wob0l/img/vuesax-linear-export.svg",
-  heroActionButtonIcon:
-    "https://c.animaapp.com/6IK4krLc/img/frame-1000002831.svg",
-  chevronLeft:
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23232323' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 18l-6-6 6-6'%3E%3C/path%3E%3C/svg%3E",
-  chevronRight:
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23232323' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18l6-6-6-6'%3E%3C/path%3E%3C/svg%3E",
-  playTriangle:
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23232323'%3E%3Cpath d='M8 5v14l11-7z'%3E%3C/path%3E%3C/svg%3E",
-  close:
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12'%3E%3C/path%3E%3C/svg%3E",
-  vector: "https://c.animaapp.com/6IK4krLc/img/vector-4877.svg",
+  // Navigation
+  chevronDown: "",
+  chevronLeft: "",
+  chevronRight: "",
+
+  // Actions
+  arrowRight: "",
+  arrowLeft: "",
+  playCircle: "",
+  playButton: "",
+  playTriangle: "",
+  close: "",
+  export: "",
+  exportAlt: "",
+  exportAlt2: "",
+
+  // Specialized
+  videoCircle: "",
+  videoCircleAlt: "",
+  videoCircleAlt2: "",
+  videoCircleAlt3: "",
+  videoCircleAlt4: "",
+  heroActionButtonIcon: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770616302/Frame_1000002831_2_goe9a9.jpg",
+
+  // Legacy/Misc
+  vector: "",
 } as const;
 
-// Form Icons
+// Form Icons - Replaced by local SVG components
 export const FORM_ICONS = {
-  dynamicForm:
-    "https://c.animaapp.com/mknnhkkeW4H68A/img/dynamic-form-black-24dp.png",
-  assignmentInd:
-    "https://c.animaapp.com/mknnhkkeW4H68A/img/ic-assignment-ind.png",
-  shape: "https://c.animaapp.com/mknnhkkeW4H68A/img/shape.svg",
+  dynamicForm: "",
+  assignmentInd: "",
+  shape: "",
 } as const;
 
 // Hero Section Images
@@ -143,16 +137,15 @@ export const HERO_IMAGES = {
   arrowUp: "https://www.figma.com/api/mcp/asset/eb54e5fb-0d9e-496f-8621-362c26783e53",
 } as const;
 
-// Navigation Icons
+// Navigation Icons - Replaced by local SVG components
 export const NAVIGATION_ICONS = {
-  back: "https://c.animaapp.com/6IK4krLc/img/back@2x.png",
-  next: "https://c.animaapp.com/6IK4krLc/img/next@2x.png",
+  back: "",
+  next: "",
 } as const;
 
-// Export all images as a single object
-// Footer Images/Icons
+// Footer Images/Icons - Replaced by local SVG components
 export const FOOTER_IMAGES = {
-  decorativeFrame: "https://c.animaapp.com/mkmm0u1u5wob0l/img/frame-36853.svg",
+  decorativeFrame: "",
 } as const;
 
 export const IMAGES = {

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { DECORATIVE_IMAGES, ICONS } from "@/assets";
+import { DECORATIVE_IMAGES } from "@/assets";
+import { ArrowRightIcon, VerticalLineIcon } from "@/components/Common/Icons";
 import { WISDOM_CONTENT, NAV_LABELS, BUTTONS } from "@/constants/copy";
 
 export const WisdomAndTestimonialsSection = (): JSX.Element => {
@@ -61,16 +62,10 @@ export const WisdomAndTestimonialsSection = (): JSX.Element => {
 
                 <h2
                   id="about-heading"
-                  className="w-full [font-family:'Geist',Helvetica] font-medium text-transparent text-[28px] sm:text-[34px] md:text-[42px] lg:text-[50px] xl:text-[56px] 2xl:text-[64px] tracking-[-0.03em] sm:tracking-[-0.04em] lg:tracking-[-0.045em] leading-[1.2] sm:leading-[1.15] lg:leading-[1.1]"
+                  className="w-full [font-family:'Geist',Helvetica] font-medium text-transparent text-[32px] sm:text-[42px] md:text-[54px] lg:text-[64px] xl:text-[72px] 2xl:text-[84px] tracking-[-0.03em] sm:tracking-[-0.04em] lg:tracking-[-0.045em] leading-[1.2] sm:leading-[1.15] lg:leading-[1.1]"
                 >
-                  <span className="text-[#959494] tracking-[-1.5px]">
-                    Talent Unwrapped:
-                    <br />
-                  </span>
-
-                  <span className="text-[#ed2939] tracking-[-1.5px]">
-                    Singapore Edition
-                  </span>
+                  <span className="text-[#959494] tracking-[-1.5px]">Talent</span>
+                  <span className="text-[#ed2939] tracking-[-1.5px]"> Unwrapped</span>
                 </h2>
               </div>
 
@@ -88,10 +83,9 @@ export const WisdomAndTestimonialsSection = (): JSX.Element => {
                   {BUTTONS.EXPLORE}
                 </span>
 
-                <img
+                <ArrowRightIcon
                   className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:translate-x-1"
-                  alt=""
-                  src={ICONS.arrowRight}
+                  color="white"
                   aria-hidden="true"
                 />
               </a>
@@ -116,10 +110,8 @@ export const WisdomAndTestimonialsSection = (): JSX.Element => {
                   </p>
                 </div>
 
-                <img
+                <VerticalLineIcon
                   className="hidden sm:block w-[1.5px] h-20 md:h-[127px] flex-shrink-0"
-                  alt=""
-                  src={ICONS.vector}
                   aria-hidden="true"
                 />
               </div>

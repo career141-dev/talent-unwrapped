@@ -1,6 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { LANDING_VIDEO_SLIDES } from "@/data/videoSlideData";
-import { LOGOS, ICONS } from "@/assets";
+import { ICONS, LOGOS } from "@/assets";
+import {
+  PlayCircleFilledIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  PlayIcon
+} from "@/components/Common/Icons";
 import { HERO_CONTENT } from "@/constants/copy";
 
 /**
@@ -64,7 +70,6 @@ export const HeroBannerSection = (): JSX.Element => {
     <section
       className="relative w-full bg-white mx-auto overflow-visible"
       style={{
-        maxWidth: "1440px",
         paddingBottom: "clamp(20px, 4vw, 40px)",
       }}
     >
@@ -76,14 +81,14 @@ export const HeroBannerSection = (): JSX.Element => {
           <div className="flex items-center gap-2 mb-2">
             {/* Logo */}
             <div
-              className="bg-white rounded-lg overflow-hidden shadow-sm flex-shrink-0"
+              className="bg-white rounded-lg overflow-hidden shadow-sm flex-shrink-0 flex items-center justify-center"
               style={{
                 width: "clamp(126px, 46vw, 165px)",
                 height: "clamp(32px, 11.8vw, 42px)",
               }}
             >
               <img
-                className="w-full h-full object-contain p-1.5"
+                className="w-full h-full object-contain scale-[2.6]"
                 alt="Prasperant Logo"
                 src={LOGOS.prasperant}
               />
@@ -145,7 +150,7 @@ export const HeroBannerSection = (): JSX.Element => {
           <div
             className="relative w-full bg-[rgba(0,0,0,0.2)] rounded-lg overflow-hidden"
             style={{
-              height: "clamp(200px, 52vw, 280px)",
+              height: "clamp(240px, 60vw, 350px)",
             }}
           >
             {/* Video Slides */}
@@ -158,17 +163,28 @@ export const HeroBannerSection = (): JSX.Element => {
                     : "opacity-0 z-0"
                     }`}
                 >
-                  {isPlaying && index === currentSlide ? (
-                    <video
-                      ref={videoRef}
-                      className="w-full h-full object-cover"
-                      src={slide.videoUrl}
-                      controls
-                      autoPlay
-                      onEnded={handleVideoEnded}
-                      controlsList="nodownload"
-                      playsInline
-                    />
+                  {isPlaying && index === currentSlide && slide.videoUrl ? (
+                    slide.videoUrl.includes("youtube") || slide.videoUrl.includes("youtu.be") ? (
+                      <iframe
+                        className="w-full h-full object-cover"
+                        src={`${slide.videoUrl}${slide.videoUrl.includes("?") ? "&" : "?"}autoplay=1&rel=0`}
+                        title={slide.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <video
+                        ref={videoRef}
+                        className="w-full h-full object-cover"
+                        src={slide.videoUrl}
+                        controls
+                        autoPlay
+                        onEnded={handleVideoEnded}
+                        controlsList="nodownload"
+                        playsInline
+                      />
+                    )
                   ) : (
                     <img
                       className="w-full h-full object-cover"
@@ -181,33 +197,34 @@ export const HeroBannerSection = (): JSX.Element => {
             </div>
 
             {/* Edition Badge - Mobile */}
-            <div
-              className="inline-flex items-center justify-center gap-1 absolute bg-[#ed2939] rounded-full z-20"
-              style={{
-                top: "clamp(0.5rem, 2vw, 0.875rem)",
-                left: "clamp(0.5rem, 2vw, 0.875rem)",
-                padding:
-                  "clamp(0.25rem, 0.8vw, 0.375rem) clamp(0.5rem, 1.8vw, 0.75rem)",
-              }}
-            >
-              <img
+            {!isPlaying && (
+              <div
+                className="inline-flex items-center justify-center gap-1 absolute bg-[#ed2939] rounded-full z-20"
                 style={{
-                  width: "clamp(10px, 2.8vw, 14px)",
-                  height: "clamp(10px, 2.8vw, 14px)",
-                }}
-                alt=""
-                src={ICONS.playCircle}
-              />
-              <span
-                className="font-['Geist',Helvetica] font-semibold text-white whitespace-nowrap leading-none"
-                style={{
-                  fontSize: "clamp(0.5rem, 2vw, 0.625rem)",
-                  letterSpacing: "-0.01em",
+                  top: "clamp(0.5rem, 2vw, 0.875rem)",
+                  left: "clamp(0.5rem, 2vw, 0.875rem)",
+                  padding:
+                    "clamp(0.25rem, 0.8vw, 0.375rem) clamp(0.5rem, 1.8vw, 0.75rem)",
                 }}
               >
-                {videoSlides[currentSlide].edition} {HERO_CONTENT.EDITION_SUFFIX}
-              </span>
-            </div>
+                <PlayCircleFilledIcon
+                  style={{
+                    width: "clamp(10px, 2.8vw, 14px)",
+                    height: "clamp(10px, 2.8vw, 14px)",
+                  }}
+                  fill="white"
+                />
+                <span
+                  className="font-['Geist',Helvetica] font-semibold text-white whitespace-nowrap leading-none"
+                  style={{
+                    fontSize: "clamp(0.5rem, 2vw, 0.625rem)",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  {videoSlides[currentSlide].edition} {HERO_CONTENT.EDITION_SUFFIX}
+                </span>
+              </div>
+            )}
 
             {/* Play Button - Mobile */}
             {!isPlaying && (
@@ -221,10 +238,9 @@ export const HeroBannerSection = (): JSX.Element => {
                   height: "clamp(48px, 13vw, 60px)",
                 }}
               >
-                <img
-                  className="w-full h-full"
-                  src={ICONS.playTriangle}
-                  alt="Play"
+                <PlayIcon
+                  fill="#232323"
+                  stroke="none"
                   style={{
                     width: "clamp(20px, 5.5vw, 26px)",
                     height: "clamp(20px, 5.5vw, 26px)",
@@ -246,10 +262,9 @@ export const HeroBannerSection = (): JSX.Element => {
                     height: "clamp(36px, 9.5vw, 44px)",
                   }}
                 >
-                  <img
+                  <ChevronLeftIcon
                     className="w-full h-full"
-                    src={ICONS.chevronLeft}
-                    alt="Back"
+                    color="#232323"
                     style={{
                       width: "clamp(16px, 4.2vw, 20px)",
                       height: "clamp(16px, 4.2vw, 20px)",
@@ -267,10 +282,9 @@ export const HeroBannerSection = (): JSX.Element => {
                     height: "clamp(36px, 9.5vw, 44px)",
                   }}
                 >
-                  <img
+                  <ChevronRightIcon
                     className="w-full h-full"
-                    src={ICONS.chevronRight}
-                    alt="Next"
+                    color="#232323"
                     style={{
                       width: "clamp(16px, 4.2vw, 20px)",
                       height: "clamp(16px, 4.2vw, 20px)",
@@ -319,23 +333,21 @@ export const HeroBannerSection = (): JSX.Element => {
         className="hidden md:flex items-end w-full"
         style={{
           minHeight: "clamp(120px, 15vh, 180px)",
-          paddingLeft: "clamp(16px, 2vw, 30px)",
-          paddingRight: "clamp(16px, 2vw, 30px)",
           gap: "clamp(20px, 3vw, 40px)",
         }}
       >
         {/* Logo - Far Left */}
         <div
-          className="flex-shrink-0 bg-white rounded-xl overflow-hidden"
+          className="flex-shrink-0 bg-white rounded-xl overflow-hidden flex items-center justify-center"
           style={{
             width: "clamp(280px, 28vw, 420px)",
             height: "clamp(84px, 8.5vw, 126px)",
           }}
         >
           <img
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain scale-[2.0]"
             alt="Prasperant Logo"
-            src={LOGOS.prasperant}
+            src="https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770609977/Artboard_1_copy_2x_xhwixf.png"
           />
         </div>
 
@@ -346,7 +358,7 @@ export const HeroBannerSection = (): JSX.Element => {
             <h2
               className="font-['Geist',Helvetica] font-medium text-[#232323] leading-tight"
               style={{
-                fontSize: "clamp(28px, 3.5vw, 60px)",
+                fontSize: "clamp(25px, 3.6vw, 60px)",
                 letterSpacing: "-0.04em",
               }}
             >
@@ -360,7 +372,7 @@ export const HeroBannerSection = (): JSX.Element => {
               aria-label="Go to speakers section"
               type="button"
               style={{
-                width: "clamp(60px, 7vw, 100px)",
+                width: "clamp(80px, 8.5vw, 120px)",
                 height: "auto",
               }}
             >
@@ -374,9 +386,9 @@ export const HeroBannerSection = (): JSX.Element => {
 
           {/* Second line: "ideas that stay" */}
           <h1
-            className="font-['Geist',Helvetica] font-medium text-[#7bb302] leading-[1] whitespace-nowrap"
+            className="font-['Geist',Helvetica] font-medium text-[#7bb302] leading-[1]"
             style={{
-              fontSize: "clamp(62px, 9vw, 160px)",
+              fontSize: "clamp(54px, 9vw, 155px)",
               letterSpacing: "-0.04em",
             }}
           >
@@ -393,8 +405,8 @@ export const HeroBannerSection = (): JSX.Element => {
         <div
           className="relative w-full bg-[rgba(0,0,0,0.2)] rounded-xl lg:rounded-3xl overflow-hidden"
           style={{
-            height: "clamp(450px, 42vw, 700px)",
-            maxHeight: "80vh",
+            height: "clamp(550px, 50vw, 800px)",
+            maxHeight: "85vh",
           }}
         >
           {/* Video Slides */}
@@ -405,16 +417,28 @@ export const HeroBannerSection = (): JSX.Element => {
                 className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
                   }`}
               >
-                {isPlaying && index === currentSlide ? (
-                  <video
-                    ref={videoRef}
-                    className="w-full h-full object-cover"
-                    src={slide.videoUrl}
-                    controls
-                    autoPlay
-                    onEnded={handleVideoEnded}
-                    controlsList="nodownload"
-                  />
+                {isPlaying && index === currentSlide && slide.videoUrl ? (
+                  slide.videoUrl.includes("youtube") || slide.videoUrl.includes("youtu.be") ? (
+                    <iframe
+                      className="w-full h-full object-cover"
+                      src={`${slide.videoUrl}${slide.videoUrl.includes("?") ? "&" : "?"}autoplay=1&rel=0`}
+                      title={slide.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <video
+                      ref={videoRef}
+                      className="w-full h-full object-cover"
+                      src={slide.videoUrl}
+                      controls
+                      autoPlay
+                      onEnded={handleVideoEnded}
+                      controlsList="nodownload"
+                      playsInline
+                    />
+                  )
                 ) : (
                   <img
                     className="w-full h-full object-cover"
@@ -427,32 +451,33 @@ export const HeroBannerSection = (): JSX.Element => {
           </div>
 
           {/* Edition Badge - Desktop */}
-          <div
-            className="inline-flex items-center justify-center gap-2 px-3 md:px-4 lg:px-5 py-1.5 md:py-2 lg:py-2.5 absolute bg-[#ed2939] rounded-full z-20"
-            style={{
-              top: "clamp(1rem, 2vw, 2.5rem)",
-              left: "clamp(1rem, 2vw, 3rem)",
-            }}
-          >
-            <img
-              className="flex-shrink-0"
+          {!isPlaying && (
+            <div
+              className="inline-flex items-center justify-center gap-2 px-3 md:px-4 lg:px-5 py-1.5 md:py-2 lg:py-2.5 absolute bg-[#ed2939] rounded-full z-20"
               style={{
-                width: "clamp(16px, 1.8vw, 24px)",
-                height: "clamp(16px, 1.8vw, 24px)",
-              }}
-              alt=""
-              src={ICONS.playCircle}
-            />
-            <span
-              className="font-['Geist',Helvetica] font-semibold text-white whitespace-nowrap leading-none"
-              style={{
-                fontSize: "clamp(0.75rem, 1.1vw, 1.25rem)",
-                letterSpacing: "-0.02em",
+                top: "clamp(1rem, 2vw, 2.5rem)",
+                left: "clamp(1rem, 2vw, 3rem)",
               }}
             >
-              {videoSlides[currentSlide].edition} {HERO_CONTENT.EDITION_SUFFIX}
-            </span>
-          </div>
+              <PlayCircleFilledIcon
+                className="flex-shrink-0"
+                style={{
+                  width: "clamp(16px, 1.8vw, 24px)",
+                  height: "clamp(16px, 1.8vw, 24px)",
+                }}
+                fill="white"
+              />
+              <span
+                className="font-['Geist',Helvetica] font-semibold text-white whitespace-nowrap leading-none"
+                style={{
+                  fontSize: "clamp(0.75rem, 1.1vw, 1.25rem)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {videoSlides[currentSlide].edition} {HERO_CONTENT.EDITION_SUFFIX}
+              </span>
+            </div>
+          )}
 
           {/* Play Button - Desktop */}
           {!isPlaying && (
@@ -462,17 +487,16 @@ export const HeroBannerSection = (): JSX.Element => {
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all duration-300 z-20 shadow-xl"
               aria-label="Play podcast episode"
               style={{
-                width: "clamp(80px, 9vw, 134px)",
-                height: "clamp(80px, 9vw, 134px)",
+                width: "clamp(60px, 7vw, 90px)",
+                height: "clamp(60px, 7vw, 90px)",
               }}
             >
-              <img
-                className="w-full h-full"
-                src={ICONS.playTriangle}
-                alt="Play"
+              <PlayIcon
+                fill="#232323"
+                stroke="none"
                 style={{
-                  width: "clamp(32px, 3.5vw, 48px)",
-                  height: "clamp(32px, 3.5vw, 48px)",
+                  width: "clamp(24px, 2.5vw, 36px)",
+                  height: "clamp(24px, 2.5vw, 36px)",
                 }}
               />
             </button>
@@ -491,10 +515,9 @@ export const HeroBannerSection = (): JSX.Element => {
                   height: "clamp(50px, 4.5vw, 60px)",
                 }}
               >
-                <img
+                <ChevronLeftIcon
                   className="w-full h-full"
-                  src={ICONS.chevronLeft}
-                  alt="Back"
+                  color="#232323"
                   style={{
                     width: "clamp(20px, 2.2vw, 28px)",
                     height: "clamp(20px, 2.2vw, 28px)",
@@ -512,10 +535,9 @@ export const HeroBannerSection = (): JSX.Element => {
                   height: "clamp(50px, 4.5vw, 60px)",
                 }}
               >
-                <img
+                <ChevronRightIcon
                   className="w-full h-full"
-                  src={ICONS.chevronRight}
-                  alt="Next"
+                  color="#232323"
                   style={{
                     width: "clamp(20px, 2.2vw, 28px)",
                     height: "clamp(20px, 2.2vw, 28px)",

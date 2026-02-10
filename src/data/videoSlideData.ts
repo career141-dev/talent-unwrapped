@@ -1,90 +1,39 @@
 import { VideoSlide } from "../types";
-import { SAMPLE_VIDEOS, HERO_IMAGES, VIDEO_THUMBNAILS } from "../assets";
 
-// Video slides for Landing Page Hero section
+// Video slides for Landing Page Hero section - Updated with Singapore and Dubai editions
 export const LANDING_VIDEO_SLIDES: VideoSlide[] = [
   {
     id: 1,
-    thumbnail: HERO_IMAGES.thumbnail1,
-    title: "Episode 1: Leadership in the Digital Age",
+    thumbnail: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770693712/Frame_1000003689_1_pq4rv5.png",
+    title: "Singapore Edition",
     edition: "Singapore",
-    videoUrl: SAMPLE_VIDEOS.bigBuckBunny,
+    videoUrl: "https://www.youtube.com/embed/3xda4skYDlg",
   },
   {
     id: 2,
-    thumbnail: VIDEO_THUMBNAILS.resilientTeams,
-    title: "Episode 2: Building Resilient Teams",
+    thumbnail: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770693712/WhatsApp_Image_2026-02-10_at_7.20.05_AM_unwtyi.jpg",
+    title: "Dubai Edition",
     edition: "Dubai",
-    videoUrl: SAMPLE_VIDEOS.elephantsDream,
-  },
-  {
-    id: 3,
-    thumbnail: VIDEO_THUMBNAILS.innovationCreativity,
-    title: "Episode 3: Innovation and Creativity",
-    edition: "Singapore",
-    videoUrl: SAMPLE_VIDEOS.forBiggerBlazes,
-  },
-  {
-    id: 4,
-    thumbnail: VIDEO_THUMBNAILS.futureOfWork,
-    title: "Episode 4: Future of Work",
-    edition: "Dubai",
-    videoUrl: SAMPLE_VIDEOS.forBiggerEscapes,
+    videoUrl: "https://www.youtube.com/embed/3xda4skYDlg",
   },
 ];
 
-// Video slides for FullEpisode page
+// Video slides for FullEpisode page - Single video per edition
 export const DUBAI_VIDEO_SLIDES: VideoSlide[] = [
   {
     id: 1,
-    thumbnail: VIDEO_THUMBNAILS.innovationDubai,
-    title: "Episode 1: Innovation in Dubai",
-    videoUrl: SAMPLE_VIDEOS.bigBuckBunny,
-  },
-  {
-    id: 2,
-    thumbnail: VIDEO_THUMBNAILS.resilientTeams,
-    title: "Episode 2: Business Excellence",
-    videoUrl: SAMPLE_VIDEOS.elephantsDream,
-  },
-  {
-    id: 3,
-    thumbnail: VIDEO_THUMBNAILS.innovationCreativity,
-    title: "Episode 3: Future Vision",
-    videoUrl: SAMPLE_VIDEOS.forBiggerBlazes,
-  },
-  {
-    id: 4,
-    thumbnail: VIDEO_THUMBNAILS.futureOfWork,
-    title: "Episode 4: Leadership Insights",
-    videoUrl: SAMPLE_VIDEOS.forBiggerEscapes,
+    thumbnail: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770693712/WhatsApp_Image_2026-02-10_at_7.20.05_AM_unwtyi.jpg",
+    title: "Dubai Edition - Full Episode",
+    videoUrl: "https://www.youtube.com/embed/3xda4skYDlg",
   },
 ];
 
 export const SINGAPORE_VIDEO_SLIDES: VideoSlide[] = [
   {
     id: 1,
-    thumbnail: VIDEO_THUMBNAILS.innovationDubai,
-    title: "Episode 1: Leadership in Singapore",
-    videoUrl: SAMPLE_VIDEOS.bigBuckBunny,
-  },
-  {
-    id: 2,
-    thumbnail: VIDEO_THUMBNAILS.resilientTeams,
-    title: "Episode 2: Building Resilient Teams",
-    videoUrl: SAMPLE_VIDEOS.elephantsDream,
-  },
-  {
-    id: 3,
-    thumbnail: VIDEO_THUMBNAILS.innovationCreativity,
-    title: "Episode 3: Innovation and Creativity",
-    videoUrl: SAMPLE_VIDEOS.forBiggerBlazes,
-  },
-  {
-    id: 4,
-    thumbnail: VIDEO_THUMBNAILS.futureOfWork,
-    title: "Episode 4: Future of Work",
-    videoUrl: SAMPLE_VIDEOS.forBiggerEscapes,
+    thumbnail: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770693712/Frame_1000003689_1_pq4rv5.png",
+    title: "Singapore Edition - Full Episode",
+    videoUrl: "https://www.youtube.com/embed/3xda4skYDlg",
   },
 ];
 

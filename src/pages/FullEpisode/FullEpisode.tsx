@@ -10,7 +10,10 @@ import {
 } from "../LandingPage/Sections";
 import { SubmitFormSection } from "../../components";
 import { getVideoSlidesByEdition } from "@/data";
-import { ICONS } from "@/assets";
+import {
+  PlayCircleFilledIcon,
+  PlayIcon,
+} from "@/components/Common/Icons";
 import { HERO_CONTENT, FOOTER_LINKS } from "@/constants/copy";
 import { EXTERNAL_LINKS } from "@/constants/links";
 
@@ -23,7 +26,6 @@ import { EXTERNAL_LINKS } from "@/constants/links";
 export const FullEpisode = (): JSX.Element => {
   useParams();
   const location = useLocation();
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -33,21 +35,8 @@ export const FullEpisode = (): JSX.Element => {
   const editionKey = edition.toLowerCase() as "dubai" | "singapore";
   const videoSlides = getVideoSlidesByEdition(editionKey);
 
-  useEffect(() => {
-    // Only auto-advance if not playing video
-    if (!isPlaying) {
-      const interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % videoSlides.length);
-      }, 5000);
-
-      return () => clearInterval(interval);
-    }
-  }, [videoSlides.length, isPlaying]);
-
-  // Reset playing state when slide changes
-  useEffect(() => {
-    setIsPlaying(false);
-  }, [currentSlide]);
+  // Get the single video for this edition
+  const currentVideo = videoSlides[0];
 
   // Stop video when section leaves viewport
   useEffect(() => {
@@ -75,23 +64,6 @@ export const FullEpisode = (): JSX.Element => {
     };
   }, []);
 
-  const handlePrevious = () => {
-    setIsPlaying(false);
-    setCurrentSlide(
-      (prev) => (prev - 1 + videoSlides.length) % videoSlides.length,
-    );
-  };
-
-  const handleNext = () => {
-    setIsPlaying(false);
-    setCurrentSlide((prev) => (prev + 1) % videoSlides.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setIsPlaying(false);
-    setCurrentSlide(index);
-  };
-
   const handlePlayVideo = () => {
     setIsPlaying(true);
   };
@@ -110,7 +82,7 @@ export const FullEpisode = (): JSX.Element => {
         ref={sectionRef}
         className="relative w-full bg-white pt-6 md:pt-8 lg:pt-10 pb-8 md:pb-12 lg:pb-16"
       >
-        {/* Mobile Video Player - Matching Landing Page Design (visible only on mobile) */}
+        {/* Mobile Video Player - Single Video (visible only on mobile) */}
         <div className="block md:hidden relative w-full">
           <div
             className="relative w-full bg-[rgba(0,0,0,0.2)] rounded-lg overflow-hidden mx-auto"
@@ -118,36 +90,26 @@ export const FullEpisode = (): JSX.Element => {
               height: "clamp(200px, 52vw, 280px)",
             }}
           >
-            {/* Video Slides */}
+            {/* Single Video */}
             <div className="absolute inset-0">
-              {videoSlides.map((slide, index) => (
-                <div
-                  key={slide.id}
-                  className={`absolute inset-0 transition-opacity duration-700 ${index === currentSlide
-                    ? "opacity-100 z-10"
-                    : "opacity-0 z-0"
-                    }`}
-                >
-                  {isPlaying && index === currentSlide ? (
-                    <video
-                      ref={videoRef}
-                      className="w-full h-full object-cover"
-                      src={slide.videoUrl}
-                      controls
-                      autoPlay
-                      onEnded={handleVideoEnded}
-                      controlsList="nodownload"
-                      playsInline
-                    />
-                  ) : (
-                    <img
-                      className="w-full h-full object-cover"
-                      alt={slide.title}
-                      src={slide.thumbnail}
-                    />
-                  )}
-                </div>
-              ))}
+              {isPlaying ? (
+                <video
+                  ref={videoRef}
+                  className="w-full h-full object-cover"
+                  src={currentVideo.videoUrl}
+                  controls
+                  autoPlay
+                  onEnded={handleVideoEnded}
+                  controlsList="nodownload"
+                  playsInline
+                />
+              ) : (
+                <img
+                  className="w-full h-full object-cover"
+                  alt={currentVideo.title}
+                  src={currentVideo.thumbnail}
+                />
+              )}
             </div>
 
             {/* Edition Badge - Mobile */}
@@ -160,13 +122,12 @@ export const FullEpisode = (): JSX.Element => {
                   "clamp(0.25rem, 0.8vw, 0.375rem) clamp(0.5rem, 1.8vw, 0.75rem)",
               }}
             >
-              <img
+              <PlayCircleFilledIcon
                 style={{
                   width: "clamp(10px, 2.8vw, 14px)",
                   height: "clamp(10px, 2.8vw, 14px)",
                 }}
-                alt=""
-                src={ICONS.playCircle}
+                fill="white"
               />
               <span
                 className="font-['Geist',Helvetica] font-semibold text-white whitespace-nowrap leading-none"
@@ -191,10 +152,9 @@ export const FullEpisode = (): JSX.Element => {
                   height: "clamp(40px, 10vw, 60px)",
                 }}
               >
-                <img
-                  className="w-full h-full"
-                  src={ICONS.playTriangle}
-                  alt="Play"
+                <PlayIcon
+                  fill="#232323"
+                  stroke="none"
                   style={{
                     width: "clamp(24px, 6vw, 36px)",
                     height: "clamp(24px, 6vw, 36px)",
@@ -202,227 +162,75 @@ export const FullEpisode = (): JSX.Element => {
                 />
               </button>
             )}
-
-            {/* Navigation Arrows - Mobile */}
-            {!isPlaying && (
-              <>
-                <button
-                  onClick={handlePrevious}
-                  className="absolute top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-all z-40 shadow-md border border-[#e5e5e5]"
-                  aria-label="Previous video"
-                  style={{
-                    left: "clamp(0.5rem, 2vw, 1rem)",
-                    width: "clamp(32px, 8vw, 40px)",
-                    height: "clamp(32px, 8vw, 40px)",
-                  }}
-                >
-                  <img
-                    className="w-full h-full"
-                    src={ICONS.chevronLeft}
-                    alt="Back"
-                    style={{
-                      width: "clamp(16px, 4vw, 20px)",
-                      height: "clamp(16px, 4vw, 20px)",
-                    }}
-                  />
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="absolute top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-all z-40 shadow-md border border-[#e5e5e5]"
-                  aria-label="Next video"
-                  style={{
-                    right: "clamp(0.5rem, 2vw, 1rem)",
-                    width: "clamp(32px, 8vw, 40px)",
-                    height: "clamp(32px, 8vw, 40px)",
-                  }}
-                >
-                  <img
-                    className="w-full h-full"
-                    src={ICONS.chevronRight}
-                    alt="Next"
-                    style={{
-                      width: "clamp(16px, 4vw, 20px)",
-                      height: "clamp(16px, 4vw, 20px)",
-                    }}
-                  />
-                </button>
-              </>
-            )}
-
-            {/* Pagination Indicators - Mobile */}
-            {!isPlaying && (
-              <div
-                className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-2 z-40"
-                style={{
-                  bottom: "clamp(0.5rem, 2vw, 1rem)",
-                  gap: "clamp(0.25rem, 0.8vw, 0.5rem)",
-                }}
-              >
-                {videoSlides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    className={`rounded-full transition-all cursor-pointer touch-manipulation ${index === currentSlide
-                      ? "bg-white"
-                      : "bg-white/50 hover:bg-white/75"
-                      }`}
-                    style={{
-                      width:
-                        index === currentSlide
-                          ? "clamp(12px, 3.5vw, 16px)"
-                          : "clamp(6px, 2vw, 8px)",
-                      height: "clamp(6px, 1.5vw, 8px)",
-                    }}
-                    aria-label={`Go to video ${index + 1}`}
-                    aria-current={index === currentSlide ? "true" : "false"}
-                  />
-                ))}
-              </div>
-            )}
           </div>
         </div>
 
-        {/* Desktop Video Container - Fully Responsive (hidden on mobile) */}
+        {/* Desktop Video Container - Single Video (hidden on mobile) */}
         <div className="hidden md:block w-full max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 lg:px-0">
           {/* Aspect Ratio Container - 16:9 */}
           <div className="relative w-full pb-[56.25%] bg-[#00000033] rounded-xl lg:rounded-2xl overflow-hidden">
-            {/* Video Slides */}
+            {/* Single Video */}
             <div className="absolute inset-0 w-full h-full">
-              {videoSlides.map((slide, index) => (
-                <div
-                  key={slide.id}
-                  className={`absolute top-0 left-0 w-full h-full transition-opacity duration-700 ${index === currentSlide
-                    ? "opacity-100 z-10"
-                    : "opacity-0 z-0"
-                    }`}
-                >
-                  {isPlaying && index === currentSlide ? (
-                    <video
-                      ref={videoRef}
-                      className="absolute top-0 left-0 w-full h-full object-cover"
-                      src={slide.videoUrl}
-                      controls
-                      autoPlay
-                      onEnded={handleVideoEnded}
-                      controlsList="nodownload"
-                    />
-                  ) : (
-                    <img
-                      className="absolute top-0 left-0 w-full h-full object-cover"
-                      alt={slide.title}
-                      src={slide.thumbnail}
-                    />
-                  )}
-                </div>
-              ))}
+              {isPlaying ? (
+                <video
+                  ref={videoRef}
+                  className="absolute top-0 left-0 w-full h-full object-cover"
+                  src={currentVideo.videoUrl}
+                  controls
+                  autoPlay
+                  onEnded={handleVideoEnded}
+                  controlsList="nodownload"
+                />
+              ) : (
+                <img
+                  className="absolute top-0 left-0 w-full h-full object-cover"
+                  alt={currentVideo.title}
+                  src={currentVideo.thumbnail}
+                />
+              )}
             </div>
 
             {/* Edition Badge - Responsive */}
             <div className="inline-flex items-center justify-center gap-1.5 sm:gap-2 md:gap-2.5 px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 md:py-2.5 absolute top-3 sm:top-4 md:top-6 lg:top-[39px] left-3 sm:left-4 md:left-6 lg:left-[49px] bg-[#ed2939] rounded-[40px] z-20">
-              <img
+              <PlayCircleFilledIcon
                 className="relative w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
-                alt=""
-                src={ICONS.playCircle}
+                fill="white"
               />
               <span className="relative w-fit mt-[-1.00px] [font-family:'Geist',Helvetica] font-semibold text-white text-xs sm:text-sm md:text-base lg:text-xl tracking-[-0.40px] lg:tracking-[-0.80px] leading-[normal]">
                 {edition} {HERO_CONTENT.EDITION_SUFFIX}
               </span>
             </div>
 
-            {/* Play Button - Responsive - Only show when not playing */}
             {!isPlaying && (
               <button
                 type="button"
                 onClick={handlePlayVideo}
-                className="absolute top-[calc(50%-30px)] sm:top-[calc(50%-40px)] md:top-[calc(50%-50px)] lg:top-[calc(50%-63px)] left-[calc(50%-30px)] sm:left-[calc(50%-40px)] md:left-[calc(50%-50px)] lg:left-[calc(50%-66px)] w-[60px] h-[60px] sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-[134px] lg:h-[134px] cursor-pointer hover:scale-110 transition-transform z-20 touch-manipulation"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all duration-300 z-20 shadow-xl"
                 aria-label="Play podcast episode"
+                style={{
+                  width: "clamp(60px, 7vw, 90px)",
+                  height: "clamp(60px, 7vw, 90px)",
+                }}
               >
-                <img
-                  className="w-full h-full"
-                  alt=""
-                  src={ICONS.playButton}
+                <PlayIcon
+                  fill="#232323"
+                  stroke="none"
+                  style={{
+                    width: "clamp(24px, 2.5vw, 36px)",
+                    height: "clamp(24px, 2.5vw, 36px)",
+                  }}
                 />
               </button>
             )}
-
-            {/* Navigation Arrows - Responsive */}
-            <button
-              onClick={handlePrevious}
-              className="absolute top-[calc(50%-20px)] sm:top-[calc(50%-25px)] md:top-[calc(50%-30px)] left-2 sm:left-3 md:left-4 lg:left-[30px] w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-[60px] lg:h-[60px] bg-white/80 hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-all z-20 backdrop-blur-sm touch-manipulation"
-              aria-label="Previous video"
-            >
-              <svg
-                width="20"
-                height="20"
-                className="sm:w-6 sm:h-6"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M15 18L9 12L15 6"
-                  stroke="#232323"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-
-            <button
-              onClick={handleNext}
-              className="absolute top-[calc(50%-20px)] sm:top-[calc(50%-25px)] md:top-[calc(50%-30px)] right-2 sm:right-3 md:right-4 lg:right-[30px] w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-[60px] lg:h-[60px] bg-white/80 hover:bg-white rounded-full flex items-center justify-center cursor-pointer transition-all z-20 backdrop-blur-sm touch-manipulation"
-              aria-label="Next video"
-            >
-              <svg
-                width="20"
-                height="20"
-                className="sm:w-6 sm:h-6"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9 18L15 12L9 6"
-                  stroke="#232323"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-
-            {/* Slide Indicators - Responsive */}
-            <div className="absolute bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-[30px] left-[50%] transform -translate-x-1/2 flex items-center gap-1.5 sm:gap-2 md:gap-3 z-20">
-              {videoSlides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`h-1.5 sm:h-2 md:h-2.5 lg:h-3 rounded-full transition-all cursor-pointer touch-manipulation ${index === currentSlide
-                    ? "bg-white w-5 sm:w-6 md:w-7 lg:w-8"
-                    : "bg-white/50 hover:bg-white/75 w-1.5 sm:w-2 md:w-2.5 lg:w-3"
-                    }`}
-                  aria-label={`Go to video ${index + 1}`}
-                  aria-current={index === currentSlide ? "true" : "false"}
-                />
-              ))}
-            </div>
-
-            {/* Video Counter - Responsive */}
-            <div className="absolute bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-[30px] right-3 sm:right-4 md:right-6 lg:right-[30px] bg-black/60 backdrop-blur-sm px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full z-20">
-              <span className="[font-family:'Geist',Helvetica] font-medium text-white text-[10px] sm:text-xs md:text-sm">
-                {currentSlide + 1} / {videoSlides.length}
-              </span>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Speakers Profile Section */}
-      <SpeakersProfileSection />
+      <SpeakersProfileSection edition={edition as "Dubai" | "Singapore"} />
 
       {/* Key Questions Section */}
-      <KeyQuestionsSection />
+      <KeyQuestionsSection edition={editionKey} />
 
       {/* Reels Section */}
       <ReelsSection />

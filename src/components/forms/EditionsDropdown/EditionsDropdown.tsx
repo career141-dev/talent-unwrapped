@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ROUTES } from "../../../constants";
-import { ICONS } from "@/assets";
+import { ChevronDownIcon } from "@/components/Common/Icons";
 import { NAV_LABELS, EDITION_NAMES } from "@/constants/copy";
 
 interface Edition {
@@ -103,10 +103,9 @@ export const EditionsDropdown = (): JSX.Element => {
         <span className="relative flex items-end justify-center w-fit [font-family:'Geist',Helvetica] font-normal text-[#232323] text-base text-center tracking-[-0.32px] leading-6 whitespace-nowrap group-hover:text-[#7bb302] transition-colors duration-300">
           {isLandingPage ? NAV_LABELS.EDITIONS : currentEdition?.name || NAV_LABELS.EDITIONS}
         </span>
-        <img
-          className={`relative w-[10.33px] h-[5.72px] mr-[-0.45px] transition-transform duration-300 self-center ${isOpen ? "rotate-180" : ""}`}
-          alt=""
-          src={ICONS.chevronDown}
+        <ChevronDownIcon
+          className={`relative w-4 h-4 mr-0 transition-transform duration-300 self-center ${isOpen ? "rotate-180" : ""}`}
+          color="currentColor"
         />
       </button>
 

@@ -1,1 +1,2 @@
-export { GlobalHeader } from "./GlobalHeader";
+export * from "./GlobalHeader";
+export * from "./Icons";

@@ -1,5 +1,4 @@
 import { Episode } from "../types";
-import { ICONS } from "../assets";
 
 // Edition-specific content structure
 export const EDITION_CONTENT = {
@@ -15,22 +14,22 @@ export const EDITION_CONTENT = {
         title: "Leadership Reimagined: ",
         subtitle:
           "Building Mental Toughness, Culture, and Agility for the Future of Work",
-        videoIcon: ICONS.videoCircleAlt3,
-        exportIcon: ICONS.exportAlt2,
+        videoIcon: "videoCircle",
+        exportIcon: "export",
       },
       {
         id: 2,
         title: "Beyond Resilience: ",
         subtitle: "Redefining Leadership Strength and Organizational Agility",
-        videoIcon: ICONS.videoCircleAlt2,
-        exportIcon: ICONS.exportAlt2,
+        videoIcon: "videoCircle",
+        exportIcon: "export",
       },
       {
         id: 3,
         title: "The Human Blueprint: ",
         subtitle: "Rethinking Leadership for an Intelligent Age",
-        videoIcon: ICONS.videoCircleAlt2,
-        exportIcon: ICONS.exportAlt2,
+        videoIcon: "videoCircle",
+        exportIcon: "export",
       },
     ],
   },
@@ -45,22 +44,22 @@ export const EDITION_CONTENT = {
         id: 1,
         title: "Innovation in Leadership: ",
         subtitle: "Transforming Business Culture in the Middle East",
-        videoIcon: ICONS.videoCircleAlt3,
-        exportIcon: ICONS.exportAlt2,
+        videoIcon: "videoCircle",
+        exportIcon: "export",
       },
       {
         id: 2,
         title: "Digital Transformation: ",
         subtitle: "Leading Change in a Rapidly Evolving Landscape",
-        videoIcon: ICONS.videoCircleAlt2,
-        exportIcon: ICONS.exportAlt2,
+        videoIcon: "videoCircle",
+        exportIcon: "export",
       },
       {
         id: 3,
         title: "Global Vision: ",
         subtitle: "Building Bridges Between East and West",
-        videoIcon: ICONS.videoCircleAlt2,
-        exportIcon: ICONS.exportAlt2,
+        videoIcon: "videoCircle",
+        exportIcon: "export",
       },
     ],
   },

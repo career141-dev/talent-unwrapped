@@ -3,7 +3,8 @@ import { TheThreeChaptersSectionProps } from "../../../../types";
 import { getEditionContent } from "../../../../data";
 import { MobileCarouselSection } from "../../../../components/Sections/MobileCarouselSection";
 import { LearnMoreModal } from "../../../../pages/Schedule/Components";
-import { DECORATIVE_IMAGES, ICONS } from "@/assets";
+import { DECORATIVE_IMAGES } from "@/assets";
+import { ArrowRightIcon, VideoCircleFilledIcon, ExportIcon } from "@/components/Common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, BUTTONS, TALENT_INTRO_CONTENT } from "@/constants/copy";
 
 /**
@@ -124,11 +125,7 @@ export const TheThreeChaptersSection = ({
                       {BUTTONS.MORE_ABOUT_PODCAST}
                     </span>
 
-                    <img
-                      className="relative w-5 h-5 md:w-6 md:h-6 mt-[-1.00px] mb-[-1.00px]"
-                      alt=""
-                      src={ICONS.arrowRight}
-                    />
+                    <ArrowRightIcon className="text-white" size={24} />
                   </button>
                 </div>
               </div>
@@ -176,11 +173,7 @@ export const TheThreeChaptersSection = ({
                   className="inline-flex items-center gap-2 lg:gap-2.5 p-2 lg:p-3 absolute top-4 lg:top-6 left-4 lg:left-6 bg-[#7bb302] rounded-[40px]"
                   aria-label="Video content"
                 >
-                  <img
-                    className="relative w-5 h-5 lg:w-6 lg:h-6"
-                    alt=""
-                    src={episode.videoIcon}
-                  />
+                  <VideoCircleFilledIcon className="text-white" size={24} />
                 </div>
 
                 <div
@@ -212,11 +205,7 @@ export const TheThreeChaptersSection = ({
                   className="absolute top-6 lg:top-9 right-4 lg:right-6 w-5 h-5 lg:w-6 lg:h-6"
                   aria-label={`External link for ${episode.title}`}
                 >
-                  <img
-                    className="w-full h-full"
-                    alt=""
-                    src={episode.exportIcon}
-                  />
+                  <ExportIcon className="text-[#7bb302]" size={24} />
                 </a>
               </article>
             ))}

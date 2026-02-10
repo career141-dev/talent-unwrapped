@@ -27,6 +27,9 @@ export const EpisodesPage = (): JSX.Element => {
   return (
     <>
       <EpisodeLayout showChapters={false} showContact showFooter>
+        {/* The Three Chapters Section - Moved to top */}
+        <TalentIntroductionSection />
+
         <section
           id="episodes"
           className="w-full bg-white py-16 sm:py-20 md:py-24 lg:py-[90px]"
@@ -46,8 +49,8 @@ export const EpisodesPage = (): JSX.Element => {
                   <button
                     onClick={() => setFilter("all")}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === "all"
-                        ? "bg-white text-[#7bb302] shadow-sm"
-                        : "text-gray-500 hover:text-gray-900"
+                      ? "bg-white text-[#7bb302] shadow-sm"
+                      : "text-gray-500 hover:text-gray-900"
                       }`}
                   >
                     {NAV_LABELS.ALL}
@@ -55,8 +58,8 @@ export const EpisodesPage = (): JSX.Element => {
                   <button
                     onClick={() => setFilter("dubai")}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === "dubai"
-                        ? "bg-white text-[#ed2939] shadow-sm"
-                        : "text-gray-500 hover:text-gray-900"
+                      ? "bg-white text-[#ed2939] shadow-sm"
+                      : "text-gray-500 hover:text-gray-900"
                       }`}
                   >
                     {EDITION_NAMES.DUBAI}
@@ -64,8 +67,8 @@ export const EpisodesPage = (): JSX.Element => {
                   <button
                     onClick={() => setFilter("singapore")}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === "singapore"
-                        ? "bg-white text-[#7cb403] shadow-sm"
-                        : "text-gray-500 hover:text-gray-900"
+                      ? "bg-white text-[#7cb403] shadow-sm"
+                      : "text-gray-500 hover:text-gray-900"
                       }`}
                   >
                     {EDITION_NAMES.SINGAPORE}
@@ -97,9 +100,6 @@ export const EpisodesPage = (): JSX.Element => {
         <section id="reels" className="w-full">
           <ReelsSection />
         </section>
-
-        {/* The Three Chapters Section with Edition Filter */}
-        <TalentIntroductionSection />
       </EpisodeLayout>
     </>
   );

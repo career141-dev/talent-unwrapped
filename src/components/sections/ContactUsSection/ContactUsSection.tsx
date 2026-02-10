@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { FOOTER_IMAGES, LOGOS } from "@/assets";
+import { DecorativeArrowIcon } from "@/components/Common/Icons";
+import { LOGOS } from "@/assets";
 import { EXTERNAL_LINKS } from "@/constants";
 import { NAV_LABELS } from "@/constants/copy";
 
@@ -128,8 +129,8 @@ export const ContactUsSection = (): JSX.Element => {
       >
         <img
           className="absolute top-[15px] sm:top-[20px] lg:top-[30px] left-0 w-full max-w-[734px] h-auto object-cover hover:scale-105 transition-transform duration-500"
-          alt="Career 4U 20 Years Anniversary Logo"
-          src={LOGOS.career141}
+          alt="Contact Section Banner"
+          src={LOGOS.contactBanner}
         />
       </div>
 
@@ -144,10 +145,8 @@ export const ContactUsSection = (): JSX.Element => {
             {NAV_LABELS.ABOUT} Us
           </h2>
 
-          <img
+          <DecorativeArrowIcon
             className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-[60px] lg:h-[60px] hover:rotate-12 transition-transform duration-300"
-            alt="Decorative icon"
-            src={FOOTER_IMAGES.decorativeFrame}
             aria-hidden="true"
           />
         </header>

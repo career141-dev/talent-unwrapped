@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { ICONS } from "@/assets";
+import { VideoCircleFilledIcon } from "@/components/Common/Icons";
 
 interface PodcastCard {
   id: number;
@@ -155,10 +155,9 @@ export const MobileCarouselSection = ({
                     className="inline-flex items-center gap-[8.94px] p-[10.73px] absolute top-[22px] left-[22px] bg-[#7bb302] rounded-[35.78px] z-10"
                     aria-label="Video content"
                   >
-                    <img
-                      className="relative w-[21.47px] h-[21.47px]"
-                      alt=""
-                      src={ICONS.videoCircleAlt4}
+                    <VideoCircleFilledIcon
+                      className="relative text-white"
+                      size={22}
                       aria-hidden="true"
                     />
                   </div>

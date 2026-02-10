@@ -8,7 +8,7 @@ export const SECTION_TITLES = {
   THE_THREE_CHAPTERS: "THE THREE CHAPTERS",
   ALL_EPISODES: "All Episodes",
   LATEST_PODCASTS: "Latest Podcasts",
-  SPEAKERS: "Speakers",
+  SPEAKERS: "Beyond Resilience: Redefining Leadership Strength and Organizational Agility",
   CONTACT_US: "Contact Us",
   ABOUT_US: "About Us",
   LETS_UNWRAP_YOUR_STORY: "lets unwrap your story",
@@ -31,7 +31,7 @@ export const SECTION_DESCRIPTIONS = {
 };
 
 export const BUTTONS = {
-  LEARN_MORE: "Learn More",
+  LEARN_MORE: "Be a Guest",
   LISTEN_NOW: "Listen Now",
   WATCH_EPISODE: "Watch Episode",
   VIEW_EPISODE: "View Episode",
@@ -158,7 +158,7 @@ export const NAV_LABELS = {
   ABOUT: "About",
   EPISODES: "Episodes",
   REELS: "Reels",
-  SCHEDULE: "Schedule",
+  SCHEDULE: "Be a Guest",
   EXECUTIVE_SEARCH: "Executive Search",
   CULTURE: "Our Culture",
   OUR_JOURNEY: "Our Journey",
