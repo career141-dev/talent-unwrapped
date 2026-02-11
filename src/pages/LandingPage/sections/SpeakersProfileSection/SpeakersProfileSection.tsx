@@ -129,7 +129,6 @@ export const SpeakersProfileSection = ({ edition }: SpeakersProfileSectionProps)
     <section
       id="speakers"
       className="relative w-full bg-white py-10 sm:py-12 md:py-16 lg:py-[60px] overflow-hidden"
-      style={{ overflowX: "hidden" }}
     >
       {/* Inner container with responsive padding - matches global layout only on web */}
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">

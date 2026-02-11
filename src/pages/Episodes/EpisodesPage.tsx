@@ -5,6 +5,7 @@ import { EpisodeCard } from "../PodcastEditions/Components/EpisodeCard";
 import { DUBAI_EPISODES, SINGAPORE_EPISODES } from "../../data/episodeData";
 import { ReelsSection } from "../../components/Sections/ReelsSection";
 import { TalentIntroductionSection } from "../LandingPage/Sections/TalentIntroductionSection/TalentIntroductionSection";
+import { EpisodeDetailsSection } from "../LandingPage/Sections/EpisodeDetailsSection/EpisodeDetailsSection";
 import { SECTION_TITLES, NAV_LABELS, EDITION_NAMES, FEEDBACK_MESSAGES } from "@/constants/copy";
 
 export const EpisodesPage = (): JSX.Element => {
@@ -100,6 +101,9 @@ export const EpisodesPage = (): JSX.Element => {
         <section id="reels" className="w-full">
           <ReelsSection />
         </section>
+
+        {/* Episode Details Section (Scrolling Marquee) */}
+        <EpisodeDetailsSection isEpisodesPage={true} />
       </EpisodeLayout>
     </>
   );

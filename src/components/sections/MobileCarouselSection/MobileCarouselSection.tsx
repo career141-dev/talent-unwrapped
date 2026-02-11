@@ -122,11 +122,11 @@ export const MobileCarouselSection = ({
   }, []);
 
   return (
-    <div className="relative w-full h-[310px] bg-white overflow-visible flex flex-col items-center justify-start py-2">
+    <div className="relative w-full h-[310px] bg-white overflow-hidden flex flex-col items-center justify-start py-2">
       {/* Carousel Container */}
       <div
         ref={scrollContainerRef}
-        className="relative w-full h-[275px] overflow-x-scroll overflow-y-visible snap-x snap-mandatory scrollbar-hide flex items-center px-[calc((100vw-320px)/2)]"
+        className="relative w-full h-[275px] overflow-x-scroll overflow-y-hidden snap-x snap-mandatory scrollbar-hide flex items-center px-[calc((100vw-320px)/2)]"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -150,7 +150,7 @@ export const MobileCarouselSection = ({
                   height: "265px",
                 }}
               >
-                <div className="w-full h-full bg-[#f8f8f8] rounded-[25.04px] overflow-visible shadow-[0px_4px_4px_#00000040] relative">
+                <div className="w-full h-full bg-[#f8f8f8] rounded-[25.04px] shadow-[0px_4px_4px_#00000040] relative">
                   <div
                     className="inline-flex items-center gap-[8.94px] p-[10.73px] absolute top-[22px] left-[22px] bg-[#7bb302] rounded-[35.78px] z-10"
                     aria-label="Video content"

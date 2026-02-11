@@ -151,7 +151,6 @@ export const LatestPodcastListSection = (): JSX.Element => {
       ref={sectionRef}
       id="episodes"
       className="relative w-full bg-white py-2 sm:py-3 md:py-4 lg:py-[8px] px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden"
-      style={{ overflowX: "hidden" }}
     >
       <div className="w-full">
         <motion.div

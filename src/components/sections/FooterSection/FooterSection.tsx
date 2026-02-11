@@ -1,4 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 interface FooterLink {
   text: string;
@@ -35,7 +36,13 @@ export const FooterSection = ({
   if (variant === "simple" && !isEditionPage) {
     return (
       <footer className="w-full bg-white border-t border-neutral-200">
-        <div className="w-full max-w-[1440px] mx-auto flex min-h-[80px] md:h-[100px] flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-4 md:py-0">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-[1440px] mx-auto flex min-h-[80px] md:h-[100px] flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-4 md:py-0"
+        >
           {footerLinks.map((link, index) =>
             link.href ? (
               <a
@@ -56,7 +63,7 @@ export const FooterSection = ({
               </div>
             ),
           )}
-        </div>
+        </motion.div>
       </footer>
     );
   }
@@ -64,7 +71,13 @@ export const FooterSection = ({
   // Extended footer for edition pages (Dubai/Singapore)
   return (
     <footer className="w-full bg-white border-t border-neutral-200">
-      <div className="w-full max-w-[1440px] mx-auto flex min-h-[80px] md:h-[100px] flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-6 lg:px-8 py-6 sm:py-4 md:py-0">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="w-full max-w-[1440px] mx-auto flex min-h-[80px] md:h-[100px] flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-6 px-4 sm:px-6 lg:px-8 py-6 sm:py-4 md:py-0"
+      >
         {footerLinks.map((link, index) =>
           link.href ? (
             <a
@@ -85,7 +98,7 @@ export const FooterSection = ({
             </div>
           ),
         )}
-      </div>
+      </motion.div>
     </footer>
   );
 };

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { EPISODE_IMAGES } from "@/assets";
 import { ArrowRightIcon } from "@/components/Common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, GUEST_SECTION_CONTENT } from "@/constants/copy";
@@ -169,7 +170,13 @@ export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetails
           {/* Blockquote and Heading side by side on large screens */}
           {/* Blockquote and Heading side by side on large screens - Hidden on Episodes Page */}
           {!isEpisodesPage && (
-            <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 mb-4 sm:mb-6 items-start w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="flex flex-col lg:flex-row gap-4 sm:gap-6 mb-4 sm:mb-6 items-start w-full"
+            >
               <div className="flex flex-col gap-2 sm:gap-3 flex-1">
                 <h2
                   id="episode-details-heading"
@@ -191,19 +198,24 @@ export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetails
               <blockquote className="block static w-full max-w-full sm:max-w-[400px] md:max-w-[500px] lg:max-w-[420px] ml-0 mr-auto [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg tracking-[-0.64px] leading-[normal] z-10 mb-4 lg:mb-0">
                 &quot;{SECTION_DESCRIPTIONS.GUEST_INVITATION}&quot;
               </blockquote>
-            </div>
+            </motion.div>
           )}
 
           {/* Image Stack Container - Now below the blockquote */}
-          <div className={`relative w-full max-w-[160px] h-[200px] sm:max-w-[320px] sm:h-[280px] md:max-w-[400px] md:h-[350px] mx-auto mb-6 px-4 sm:px-0 lg:max-w-none lg:w-[560px] lg:h-[320px] lg:mx-0 lg:mb-0 lg:px-0 lg:absolute ${isEpisodesPage ? "lg:top-[50px]" : "lg:top-[240px]"
-            } lg:right-[100px] pointer-events-none will-change-transform flex items-center justify-center overflow-visible`}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className={`relative w-full max-w-[160px] h-[200px] sm:max-w-[320px] sm:h-[280px] md:max-w-[400px] md:h-[350px] mx-auto mb-6 px-4 sm:px-0 lg:max-w-none lg:w-[560px] lg:h-[320px] lg:mx-0 lg:mb-0 lg:px-0 lg:absolute ${isEpisodesPage ? "lg:top-[50px]" : "lg:top-[240px]"
+              } lg:right-[100px] pointer-events-none flex items-center justify-center`}>
             {images.map((image, index) => {
               const style = getImageStyle(index);
               const isActive = (index === activeImageIndex);
               return (
                 <div
                   key={image.id}
-                  className="absolute w-[160px] h-[180px] sm:w-[240px] sm:h-[260px] md:w-[280px] md:h-[300px] lg:w-[280px] lg:h-[320px] rounded-3xl overflow-hidden shadow-[0px_8px_24px_rgba(0,0,0,0.15)] transition-all duration-700 ease-in-out will-change-transform active:scale-95 lg:active:scale-100"
+                  className="absolute w-[160px] h-[180px] sm:w-[240px] sm:h-[260px] md:w-[280px] md:h-[300px] lg:w-[280px] lg:h-[320px] rounded-3xl overflow-hidden shadow-[0px_8px_24px_rgba(0,0,0,0.15)] transition-all duration-700 ease-in-out active:scale-95 lg:active:scale-100"
                   style={{
                     transform: style.transform,
                     zIndex: style.zIndex,
@@ -222,9 +234,13 @@ export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetails
                 </div>
               );
             })}
-          </div>
+          </motion.div>
 
-          <nav
+          <motion.nav
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className={`flex flex-col w-full max-w-[400px] items-start gap-3 sm:gap-5 relative lg:absolute top-auto ${isEpisodesPage ? "lg:top-[93px]" : "lg:top-[283px]"
               } left-0 lg:left-20 z-10 mb-6 sm:mb-8 lg:mb-0`}
             aria-label="Episode types"
@@ -258,29 +274,24 @@ export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetails
                 </div>
               </button>
             ))}
-          </nav>
+          </motion.nav>
         </div>
       </section>
 
       {/* Full-width scrolling text - completely outside section */}
-      {!isEpisodesPage && (
-        <div className="relative w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden z-10 mt-8 lg:mt-[-200px]" aria-hidden="true">
-          <div className="flex animate-infinite-scroll whitespace-nowrap">
-            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
+      <div className="relative w-full overflow-hidden z-10 mt-8 lg:mt-[-200px]" aria-hidden="true">
+        <motion.div
+          animate={{ x: "-25%" }}
+          transition={{ duration: 20, ease: "linear", repeat: Infinity }}
+          className="flex whitespace-nowrap"
+        >
+          {Array(4).fill(null).map((_, i) => (
+            <span key={i} className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
               {SECTION_TITLES.LETS_UNWRAP_YOUR_STORY}
             </span>
-            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
-              {SECTION_TITLES.LETS_UNWRAP_YOUR_STORY}
-            </span>
-            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
-              {SECTION_TITLES.LETS_UNWRAP_YOUR_STORY}
-            </span>
-            <span className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
-              {SECTION_TITLES.LETS_UNWRAP_YOUR_STORY}
-            </span>
-          </div>
-        </div>
-      )}
+          ))}
+        </motion.div>
+      </div>
     </>
   );
 };

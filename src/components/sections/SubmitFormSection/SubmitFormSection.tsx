@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { JoinUsForm } from "../../Forms";
 import { SECTION_DESCRIPTIONS, FORMS_CONTENT } from "@/constants/copy";
 
@@ -26,7 +27,13 @@ export const SubmitFormSection = (): JSX.Element => {
       className="flex w-full max-w-[1500px] flex-col lg:flex-row items-center lg:items-stretch justify-center gap-8 lg:gap-20 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-12 lg:py-20 relative bg-white mx-auto"
     >
       {/* Left Side - Insights Box */}
-      <div className="relative w-full lg:w-[620px] flex-shrink-0">
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="relative w-full lg:w-[620px] flex-shrink-0"
+      >
         <div
           className="relative w-full h-auto lg:h-full bg-white rounded-3xl
                   p-5 sm:p-7 lg:p-0
@@ -66,8 +73,12 @@ export const SubmitFormSection = (): JSX.Element => {
                     justify-start"
           >
             {features.map((feature, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
                 className="flex items-start gap-3.5 lg:gap-2
                      opacity-80 hover:opacity-100
                      transition-opacity duration-300"
@@ -90,16 +101,22 @@ export const SubmitFormSection = (): JSX.Element => {
                     <span className="ml-1">{feature.description}</span>
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Right Side - Contact Form */}
-      <div className="flex flex-col items-start justify-center gap-0 relative w-full lg:w-[540px] h-auto lg:h-full lg:min-h-[550px] bg-white rounded-3xl shadow-[0px_10px_30px_rgba(0,0,0,0.08)] p-6 sm:p-10 lg:p-12 lg:ml-0 mt-0 lg:mt-0">
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        className="flex flex-col items-start justify-center gap-0 relative w-full lg:w-[540px] h-auto lg:h-full lg:min-h-[550px] bg-white rounded-3xl shadow-[0px_10px_30px_rgba(0,0,0,0.08)] p-6 sm:p-10 lg:p-12 lg:ml-0 mt-0 lg:mt-0"
+      >
         <JoinUsForm />
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -1,34 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { DECORATIVE_IMAGES } from "@/assets";
 import { ArrowRightIcon, VerticalLineIcon } from "@/components/Common/Icons";
 import { WISDOM_CONTENT, NAV_LABELS, BUTTONS } from "@/constants/copy";
 
 export const WisdomAndTestimonialsSection = (): JSX.Element => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.2 },
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       id="about"
       className="relative w-full max-w-[1440px] bg-white px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 pt-8 sm:pt-10 md:pt-12 lg:pt-14 pb-6 sm:pb-8 md:pb-10 lg:pb-14 mx-auto overflow-hidden"
       aria-labelledby="about-heading"
@@ -36,8 +13,12 @@ export const WisdomAndTestimonialsSection = (): JSX.Element => {
       {/* Layout Container - Responsive Flex */}
       <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 w-full h-full">
         {/* Left Side - Image */}
-        <div
-          className={`hidden lg:block w-full lg:w-[35%] xl:w-[40%] max-w-[450px] lg:max-w-none order-1 lg:order-1 transition-all duration-700 lg:-ml-8 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="hidden lg:block w-full lg:w-[35%] xl:w-[40%] max-w-[450px] lg:max-w-none order-1 lg:order-1 lg:-ml-8"
         >
           <div className="relative w-full aspect-[3/4] lg:aspect-[2/3] xl:aspect-[3/4] bg-[#cecece] rounded-2xl md:rounded-3xl overflow-hidden rotate-180 shadow-lg hover:shadow-2xl transition-shadow duration-500">
             <img
@@ -46,11 +27,15 @@ export const WisdomAndTestimonialsSection = (): JSX.Element => {
               src={DECORATIVE_IMAGES.professionalMicrophone}
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Side - Content */}
-        <div
-          className={`w-full lg:w-[65%] xl:w-[60%] max-w-[665px] lg:max-w-none order-2 lg:order-2 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="w-full lg:w-[65%] xl:w-[60%] max-w-[665px] lg:max-w-none order-2 lg:order-2"
         >
           <div className="flex flex-col items-start w-full md:gap-8 sm:gap-10 lg:gap-12">
             {/* Top Section - Heading & CTA */}
@@ -69,15 +54,17 @@ export const WisdomAndTestimonialsSection = (): JSX.Element => {
                 </h2>
               </div>
 
-              <a
+              <motion.a
                 href="#episodes"
-                onClick={(e) => {
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={(e: React.MouseEvent) => {
                   e.preventDefault();
                   document
                     .getElementById("episodes")
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="inline-flex h-12 sm:h-[54px] items-center justify-center gap-2 px-6 py-3 bg-[#7CB403] rounded-[60px] no-underline cursor-pointer hover:bg-[#6a9e02] transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7bb302] focus:ring-offset-2 group touch-manipulation"
+                className="inline-flex h-12 sm:h-[54px] items-center justify-center gap-2 px-6 py-3 bg-[#7CB403] rounded-[60px] no-underline cursor-pointer hover:bg-[#6a9e02] transition-colors duration-300 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7bb302] focus:ring-offset-2 group touch-manipulation"
               >
                 <span className="w-fit [font-family:'Geist',Helvetica] font-semibold text-white text-sm sm:text-base tracking-[-0.48px] leading-[normal]">
                   {BUTTONS.EXPLORE}
@@ -88,7 +75,7 @@ export const WisdomAndTestimonialsSection = (): JSX.Element => {
                   color="white"
                   aria-hidden="true"
                 />
-              </a>
+              </motion.a>
             </div>
 
             {/* Bottom Section - Quote & Attribution */}
@@ -117,7 +104,7 @@ export const WisdomAndTestimonialsSection = (): JSX.Element => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

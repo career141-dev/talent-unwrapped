@@ -32,7 +32,6 @@ export const LandingPage = (): JSX.Element => {
         {/* Constrained content sections */}
         <div
           className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0"
-          style={{ overflowX: "hidden" }}
         >
           <HeroBannerSection />
           <WisdomAndTestimonialsSection />
@@ -40,37 +39,35 @@ export const LandingPage = (): JSX.Element => {
         </div>
 
         {/* Full-width latest podcast section */}
-        <div className="w-full">
+        <div className="w-full overflow-x-hidden">
           <LatestPodcastListSection />
         </div>
 
         {/* Full-width speakers section - breaks out of global layout */}
-        <div className="w-full">
+        <div className="w-full overflow-x-hidden">
           <SpeakersProfileSection />
         </div>
 
         {/* Constrained content sections */}
         <div
           className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0"
-          style={{ overflowX: "hidden" }}
         >
           {/* Constrained content */}
         </div>
 
         {/* Full-width reels section */}
-        <div id="reels" className="w-full">
+        <div id="reels" className="w-full overflow-x-hidden">
           <ReelsSection />
         </div>
 
         {/* Full-width episode details section */}
-        <div className="w-full">
+        <div className="w-full overflow-x-hidden">
           <EpisodeDetailsSection />
         </div>
 
         {/* Constrained content sections */}
         <div
           className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0"
-          style={{ overflowX: "hidden" }}
         >
           <SubmitFormSection />
           <ContactUsSection />

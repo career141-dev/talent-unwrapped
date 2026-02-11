@@ -25,10 +25,8 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
     const handleScroll = () => {
       if (!container) return;
 
-      // Calculate active index based on scroll position
       const scrollLeft = container.scrollLeft;
       const width = container.offsetWidth;
-      // Use round to find the closest slide
       const newIndex = Math.round(scrollLeft / width);
 
       if (newIndex !== activeIndex) {
@@ -36,12 +34,27 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
       }
     };
 
-    // Add scroll listener with passive option for better performance
     container.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       container.removeEventListener("scroll", handleScroll);
     };
+  }, [activeIndex]);
+
+  // Auto-play on mobile after delay
+  useEffect(() => {
+    // simplified mobile check
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 1024;
+
+    if (isMobile) {
+      setPlayingIndex(null); // Reset immediately on scroll
+
+      const timer = setTimeout(() => {
+        setPlayingIndex(activeIndex);
+      }, 1500);
+
+      return () => clearTimeout(timer);
+    }
   }, [activeIndex]);
 
   return (
@@ -50,7 +63,6 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
       ref={sectionRef}
       className="relative w-full bg-white pt-10 pb-16 sm:py-20 md:py-24 lg:py-[90px]"
     >
-      {/* Unified Horizontal Scroll Layout - Increased vertical padding to prevent clipping */}
       <div
         className="w-full overflow-x-auto relative pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-8 md:pr-8 py-12"
         ref={scrollContainerRef}
@@ -74,16 +86,15 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
               {/* Media Container */}
               <div className="absolute inset-0 w-full h-full bg-black">
                 {playingIndex === index ? (
-                  // Iframe for playback
                   <iframe
-                    src={`${reel.videoUrl}&autoplay=1`}
-                    className="w-full h-full object-cover bg-black"
+                    src={`${reel.videoUrl}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0&playsinline=1&loop=1`}
+                    className="w-full h-full"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowFullScreen
                     title={reel.title}
+                    style={{ border: 'none', pointerEvents: 'none' }}
                   />
                 ) : (
-                  // Fallback Image
                   <img
                     src={reel.thumbnailUrl}
                     alt={reel.title}
@@ -92,10 +103,10 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
                 )}
               </div>
 
-              {/* Overlay with Title - Always visible but might adjust based on hover preference */}
+              {/* Overlay with Title */}
               <div
                 className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-100 pointer-events-none flex flex-col justify-end p-4 sm:p-5 md:p-6 transition-opacity duration-300"
-                style={{ opacity: playingIndex === index ? 0 : 1 }} // Hide overlay when playing
+                style={{ opacity: playingIndex === index ? 0 : 1 }}
               >
                 <h3 className="[font-family:'Geist',Helvetica] font-semibold text-white text-lg sm:text-xl md:text-2xl lg:text-xl tracking-[-0.40px] leading-[normal] mb-2 sm:mb-3 lg:mb-2">
                   {reel.title}
@@ -109,7 +120,7 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
         </div>
       </div>
 
-      {/* Mobile Pagination Indicator - Only for mobile */}
+      {/* Mobile Pagination Indicator */}
       <div className="flex lg:hidden justify-center items-center gap-2 mt-4">
         {reelVideos.map((_, index) => (
           <button
@@ -117,7 +128,6 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
             onClick={() => {
               const container = scrollContainerRef.current;
               if (container) {
-                // For mobile, scroll by width of one slide
                 const width = container.offsetWidth;
                 container.scrollTo({
                   left: index * width,

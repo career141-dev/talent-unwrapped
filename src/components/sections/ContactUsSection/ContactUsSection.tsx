@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import { DecorativeArrowIcon } from "@/components/Common/Icons";
 import { LOGOS } from "@/assets";
@@ -18,29 +18,8 @@ interface Link {
  * Includes animations and consistent styling
  */
 export const ContactUsSection = (): JSX.Element => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.2 },
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const handleHomeClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -119,24 +98,31 @@ export const ContactUsSection = (): JSX.Element => {
 
   return (
     <footer
-      ref={sectionRef}
       id="schedule"
       className="flex w-full max-w-[1440px] flex-col lg:flex-row items-center justify-center gap-8 lg:gap-[60px] pt-0 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative bg-white mx-auto"
     >
       {/* Image Section - Fully Responsive */}
-      <div
-        className={`relative w-full lg:flex-1 h-[200px] sm:h-[250px] lg:h-[320px] rounded-2xl lg:rounded-3xl overflow-hidden bg-[linear-gradient(0deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)] transition-all duration-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="relative w-full lg:flex-1 h-[200px] sm:h-[250px] lg:h-[320px] rounded-2xl lg:rounded-3xl overflow-hidden bg-[linear-gradient(0deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]"
       >
         <img
           className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
           alt="Contact Section Banner"
           src={LOGOS.contactBanner}
         />
-      </div>
+      </motion.div>
 
       {/* Navigation Section - Fully Responsive */}
-      <nav
-        className={`flex flex-col w-full lg:w-[510px] items-start justify-between px-0 py-4 relative self-stretch transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}
+      <motion.nav
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+        className="flex flex-col w-full lg:w-[510px] items-start justify-between px-0 py-4 relative self-stretch"
         aria-label="Footer navigation"
       >
         {/* Header with Title and Icon */}
@@ -180,7 +166,7 @@ export const ContactUsSection = (): JSX.Element => {
             </div>
           ))}
         </div>
-      </nav>
+      </motion.nav>
     </footer>
   );
 };

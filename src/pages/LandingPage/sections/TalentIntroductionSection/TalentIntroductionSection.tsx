@@ -49,9 +49,9 @@ export const TalentIntroductionSection = (): JSX.Element => {
   return (
     <section
       id="schedule"
-      className="relative z-20 w-full max-w-[1440px] bg-white mx-auto overflow-hidden"
+      className="relative z-20 w-full max-w-[1440px] bg-white mx-auto"
       style={{
-        overflowX: 'hidden',
+        overflow: 'hidden',
         paddingLeft: 'clamp(16px, 4vw, 120px)',
         paddingRight: 'clamp(16px, 4vw, 120px)',
         paddingTop: 'clamp(8px, 1vw, 20px)',
@@ -192,8 +192,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
                 whileHover={{ y: -10, boxShadow: "0px 20px 40px rgba(0,0,0,0.1)" }}
-                className="relative w-full max-w-[360px] lg:w-[380px] h-[260px] lg:h-[280px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[24px] transition-colors duration-300 hover:bg-white cursor-pointer"
-                style={{ overflow: 'visible' }}
+                className="relative w-full max-w-[360px] lg:w-[380px] h-[260px] lg:h-[280px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[24px] transition-colors duration-300 hover:bg-white cursor-pointer overflow-hidden"
               >
                 <div
                   className="inline-flex items-center gap-2 lg:gap-2.5 p-2 lg:p-3 absolute top-4 lg:top-6 left-4 lg:left-6 bg-[#7bb302] rounded-[40px]"

@@ -69,7 +69,7 @@ export const HeroBannerSection = (): JSX.Element => {
 
   return (
     <section
-      className="relative w-full bg-white mx-auto overflow-visible"
+      className="relative w-full bg-white mx-auto overflow-hidden"
       style={{
         paddingBottom: "clamp(20px, 4vw, 40px)",
       }}
@@ -250,14 +250,14 @@ export const HeroBannerSection = (): JSX.Element => {
             {/* Play Button - Mobile */}
             {!isPlaying && (
               <motion.button
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
+                initial={{ scale: 0.8, opacity: 0, x: "-50%", y: "-50%" }}
+                animate={{ scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 type="button"
                 onClick={handlePlayVideo}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/95 active:bg-white rounded-full flex items-center justify-center cursor-pointer z-20 shadow-lg"
+                className="absolute top-1/2 left-1/2 bg-white/95 active:bg-white rounded-full flex items-center justify-center cursor-pointer z-20 shadow-lg"
                 aria-label="Play podcast episode"
                 style={{
                   width: "clamp(48px, 13vw, 60px)",

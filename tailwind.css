@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+
   button,
   input,
   select,
@@ -120,12 +121,19 @@ body {
   overflow-x: hidden;
   max-width: 100%;
   width: 100%;
-  height: auto;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   position: relative;
   overflow-y: auto;
+}
+
+#app {
+  width: 100%;
+  min-height: 100%;
 }
 
 :root {
@@ -134,12 +142,10 @@ body {
 
 .animate-fade-in {
   animation: fade-in 1s var(--animation-delay, 0s) ease forwards;
-  will-change: opacity, transform;
 }
 
 .animate-fade-up {
   animation: fade-up 1s var(--animation-delay, 0s) ease forwards;
-  will-change: opacity, transform;
 }
 
 .animate-marquee {
@@ -209,6 +215,7 @@ body {
 }
 
 @keyframes shimmer {
+
   0%,
   90%,
   to {

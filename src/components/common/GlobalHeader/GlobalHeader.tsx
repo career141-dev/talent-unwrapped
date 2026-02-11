@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import { EditionsDropdown } from "../../Forms/EditionsDropdown";
 import { LOGOS } from "@/assets";
 import { ArrowRightIcon, CloseIcon } from "../../Common/Icons";
@@ -132,7 +133,12 @@ export const GlobalHeader = (): JSX.Element => {
 
   return (
     <>
-      <header className="w-full bg-white border-b border-neutral-200 sticky top-0 z-[100] transition-shadow duration-300 hover:shadow-md mb-6 md:mb-8 lg:mb-10">
+      <motion.header
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="w-full bg-white border-b border-neutral-200 sticky top-0 z-[100] transition-shadow duration-300 hover:shadow-md mb-6 md:mb-8 lg:mb-10"
+      >
         <div className="flex w-full max-w-[1440px] min-h-[70px] md:min-h-[80px] lg:h-[100px] items-center justify-between gap-4 px-4 sm:px-6 md:px-8 lg:px-10 py-3 lg:py-0 mx-auto">
           {/* Logo */}
           <a
@@ -243,7 +249,7 @@ export const GlobalHeader = (): JSX.Element => {
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (

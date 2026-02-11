@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { TheThreeChaptersSectionProps } from "../../../../types";
 import { getEditionContent } from "../../../../data";
 import { MobileCarouselSection } from "../../../../components/Sections/MobileCarouselSection";
@@ -41,11 +42,25 @@ export const TheThreeChaptersSection = ({
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <section
       className="relative w-full max-w-[1440px] bg-white mx-auto overflow-hidden"
       style={{
-        overflowX: "hidden",
         paddingLeft: "clamp(16px, 4vw, 120px)",
         paddingRight: "clamp(16px, 4vw, 120px)",
         paddingTop: "clamp(8px, 1vw, 20px)",
@@ -65,22 +80,22 @@ export const TheThreeChaptersSection = ({
           {!hideTopSection && (
             <>
               <div className="md:col-span-4 lg:contents">
-                <header
-                  className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-[10px] w-full lg:w-[203px] text-left mb-4 md:mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-[8px] md:text-sm tracking-[-0.32px] leading-[normal] animate-slide-in-left"
-                  style={{
-                    transition: "transform 0.7s cubic-bezier(0.4,0,0.2,1)",
-                    transform: "translateX(0)",
-                  }}
+                <motion.header
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                  className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-[10px] w-full lg:w-[203px] text-left mb-4 md:mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-[8px] md:text-sm tracking-[-0.32px] leading-[normal]"
                 >
                   {SECTION_TITLES.THE_THREE_CHAPTERS}
-                </header>
+                </motion.header>
 
-                <div
-                  className="flex flex-col w-full lg:w-[203px] items-start gap-2 lg:gap-3 relative lg:absolute top-auto lg:top-[164px] left-0 lg:left-[10px] mb-4 md:mb-0 animate-slide-in-left"
-                  style={{
-                    transition: "transform 0.7s cubic-bezier(0.4,0,0.2,1)",
-                    transform: "translateX(0)",
-                  }}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: 0.2 }}
+                  className="flex flex-col w-full lg:w-[203px] items-start gap-2 lg:gap-3 relative lg:absolute top-auto lg:top-[164px] left-0 lg:left-[10px] mb-4 md:mb-0"
                 >
                   <div className="relative self-stretch mt-[-1.00px] [font-family:'Geist',Helvetica] font-medium text-[#232323] text-[30px] sm:text-[36px] md:text-[42px] lg:text-[50px] xl:text-[60px] tracking-[-0.03em] sm:tracking-[-0.04em] lg:tracking-[-0.05em] leading-[1.1] text-left">
                     {TALENT_INTRO_CONTENT.VIEWER_COUNT}
@@ -89,16 +104,16 @@ export const TheThreeChaptersSection = ({
                   <div className="relative self-stretch [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-xs md:text-sm text-left tracking-[-0.32px] lg:tracking-[-0.64px] leading-[normal]">
                     {SECTION_DESCRIPTIONS.VIEWERS_WORLDWIDE}
                   </div>
-                </div>
+                </motion.div>
               </div>
 
               <div className="md:col-span-8 lg:contents">
-                <p
-                  className="relative lg:absolute top-auto lg:top-0 left-0 lg:left-[400px] w-full lg:w-[904px] max-w-full text-center lg:text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-medium text-transparent text-[18px] sm:text-[22px] md:text-[28px] lg:text-[34px] xl:text-[40px] tracking-[-0.02em] sm:tracking-[-0.025em] lg:tracking-[-0.03em] leading-[1.3] sm:leading-[1.35] lg:leading-[1.4] animate-slide-in-left"
-                  style={{
-                    transition: "transform 0.7s cubic-bezier(0.4,0,0.2,1)",
-                    transform: "translateX(0)",
-                  }}
+                <motion.p
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                  className="relative lg:absolute top-auto lg:top-0 left-0 lg:left-[400px] w-full lg:w-[904px] max-w-full text-center lg:text-left mb-6 lg:mb-0 [font-family:'Geist',Helvetica] font-medium text-transparent text-[18px] sm:text-[22px] md:text-[28px] lg:text-[34px] xl:text-[40px] tracking-[-0.02em] sm:tracking-[-0.025em] lg:tracking-[-0.03em] leading-[1.3] sm:leading-[1.35] lg:leading-[1.4]"
                 >
                   <span className="text-[#232323] tracking-[-0.77px]">
                     {TALENT_INTRO_CONTENT.CHAPTER_PREFIX} {editionName} Edition{" "}
@@ -107,16 +122,18 @@ export const TheThreeChaptersSection = ({
                   <span className="text-[#8d8d8d] tracking-[-0.77px]">
                     {SECTION_DESCRIPTIONS.CHAPTER_EXPLORATION}
                   </span>
-                </p>
+                </motion.p>
 
-                <div
-                  className="flex lg:block items-center justify-center lg:justify-start animate-slide-in-left"
-                  style={{
-                    transition: "transform 0.7s cubic-bezier(0.4,0,0.2,1)",
-                    transform: "translateX(0)",
-                  }}
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: 0.3 }}
+                  className="flex lg:block items-center justify-center lg:justify-start"
                 >
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={() => setIsModalOpen(true)}
                     className="relative lg:absolute top-auto lg:top-[258px] left-0 lg:left-[400px] inline-flex h-12 md:h-[54px] items-center justify-center gap-2 px-4 md:px-5 py-3 md:py-4 bg-[#7bb302] rounded-[60px] cursor-pointer hover:bg-[#6da002] transition-colors mb-4 md:mb-0 mx-auto lg:mx-0"
                     aria-label="More about the podcast"
@@ -126,14 +143,18 @@ export const TheThreeChaptersSection = ({
                     </span>
 
                     <ArrowRightIcon className="text-white" size={24} />
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               </div>
             </>
           )}
         </div>
 
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
           className={`flex flex-col w-full items-start gap-2 relative lg:absolute top-auto ${hideTopSection ? "lg:top-0" : "lg:top-[478px]"} left-0 lg:left-[120px] text-left ${hideTopSection ? "mt-0" : "mt-8 sm:mt-10 md:mt-12 lg:mt-0"} mb-6 lg:ml-0 pl-4 sm:pl-6 md:pl-8 lg:pl-0`}
         >
           <p className="relative w-full max-w-none lg:w-auto [font-family:'Geist',Helvetica] font-medium text-[20px] sm:text-[24px] md:text-[28px] lg:text-[36px] leading-[24px] sm:leading-[28px] md:leading-[32px] lg:leading-[42px] whitespace-normal lg:whitespace-nowrap">
@@ -144,7 +165,7 @@ export const TheThreeChaptersSection = ({
               {schedule.date}
             </time>
           </p>
-        </div>
+        </motion.div>
 
         <div
           className={`flex flex-col lg:flex-row items-center justify-start gap-4 lg:gap-8 relative lg:absolute top-auto ${hideTopSection ? "lg:top-[60px]" : "lg:top-[589px]"} left-0 lg:left-[120px] w-full lg:w-auto overflow-x-hidden scrollbar-hide pl-4 sm:pl-6 md:pl-8 lg:pl-0`}
@@ -162,12 +183,19 @@ export const TheThreeChaptersSection = ({
           </div>
 
           {/* Desktop Cards - Only visible on lg+ */}
-          <div className="hidden lg:flex gap-8 w-full lg:w-auto">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="hidden lg:flex gap-8 w-full lg:w-auto"
+          >
             {chapters.map((episode) => (
-              <article
+              <motion.article
                 key={episode.id}
-                className="relative w-full max-w-[360px] lg:w-[380px] h-[260px] lg:h-[280px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[24px] transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-white cursor-pointer"
-                style={{ overflow: "visible" }}
+                variants={itemVariants}
+                className="relative w-full max-w-[360px] lg:w-[380px] h-[260px] lg:h-[280px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[24px] transition-all duration-300 hover:shadow-lg hover:bg-white cursor-pointer overflow-hidden"
+                whileHover={{ scale: 1.05 }}
               >
                 <div
                   className="inline-flex items-center gap-2 lg:gap-2.5 p-2 lg:p-3 absolute top-4 lg:top-6 left-4 lg:left-6 bg-[#7bb302] rounded-[40px]"
@@ -207,9 +235,9 @@ export const TheThreeChaptersSection = ({
                 >
                   <ExportIcon className="text-[#7bb302]" size={24} />
                 </a>
-              </article>
+              </motion.article>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Decorative Images */}
@@ -220,11 +248,24 @@ export const TheThreeChaptersSection = ({
               className={`${image.containerClass}`}
               aria-hidden="true"
             >
-              <img
-                className={image.imageClass}
-                alt={image.alt}
-                src={image.src}
-              />
+              <motion.div
+                animate={{
+                  y: [0, -15, 0],
+                  rotate: [0, 2, -2, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="w-full h-full"
+              >
+                <img
+                  className={image.imageClass}
+                  alt={image.alt}
+                  src={image.src}
+                />
+              </motion.div>
             </div>
           ))}
 
