@@ -98,28 +98,30 @@ export const KeyQuestionsSection = ({ edition = "dubai" }: KeyQuestionsSectionPr
             </button>
           </div>
 
-          {/* Session Description */}
-          <div className="mb-8 sm:mb-10">
-            <p className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg md:text-xl leading-relaxed mb-4 sm:mb-5">
-              {currentSession.sessionDescription}
-            </p>
-
-            <div className="space-y-4">
-              <h4 className="[font-family:'Geist',Helvetica] font-bold text-[#8d8d8d] text-base sm:text-lg md:text-xl leading-relaxed">
-                {FORMS_CONTENT.LEADERSHIP_MEANING}
-              </h4>
-
-              <p className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg md:text-xl leading-relaxed">
-                {FORMS_CONTENT.TODAYS_LEADERS}
+          {/* Session Description - Hidden for Dubai as requested */}
+          {edition !== "dubai" && (
+            <div className="mb-8 sm:mb-10">
+              <p className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg md:text-xl leading-relaxed mb-4 sm:mb-5">
+                {currentSession.sessionDescription}
               </p>
 
-              <ul className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg md:text-xl leading-relaxed space-y-3 pl-6">
-                {currentSession.sessionPoints.map((point, index) => (
-                  <li key={index}>• {point}</li>
-                ))}
-              </ul>
+              <div className="space-y-4">
+                <h4 className="[font-family:'Geist',Helvetica] font-bold text-[#8d8d8d] text-base sm:text-lg md:text-xl leading-relaxed">
+                  {FORMS_CONTENT.LEADERSHIP_MEANING}
+                </h4>
+
+                <p className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg md:text-xl leading-relaxed">
+                  {FORMS_CONTENT.TODAYS_LEADERS}
+                </p>
+
+                <ul className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg md:text-xl leading-relaxed space-y-3 pl-6">
+                  {currentSession.sessionPoints.map((point, index) => (
+                    <li key={index}>• {point}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Expert Profiles with Questions - Mobile Card Design */}
           <div className="space-y-4 md:space-y-16">

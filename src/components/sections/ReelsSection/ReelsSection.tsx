@@ -64,7 +64,7 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
       className="relative w-full bg-white pt-10 pb-16 sm:py-20 md:py-24 lg:py-[90px]"
     >
       <div
-        className="w-full overflow-x-auto relative pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-8 md:pr-8 py-12"
+        className="w-full max-w-full overflow-x-auto overscroll-x-contain scrollbar-hide snap-x snap-mandatory relative pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-8 md:pr-8 py-12"
         ref={scrollContainerRef}
         style={{
           scrollbarWidth: "none",
@@ -72,14 +72,14 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
           WebkitOverflowScrolling: "touch",
         }}
       >
-        <div className="flex w-fit lg:w-full gap-4 sm:gap-6 lg:gap-6 snap-x snap-mandatory lg:snap-none">
+        <div className="flex w-fit lg:w-full gap-4 sm:gap-6 lg:gap-6 lg:snap-none">
           {reelVideos.map((reel, index) => (
             <div
               key={reel.id}
               ref={(el) => (slideRefs.current[index] = el)}
               className="relative flex-shrink-0 group overflow-hidden shadow-lg bg-black rounded-2xl md:rounded-3xl
                 w-[85vw] sm:w-[60vw] md:w-[45vw] h-[600px] snap-center
-                lg:w-[calc((100vw-72px)/3.5)] lg:h-[850px] lg:snap-align-none transition-all duration-300 transform hover:scale-[1.02] hover:z-10 origin-center"
+                lg:w-[calc((100%-72px)/3.5)] lg:h-[850px] lg:snap-align-none transition-all duration-300 transform hover:scale-[1.02] hover:z-10 origin-center"
               onMouseEnter={() => setPlayingIndex(index)}
               onMouseLeave={() => setPlayingIndex(null)}
             >

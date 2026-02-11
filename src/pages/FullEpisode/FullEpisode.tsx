@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { EpisodeLayout } from "../../layouts";
-import { ReelsSection, ContactUsSection } from "../../components";
+import {
+  ReelsSection,
+  ContactUsSection,
+  GlobalHeader,
+} from "../../components";
 import { KeyQuestionsSection } from "./Sections/KeyQuestionsSection";
 import {
   SpeakersProfileSection,
@@ -83,7 +86,7 @@ export const FullEpisode = (): JSX.Element => {
         className="relative w-full bg-white pt-6 md:pt-8 lg:pt-10 pb-8 md:pb-12 lg:pb-16"
       >
         {/* Mobile Video Player - Single Video (visible only on mobile) */}
-        <div className="block md:hidden relative w-full">
+        <div className="block md:hidden relative w-full px-4 sm:px-6">
           <div
             className="relative w-full bg-[rgba(0,0,0,0.2)] rounded-lg overflow-hidden mx-auto"
             style={{
@@ -234,15 +237,10 @@ export const FullEpisode = (): JSX.Element => {
   );
 
   return (
-    <>
-      <EpisodeLayout
-        edition={editionKey}
-        showChapters={false}
-        showContact={false}
-        showFooter={false}
-      >
-        {content}
-      </EpisodeLayout>
+    <main className="flex flex-col items-center relative w-full overflow-x-hidden bg-white">
+      <GlobalHeader />
+
+      {content}
 
       {/* Key Questions Section */}
       <KeyQuestionsSection edition={editionKey} />
@@ -251,7 +249,7 @@ export const FullEpisode = (): JSX.Element => {
       <ReelsSection edition={edition as "Dubai" | "Singapore"} />
 
       {/* Episode Details Section - Outside layout for full-width scrolling text */}
-      <EpisodeDetailsSection isEpisodesPage={false} />
+      <EpisodeDetailsSection />
 
       {/* About Section - The Three Chapters */}
       <TalentIntroductionSection />
@@ -284,6 +282,6 @@ export const FullEpisode = (): JSX.Element => {
           {FOOTER_LINKS.PRIVACY}
         </a>
       </footer>
-    </>
+    </main>
   );
 };

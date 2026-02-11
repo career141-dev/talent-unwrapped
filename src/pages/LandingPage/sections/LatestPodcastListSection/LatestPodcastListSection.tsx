@@ -199,80 +199,85 @@ export const LatestPodcastListSection = (): JSX.Element => {
           </button>
 
           {/* Scrollable Podcasts Container */}
-          <motion.div
+          <div
             ref={scrollContainerRef}
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-auto scroll-smooth scrollbar-hide relative pb-4"
+            className="w-full max-w-full overflow-x-auto overscroll-x-contain scrollbar-hide snap-x snap-mandatory relative pb-4"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
+              WebkitOverflowScrolling: "touch",
             }}
           >
-            {podcastData.map((podcast) => (
-              <motion.article
-                key={podcast.id}
-                variants={itemVariants}
-                className="relative w-[250px] sm:w-[270px] md:w-[282px] flex flex-col gap-3 md:gap-4 group transition-all duration-500 flex-shrink-0"
-              >
-                <div className="relative w-full h-[150px] sm:h-[160px] md:h-[180px] bg-black rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
-                  {playingVideo === podcast.id ? (
-                    <iframe
-                      className="w-full h-full"
-                      src={getEmbedUrl(podcast.videoUrl)}
-                      title={podcast.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  ) : (
-                    <div className="block w-full h-full relative">
-                      <img
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        src={podcast.thumbnailUrl}
-                        alt={podcast.title}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              className="flex gap-4 sm:gap-5 md:gap-6"
+            >
+              {podcastData.map((podcast) => (
+                <motion.article
+                  key={podcast.id}
+                  variants={itemVariants}
+                  className="relative w-[250px] sm:w-[270px] md:w-[282px] flex flex-col gap-3 md:gap-4 group transition-all duration-500 flex-shrink-0 snap-start"
+                >
+                  <div className="relative w-full h-[150px] sm:h-[160px] md:h-[180px] bg-black rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
+                    {playingVideo === podcast.id ? (
+                      <iframe
+                        className="w-full h-full"
+                        src={getEmbedUrl(podcast.videoUrl)}
+                        title={podcast.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
                       />
-                      <button
-                        onClick={() => setPlayingVideo(podcast.id)}
-                        className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-all duration-300 cursor-pointer touch-manipulation z-10"
-                        aria-label={`Play ${podcast.title}`}
-                      >
-                        <motion.div
-                          whileHover={{ scale: 1.15 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-2xl"
+                    ) : (
+                      <div className="block w-full h-full relative">
+                        <img
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          src={podcast.thumbnailUrl}
+                          alt={podcast.title}
+                        />
+                        <button
+                          onClick={() => setPlayingVideo(podcast.id)}
+                          className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-all duration-300 cursor-pointer touch-manipulation z-10"
+                          aria-label={`Play ${podcast.title}`}
                         >
-                          <PlayIcon
-                            className="sm:w-6 sm:h-6 md:w-7 md:h-7 ml-0.5"
-                            fill="#7bb302"
-                            stroke="none"
-                            size={20}
-                          />
-                        </motion.div>
-                      </button>
-                      <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-black/80 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-md pointer-events-none">
-                        <span className="[font-family:'Geist',Helvetica] font-medium text-white text-[10px] sm:text-xs">
-                          Watch
-                        </span>
+                          <motion.div
+                            whileHover={{ scale: 1.15 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-2xl"
+                          >
+                            <PlayIcon
+                              className="sm:w-6 sm:h-6 md:w-7 md:h-7 ml-0.5"
+                              fill="#7bb302"
+                              stroke="none"
+                              size={20}
+                            />
+                          </motion.div>
+                        </button>
+                        <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-black/80 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-md pointer-events-none">
+                          <span className="[font-family:'Geist',Helvetica] font-medium text-white text-[10px] sm:text-xs">
+                            Watch
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-                <div className="flex flex-col gap-1 relative self-stretch w-full flex-[0_0_auto]">
-                  <h3 className="relative self-stretch min-h-[24px] sm:min-h-[26px] md:min-h-[30px] mt-[-1.00px] [font-family:'Geist',Helvetica] font-bold text-black text-base sm:text-lg tracking-[0] leading-tight sm:leading-[26px] overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
-                    {podcast.title}
-                  </h3>
-                  <p className="relative w-full [font-family:'Geist',Helvetica] font-normal text-[#939393] text-xs sm:text-sm tracking-[0] leading-[1.4]">
-                    {podcast.edition}
-                  </p>
-                  <time className="relative w-full [font-family:'Geist',Helvetica] font-normal text-[#939393] text-xs sm:text-sm tracking-[0] leading-[1.4]">
-                    {podcast.date}
-                  </time>
-                </div>
-              </motion.article>
-            ))}
-          </motion.div>
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-1 relative self-stretch w-full flex-[0_0_auto] min-w-0">
+                    <h3 className="relative self-stretch min-h-[24px] sm:min-h-[26px] md:min-h-[30px] mt-[-1.00px] [font-family:'Geist',Helvetica] font-bold text-black text-base sm:text-lg tracking-[0] leading-tight sm:leading-[26px] overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] min-w-0">
+                      {podcast.title}
+                    </h3>
+                    <p className="relative w-full [font-family:'Geist',Helvetica] font-normal text-[#939393] text-xs sm:text-sm tracking-[0] leading-[1.4] truncate min-w-0">
+                      {podcast.edition}
+                    </p>
+                    <time className="relative w-full [font-family:'Geist',Helvetica] font-normal text-[#939393] text-xs sm:text-sm tracking-[0] leading-[1.4] truncate min-w-0">
+                      {podcast.date}
+                    </time>
+                  </div>
+                </motion.article>
+              ))}
+            </motion.div>
+          </div>
 
           {/* Right Scroll Button */}
           <button

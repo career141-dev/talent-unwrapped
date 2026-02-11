@@ -135,7 +135,7 @@ export const EpisodeCard = ({
           <div className="text-[#1a1a1a] text-[11px] font-bold tracking-[0.05em] uppercase mb-[12px]">
             {NAV_LABELS.SPEAKERS}
           </div>
-          <div className="flex flex-row lg:flex-col gap-[12px] overflow-x-auto lg:overflow-x-visible scrollbar-hide pb-2 lg:pb-0">
+          <div className="flex flex-row lg:flex-col gap-[12px] overflow-x-auto lg:overflow-x-visible scrollbar-hide pb-2 lg:pb-0 overscroll-x-contain">
             {episode.speakers?.map((speaker: EpisodeSpeaker, index: number) => (
               <div
                 key={index}

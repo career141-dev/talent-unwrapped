@@ -19,7 +19,7 @@ export const DefaultLayout = ({
   className = "",
 }: DefaultLayoutProps): JSX.Element => {
   return (
-    <main className="flex flex-col items-center relative min-h-screen bg-white w-full">
+    <main className="flex flex-col items-center relative bg-white w-full">
       <GlobalHeader />
 
       {/* Constrained content wrapper - prevents overflow */}

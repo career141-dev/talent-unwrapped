@@ -33,7 +33,7 @@ export const EpisodeLayout = ({
   className = "",
 }: EpisodeLayoutProps): JSX.Element => {
   return (
-    <main className="flex flex-col items-center relative bg-white min-h-screen w-full">
+    <main className="flex flex-col items-center relative bg-white w-full">
       {/* Header - Consistent across all pages */}
       <GlobalHeader />
 

@@ -154,93 +154,9 @@ export const SpeakersProfileSection = ({ edition }: SpeakersProfileSectionProps)
               </div>
             </nav>
 
-            {/* Conditional Layout: Grid for Edition (3 items), Carousel for Landing (many items) */}
-            {edition ? (
-              /* Grid Layout for Full Episode Page */
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-                {speakers.map((speaker) => (
-                  <article
-                    key={speaker.id}
-                    className="flex flex-col w-full h-full items-start relative"
-                  >
-                    <div className="flex flex-col w-full items-start gap-1.5 sm:gap-5 md:gap-6 p-3 sm:p-5 md:p-6 relative h-full min-h-[240px] sm:min-h-[360px] md:min-h-[380px] bg-[#f8f8f8] rounded-[20px] md:rounded-[28px] border-2 border-[#7bb302] transition-all duration-300 hover:shadow-xl cursor-pointer">
-                      <div className="flex justify-between items-start w-full relative">
-                        <div
-                          className="relative w-[90px] h-[90px] sm:w-[130px] sm:h-[130px] md:w-[139px] md:h-[139px] rounded-full flex-shrink-0"
-                          style={{
-                            border: "4px solid #7bb302",
-                            padding: "4px",
-                          }}
-                        >
-                          <div className="w-full h-full rounded-full overflow-hidden bg-[#00000033]">
-                            <img
-                              className="w-full h-full object-cover"
-                              alt={speaker.name}
-                              src={speaker.image}
-                            />
-                          </div>
-                        </div>
-
-                        {speaker.edition && (
-                          <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border bg-white shadow-sm ${speaker.edition === "Singapore" ? "border-[#7bb302]/20" : "border-[#ed2939]/20"
-                            }`}>
-                            <PlayCircleFilledIcon
-                              size={14}
-                              fill={speaker.edition === "Singapore" ? "#7bb302" : "#ed2939"}
-                            />
-                            <span className={`text-[11px] sm:text-xs font-semibold tracking-wide ${speaker.edition === "Singapore" ? "text-[#7bb302]" : "text-[#ed2939]"
-                              }`}>
-                              {speaker.edition}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="flex flex-col items-start gap-1 relative self-stretch w-full mb-1 sm:mb-4">
-                        <h3
-                          className="relative self-stretch [font-family:'Geist',Helvetica] font-bold text-black text-sm sm:text-base md:text-lg tracking-[0] leading-tight sm:leading-[22px] md:leading-[24px] overflow-hidden text-ellipsis line-clamp-2"
-                          title={speaker.name}
-                        >
-                          {speaker.name}
-                        </h3>
-
-                        <p className="relative w-full font-body-small-regular font-[number:var(--body-small-regular-font-weight)] text-[#939393] text-xs sm:text-[length:var(--body-small-regular-font-size)] tracking-[var(--body-small-regular-letter-spacing)] leading-[var(--body-small-regular-line-height)]">
-                          {speaker.views}
-                        </p>
-                      </div>
-
-                      <div className="flex items-end justify-between relative self-stretch w-full mt-auto">
-                        <div className="inline-flex flex-col items-start relative flex-1 min-w-0 mr-2">
-                          <p className="relative w-full mt-[-1.00px] [font-family:'Geist',Helvetica] font-bold text-black text-sm sm:text-base tracking-[0] leading-5 sm:leading-6 truncate">
-                            {speaker.title}
-                          </p>
-
-                          <p className="relative w-full font-body-small-regular font-[number:var(--body-small-regular-font-weight)] text-[#939393] text-xs sm:text-[length:var(--body-small-regular-font-size)] tracking-[var(--body-small-regular-letter-spacing)] leading-tight line-clamp-2 h-[2.5em]">
-                            {speaker.position}
-                          </p>
-                        </div>
-
-                        {speaker.linkedinUrl && (
-                          <a
-                            href={speaker.linkedinUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-[#7bb302] rounded-full flex items-center justify-center text-white hover:bg-[#689902] transition-colors"
-                            aria-label={`${speaker.name}'s LinkedIn profile`}
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <LinkedinIcon size={14} className="sm:size-4" />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            ) : (
-              /* Carousel Layout for Landing Page */
-              <>
-                <div className="relative w-full">
+            <div className="relative w-full">
+              {!edition && (
+                <>
                   {/* Left Scroll Button - positioned outside container only on XL desktop */}
                   <button
                     className="hidden xl:flex absolute left-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-10 transition-all"
@@ -254,94 +170,6 @@ export const SpeakersProfileSection = ({ edition }: SpeakersProfileSectionProps)
                     />
                   </button>
 
-                  <div
-                    ref={scrollContainerRef}
-                    className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-auto scroll-smooth scrollbar-hide relative pb-4"
-                    style={{
-                      scrollbarWidth: "none",
-                      msOverflowStyle: "none",
-                    }}
-                  >
-                    {speakers.map((speaker) => (
-                      <article
-                        key={speaker.id}
-                        className="flex flex-col w-[250px] sm:w-[270px] md:w-[282px] h-full items-start relative flex-shrink-0"
-                      >
-                        <div className="flex flex-col w-full items-start gap-1.5 sm:gap-5 md:gap-6 p-3 sm:p-5 md:p-6 relative h-full min-h-[240px] sm:min-h-[360px] md:min-h-[380px] bg-[#f8f8f8] rounded-[20px] md:rounded-[28px] border-2 border-[#7bb302] transition-all duration-300 hover:shadow-xl cursor-pointer">
-                          <div className="flex justify-between items-start w-full relative">
-                            <div
-                              className="relative w-[90px] h-[90px] sm:w-[130px] sm:h-[130px] md:w-[139px] md:h-[139px] rounded-full flex-shrink-0"
-                              style={{
-                                border: "4px solid #7bb302",
-                                padding: "4px",
-                              }}
-                            >
-                              <div className="w-full h-full rounded-full overflow-hidden bg-[#00000033]">
-                                <img
-                                  className="w-full h-full object-cover"
-                                  alt={speaker.name}
-                                  src={speaker.image}
-                                />
-                              </div>
-                            </div>
-
-                            {speaker.edition && (
-                              <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border bg-white shadow-sm ${speaker.edition === "Singapore" ? "border-[#7bb302]/20" : "border-[#ed2939]/20"
-                                }`}>
-                                <PlayCircleFilledIcon
-                                  size={14}
-                                  fill={speaker.edition === "Singapore" ? "#7bb302" : "#ed2939"}
-                                />
-                                <span className={`text-[11px] sm:text-xs font-semibold tracking-wide ${speaker.edition === "Singapore" ? "text-[#7bb302]" : "text-[#ed2939]"
-                                  }`}>
-                                  {speaker.edition}
-                                </span>
-                              </div>
-                            )}
-                          </div>
-
-                          <div className="flex flex-col items-start gap-1 relative self-stretch w-full mb-1 sm:mb-4">
-                            <h3
-                              className="relative self-stretch [font-family:'Geist',Helvetica] font-bold text-black text-sm sm:text-base md:text-lg tracking-[0] leading-tight sm:leading-[22px] md:leading-[24px] overflow-hidden text-ellipsis line-clamp-2"
-                              title={speaker.name}
-                            >
-                              {speaker.name}
-                            </h3>
-
-                            <p className="relative w-full font-body-small-regular font-[number:var(--body-small-regular-font-weight)] text-[#939393] text-xs sm:text-[length:var(--body-small-regular-font-size)] tracking-[var(--body-small-regular-letter-spacing)] leading-[var(--body-small-regular-line-height)]">
-                              {speaker.views}
-                            </p>
-                          </div>
-
-                          <div className="flex items-end justify-between relative self-stretch w-full mt-auto">
-                            <div className="inline-flex flex-col items-start relative flex-1 min-w-0 mr-2">
-                              <p className="relative w-full mt-[-1.00px] [font-family:'Geist',Helvetica] font-bold text-black text-sm sm:text-base tracking-[0] leading-5 sm:leading-6 truncate">
-                                {speaker.title}
-                              </p>
-
-                              <p className="relative w-full font-body-small-regular font-[number:var(--body-small-regular-font-weight)] text-[#939393] text-xs sm:text-[length:var(--body-small-regular-font-size)] tracking-[var(--body-small-regular-letter-spacing)] leading-tight line-clamp-2 h-[2.5em]">
-                                {speaker.position}
-                              </p>
-                            </div>
-
-                            {speaker.linkedinUrl && (
-                              <a
-                                href={speaker.linkedinUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-[#7bb302] rounded-full flex items-center justify-center text-white hover:bg-[#689902] transition-colors"
-                                aria-label={`${speaker.name}'s LinkedIn profile`}
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                <LinkedinIcon size={18} className="sm:size-5" />
-                              </a>
-                            )}
-                          </div>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
-
                   {/* Right Scroll Button - positioned outside container only on XL desktop */}
                   <button
                     className="hidden xl:flex absolute right-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-10 transition-all"
@@ -354,21 +182,115 @@ export const SpeakersProfileSection = ({ edition }: SpeakersProfileSectionProps)
                       size="100%"
                     />
                   </button>
-                </div>
+                </>
+              )}
 
-                {/* Dot Indicator */}
-                <div className="flex items-center justify-center gap-2 w-full mt-6">
-                  {Array.from({ length: totalPages }).map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handlePaginationClick(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentPage ? "bg-[#7bb302] w-6" : "bg-[#d0d0d0]"
-                        }`}
-                      aria-label={`Page ${index + 1}`}
-                    />
+              {/* Layout: Horizontal Scroll for Mobile, Grid/Carousel for others */}
+              <div
+                ref={scrollContainerRef}
+                className={`w-full max-w-full overflow-x-auto overscroll-x-contain scrollbar-hide snap-x snap-mandatory relative pb-4 md:overflow-visible ${edition ? "md:pb-0" : ""}`}
+                style={{
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+                  WebkitOverflowScrolling: "touch",
+                }}
+              >
+                <div className={`flex gap-4 sm:gap-5 md:gap-6 ${edition ? "md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6" : ""}`}>
+                  {speakers.map((speaker) => (
+                    <article
+                      key={speaker.id}
+                      className={`flex flex-col h-full items-start relative flex-shrink-0 snap-start ${edition ? "w-[250px] sm:w-[270px] md:w-full" : "w-[250px] sm:w-[270px] md:w-[282px]"}`}
+                    >
+                      <div className="flex flex-col w-full items-start gap-1.5 sm:gap-5 md:gap-6 p-3 sm:p-5 md:p-6 relative h-full min-h-[240px] sm:min-h-[360px] md:min-h-[380px] bg-[#f8f8f8] rounded-[20px] md:rounded-[28px] border-2 border-[#7bb302] transition-all duration-300 hover:shadow-xl cursor-pointer">
+                        <div className="flex justify-between items-start w-full relative">
+                          <div
+                            className="relative w-[90px] h-[90px] sm:w-[130px] sm:h-[130px] md:w-[139px] md:h-[139px] rounded-full flex-shrink-0"
+                            style={{
+                              border: "4px solid #7bb302",
+                              padding: "4px",
+                            }}
+                          >
+                            <div className="w-full h-full rounded-full overflow-hidden bg-[#00000033]">
+                              <img
+                                className="w-full h-full object-cover"
+                                alt={speaker.name}
+                                src={speaker.image}
+                              />
+                            </div>
+                          </div>
+
+                          {speaker.edition && (
+                            <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border bg-white shadow-sm ${speaker.edition === "Singapore" ? "border-[#7bb302]/20" : "border-[#ed2939]/20"
+                              }`}>
+                              <PlayCircleFilledIcon
+                                size={14}
+                                fill={speaker.edition === "Singapore" ? "#7bb302" : "#ed2939"}
+                              />
+                              <span className={`text-[11px] sm:text-xs font-semibold tracking-wide ${speaker.edition === "Singapore" ? "text-[#7bb302]" : "text-[#ed2939]"
+                                }`}>
+                                {speaker.edition}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="flex flex-col items-start gap-1 relative self-stretch w-full mb-1 sm:mb-4 min-w-0">
+                          <h3
+                            className="relative self-stretch [font-family:'Geist',Helvetica] font-bold text-black text-sm sm:text-base md:text-lg tracking-[0] leading-tight sm:leading-[22px] md:leading-[24px] overflow-hidden text-ellipsis line-clamp-2 min-w-0"
+                            title={speaker.name}
+                          >
+                            {speaker.name}
+                          </h3>
+
+                          <p className="relative w-full font-body-small-regular font-[number:var(--body-small-regular-font-weight)] text-[#939393] text-xs sm:text-[length:var(--body-small-regular-font-size)] tracking-[var(--body-small-regular-letter-spacing)] leading-[var(--body-small-regular-line-height)] truncate min-w-0">
+                            {speaker.views}
+                          </p>
+                        </div>
+
+                        <div className="flex items-end justify-between relative self-stretch w-full mt-auto">
+                          <div className="inline-flex flex-col items-start relative flex-1 min-w-0 mr-2">
+                            <p className="relative w-full mt-[-1.00px] [font-family:'Geist',Helvetica] font-bold text-black text-sm sm:text-base tracking-[0] leading-5 sm:leading-6 truncate min-w-0">
+                              {speaker.title}
+                            </p>
+
+                            <p className="relative w-full font-body-small-regular font-[number:var(--body-small-regular-font-weight)] text-[#939393] text-xs sm:text-[length:var(--body-small-regular-font-size)] tracking-[var(--body-small-regular-letter-spacing)] leading-tight line-clamp-2 h-[2.5em] min-w-0">
+                              {speaker.position}
+                            </p>
+                          </div>
+
+                          {speaker.linkedinUrl && (
+                            <a
+                              href={speaker.linkedinUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-[#7bb302] rounded-full flex items-center justify-center text-white hover:bg-[#689902] transition-colors"
+                              aria-label={`${speaker.name}'s LinkedIn profile`}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <LinkedinIcon size={18} className="sm:size-5" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </article>
                   ))}
                 </div>
-              </>
+              </div>
+            </div>
+
+            {!edition && (
+              /* Dot Indicator (only for main landing carousel) */
+              <div className="flex items-center justify-center gap-2 w-full mt-6">
+                {Array.from({ length: totalPages }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handlePaginationClick(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentPage ? "bg-[#7bb302] w-6" : "bg-[#d0d0d0]"
+                      }`}
+                    aria-label={`Page ${index + 1}`}
+                  />
+                ))}
+              </div>
             )}
           </div>
         </div>

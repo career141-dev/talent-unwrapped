@@ -30,15 +30,13 @@ export const EpisodesPage = (): JSX.Element => {
 
   return (
     <>
-      <main className="flex flex-col items-center relative min-h-screen bg-white w-full overflow-x-hidden">
+      <main className="flex flex-col items-center relative bg-white w-full">
         <div className="w-full">
           <GlobalHeader />
         </div>
 
-        {/* Constrained Section */}
-        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0">
-          <TalentIntroductionSection />
-        </div>
+        {/* Hero Content Section */}
+        <TalentIntroductionSection />
 
         <section
           id="episodes"
@@ -106,12 +104,10 @@ export const EpisodesPage = (): JSX.Element => {
           </div>
         </section>
 
-        {/* Constrained Footer Content */}
-        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0">
-          <SubmitFormSection />
-          <ContactUsSection />
-          <FooterSection />
-        </div>
+        {/* Footer Sections */}
+        <SubmitFormSection />
+        <ContactUsSection />
+        <FooterSection />
       </main>
     </>
   );

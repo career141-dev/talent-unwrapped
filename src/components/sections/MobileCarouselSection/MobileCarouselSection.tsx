@@ -127,14 +127,16 @@ export const MobileCarouselSection = ({
       {/* Carousel Container */}
       <div
         ref={scrollContainerRef}
-        className="relative w-full h-[275px] overflow-x-scroll overflow-y-hidden snap-x snap-mandatory scrollbar-hide flex items-center px-[calc((100vw-320px)/2)]"
+        className="w-full max-w-full overflow-x-auto overscroll-x-contain scrollbar-hide snap-x snap-mandatory px-4 sm:px-6 md:px-10"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
           WebkitOverflowScrolling: "touch",
+          scrollPaddingLeft: "calc((100% - 320px) / 2)",
+          scrollPaddingRight: "calc((100% - 320px) / 2)",
         }}
       >
-        <div className="flex items-center gap-6 h-full">
+        <div className="flex items-center gap-6 h-[275px]">
           {podcastCards.map((card, index) => {
             const isActive = index === activeIndex;
             const scale = isActive ? "scale-100" : "scale-[0.90]";
