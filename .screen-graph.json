@@ -854,6 +854,54 @@
           "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
         }
       }
+    },
+    {
+      "id": "src\\components\\Sections\\FooterSection\\FooterSection.tsx:24:4-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 24,
+          "endLine": 24,
+          "column": 4,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\Sections\\FooterSection\\FooterSection.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:29:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 29,
+          "endLine": 29,
+          "column": 6,
+          "endColumn": 19,
+          "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx:42:6-to-src\\pages\\LandingPage\\LandingPage.tsx",
+      "source": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "target": "src\\pages\\LandingPage\\LandingPage.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 42,
+          "endLine": 42,
+          "column": 6,
+          "endColumn": 19,
+          "sourceFile": "src\\components\\Sections\\ContactUsSection\\ContactUsSection.tsx"
+        }
+      }
     }
   ]
 }

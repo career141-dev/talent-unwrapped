@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { VideoCircleFilledIcon } from "@/components/Common/Icons";
+import { VideoCircleFilledIcon, ArrowRightIcon } from "@/components/Common/Icons";
+import { BUTTONS } from "@/constants/copy";
 
 interface PodcastCard {
   id: number;
@@ -179,9 +180,13 @@ export const MobileCarouselSection = ({
                         e.preventDefault();
                         onLearnMore?.();
                       }}
-                      className="relative self-stretch [font-family:'Geist',Helvetica] font-medium text-black text-[14.3px] tracking-[-0.29px] leading-[normal] underline hover:text-[#7bb302] transition-colors bg-transparent border-none p-0 text-left cursor-pointer"
+                      className="inline-flex h-10 items-center justify-center gap-2 px-5 py-2 bg-[#7bb302] rounded-[60px] cursor-pointer hover:bg-[#6da002] transition-all duration-200 active:scale-95 shadow-sm hover:shadow-md"
+                      aria-label={BUTTONS.LEARN_MORE}
                     >
-                      Learn more
+                      <span className="[font-family:'Geist',Helvetica] font-semibold text-white text-[13px] tracking-[-0.4px] leading-[normal]">
+                        {BUTTONS.LEARN_MORE}
+                      </span>
+                      <ArrowRightIcon className="text-white" size={18} />
                     </button>
                   </div>
                 </div>

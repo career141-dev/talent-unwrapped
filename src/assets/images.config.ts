@@ -6,9 +6,9 @@
 // Decorative Images
 export const DECORATIVE_IMAGES = {
   manInHeadphones:
-    "https://c.animaapp.com/6IK4krLc/img/man-in-headphones-having-interview-2025-10-26-23-44-27-utc-1@2x.png",
+    "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770805222/Frame_1000003696_kdgg5i.png",
   youngBlackMan:
-    "https://c.animaapp.com/6IK4krLc/img/young-black-man-in-headphones-talking-in-microphon-2025-03-13-12@2x.png",
+    "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770805222/Frame_1000003561_1_uzsupn.png",
   professionalMicrophone:
     "https://c.animaapp.com/6IK4krLc/img/professional-microphone-and-studio-equipment-2025-03-08-12-56-45.png",
 } as const;

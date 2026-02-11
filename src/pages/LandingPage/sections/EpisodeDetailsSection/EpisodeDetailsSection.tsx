@@ -17,10 +17,10 @@ interface ImageItem {
 }
 
 interface EpisodeDetailsSectionProps {
-  isEpisodesPage?: boolean;
+  // Props removed to maintain consistent design
 }
 
-export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetailsSectionProps): JSX.Element => {
+export const EpisodeDetailsSection = ({ }: EpisodeDetailsSectionProps): JSX.Element => {
   const episodeTypes: EpisodeType[] = [
     { id: 1, title: GUEST_SECTION_CONTENT.FIRESIDE_CHATS, isActive: true },
     { id: 2, title: GUEST_SECTION_CONTENT.ONE_ON_ONE, isActive: false },
@@ -162,44 +162,40 @@ export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetails
     <>
       <section
         ref={sectionRef}
-        className={`relative w-full bg-white py-4 sm:py-8 md:py-12 lg:py-[50px] mt-2 sm:mt-8 md:mt-12 lg:mt-[70px] min-h-0 overflow-hidden ${isEpisodesPage ? "sm:min-h-[500px]" : "sm:min-h-[900px]"
-          }`}
+        className="relative w-full bg-white py-4 sm:py-8 md:py-12 lg:py-[50px] mt-2 sm:mt-8 md:mt-12 lg:mt-[70px] min-h-0 overflow-hidden sm:min-h-[900px]"
         aria-labelledby="episode-details-heading"
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative">
           {/* Blockquote and Heading side by side on large screens */}
-          {/* Blockquote and Heading side by side on large screens - Hidden on Episodes Page */}
-          {!isEpisodesPage && (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="flex flex-col lg:flex-row gap-4 sm:gap-6 mb-4 sm:mb-6 items-start w-full"
-            >
-              <div className="flex flex-col gap-2 sm:gap-3 flex-1">
-                <h2
-                  id="episode-details-heading"
-                  className="[font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-sm sm:text-base md:text-lg lg:text-xl tracking-[-0.32px] leading-[normal] text-left"
-                >
-                  {SECTION_TITLES.WHY_BE_A_GUEST}
-                </h2>
-                <p className="[font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[48px] tracking-[-1.1px] sm:tracking-[-1.3px] lg:tracking-[-2px] leading-tight lg:leading-[normal] whitespace-normal lg:whitespace-nowrap flex flex-col items-start justify-start text-left">
-                  <span className="text-[#232323] tracking-[-1.1px] whitespace-normal lg:whitespace-nowrap">{GUEST_SECTION_CONTENT.SUBTITLE}</span>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex flex-col lg:flex-row gap-4 sm:gap-6 mb-4 sm:mb-6 items-start w-full"
+          >
+            <div className="flex flex-col gap-2 sm:gap-3 flex-1">
+              <h2
+                id="episode-details-heading"
+                className="[font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-sm sm:text-base md:text-lg lg:text-xl tracking-[-0.32px] leading-[normal] text-left"
+              >
+                {SECTION_TITLES.WHY_BE_A_GUEST}
+              </h2>
+              <p className="[font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[48px] tracking-[-1.1px] sm:tracking-[-1.3px] lg:tracking-[-2px] leading-tight lg:leading-[normal] whitespace-normal lg:whitespace-nowrap flex flex-col items-start justify-start text-left">
+                <span className="text-[#232323] tracking-[-1.1px] whitespace-normal lg:whitespace-nowrap">{GUEST_SECTION_CONTENT.SUBTITLE}</span>
+              </p>
+              <div className="relative w-full flex items-center gap-1 sm:gap-3 lg:gap-4 text-left">
+                <span className="inline-block w-8 h-6 sm:w-[70px] sm:h-9 lg:w-[120px] lg:h-[48px] bg-[#00000033] rounded-[80px] flex-shrink-0" aria-hidden="true"></span>
+                <p className="[font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[48px] tracking-[-1.1px] sm:tracking-[-1.3px] lg:tracking-[-2px] leading-6 sm:leading-[2.5rem] lg:leading-[48px] whitespace-normal lg:whitespace-nowrap min-h-8 sm:min-h-10 lg:min-h-[48px] h-auto flex items-center text-left">
+                  <span className="text-[#232323] tracking-[-1.1px]">{GUEST_SECTION_CONTENT.UNWRAPPED_PREFIX}</span>
+                  <span className="text-[#ed2939] tracking-[-1.1px]">{GUEST_SECTION_CONTENT.UNWRAPPED_TEXT}</span>
                 </p>
-                <div className="relative w-full flex items-center gap-1 sm:gap-3 lg:gap-4 text-left">
-                  <span className="inline-block w-8 h-6 sm:w-[70px] sm:h-9 lg:w-[120px] lg:h-[48px] bg-[#00000033] rounded-[80px] flex-shrink-0" aria-hidden="true"></span>
-                  <p className="[font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[48px] tracking-[-1.1px] sm:tracking-[-1.3px] lg:tracking-[-2px] leading-6 sm:leading-[2.5rem] lg:leading-[48px] whitespace-normal lg:whitespace-nowrap min-h-8 sm:min-h-10 lg:min-h-[48px] h-auto flex items-center text-left">
-                    <span className="text-[#232323] tracking-[-1.1px]">{GUEST_SECTION_CONTENT.UNWRAPPED_PREFIX}</span>
-                    <span className="text-[#ed2939] tracking-[-1.1px]">{GUEST_SECTION_CONTENT.UNWRAPPED_TEXT}</span>
-                  </p>
-                </div>
               </div>
-              <blockquote className="block static w-full max-w-full sm:max-w-[400px] md:max-w-[500px] lg:max-w-[420px] ml-0 mr-auto [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg tracking-[-0.64px] leading-[normal] z-10 mb-4 lg:mb-0">
-                &quot;{SECTION_DESCRIPTIONS.GUEST_INVITATION}&quot;
-              </blockquote>
-            </motion.div>
-          )}
+            </div>
+            <blockquote className="block static w-full max-w-full sm:max-w-[400px] md:max-w-[500px] lg:max-w-[420px] ml-0 mr-auto [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg tracking-[-0.64px] leading-[normal] z-10 mb-4 lg:mb-0">
+              &quot;{SECTION_DESCRIPTIONS.GUEST_INVITATION}&quot;
+            </blockquote>
+          </motion.div>
 
           {/* Image Stack Container - Now below the blockquote */}
           <motion.div
@@ -207,8 +203,8 @@ export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetails
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className={`relative w-full max-w-[160px] h-[200px] sm:max-w-[320px] sm:h-[280px] md:max-w-[400px] md:h-[350px] mx-auto mb-6 px-4 sm:px-0 lg:max-w-none lg:w-[560px] lg:h-[320px] lg:mx-0 lg:mb-0 lg:px-0 lg:absolute ${isEpisodesPage ? "lg:top-[50px]" : "lg:top-[240px]"
-              } lg:right-[100px] pointer-events-none flex items-center justify-center`}>
+            className="relative w-full max-w-[160px] h-[200px] sm:max-w-[320px] sm:h-[280px] md:max-w-[400px] md:h-[350px] mx-auto mb-6 px-4 sm:px-0 lg:max-w-none lg:w-[560px] lg:h-[320px] lg:mx-0 lg:mb-0 lg:px-0 lg:absolute lg:top-[240px] lg:right-[100px] pointer-events-none flex items-center justify-center"
+          >
             {images.map((image, index) => {
               const style = getImageStyle(index);
               const isActive = (index === activeImageIndex);
@@ -241,8 +237,7 @@ export const EpisodeDetailsSection = ({ isEpisodesPage = false }: EpisodeDetails
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className={`flex flex-col w-full max-w-[400px] items-start gap-3 sm:gap-5 relative lg:absolute top-auto ${isEpisodesPage ? "lg:top-[93px]" : "lg:top-[283px]"
-              } left-0 lg:left-20 z-10 mb-6 sm:mb-8 lg:mb-0`}
+            className="flex flex-col w-full max-w-[400px] items-start gap-3 sm:gap-5 relative lg:absolute top-auto lg:top-[283px] left-0 lg:left-20 z-10 mb-6 sm:mb-8 lg:mb-0"
             aria-label="Episode types"
           >
             {episodeTypes.map((episode) => (

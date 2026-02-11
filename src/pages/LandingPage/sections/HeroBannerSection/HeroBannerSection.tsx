@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { LANDING_VIDEO_SLIDES } from "@/data/videoSlideData";
-import { ICONS, LOGOS } from "@/assets";
+import { LOGOS } from "@/assets";
 import {
   PlayCircleFilledIcon,
   ChevronLeftIcon,
@@ -132,7 +132,7 @@ export const HeroBannerSection = (): JSX.Element => {
                 }}
               >
                 <img
-                  src={ICONS.heroActionButtonIcon}
+                  src="https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770802160/Frame_1000002831_4_bzex2d.png"
                   alt=""
                   className="block w-full h-auto"
                 />
@@ -416,7 +416,7 @@ export const HeroBannerSection = (): JSX.Element => {
               <img
                 className="w-full h-full"
                 alt=""
-                src={ICONS.heroActionButtonIcon}
+                src="https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770802160/Frame_1000002831_4_bzex2d.png"
               />
             </motion.button>
           </div>

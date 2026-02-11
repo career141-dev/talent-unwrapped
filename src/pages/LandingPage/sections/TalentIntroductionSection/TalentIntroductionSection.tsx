@@ -21,18 +21,18 @@ export const TalentIntroductionSection = (): JSX.Element => {
       src: DECORATIVE_IMAGES.manInHeadphones,
       alt: "Man in headphones",
       containerClass:
-        "absolute top-[230px] left-[0px] w-[100px] h-[70px] z-0 lg:flex lg:top-[150px] lg:left-[871px] lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[-7.30deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
+        "absolute top-[260px] left-[0px] w-[100px] h-[70px] z-0 lg:flex lg:top-[150px] lg:left-[871px] lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[-7.30deg] shadow-[12px_12px_30px_#00000017]",
       imageClass:
-        "mt-[-6px] w-[107px] h-[82px] ml-[-3.5px] scale-125 lg:mt-[-9.2px] lg:w-[163px] lg:h-[124.13px] lg:ml-[-5.1px] rotate-[7.30deg] aspect-[0.67] object-cover",
+        "w-full h-full object-cover rotate-[7.30deg] scale-[2.2] translate-x-[40px] translate-y-[25px]",
     },
     {
       id: 2,
       src: DECORATIVE_IMAGES.youngBlackMan,
       alt: "Young black man in headphones",
       containerClass:
-        "absolute top-[45px] left-[200px] w-[120px] h-[84px] z-0 lg:flex lg:top-52 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017] bg-[linear-gradient(0deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]",
+        "absolute top-[75px] left-[230px] w-[120px] h-[84px] z-0 lg:flex lg:top-52 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017]",
       imageClass:
-        "w-full h-full object-cover scale-110 rotate-[-6.49deg] lg:mt-[-8.2px] lg:w-[162.7px] lg:h-[122.17px] lg:ml-[-5.5px]",
+        "w-full h-full object-cover rotate-[-6.49deg] scale-[2.2] translate-x-[40px] translate-y-[25px]",
     },
   ];
 
@@ -216,9 +216,13 @@ export const TalentIntroductionSection = (): JSX.Element => {
 
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className="[font-family:'Geist',Helvetica] font-medium text-black text-sm lg:text-base tracking-[-0.32px] leading-[normal] underline hover:text-[#7bb302] transition-colors cursor-pointer bg-transparent border-none p-0 whitespace-nowrap"
+                    className="inline-flex h-[38px] items-center justify-center gap-2 px-6 bg-[#7bb302] rounded-[40px] cursor-pointer hover:bg-[#6da002] transition-all duration-200 active:scale-95 shadow-sm hover:shadow-md"
+                    aria-label={BUTTONS.LEARN_MORE}
                   >
-                    {BUTTONS.LEARN_MORE}
+                    <span className="[font-family:'Geist',Helvetica] font-semibold text-white text-sm tracking-[-0.4px] leading-[normal]">
+                      {BUTTONS.LEARN_MORE}
+                    </span>
+                    <ArrowRightIcon className="text-white" size={18} />
                   </button>
                 </div>
 

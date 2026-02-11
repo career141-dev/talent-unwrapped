@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { EpisodeLayout } from "../../layouts/EpisodeLayout";
+import {
+  FooterSection,
+  GlobalHeader,
+  ContactUsSection,
+  SubmitFormSection,
+} from "../../components";
 import { EpisodeCard } from "../PodcastEditions/Components/EpisodeCard";
 import { DUBAI_EPISODES, SINGAPORE_EPISODES } from "../../data/episodeData";
-import { ReelsSection } from "../../components/Sections/ReelsSection";
 import { TalentIntroductionSection } from "../LandingPage/Sections/TalentIntroductionSection/TalentIntroductionSection";
-import { EpisodeDetailsSection } from "../LandingPage/Sections/EpisodeDetailsSection/EpisodeDetailsSection";
 import { SECTION_TITLES, NAV_LABELS, EDITION_NAMES, FEEDBACK_MESSAGES } from "@/constants/copy";
 
 export const EpisodesPage = (): JSX.Element => {
@@ -27,9 +30,15 @@ export const EpisodesPage = (): JSX.Element => {
 
   return (
     <>
-      <EpisodeLayout showChapters={false} showContact showFooter>
-        {/* The Three Chapters Section - Moved to top */}
-        <TalentIntroductionSection />
+      <main className="flex flex-col items-center relative min-h-screen bg-white w-full overflow-x-hidden">
+        <div className="w-full">
+          <GlobalHeader />
+        </div>
+
+        {/* Constrained Section */}
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0">
+          <TalentIntroductionSection />
+        </div>
 
         <section
           id="episodes"
@@ -97,14 +106,13 @@ export const EpisodesPage = (): JSX.Element => {
           </div>
         </section>
 
-        {/* Reels Section */}
-        <section id="reels" className="w-full">
-          <ReelsSection />
-        </section>
-
-        {/* Episode Details Section (Scrolling Marquee) */}
-        <EpisodeDetailsSection isEpisodesPage={true} />
-      </EpisodeLayout>
+        {/* Constrained Footer Content */}
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0">
+          <SubmitFormSection />
+          <ContactUsSection />
+          <FooterSection />
+        </div>
+      </main>
     </>
   );
 };
