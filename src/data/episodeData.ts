@@ -1,5 +1,5 @@
 import { Episode, Podcast } from "../types";
-import { VIDEO_THUMBNAILS, SAMPLE_VIDEOS, EPISODE_IMAGES, EPISODE_AVATARS } from "../assets";
+import { VIDEO_THUMBNAILS } from "../assets";
 
 // Latest Podcasts data for Landing Page
 export const LATEST_PODCASTS_DATA: Podcast[][] = [
@@ -14,10 +14,10 @@ export const LATEST_PODCASTS_DATA: Podcast[][] = [
     },
     {
       id: 2,
-      title: "From HR to Business Impact | Building Future-Ready Talent | Talent Unwrapped – Singapore",
+      title: "Beyond Resilience | Redefining Leadership Strength & Organizational Agility | Talent Unwrapped – Singapore",
       edition: "Singapore Edition",
       date: "November 1, 2025",
-      thumbnailUrl: VIDEO_THUMBNAILS.video2,
+      thumbnailUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770693712/Frame_1000003689_1_pq4rv5.png",
       videoUrl: "https://youtu.be/3xda4skYDlg?si=vQS3xIWU7nu51WiX",
     },
     {
@@ -75,28 +75,29 @@ export const LATEST_PODCASTS_DATA: Podcast[][] = [
 export const SINGAPORE_EPISODES: Episode[] = [
   {
     id: "2",
-    image: EPISODE_IMAGES.leadershipWorkshop,
+    image: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770693712/Frame_1000003689_1_pq4rv5.png",
     category: "EPISODE",
-    title: "Leadership in the Digital Age",
+    title: "Beyond Resilience | Redefining Leadership Strength & Organizational Agility | Talent Unwrapped – Singapore",
     description:
-      "Exploring how leaders navigate digital transformation and build resilient teams in Singapore's dynamic business landscape.",
+      "Exploring how leaders in Singapore are moving beyond simple resilience to redefine organizational agility, thriving through change, and turning disruption into a strategic advantage.",
     duration: "1 hour",
-    date: "Jan 15, 2025",
+    date: "Nov 1, 2025",
+    videoUrl: "https://www.youtube.com/embed/3xda4skYDlg",
     speakers: [
       {
-        name: "Sarah Tan",
-        role: "Host",
-        avatar: EPISODE_AVATARS.sarahTan,
+        name: "Echo Wu",
+        role: "Leadership & Mental Toughness Expert",
+        avatar: "https://c.animaapp.com/mknscg4zvttudp/img/1756292060602-1.png",
       },
       {
-        name: "David Lim",
-        role: "Guest",
-        avatar: EPISODE_AVATARS.davidLim,
+        name: "Avik Ghosh",
+        role: "Executive Director",
+        avatar: "https://c.animaapp.com/mknscg4zvttudp/img/1621657233961-1.png",
       },
       {
-        name: "Michelle Wong",
-        role: "Guest",
-        avatar: EPISODE_AVATARS.michelleWong,
+        name: "Ella Sherman",
+        role: "Head of HR APAC",
+        avatar: "https://c.animaapp.com/mknscg4zvttudp/img/1545386579437-1.png",
       },
     ],
     featured: true,

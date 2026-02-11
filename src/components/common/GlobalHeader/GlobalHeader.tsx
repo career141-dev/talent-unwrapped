@@ -12,29 +12,13 @@ export const GlobalHeader = (): JSX.Element => {
   const location = useLocation();
   const [activeNav, setActiveNav] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  // Detect if we're on an edition page (new path: /edition/singapore or /edition/dubai)
+  // Detect if we're on an edition page or landing page
   const isEditionPage = location.pathname.startsWith("/edition/");
   const isLandingPage =
     location.pathname === "/" || location.pathname === "/talent-unwrapped/";
 
-  const navigationItems = isEditionPage
+  const navigationItems = isLandingPage
     ? [
-      {
-        label: "About",
-        href: "#about",
-        action: () => scrollToSection("about"),
-      },
-      {
-        label: NAV_LABELS.SCHEDULE,
-        href: "/schedule",
-        action: () => {
-          navigate("/schedule");
-          setActiveNav(NAV_LABELS.SCHEDULE);
-        },
-      },
-    ]
-    : [
       { label: NAV_LABELS.HOME, href: "/", action: () => navigate("/") },
       {
         label: NAV_LABELS.ABOUT,
@@ -59,6 +43,22 @@ export const GlobalHeader = (): JSX.Element => {
           setActiveNav(NAV_LABELS.SCHEDULE);
         },
       },
+    ]
+    : [
+      { label: NAV_LABELS.HOME, href: "/", action: () => navigate("/") },
+      {
+        label: NAV_LABELS.EPISODES,
+        href: "/episodes",
+        action: () => navigate("/episodes"),
+      },
+      {
+        label: NAV_LABELS.SCHEDULE,
+        href: "/schedule",
+        action: () => {
+          navigate("/schedule");
+          setActiveNav(NAV_LABELS.SCHEDULE);
+        },
+      },
     ];
 
   const scrollToSection = (sectionId: string) => {
@@ -74,45 +74,69 @@ export const GlobalHeader = (): JSX.Element => {
     setIsMobileMenuOpen(false); // Close menu after navigation
   };
 
-  // Track active section on scroll
+  // Track active section on scroll and track active route
   useEffect(() => {
-    if (isEditionPage) {
-      // Edition page scroll tracking
-      const handleScroll = () => {
-        const sections = navigationItems.map((item) => ({
-          label: item.label,
-          id: item.href.substring(1), // Remove # from href
-        }));
+    const handleScrollAndRoute = () => {
+      const currentPath = location.pathname;
+
+      // 1. Path-based active states (Highest priority)
+      if (currentPath === "/episodes") {
+        setActiveNav(NAV_LABELS.EPISODES);
+        return;
+      }
+
+      if (currentPath === "/schedule") {
+        setActiveNav(NAV_LABELS.SCHEDULE);
+        return;
+      }
+
+      // 2. Scroll-based tracking for landing page sections
+      if (isLandingPage || isEditionPage) {
+        const sections = navigationItems
+          .filter(item => item.href.startsWith("#"))
+          .map((item) => ({
+            label: item.label,
+            id: item.href.substring(1),
+          }));
 
         let currentActive = "";
+
+        // Check if we're at the very top
+        if (window.scrollY < 100 && isLandingPage) {
+          setActiveNav(NAV_LABELS.HOME);
+          return;
+        }
+
         for (const section of sections) {
           const element = document.getElementById(section.id);
           if (element) {
             const rect = element.getBoundingClientRect();
-            // Only mark as active if section is currently visible in viewport
-            if (rect.top < window.innerHeight && rect.bottom > 100) {
+            // Using a tighter threshold for better UX
+            if (rect.top < 150 && rect.bottom > 100) {
               currentActive = section.label;
               break;
             }
           }
         }
-        // Only set active if section is in view, otherwise clear it
-        setActiveNav(currentActive);
-      };
 
-      window.addEventListener("scroll", handleScroll);
-      // Run on mount to check initial state
-      handleScroll();
-      return () => window.removeEventListener("scroll", handleScroll);
-    } else {
-      // Landing page - set active based on current page
-      if (isLandingPage) {
-        setActiveNav(NAV_LABELS.HOME);
-      } else {
-        setActiveNav("");
+        if (currentActive) {
+          setActiveNav(currentActive);
+        } else if (isLandingPage && window.scrollY < 100) {
+          setActiveNav(NAV_LABELS.HOME);
+        } else if (!currentActive && !isLandingPage && !isEditionPage) {
+          // On other pages like /episode/:id, we might not want any highlight
+          // or we could highlight nothing
+          setActiveNav("");
+        }
       }
-    }
-  }, [navigationItems, isEditionPage, isLandingPage]);
+    };
+
+    window.addEventListener("scroll", handleScrollAndRoute);
+    // Initial check
+    handleScrollAndRoute();
+
+    return () => window.removeEventListener("scroll", handleScrollAndRoute);
+  }, [location.pathname, isLandingPage, isEditionPage, navigationItems]);
 
   // Close mobile menu when route changes
   useEffect(() => {
