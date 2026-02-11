@@ -132,7 +132,7 @@ export const SpeakersProfileSection = ({ edition }: SpeakersProfileSectionProps)
       style={{ overflowX: "hidden" }}
     >
       {/* Inner container with responsive padding - matches global layout only on web */}
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="flex flex-col items-start gap-4 md:gap-6 lg:gap-8 relative w-full">
           <header className="flex flex-col items-start gap-2 relative self-stretch w-full flex-[0_0_auto]">
             <h2 className="relative w-full max-w-full lg:max-w-none [font-family:'Geist',Helvetica] font-medium text-transparent text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] xl:text-[52px] tracking-[-0.02em] sm:tracking-[-0.025em] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">

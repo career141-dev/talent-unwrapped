@@ -125,10 +125,10 @@ export const ContactUsSection = (): JSX.Element => {
     >
       {/* Image Section - Fully Responsive */}
       <div
-        className={`relative w-full lg:flex-1 h-[150px] sm:h-[180px] md:h-[220px] lg:h-[280px] rounded-2xl lg:rounded-3xl overflow-hidden bg-[linear-gradient(0deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)] transition-all duration-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}
+        className={`relative w-full lg:flex-1 h-[200px] sm:h-[250px] lg:h-[320px] rounded-2xl lg:rounded-3xl overflow-hidden bg-[linear-gradient(0deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0.2)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)] transition-all duration-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}
       >
         <img
-          className="absolute top-[15px] sm:top-[20px] lg:top-[30px] left-0 w-full max-w-[734px] h-auto object-cover hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
           alt="Contact Section Banner"
           src={LOGOS.contactBanner}
         />

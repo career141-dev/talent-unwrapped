@@ -1,52 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { REELS_DATA } from "@/data";
 
-export const ReelsSection = (): JSX.Element => {
+interface ReelsSectionProps {
+  edition?: "Dubai" | "Singapore";
+}
+
+export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
 
-  const reelVideos = REELS_DATA;
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Play all videos when section enters viewport
-            videoRefs.current.forEach((video) => {
-              if (video) {
-                video.play().catch((error) => {
-                  console.log("Video autoplay failed:", error);
-                });
-              }
-            });
-          } else {
-            // Pause all videos when section leaves viewport
-            videoRefs.current.forEach((video) => {
-              if (video) {
-                video.pause();
-              }
-            });
-          }
-        });
-      },
-      {
-        threshold: 0.3, // Trigger when 30% of section is visible
-      },
-    );
-
-    observer.observe(section);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  // Filter reels based on edition if provided
+  const reelVideos = edition
+    ? REELS_DATA.filter((reel) => reel.edition === edition)
+    : REELS_DATA;
 
   // Track active slide on scroll
   useEffect(() => {
@@ -79,117 +48,102 @@ export const ReelsSection = (): JSX.Element => {
     <section
       id="reels"
       ref={sectionRef}
-      className="relative w-full bg-white pt-0 pb-16 sm:py-20 md:py-24 lg:py-[90px] px-0 sm:px-6 md:px-8 lg:px-10 xl:px-12"
+      className="relative w-full bg-white pt-10 pb-16 sm:py-20 md:py-24 lg:py-[90px]"
     >
-      <div className="max-w-[1440px] mx-auto w-full">
-        {/* Mobile Horizontal Carousel */}
-        <div
-          className="lg:hidden w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide relative"
-          ref={scrollContainerRef}
-          style={{
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-            WebkitOverflowScrolling: "touch",
-          }}
-        >
-          <div className="flex w-full gap-x-4 px-4 sm:px-6 md:px-8">
-            {reelVideos.map((reel, index) => (
-              <div
-                key={reel.id}
-                ref={(el) => (slideRefs.current[index] = el)}
-                className="relative w-full min-w-full max-w-full h-[600px] bg-black rounded-2xl overflow-hidden shadow-lg group snap-center flex-shrink-0"
-              >
-                {/* Video */}
-                <video
-                  ref={(el) => (videoRefs.current[index] = el)}
-                  className="w-full h-full object-cover"
-                  src={reel.videoUrl}
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                />
-
-                {/* Overlay with Title */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-100 flex flex-col justify-end p-4 sm:p-5 md:p-6">
-                  <h3 className="[font-family:'Geist',Helvetica] font-semibold text-white text-lg sm:text-xl md:text-2xl tracking-[-0.40px] leading-[normal] mb-2 sm:mb-3">
-                    {reel.title}
-                  </h3>
-                  <p className="[font-family:'Geist',Helvetica] font-normal text-white/80 text-sm sm:text-base leading-[normal]">
-                    {reel.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile Pagination Indicator */}
-        <div className="flex lg:hidden justify-center items-center gap-2 mt-4">
-          {reelVideos.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                const container = scrollContainerRef.current;
-                if (container) {
-                  const width = container.offsetWidth; // Use offsetWidth instead of slide reference for safer calculation
-                  container.scrollTo({
-                    left: index * width,
-                    behavior: "smooth",
-                  });
-                }
-              }}
-              className={`transition-all duration-300 rounded-full ${activeIndex === index
-                ? "w-8 h-2 bg-[#7bb302]"
-                : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
-                }`}
-              aria-label={`Go to reel ${index + 1}`}
-              aria-current={activeIndex === index ? "step" : undefined}
-            />
-          ))}
-        </div>
-
-        {/* Desktop Grid Layout */}
-        <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 w-full">
+      {/* Unified Horizontal Scroll Layout - Increased vertical padding to prevent clipping */}
+      <div
+        className="w-full overflow-x-auto relative pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-8 md:pr-8 py-12"
+        ref={scrollContainerRef}
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
+        <div className="flex w-fit lg:w-full gap-4 sm:gap-6 lg:gap-6 snap-x snap-mandatory lg:snap-none">
           {reelVideos.map((reel, index) => (
             <div
               key={reel.id}
-              className="relative w-full h-[850px] bg-black rounded-2xl md:rounded-3xl overflow-hidden shadow-lg group"
+              ref={(el) => (slideRefs.current[index] = el)}
+              className="relative flex-shrink-0 group overflow-hidden shadow-lg bg-black rounded-2xl md:rounded-3xl
+                w-[85vw] sm:w-[60vw] md:w-[45vw] h-[600px] snap-center
+                lg:w-[calc((100vw-72px)/3.5)] lg:h-[850px] lg:snap-align-none transition-all duration-300 transform hover:scale-[1.02] hover:z-10 origin-center"
+              onMouseEnter={() => setPlayingIndex(index)}
+              onMouseLeave={() => setPlayingIndex(null)}
             >
-              {/* Video */}
-              <video
-                ref={(el) => (videoRefs.current[index] = el)}
-                className="w-full h-full object-cover"
-                src={reel.videoUrl}
-                muted
-                loop
-                playsInline
-                preload="metadata"
-              />
+              {/* Media Container */}
+              <div className="absolute inset-0 w-full h-full bg-black">
+                {playingIndex === index ? (
+                  // Iframe for playback
+                  <iframe
+                    src={`${reel.videoUrl}&autoplay=1`}
+                    className="w-full h-full object-cover bg-black"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                    title={reel.title}
+                  />
+                ) : (
+                  // Fallback Image
+                  <img
+                    src={reel.thumbnailUrl}
+                    alt={reel.title}
+                    className="w-full h-full object-cover transition-opacity duration-300"
+                  />
+                )}
+              </div>
 
-              {/* Overlay with Title (appears on hover) */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 sm:p-5 md:p-6">
-                <h3 className="[font-family:'Geist',Helvetica] font-semibold text-white text-base sm:text-lg md:text-xl tracking-[-0.40px] leading-[normal] mb-1 sm:mb-2">
+              {/* Overlay with Title - Always visible but might adjust based on hover preference */}
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-100 pointer-events-none flex flex-col justify-end p-4 sm:p-5 md:p-6 transition-opacity duration-300"
+                style={{ opacity: playingIndex === index ? 0 : 1 }} // Hide overlay when playing
+              >
+                <h3 className="[font-family:'Geist',Helvetica] font-semibold text-white text-lg sm:text-xl md:text-2xl lg:text-xl tracking-[-0.40px] leading-[normal] mb-2 sm:mb-3 lg:mb-2">
                   {reel.title}
                 </h3>
-                <p className="[font-family:'Geist',Helvetica] font-normal text-white/80 text-xs sm:text-sm leading-[normal]">
+                <p className="[font-family:'Geist',Helvetica] font-normal text-white/80 text-sm sm:text-base lg:text-sm leading-[normal]">
                   {reel.description}
                 </p>
               </div>
             </div>
           ))}
         </div>
-
-        <style>{`
-          .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-          }
-          .scrollbar-hide {
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-          }
-        `}</style>
       </div>
+
+      {/* Mobile Pagination Indicator - Only for mobile */}
+      <div className="flex lg:hidden justify-center items-center gap-2 mt-4">
+        {reelVideos.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => {
+              const container = scrollContainerRef.current;
+              if (container) {
+                // For mobile, scroll by width of one slide
+                const width = container.offsetWidth;
+                container.scrollTo({
+                  left: index * width,
+                  behavior: "smooth",
+                });
+              }
+            }}
+            className={`transition-all duration-300 rounded-full ${activeIndex === index
+              ? "w-8 h-2 bg-[#7bb302]"
+              : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
+              }`}
+            aria-label={`Go to reel ${index + 1}`}
+            aria-current={activeIndex === index ? "step" : undefined}
+          />
+        ))}
+      </div>
+
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+      `}</style>
     </section>
   );
 };

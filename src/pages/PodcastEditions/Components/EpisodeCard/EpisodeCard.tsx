@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Episode, EpisodeSpeaker } from "../../../../types";
 import { METADATA, NAV_LABELS } from "@/constants/copy";
 
@@ -14,38 +15,69 @@ export const EpisodeCard = ({
   episode,
   onViewEpisode,
 }: EpisodeCardProps): JSX.Element => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlayClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card click
+    if (episode.videoUrl) {
+      setIsPlaying(true);
+    }
+  };
+
+  const handleCardClick = () => {
+    onViewEpisode(episode.id);
+  };
+
   return (
     <button
       key={episode.id}
-      onClick={() => onViewEpisode(episode.id)}
+      onClick={handleCardClick}
       className="flex flex-col bg-white rounded-[16px] overflow-hidden shadow-[0px_4px_16px_rgba(0,0,0,0.08)] hover:shadow-[0px_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:scale-[1.02] text-left border-none cursor-pointer group"
     >
       {/* Episode Image and Featured Badge */}
       <div className="relative w-full h-[240px] bg-[#2d2d2d] overflow-hidden">
-        <img
-          src={episode.image}
-          alt={episode.title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-        />
-        {episode.featured && (
-          <div className="absolute top-[16px] left-[16px] bg-[#7c3] text-white text-[11px] font-bold px-[12px] py-[6px] rounded-[20px] uppercase tracking-[0.05em]">
-            {METADATA.FEATURED}
-          </div>
+        {isPlaying && episode.videoUrl ? (
+          <iframe
+            src={`${episode.videoUrl}?autoplay=1`}
+            className="w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title={episode.title}
+          />
+        ) : (
+          <>
+            <img
+              src={episode.image}
+              alt={episode.title}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+            {episode.featured && (
+              <div className="absolute top-[16px] left-[16px] bg-[#7c3] text-white text-[11px] font-bold px-[12px] py-[6px] rounded-[20px] uppercase tracking-[0.05em] z-10">
+                {METADATA.FEATURED}
+              </div>
+            )}
+            {/* Play Button - Only show if videoUrl exists */}
+            {episode.videoUrl && (
+              <button
+                onClick={handlePlayClick}
+                className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-colors duration-300 z-10"
+                aria-label="Play video"
+              >
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-16 h-16 bg-[#7bb302] rounded-full flex items-center justify-center hover:scale-110 active:scale-95">
+                  <svg
+                    width="28"
+                    height="28"
+                    viewBox="0 0 24 24"
+                    fill="white"
+                    className="ml-1"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </button>
+            )}
+          </>
         )}
-        {/* Play Icon Indicator */}
-        <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-colors duration-300">
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-16 h-16 bg-[#7bb302] rounded-full flex items-center justify-center">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="white"
-              className="ml-1"
-            >
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </div>
-        </div>
       </div>
 
       {/* Episode Content */}
@@ -99,7 +131,7 @@ export const EpisodeCard = ({
         </div>
 
         {/* Speakers Section */}
-        <div className="border-t border-[#eeeeee] pt-[20px]">
+        <div className="border-t border-[#939393] pt-[20px]">
           <div className="text-[#1a1a1a] text-[11px] font-bold tracking-[0.05em] uppercase mb-[12px]">
             {NAV_LABELS.SPEAKERS}
           </div>

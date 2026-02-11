@@ -229,11 +229,7 @@ export const FullEpisode = (): JSX.Element => {
       {/* Speakers Profile Section */}
       <SpeakersProfileSection edition={edition as "Dubai" | "Singapore"} />
 
-      {/* Key Questions Section */}
-      <KeyQuestionsSection edition={editionKey} />
-
-      {/* Reels Section */}
-      <ReelsSection />
+      {/* Sections moved outside layout */}
     </div>
   );
 
@@ -247,6 +243,12 @@ export const FullEpisode = (): JSX.Element => {
       >
         {content}
       </EpisodeLayout>
+
+      {/* Key Questions Section */}
+      <KeyQuestionsSection edition={editionKey} />
+
+      {/* Reels Section */}
+      <ReelsSection edition={edition as "Dubai" | "Singapore"} />
 
       {/* Episode Details Section - Outside layout for full-width scrolling text */}
       <EpisodeDetailsSection isEpisodesPage={false} />

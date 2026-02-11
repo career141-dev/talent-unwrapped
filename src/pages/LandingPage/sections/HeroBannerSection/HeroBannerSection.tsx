@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { LANDING_VIDEO_SLIDES } from "@/data/videoSlideData";
 import { ICONS, LOGOS } from "@/assets";
 import {
@@ -80,7 +81,10 @@ export const HeroBannerSection = (): JSX.Element => {
           {/* First Line: Logo + Heading + Icon Button */}
           <div className="flex items-center gap-2 mb-2">
             {/* Logo */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
               className="bg-white rounded-lg overflow-hidden shadow-sm flex-shrink-0 flex items-center justify-center"
               style={{
                 width: "clamp(126px, 46vw, 165px)",
@@ -92,11 +96,14 @@ export const HeroBannerSection = (): JSX.Element => {
                 alt="Prasperant Logo"
                 src={LOGOS.prasperant}
               />
-            </div>
+            </motion.div>
 
             {/* Mobile Heading + Button */}
             <div className="flex-1">
-              <h2
+              <motion.h2
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
                 className="font-['Geist',Helvetica] font-medium text-[#232323] inline"
                 style={{
                   fontSize: "clamp(1.5rem, 6.8vw, 2.5rem)",
@@ -105,10 +112,13 @@ export const HeroBannerSection = (): JSX.Element => {
                 }}
               >
                 {HERO_CONTENT.FEEL_HEADING}
-              </h2>
+              </motion.h2>
 
               {/* Decorative Icon - inline after "feel" */}
-              <button
+              <motion.button
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.4 }}
                 onClick={scrollToSpeakers}
                 className="inline-block cursor-pointer bg-transparent border-none p-0 active:scale-95 transition-transform align-middle"
                 aria-label="Go to speakers section"
@@ -126,13 +136,16 @@ export const HeroBannerSection = (): JSX.Element => {
                   alt=""
                   className="block w-full h-auto"
                 />
-              </button>
+              </motion.button>
             </div>
           </div>
 
           {/* Second Line: Green Heading - Full Width */}
           <div className="w-full -mx-0">
-            <h1
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
               className="font-['Geist',Helvetica] font-medium text-[#7bb302] leading-[0.85] block"
               style={{
                 fontSize: "clamp(3rem, 14vw, 4.75rem)",
@@ -141,12 +154,17 @@ export const HeroBannerSection = (): JSX.Element => {
               }}
             >
               {HERO_CONTENT.STAY_HEADING}
-            </h1>
+            </motion.h1>
           </div>
         </div>
 
         {/* Mobile Video Player */}
-        <div className="relative w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="relative w-full"
+        >
           <div
             className="relative w-full bg-[rgba(0,0,0,0.2)] rounded-lg overflow-hidden"
             style={{
@@ -198,7 +216,10 @@ export const HeroBannerSection = (): JSX.Element => {
 
             {/* Edition Badge - Mobile */}
             {!isPlaying && (
-              <div
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6 }}
                 className="inline-flex items-center justify-center gap-1 absolute bg-[#ed2939] rounded-full z-20"
                 style={{
                   top: "clamp(0.5rem, 2vw, 0.875rem)",
@@ -223,15 +244,20 @@ export const HeroBannerSection = (): JSX.Element => {
                 >
                   {videoSlides[currentSlide].edition} {HERO_CONTENT.EDITION_SUFFIX}
                 </span>
-              </div>
+              </motion.div>
             )}
 
             {/* Play Button - Mobile */}
             {!isPlaying && (
-              <button
+              <motion.button
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 type="button"
                 onClick={handlePlayVideo}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/95 active:bg-white rounded-full flex items-center justify-center cursor-pointer active:scale-95 transition-all duration-200 z-20 shadow-lg"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/95 active:bg-white rounded-full flex items-center justify-center cursor-pointer z-20 shadow-lg"
                 aria-label="Play podcast episode"
                 style={{
                   width: "clamp(48px, 13vw, 60px)",
@@ -246,7 +272,7 @@ export const HeroBannerSection = (): JSX.Element => {
                     height: "clamp(20px, 5.5vw, 26px)",
                   }}
                 />
-              </button>
+              </motion.button>
             )}
 
             {/* Navigation Arrows - Mobile */}
@@ -325,7 +351,7 @@ export const HeroBannerSection = (): JSX.Element => {
               </div>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* ========== TABLET & DESKTOP LAYOUT (>= 768px) ========== */}
@@ -337,7 +363,10 @@ export const HeroBannerSection = (): JSX.Element => {
         }}
       >
         {/* Logo - Far Left */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex-shrink-0 bg-white rounded-xl overflow-hidden flex items-center justify-center"
           style={{
             width: "clamp(280px, 28vw, 420px)",
@@ -349,13 +378,16 @@ export const HeroBannerSection = (): JSX.Element => {
             alt="Prasperant Logo"
             src="https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770609977/Artboard_1_copy_2x_xhwixf.png"
           />
-        </div>
+        </motion.div>
 
         {/* Text Content - Center-Left (stacked) */}
         <div className="flex flex-col gap-0 flex-1">
           {/* First line: "Conversations that feel" + Button */}
           <div className="flex items-center gap-3">
-            <h2
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="font-['Geist',Helvetica] font-medium text-[#232323] leading-tight"
               style={{
                 fontSize: "clamp(25px, 3.6vw, 60px)",
@@ -363,12 +395,17 @@ export const HeroBannerSection = (): JSX.Element => {
               }}
             >
               {HERO_CONTENT.FEEL_HEADING}
-            </h2>
+            </motion.h2>
 
             {/* Decorative Icon - Right after text */}
-            <button
+            <motion.button
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.5 }}
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
               onClick={scrollToSpeakers}
-              className="flex-shrink-0 cursor-pointer hover:scale-110 active:scale-95 transition-transform duration-300 bg-transparent border-none p-0"
+              className="flex-shrink-0 cursor-pointer bg-transparent border-none p-0"
               aria-label="Go to speakers section"
               type="button"
               style={{
@@ -381,11 +418,14 @@ export const HeroBannerSection = (): JSX.Element => {
                 alt=""
                 src={ICONS.heroActionButtonIcon}
               />
-            </button>
+            </motion.button>
           </div>
 
           {/* Second line: "ideas that stay" */}
-          <h1
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="font-['Geist',Helvetica] font-medium text-[#7bb302] leading-[1]"
             style={{
               fontSize: "clamp(54px, 9vw, 155px)",
@@ -393,12 +433,15 @@ export const HeroBannerSection = (): JSX.Element => {
             }}
           >
             {HERO_CONTENT.STAY_HEADING}
-          </h1>
+          </motion.h1>
         </div>
       </div>
 
       {/* Desktop Video Player - Positioned Below Header */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
         className="hidden md:block w-full"
         style={{ marginTop: "clamp(40px, 6vw, 80px)" }}
       >
@@ -452,7 +495,10 @@ export const HeroBannerSection = (): JSX.Element => {
 
           {/* Edition Badge - Desktop */}
           {!isPlaying && (
-            <div
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8 }}
               className="inline-flex items-center justify-center gap-2 px-3 md:px-4 lg:px-5 py-1.5 md:py-2 lg:py-2.5 absolute bg-[#ed2939] rounded-full z-20"
               style={{
                 top: "clamp(1rem, 2vw, 2.5rem)",
@@ -476,15 +522,20 @@ export const HeroBannerSection = (): JSX.Element => {
               >
                 {videoSlides[currentSlide].edition} {HERO_CONTENT.EDITION_SUFFIX}
               </span>
-            </div>
+            </motion.div>
           )}
 
           {/* Play Button - Desktop */}
           {!isPlaying && (
-            <button
+            <motion.button
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
               type="button"
               onClick={handlePlayVideo}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all duration-300 z-20 shadow-xl"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer z-20 shadow-xl"
               aria-label="Play podcast episode"
               style={{
                 width: "clamp(60px, 7vw, 90px)",
@@ -499,7 +550,7 @@ export const HeroBannerSection = (): JSX.Element => {
                   height: "clamp(24px, 2.5vw, 36px)",
                 }}
               />
-            </button>
+            </motion.button>
           )}
 
           {/* Navigation Arrows - Desktop */}
@@ -595,7 +646,7 @@ export const HeroBannerSection = (): JSX.Element => {
             </span>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

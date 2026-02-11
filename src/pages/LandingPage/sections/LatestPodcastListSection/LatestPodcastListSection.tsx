@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { LATEST_PODCASTS_DATA } from "@/data/episodeData";
 import { BackArrowIcon, NextArrowIcon, PlayIcon } from "@/components/Common/Icons";
 
@@ -6,7 +7,6 @@ export const LatestPodcastListSection = (): JSX.Element => {
   const [activeTab] = useState("all");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isManualScrollRef = useRef(true);
@@ -36,25 +36,6 @@ export const LatestPodcastListSection = (): JSX.Element => {
       return url;
     }
   };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -150,16 +131,35 @@ export const LatestPodcastListSection = (): JSX.Element => {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
   return (
     <section
       ref={sectionRef}
       id="episodes"
-      className="relative w-full max-w-[1440px] bg-white py-2 sm:py-3 md:py-4 lg:py-[8px] px-0 sm:px-6 md:px-8 lg:px-10 mx-auto overflow-hidden"
+      className="relative w-full bg-white py-2 sm:py-3 md:py-4 lg:py-[8px] px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden"
       style={{ overflowX: "hidden" }}
     >
       <div className="w-full">
-        <div
-          className={`flex flex-col items-start gap-8 md:gap-10 lg:gap-12 w-full transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-start gap-8 md:gap-10 lg:gap-12 w-full transition-all duration-700"
         >
           <header className="flex flex-col items-start gap-2 relative w-full">
             <h2 className="relative w-full max-w-full lg:max-w-[721px] [font-family:'Geist',Helvetica] font-medium text-transparent text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] xl:text-[52px] tracking-[-0.02em] sm:tracking-[-0.025em] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">
@@ -182,7 +182,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
               </div>
             </div>
           </nav>
-        </div>
+        </motion.div>
 
         {/* Scrollable Container with Scroll Buttons - Hidden on mobile */}
         <div className="relative w-full mt-8 md:mt-10 lg:mt-12">
@@ -200,19 +200,23 @@ export const LatestPodcastListSection = (): JSX.Element => {
           </button>
 
           {/* Scrollable Podcasts Container */}
-          <div
+          <motion.div
             ref={scrollContainerRef}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
             className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-auto scroll-smooth scrollbar-hide relative pb-4"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
             }}
           >
-            {podcastData.map((podcast, index) => (
-              <article
+            {podcastData.map((podcast) => (
+              <motion.article
                 key={podcast.id}
-                className={`relative w-[250px] sm:w-[270px] md:w-[282px] flex flex-col gap-3 md:gap-4 group transition-all duration-500 flex-shrink-0 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+                variants={itemVariants}
+                className="relative w-[250px] sm:w-[270px] md:w-[282px] flex flex-col gap-3 md:gap-4 group transition-all duration-500 flex-shrink-0"
               >
                 <div className="relative w-full h-[150px] sm:h-[160px] md:h-[180px] bg-black rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
                   {playingVideo === podcast.id ? (
@@ -235,14 +239,18 @@ export const LatestPodcastListSection = (): JSX.Element => {
                         className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-all duration-300 cursor-pointer touch-manipulation z-10"
                         aria-label={`Play ${podcast.title}`}
                       >
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-2xl">
+                        <motion.div
+                          whileHover={{ scale: 1.15 }}
+                          whileTap={{ scale: 0.9 }}
+                          className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-2xl"
+                        >
                           <PlayIcon
                             className="sm:w-6 sm:h-6 md:w-7 md:h-7 ml-0.5"
                             fill="#7bb302"
                             stroke="none"
                             size={20}
                           />
-                        </div>
+                        </motion.div>
                       </button>
                       <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-black/80 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-md pointer-events-none">
                         <span className="[font-family:'Geist',Helvetica] font-medium text-white text-[10px] sm:text-xs">
@@ -263,9 +271,9 @@ export const LatestPodcastListSection = (): JSX.Element => {
                     {podcast.date}
                   </time>
                 </div>
-              </article>
+              </motion.article>
             ))}
-          </div>
+          </motion.div>
 
           {/* Right Scroll Button */}
           <button
@@ -280,7 +288,8 @@ export const LatestPodcastListSection = (): JSX.Element => {
             />
           </button>
         </div>
-        {/* Grid Layout for Mobile and Tablet has been removed as requested */}
+
+        {/* Pagination Grid removed as per previous step */}
 
         <div
           className="flex w-full h-2 items-start justify-center gap-1.5 sm:gap-2 mt-8 md:mt-10 lg:mt-12"

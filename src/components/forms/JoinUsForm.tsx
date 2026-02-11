@@ -1,7 +1,8 @@
 import { FormEvent, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
-import { CheckCircle2, X } from "lucide-react";
-import { FORM_LABELS, FORM_PLACEHOLDERS, FEEDBACK_MESSAGES, FORMS_CONTENT } from "@/constants/copy";
+import { Star, CheckCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FORM_LABELS, FORM_PLACEHOLDERS, FORMS_CONTENT } from "@/constants/copy";
 
 export const JoinUsForm = (): JSX.Element => {
   const [formData, setFormData] = useState({
@@ -15,11 +16,16 @@ export const JoinUsForm = (): JSX.Element => {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [showModal, setShowModal] = useState(false);
 
+  // Assuming light mode by default for now, or check system preference if needed
+  const isDarkMode = false;
+  const showSuccessPopup = showModal;
+
   useEffect(() => {
     if (status === "success") {
       setShowModal(true);
     }
   }, [status]);
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,35 +35,62 @@ export const JoinUsForm = (): JSX.Element => {
     }));
   };
 
+  const sendContactEmails = async (data: typeof formData) => {
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_TEAM_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_TEAM_ID;
+    const TEMPLATE_AUTOREPLY_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!SERVICE_ID || !TEMPLATE_TEAM_ID || !TEMPLATE_AUTOREPLY_ID || !PUBLIC_KEY) {
+      throw new Error("Missing EmailJS environment variables");
+    }
+
+    const { firstName, lastName, email, company, designation } = data;
+
+    const commonParams = {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      company: company,
+      designation: designation,
+      to_email: email, // Used for auto-reply
+    };
+
+    // Parallel execution for better performance
+    await Promise.all([
+      // 1. Send Team Notification
+      emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_TEAM_ID,
+        {
+          ...commonParams,
+          subject: `New Talent Unwrapped Inquiry: ${firstName} ${lastName}`,
+          message: `New inquiry received from ${firstName} ${lastName} at ${company}.`,
+        },
+        PUBLIC_KEY
+      ),
+      // 2. Send Auto-reply to User
+      emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_AUTOREPLY_ID,
+        {
+          ...commonParams,
+          to_name: firstName, // Personalize auto-reply
+        },
+        PUBLIC_KEY
+      )
+    ]);
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
 
     try {
-      const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-      if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-        console.error("EmailJS credentials are missing in .env");
-        throw new Error("Missing configuration");
-      }
-
-      const templateParams = {
-        from_name: `${formData.firstName} ${formData.lastName}`,
-        to_name: "Admin",
-        email: formData.email,
-        company: formData.company,
-        designation: formData.designation,
-        message: `New message from ${formData.firstName} ${formData.lastName} (${formData.email})
-        Company: ${formData.company}
-        Designation: ${formData.designation}`,
-      };
-
-      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+      await sendContactEmails(formData);
 
       setStatus("success");
-      console.log("Form submitted successfully");
+      console.log("Emails submitted successfully");
 
       setFormData({
         firstName: "",
@@ -67,9 +100,15 @@ export const JoinUsForm = (): JSX.Element => {
         designation: "",
       });
     } catch (error) {
-      console.error("Failed to send email:", error);
+      console.error("Failed to send emails:", error);
       setStatus("error");
-      alert("Failed to send message. Please ensure your .env file is configured correctly and try again.");
+
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      if (errorMessage.includes("Missing EmailJS")) {
+        alert("Configuration Error: Missing EmailJS environment variables. Please check your .env file.");
+      } else {
+        alert("Failed to send message. Please try again later.");
+      }
     } finally {
       setTimeout(() => setStatus("idle"), 5000);
     }
@@ -206,40 +245,110 @@ export const JoinUsForm = (): JSX.Element => {
         </span>
       </button>
 
-      {/* Success Modal */}
-      {showModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity duration-300">
-          <div className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl transform transition-all duration-300 scale-100 flex flex-col items-center text-center relative overflow-hidden">
-            {/* Background Decorative Element */}
-            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#7bb302] to-[#ed2939]" />
-
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+      {/* Animated Success Popup */}
+      <AnimatePresence>
+        {showSuccessPopup && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className={`max-w-sm w-full rounded-2xl p-8 shadow-2xl text-center relative ${isDarkMode ? "bg-gray-950 border border-gray-700" : "bg-white border border-gray-200"
+                }`}
             >
-              <X size={20} />
-            </button>
+              {/* Close Button - Added manually for UX */}
+              <button
+                onClick={() => setShowModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors z-10"
+              >
+                <span className="sr-only">Close</span>
+                {/* Simple X icon SVG or text since X is not imported, or just use &times; */}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+              </button>
 
-            <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6 animate-bounce-short">
-              <CheckCircle2 className="text-[#7bb302] w-12 h-12" />
-            </div>
+              {/* Star Animation */}
+              <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.2, type: "spring", duration: 0.6 }}
+                className="relative mx-auto mb-4"
+              >
+                <motion.div
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 360]
+                  }}
+                  transition={{
+                    scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+                    rotate: { duration: 4, repeat: Infinity, ease: "linear" }
+                  }}
+                  className="w-16 h-16 mx-auto bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center"
+                >
+                  <Star className="w-8 h-8 text-white fill-white" />
+                </motion.div>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-2 [font-family:'Geist',Helvetica]">
-              Thank You!
-            </h3>
-            <p className="text-gray-600 mb-8 [font-family:'Geist',Helvetica]">
-              {FEEDBACK_MESSAGES.FORM_SUCCESS}
-            </p>
+                {/* Sparkle effects */}
+                {[...Array(6)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{
+                      scale: [0, 1, 0],
+                      opacity: [0, 1, 0],
+                      x: [0, Math.cos(i * 60 * Math.PI / 180) * 40],
+                      y: [0, Math.sin(i * 60 * Math.PI / 180) * 40]
+                    }}
+                    transition={{
+                      delay: 0.5 + i * 0.1,
+                      duration: 1.5,
+                      repeat: Infinity,
+                      repeatDelay: 2
+                    }}
+                    className="absolute top-1/2 left-1/2 w-2 h-2 bg-yellow-400 rounded-full"
+                  />
+                ))}
+              </motion.div>
 
-            <button
-              onClick={() => setShowModal(false)}
-              className="bg-[#7bb302] hover:bg-[#6da002] text-white px-8 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg shadow-green-100"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+              {/* Success Icon */}
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.4, type: "spring", duration: 0.5 }}
+                className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-4 ${isDarkMode ? "bg-green-500/20 text-green-400" : "bg-green-500/10 text-green-600"
+                  }`}
+              >
+                <CheckCircle className="w-6 h-6" />
+              </motion.div>
+
+              {/* Message */}
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+              >
+                <h3 className="text-xl font-bold mb-2">Thank You! ✨</h3>
+                <p className={`text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"}`}>
+                  Your message has been sent successfully! I'll get back to you within 24 hours.
+                </p>
+              </motion.div>
+
+              {/* Progress bar */}
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ delay: 1, duration: 2 }}
+                className="mt-4 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </form>
   );
 };

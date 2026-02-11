@@ -68,29 +68,13 @@ export const LATEST_PODCASTS_DATA: Podcast[][] = [
       thumbnailUrl: VIDEO_THUMBNAILS.video4,
       videoUrl: "https://youtu.be/OcOCgypmiU4?si=fxs8I5qhSUz_lUw2",
     },
-    {
-      id: 9,
-      title: "Rolf Blaser - CEO/Managing Director A. Baur & Co. (Pvt) Ltd. addresses the Talent Suite Colombo 2025",
-      edition: "Sri Lanka Edition",
-      date: "September 1, 2025",
-      thumbnailUrl: VIDEO_THUMBNAILS.video1,
-      videoUrl: "https://youtu.be/r0IkJIPjamY?si=gojh_9cYnPtbEwUK",
-    },
-    {
-      id: 10,
-      title: "Azeem Ansar - Founder & Managing Director of CAREER141 addresses the Talent Suite Colombo 2025",
-      edition: "Sri Lanka Edition",
-      date: "September 1, 2025",
-      thumbnailUrl: VIDEO_THUMBNAILS.video2,
-      videoUrl: "https://youtu.be/KzzrfILAZAU?si=XqpbwwpvNZod0Zlu",
-    },
   ],
 ];
 
 // Singapore Edition Episodes
 export const SINGAPORE_EPISODES: Episode[] = [
   {
-    id: "1",
+    id: "2",
     image: EPISODE_IMAGES.leadershipWorkshop,
     category: "EPISODE",
     title: "Leadership in the Digital Age",
@@ -117,55 +101,6 @@ export const SINGAPORE_EPISODES: Episode[] = [
     ],
     featured: true,
   },
-  {
-    id: "2",
-    image: EPISODE_IMAGES.innovationSoutheastAsia,
-    category: "GRAPHICS",
-    title: "Innovation in Southeast Asia",
-    description:
-      "Discovering the innovation ecosystem in Singapore and how startups are reshaping industries across the region.",
-    duration: "45 min",
-    date: "Jan 12, 2025",
-    speakers: [
-      {
-        name: "James Koh",
-        role: "Host",
-        avatar: EPISODE_AVATARS.jamesKoh,
-      },
-      {
-        name: "Lisa Chen",
-        role: "Startup Founder",
-        avatar: EPISODE_AVATARS.lisaChen,
-      },
-      {
-        name: "Alex Ng",
-        role: "Guest",
-        avatar: EPISODE_AVATARS.davidLim,
-      },
-    ],
-  },
-  {
-    id: "3",
-    image: EPISODE_IMAGES.sustainableOrganizations,
-    category: "EPISODE",
-    title: "Building Sustainable Organizations",
-    description:
-      "How Singapore companies are leading the way in sustainability and creating long-term value for stakeholders.",
-    duration: "52 min",
-    date: "Jan 8, 2025",
-    speakers: [
-      {
-        name: "Rachel Goh",
-        role: "Host",
-        avatar: EPISODE_AVATARS.michelleWong,
-      },
-      {
-        name: "Kevin Tan",
-        role: "Sustainability Expert",
-        avatar: EPISODE_AVATARS.davidLim,
-      },
-    ],
-  },
 ];
 
 // Dubai Edition Episodes
@@ -179,6 +114,7 @@ export const DUBAI_EPISODES: Episode[] = [
       "Exploring how HR leaders in the GCC are transforming their function into a strategic business engine, building future-ready talent pipelines, and balancing efficiency with employee experience.",
     duration: "1 hour",
     date: "Dec 10, 2025",
+    videoUrl: "https://www.youtube.com/embed/3xda4skYDlg",
     speakers: [
       {
         name: "Mohammed Haffejee",
@@ -197,55 +133,6 @@ export const DUBAI_EPISODES: Episode[] = [
       },
     ],
     featured: true,
-  },
-  {
-    id: "2",
-    image: EPISODE_IMAGES.innovationSoutheastAsia,
-    category: "GRAPHICS",
-    title: "People by Design",
-    description:
-      "The evolution of product design, user experience, and the human-centered approach to creating digital products.",
-    duration: "45 min",
-    date: "Jan 8, 2025",
-    speakers: [
-      {
-        name: "Theresa Korver",
-        role: "Host",
-        avatar: EPISODE_AVATARS.jamesKoh,
-      },
-      {
-        name: "Ola Luki",
-        role: "Senior Product Designer",
-        avatar: EPISODE_AVATARS.lisaChen,
-      },
-      {
-        name: "Steve Mao",
-        role: "Guest",
-        avatar: EPISODE_AVATARS.davidLim,
-      },
-    ],
-  },
-  {
-    id: "3",
-    image: EPISODE_IMAGES.sustainableOrganizations,
-    category: "EPISODE",
-    title: "The Human Algorithm",
-    description:
-      "Exploring the intersection of artificial intelligence and human creativity. How AI is reshaping our world.",
-    duration: "52 min",
-    date: "Jan 5, 2025",
-    speakers: [
-      {
-        name: "David Kim",
-        role: "Host",
-        avatar: EPISODE_AVATARS.davidLim,
-      },
-      {
-        name: "Priya Patel",
-        role: "AI Researcher",
-        avatar: EPISODE_AVATARS.michelleWong,
-      },
-    ],
   },
 ];
 

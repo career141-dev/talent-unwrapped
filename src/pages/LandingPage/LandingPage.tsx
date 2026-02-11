@@ -37,6 +37,10 @@ export const LandingPage = (): JSX.Element => {
           <HeroBannerSection />
           <WisdomAndTestimonialsSection />
           <TalentIntroductionSection />
+        </div>
+
+        {/* Full-width latest podcast section */}
+        <div className="w-full">
           <LatestPodcastListSection />
         </div>
 
@@ -50,9 +54,12 @@ export const LandingPage = (): JSX.Element => {
           className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0"
           style={{ overflowX: "hidden" }}
         >
-          <div id="reels" className="w-full">
-            <ReelsSection />
-          </div>
+          {/* Constrained content */}
+        </div>
+
+        {/* Full-width reels section */}
+        <div id="reels" className="w-full">
+          <ReelsSection />
         </div>
 
         {/* Full-width episode details section */}

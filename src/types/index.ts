@@ -34,6 +34,7 @@ export interface Episode {
   date?: string;
   speakers?: EpisodeSpeaker[];
   featured?: boolean;
+  videoUrl?: string;
 }
 
 // Speaker interface used in episodes with minimal properties
