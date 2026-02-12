@@ -18,33 +18,46 @@ export const TalentIntroductionSection = (): JSX.Element => {
   const decorativeImages = [
     {
       id: 1,
-      src: DECORATIVE_IMAGES.manInHeadphones,
-      alt: "Man in headphones",
+      src: selectedEdition === "singapore"
+        ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770889047/Frame_1000003696_2_iplpla.png"
+        : DECORATIVE_IMAGES.manInHeadphones,
+      alt: "Decorative image 1",
       containerClass:
-        "absolute top-[260px] left-[0px] w-[100px] h-[70px] z-0 lg:flex lg:top-[150px] lg:left-[871px] lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[-7.30deg] shadow-[12px_12px_30px_#00000017]",
-      imageClass:
-        "w-full h-full object-cover rotate-[7.30deg] scale-[2.2] translate-x-[40px] translate-y-[25px]",
+        "absolute top-[260px] left-[0px] w-[100px] h-[78px] z-0 lg:flex lg:top-[150px] lg:left-[871px] lg:w-[152px] lg:h-[114px] rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017]",
+      baseRotate: -7.30,
+      objectPosition: "50% 18%",
     },
     {
       id: 2,
-      src: DECORATIVE_IMAGES.youngBlackMan,
-      alt: "Young black man in headphones",
+      src: selectedEdition === "singapore"
+        ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770889046/Frame_1000003561_3_q3bsmg.png"
+        : DECORATIVE_IMAGES.youngBlackMan,
+      alt: "Decorative image 2",
       containerClass:
-        "absolute top-[75px] left-[230px] w-[120px] h-[84px] z-0 lg:flex lg:top-52 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017]",
-      imageClass:
-        "w-full h-full object-cover rotate-[-6.49deg] scale-[2.2] translate-x-[40px] translate-y-[25px]",
+        "absolute top-[75px] left-[230px] w-[120px] h-[92px] z-0 lg:flex lg:top-52 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[114px] rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017]",
+      baseRotate: 6.49,
+      objectPosition: "50% 14%",
     },
   ];
 
-  const floatingAnimation = {
+  const getFloatingAnimation = (baseRotate: number) => ({
     y: [0, -10, 0],
-    rotate: [0, 2, 0],
+    rotate: [baseRotate, baseRotate + 2, baseRotate],
     transition: {
       duration: 6,
       repeat: Infinity,
       ease: "easeInOut"
     }
-  };
+  });
+
+  const getCounterRotation = (baseRotate: number) => ({
+    rotate: [(-baseRotate - 4), (-(baseRotate + 2) - 4), (-baseRotate - 4)],
+    transition: {
+      duration: 6,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  });
 
   return (
     <section
@@ -239,18 +252,29 @@ export const TalentIntroductionSection = (): JSX.Element => {
         </div>
 
         {decorativeImages.map((image) => (
-          <div
+          <motion.div
             key={image.id}
-            className={`${image.containerClass}`}
+            className={`${image.containerClass} will-change-transform shadow-[12px_12px_30px_#00000017]`}
             aria-hidden="true"
+            animate={getFloatingAnimation(image.baseRotate)}
+            style={{
+              perspective: "1000px",
+              backfaceVisibility: "hidden",
+              WebkitBackfaceVisibility: "hidden"
+            }}
           >
-            <motion.div
-              animate={floatingAnimation}
-              className="w-full h-full"
-            >
-              <img className={image.imageClass} alt={image.alt} src={image.src} />
-            </motion.div>
-          </div>
+            <motion.img
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{
+                scale: 3.5,
+                transformOrigin: 'center center',
+                objectPosition: image.objectPosition
+              }}
+              alt={image.alt}
+              src={image.src}
+              animate={getCounterRotation(image.baseRotate)}
+            />
+          </motion.div>
         ))}
 
         <LearnMoreModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

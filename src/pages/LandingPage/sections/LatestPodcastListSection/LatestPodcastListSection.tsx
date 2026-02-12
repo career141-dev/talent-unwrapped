@@ -1,12 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { LATEST_PODCASTS_DATA } from "@/data/episodeData";
 import { BackArrowIcon, NextArrowIcon, PlayIcon } from "@/components/Common/Icons";
+import { EDITION_NAMES } from "@/constants/copy";
 
 export const LatestPodcastListSection = (): JSX.Element => {
   const [activeTab] = useState("all");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [playingVideo, setPlayingVideo] = useState<number | null>(null);
+  const navigate = useNavigate();
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isManualScrollRef = useRef(true);
@@ -18,22 +20,23 @@ export const LatestPodcastListSection = (): JSX.Element => {
   const totalPages = Math.ceil(podcastData.length / ITEMS_PER_PAGE);
   const currentPage = Math.floor(currentIndex / ITEMS_PER_PAGE);
 
-  const getEmbedUrl = (url: string) => {
+  /**
+   * Helper to get YouTube thumbnail URL
+   */
+  const getYoutubeThumbnail = (url: string) => {
     try {
-      // Handle youtu.be short URLs
+      let videoId = "";
       if (url.includes("youtu.be")) {
-        const videoId = url.split("youtu.be/")[1]?.split("?")[0];
-        return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1` : url;
-      }
-      // Handle youtube.com/watch URLs
-      if (url.includes("youtube.com/watch")) {
+        videoId = url.split("youtu.be/")[1]?.split("?")[0];
+      } else if (url.includes("youtube.com/watch")) {
         const urlObj = new URL(url);
-        const videoId = urlObj.searchParams.get("v");
-        return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1` : url;
+        videoId = urlObj.searchParams.get("v") || "";
+      } else if (url.includes("youtube.com/embed")) {
+        videoId = url.split("embed/")[1]?.split("?")[0];
       }
-      return url;
+      return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : "";
     } catch (e) {
-      return url;
+      return "";
     }
   };
 
@@ -131,6 +134,18 @@ export const LatestPodcastListSection = (): JSX.Element => {
     }
   };
 
+  const handlePlayClick = (podcast: any) => {
+    const editionName = podcast.edition.includes("Singapore")
+      ? EDITION_NAMES.SINGAPORE
+      : podcast.edition.includes("Dubai")
+        ? EDITION_NAMES.DUBAI
+        : EDITION_NAMES.SRI_LANKA;
+
+    navigate(`/episode/${podcast.id}`, {
+      state: { edition: editionName }
+    });
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -221,47 +236,57 @@ export const LatestPodcastListSection = (): JSX.Element => {
                   variants={itemVariants}
                   className="relative w-[250px] sm:w-[270px] md:w-[282px] flex flex-col gap-3 md:gap-4 group transition-all duration-500 flex-shrink-0 snap-start"
                 >
-                  <div className="relative w-full h-[150px] sm:h-[160px] md:h-[180px] bg-black rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
-                    {playingVideo === podcast.id ? (
-                      <iframe
-                        className="w-full h-full"
-                        src={getEmbedUrl(podcast.videoUrl)}
-                        title={podcast.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    ) : (
-                      <div className="block w-full h-full relative">
+                  <div
+                    className="relative w-full h-[150px] sm:h-[160px] md:h-[180px] bg-black rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 group cursor-pointer"
+                    onClick={() => handlePlayClick(podcast)}
+                  >
+                    <div className="block w-full h-full relative">
+                      {podcast.thumbnailUrl ? (
                         <img
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                           src={podcast.thumbnailUrl}
                           alt={podcast.title}
                         />
-                        <button
-                          onClick={() => setPlayingVideo(podcast.id)}
-                          className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-all duration-300 cursor-pointer touch-manipulation z-10"
-                          aria-label={`Play ${podcast.title}`}
+                      ) : (
+                        podcast.videoUrl.includes("youtube") || podcast.videoUrl.includes("youtu.be") ? (
+                          <img
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            src={getYoutubeThumbnail(podcast.videoUrl)}
+                            alt={podcast.title}
+                          />
+                        ) : (
+                          <video
+                            className="w-full h-full object-cover"
+                            src={`${podcast.videoUrl}#t=0.001`}
+                            preload="metadata"
+                            playsInline
+                            muted
+                          />
+                        )
+                      )}
+                      <div
+                        className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-all duration-300 z-10"
+                        aria-label={`Play ${podcast.title}`}
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.15 }}
+                          whileTap={{ scale: 0.9 }}
+                          className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-2xl"
                         >
-                          <motion.div
-                            whileHover={{ scale: 1.15 }}
-                            whileTap={{ scale: 0.9 }}
-                            className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-2xl"
-                          >
-                            <PlayIcon
-                              className="sm:w-6 sm:h-6 md:w-7 md:h-7 ml-0.5"
-                              fill="#7bb302"
-                              stroke="none"
-                              size={20}
-                            />
-                          </motion.div>
-                        </button>
-                        <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-black/80 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-md pointer-events-none">
-                          <span className="[font-family:'Geist',Helvetica] font-medium text-white text-[10px] sm:text-xs">
-                            Watch
-                          </span>
-                        </div>
+                          <PlayIcon
+                            className="sm:w-6 sm:h-6 md:w-7 md:h-7 ml-0.5"
+                            fill="#7bb302"
+                            stroke="none"
+                            size={20}
+                          />
+                        </motion.div>
                       </div>
-                    )}
+                      <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-black/80 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-md pointer-events-none">
+                        <span className="[font-family:'Geist',Helvetica] font-medium text-white text-[10px] sm:text-xs">
+                          Watch
+                        </span>
+                      </div>
+                    </div>
                   </div>
                   <div className="flex flex-col gap-1 relative self-stretch w-full flex-[0_0_auto] min-w-0">
                     <h3 className="relative self-stretch min-h-[24px] sm:min-h-[26px] md:min-h-[30px] mt-[-1.00px] [font-family:'Geist',Helvetica] font-bold text-black text-base sm:text-lg tracking-[0] leading-tight sm:leading-[26px] overflow-hidden text-ellipsis [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] min-w-0">

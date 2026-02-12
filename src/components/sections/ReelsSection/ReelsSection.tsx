@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { REELS_DATA } from "@/data";
 
 interface ReelsSectionProps {
-  edition?: "Dubai" | "Singapore";
+  edition?: "Dubai" | "Singapore" | "Sri Lanka";
 }
 
 export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {

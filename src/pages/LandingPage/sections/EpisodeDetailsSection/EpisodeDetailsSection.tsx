@@ -277,11 +277,11 @@ export const EpisodeDetailsSection = ({ }: EpisodeDetailsSectionProps): JSX.Elem
       <div className="relative w-full overflow-hidden z-10 mt-8 lg:mt-[-200px]" aria-hidden="true">
         <motion.div
           animate={{ x: "-25%" }}
-          transition={{ duration: 20, ease: "linear", repeat: Infinity }}
-          className="flex whitespace-nowrap"
+          transition={{ duration: 30, ease: "linear", repeat: Infinity }}
+          className="flex whitespace-nowrap w-max"
         >
           {Array(4).fill(null).map((_, i) => (
-            <span key={i} className="inline-block bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
+            <span key={i} className="inline-block flex-shrink-0 bg-[linear-gradient(131deg,rgba(174,255,0,1)_0%,rgba(237,41,57,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Geist',Helvetica] font-bold text-[80px] md:text-[140px] lg:text-[200px] tracking-[-4px] md:tracking-[-10px] leading-[normal] px-8">
               {SECTION_TITLES.LETS_UNWRAP_YOUR_STORY}
             </span>
           ))}

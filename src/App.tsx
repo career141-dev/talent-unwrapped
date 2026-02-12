@@ -3,8 +3,23 @@ import {
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
+import { useEffect } from "react";
 import { LandingPage } from "./pages/LandingPage";
+
+/**
+ * Helper component to scroll to top on every route change
+ */
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 import { EpisodesPage } from "./pages/Episodes";
 import { PodcastEditionWrapper } from "./pages/PodcastEditions/PodcastEditionWrapper";
 import { FullEpisode } from "./pages/FullEpisode";
@@ -38,6 +53,7 @@ const CloudinaryTest = () => {
 export const App = (): JSX.Element => {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen w-full relative bg-white">
         <Routes>
           {/* Landing Page - Root (Default Initial View) */}

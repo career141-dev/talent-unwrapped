@@ -7,25 +7,37 @@ import {
   SubmitFormSection,
 } from "../../components";
 import { EpisodeCard } from "../PodcastEditions/Components/EpisodeCard";
-import { DUBAI_EPISODES, SINGAPORE_EPISODES } from "../../data/episodeData";
+import { DUBAI_EPISODES, SINGAPORE_EPISODES, COLOMBO_EPISODES } from "../../data/episodeData";
 import { TalentIntroductionSection } from "../LandingPage/Sections/TalentIntroductionSection/TalentIntroductionSection";
 import { SECTION_TITLES, NAV_LABELS, EDITION_NAMES, FEEDBACK_MESSAGES } from "@/constants/copy";
 
 export const EpisodesPage = (): JSX.Element => {
   const navigate = useNavigate();
-  const [filter, setFilter] = useState<"all" | "dubai" | "singapore">("all");
+  const [filter, setFilter] = useState<"all" | "dubai" | "singapore" | "sri-lanka">("all");
 
-  const allEpisodes = [...DUBAI_EPISODES, ...SINGAPORE_EPISODES];
+  const allEpisodes = [...DUBAI_EPISODES, ...SINGAPORE_EPISODES, ...COLOMBO_EPISODES];
 
   const displayedEpisodes =
     filter === "all"
       ? allEpisodes
       : filter === "dubai"
         ? DUBAI_EPISODES
-        : SINGAPORE_EPISODES;
+        : filter === "singapore"
+          ? SINGAPORE_EPISODES
+          : COLOMBO_EPISODES;
 
   const handleViewEpisode = (episodeId: string | number) => {
-    navigate(`/episode/${episodeId}`);
+    // Determine edition for the episode to pass in state
+    let editionName = EDITION_NAMES.DUBAI;
+    if (SINGAPORE_EPISODES.find(ep => ep.id === episodeId || ep.id === String(episodeId))) {
+      editionName = EDITION_NAMES.SINGAPORE;
+    } else if (COLOMBO_EPISODES.find(ep => ep.id === episodeId || ep.id === String(episodeId))) {
+      editionName = EDITION_NAMES.SRI_LANKA;
+    }
+
+    navigate(`/episode/${episodeId}`, {
+      state: { edition: editionName }
+    });
   };
 
   return (
@@ -80,6 +92,15 @@ export const EpisodesPage = (): JSX.Element => {
                       }`}
                   >
                     {EDITION_NAMES.SINGAPORE}
+                  </button>
+                  <button
+                    onClick={() => setFilter("sri-lanka")}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === "sri-lanka"
+                      ? "bg-white text-[#7bb302] shadow-sm"
+                      : "text-gray-500 hover:text-gray-900"
+                      }`}
+                  >
+                    {EDITION_NAMES.SRI_LANKA}
                   </button>
                 </div>
               </div>

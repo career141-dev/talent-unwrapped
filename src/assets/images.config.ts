@@ -13,32 +13,24 @@ export const DECORATIVE_IMAGES = {
     "https://c.animaapp.com/6IK4krLc/img/professional-microphone-and-studio-equipment-2025-03-08-12-56-45.png",
 } as const;
 
-// Speaker Images
-export const SPEAKER_IMAGES = {
-  speaker1: "https://c.animaapp.com/6IK4krLc/img/frame-4449055-1@2x.png",
-  speaker2: "https://c.animaapp.com/6IK4krLc/img/frame-4449056-1@2x.png",
-  speaker3: "https://c.animaapp.com/6IK4krLc/img/frame-4449057-1@2x.png",
-  speaker4: "https://c.animaapp.com/6IK4krLc/img/frame-4449058-1@2x.png",
-} as const;
 
+// Episode Thumbnail Images
 // Episode Thumbnail Images
 export const EPISODE_IMAGES = {
   handsomeElegantMen:
-    "https://c.animaapp.com/6IK4krLc/img/handsome-elegant-men-with-beards-in-chic-attires-s-2024-11-12-02.png",
+    "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770896296/Group_39885_dqyew3.jpg",
+
   professionalBusinessman:
-    "https://c.animaapp.com/6IK4krLc/img/professional-businessman-partner-person-success-te-2025-03-26-02@2x.png",
+    "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770896213/Group_39884_hcx9sa.jpg",
+
   recreationArea:
-    "https://c.animaapp.com/6IK4krLc/img/in-recreation-area-sitting-on-yellow-chairs-office-2024-11-27-09@2x.png",
+    "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770896137/Group_39883_xiydss.jpg",
+
   teamReporters:
-    "https://c.animaapp.com/6IK4krLc/img/team-of-reporters-working-on-a-interview-with-a-gr-2024-10-13-20@2x.png",
+    "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770896055/Group_39882_2_wj3cps.jpg",
+
   fourPeopleMeeting:
-    "https://c.animaapp.com/6IK4krLc/img/four-people-meeting-in-lounge-area-of-a-corporate-2024-10-19-05-@2x.png",
-  leadershipWorkshop:
-    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
-  innovationSoutheastAsia:
-    "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop",
-  sustainableOrganizations:
-    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop",
+    "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770895938/Group_39881_qvljdb.jpg",
 } as const;
 
 // Episode Avatars (used in data/episodeData.ts)
@@ -123,11 +115,14 @@ export const FORM_ICONS = {
 } as const;
 
 // Hero Section Images
-export const EXPERT_IMAGES = {
+export const SPEAKER_IMAGES = {
   echoWu: "https://c.animaapp.com/mknscg4zvttudp/img/1756292060602-1.png",
   avikGhosh: "https://c.animaapp.com/mknscg4zvttudp/img/1621657233961-1.png",
   ellaSherman: "https://c.animaapp.com/mknscg4zvttudp/img/1545386579437-1.png",
 } as const;
+
+export const EXPERT_IMAGES = SPEAKER_IMAGES;
+
 
 export const HERO_IMAGES = {
   artboard: "https://www.figma.com/api/mcp/asset/75cfbe74-897f-4614-9e93-ca874a8a048c",
@@ -150,7 +145,6 @@ export const FOOTER_IMAGES = {
 
 export const IMAGES = {
   decorative: DECORATIVE_IMAGES,
-  speakers: SPEAKER_IMAGES,
   episodes: EPISODE_IMAGES,
   videoThumbnails: VIDEO_THUMBNAILS,
   keyQuestions: KEY_QUESTIONS_IMAGES,
@@ -162,6 +156,7 @@ export const IMAGES = {
   form: FORM_ICONS,
   footer: FOOTER_IMAGES,
   avatars: EPISODE_AVATARS,
+  speakers: SPEAKER_IMAGES,
 } as const;
 
 export default IMAGES;

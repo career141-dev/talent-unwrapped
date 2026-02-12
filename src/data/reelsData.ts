@@ -125,8 +125,37 @@ const DUBAI_REELS_SOURCE = [
     }
 ];
 
-// Export combined reels data: 8 Singapore + 6 Dubai = 14 total
-export const REELS_DATA: ReelVideo[] = [
-    ...SINGAPORE_REELS_SOURCE,
-    ...DUBAI_REELS_SOURCE
+const SRI_LANKA_REELS_SOURCE = [
+    {
+        id: 15,
+        title: "Building Future-Ready Talent in Sri Lanka",
+        videoUrl: "https://www.youtube.com/embed/WI_QCvUUfgw",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-2@2x.png",
+        description: "Insights from the Talent Suite Colombo 2025 on reshaping leadership and talent development in the region.",
+        edition: "Sri Lanka"
+    },
+    {
+        id: 16,
+        title: "CEO Insights: Growth and Agility",
+        videoUrl: "https://www.youtube.com/embed/ZOVPQRmFpRw",
+        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-3@2x.png",
+        description: "Maliban Group CEO shares perspectives on driving agility and sustainable growth in competitive markets.",
+        edition: "Sri Lanka"
+    }
 ];
+
+// Export combined reels data in a mixed order by interleaving editions (Singapore and Dubai only)
+export const REELS_DATA: ReelVideo[] = (() => {
+    const mixedCount = Math.max(
+        SINGAPORE_REELS_SOURCE.length,
+        DUBAI_REELS_SOURCE.length
+    );
+    const result: ReelVideo[] = [];
+
+    for (let i = 0; i < mixedCount; i++) {
+        if (i < SINGAPORE_REELS_SOURCE.length) result.push(SINGAPORE_REELS_SOURCE[i]);
+        if (i < DUBAI_REELS_SOURCE.length) result.push(DUBAI_REELS_SOURCE[i]);
+    }
+
+    return result;
+})();

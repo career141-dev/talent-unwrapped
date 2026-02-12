@@ -1,13 +1,22 @@
 import { useState } from "react";
-import { getSessionContentByEdition } from "@/data/fullEpisodeData";
+import {
+  getSessionContentByEdition,
+  EPISODE_3_CUSTOM_CONTENT,
+  EPISODE_4_CUSTOM_CONTENT,
+  EPISODE_5_CUSTOM_CONTENT,
+  EPISODE_6_CUSTOM_CONTENT,
+  EPISODE_7_CUSTOM_CONTENT,
+  EPISODE_8_CUSTOM_CONTENT
+} from "@/data/fullEpisodeData";
 import { VideoCircleFilledIcon, ExportIcon } from "@/components/Common/Icons";
 import { SECTION_TITLES, FORMS_CONTENT } from "@/constants/copy";
 
 interface KeyQuestionsSectionProps {
-  edition?: "dubai" | "singapore";
+  edition?: "dubai" | "singapore" | "sri-lanka";
+  episodeId?: string | number;
 }
 
-export const KeyQuestionsSection = ({ edition = "dubai" }: KeyQuestionsSectionProps): JSX.Element => {
+export const KeyQuestionsSection = ({ edition = "dubai", episodeId }: KeyQuestionsSectionProps): JSX.Element => {
   const [currentPage] = useState(0);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState<{
     [key: number]: number;
@@ -19,9 +28,45 @@ export const KeyQuestionsSection = ({ edition = "dubai" }: KeyQuestionsSectionPr
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
-  const sessionContent = getSessionContentByEdition(edition);
+  // Get base content
+  const baseContent = getSessionContentByEdition(edition);
+  let currentSession = baseContent[currentPage];
 
-  const currentSession = sessionContent[currentPage];
+  // Helper to create custom session
+  const createCustomSession = (content: typeof EPISODE_3_CUSTOM_CONTENT) => {
+    const customExpert = {
+      profile: {
+        id: `${content.expertName.toLowerCase().replace(/\s+/g, '-')}-custom`,
+        name: content.expertName,
+        title: content.expertTitle,
+        subtitle: content.expertSubtitle,
+        linkedin: content.linkedin,
+        imageUrl: content.imageUrl,
+        imageStyles: content.imageStyles,
+      },
+      questions: content.questions,
+    };
+    return {
+      ...currentSession,
+      experts: [customExpert],
+    };
+  };
+
+  // Override for specific episodes
+  const epId = String(episodeId);
+  if (epId === "3") {
+    currentSession = createCustomSession(EPISODE_3_CUSTOM_CONTENT);
+  } else if (epId === "4") {
+    currentSession = createCustomSession(EPISODE_4_CUSTOM_CONTENT);
+  } else if (epId === "5") {
+    currentSession = createCustomSession(EPISODE_5_CUSTOM_CONTENT);
+  } else if (epId === "6") {
+    currentSession = createCustomSession(EPISODE_6_CUSTOM_CONTENT);
+  } else if (epId === "7") {
+    currentSession = createCustomSession(EPISODE_7_CUSTOM_CONTENT);
+  } else if (epId === "8") {
+    currentSession = createCustomSession(EPISODE_8_CUSTOM_CONTENT);
+  }
 
   // Minimum swipe distance (in px)
   const minSwipeDistance = 50;
@@ -98,8 +143,8 @@ export const KeyQuestionsSection = ({ edition = "dubai" }: KeyQuestionsSectionPr
             </button>
           </div>
 
-          {/* Session Description - Hidden for Dubai as requested */}
-          {edition !== "dubai" && (
+          {/* Session Description - Hidden for Dubai as requested, and also hidden for customized episodes */}
+          {edition !== "dubai" && !["3", "4", "5", "6", "7", "8"].includes(epId) && (
             <div className="mb-8 sm:mb-10">
               <p className="[font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg md:text-xl leading-relaxed mb-4 sm:mb-5">
                 {currentSession.sessionDescription}
@@ -179,7 +224,7 @@ export const KeyQuestionsSection = ({ edition = "dubai" }: KeyQuestionsSectionPr
 
                       {/* Question - Shows current question based on slider */}
                       <div className="mb-4 min-h-[124px] transition-all duration-300">
-                        <p className="[font-family:'Geist',Helvetica] text-[19px] leading-normal tracking-[-0.38px] m-0">
+                        <p className="[font-family:'Geist',Helvetica] text-[19px] leading-normal tracking-[-0.38px] m-0 mb-3">
                           <span className="font-bold text-[#ed2939]">
                             Q{currentQuestionIndex + 1} -{" "}
                           </span>
@@ -187,6 +232,14 @@ export const KeyQuestionsSection = ({ edition = "dubai" }: KeyQuestionsSectionPr
                             {currentQuestion.q}
                           </span>
                         </p>
+                        {/* Display Answer on Mobile */}
+                        {currentQuestion.answer && (
+                          <div className="pl-4 border-l-2 border-[#ed2939]/20">
+                            <p className="[font-family:'Geist',Helvetica] text-base leading-relaxed text-[#555] font-light">
+                              {currentQuestion.answer}
+                            </p>
+                          </div>
+                        )}
                       </div>
 
                       {/* Slide Indicator - Clickable to switch questions */}
@@ -248,7 +301,7 @@ export const KeyQuestionsSection = ({ edition = "dubai" }: KeyQuestionsSectionPr
                     <div className="flex-1 space-y-6 pl-6 border-l border-neutral-200">
                       {expert.questions.map((question, qIndex) => (
                         <div key={qIndex}>
-                          <p className="[font-family:'Geist',Helvetica] text-base sm:text-lg md:text-[19px] leading-relaxed">
+                          <p className="[font-family:'Geist',Helvetica] text-base sm:text-lg md:text-[19px] leading-relaxed mb-2">
                             <span className="font-bold text-[#ed2939]">
                               Q{qIndex + 1} -{" "}
                             </span>
@@ -256,6 +309,14 @@ export const KeyQuestionsSection = ({ edition = "dubai" }: KeyQuestionsSectionPr
                               {question.q}
                             </span>
                           </p>
+                          {/* Display Answer on Desktop */}
+                          {question.answer && (
+                            <div className="pl-8 sm:pl-10">
+                              <p className="[font-family:'Geist',Helvetica] text-base leading-relaxed text-[#555] font-light italic">
+                                {question.answer}
+                              </p>
+                            </div>
+                          )}
                         </div>
                       ))}
                     </div>

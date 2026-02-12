@@ -1,5 +1,4 @@
 import { Episode, Podcast } from "../types";
-import { VIDEO_THUMBNAILS } from "../assets";
 
 // Latest Podcasts data for Landing Page
 export const LATEST_PODCASTS_DATA: Podcast[][] = [
@@ -25,7 +24,7 @@ export const LATEST_PODCASTS_DATA: Podcast[][] = [
       title: "Ayin Shah Jahan, Location Talent Leader - EY GDS Sri Lanka at the Talent Suite Colombo 2025",
       edition: "Sri Lanka Edition",
       date: "September 1, 2025",
-      thumbnailUrl: VIDEO_THUMBNAILS.video3,
+      thumbnailUrl: "",
       videoUrl: "https://youtu.be/WI_QCvUUfgw?si=OqSZhelDFVqXED3d",
     },
     {
@@ -33,7 +32,7 @@ export const LATEST_PODCASTS_DATA: Podcast[][] = [
       title: "Sumudu Thanthirigoda, CEO - Maliban Group, Milk and Agri at the Talent Suite Colombo 2025",
       edition: "Sri Lanka Edition",
       date: "September 1, 2025",
-      thumbnailUrl: VIDEO_THUMBNAILS.video4,
+      thumbnailUrl: "",
       videoUrl: "https://youtu.be/ZOVPQRmFpRw?si=ak_jgi_bo2nvoE3p",
     },
     {
@@ -41,7 +40,7 @@ export const LATEST_PODCASTS_DATA: Podcast[][] = [
       title: "Surani Amarasinghe, Director Country People Partnering - LSEG at the Talent Suite Colombo 2025",
       edition: "Sri Lanka Edition",
       date: "September 1, 2025",
-      thumbnailUrl: VIDEO_THUMBNAILS.video1,
+      thumbnailUrl: "",
       videoUrl: "https://youtu.be/7qpLhKJr35o?si=yJu_pof5fRHIUm6b",
     },
     {
@@ -49,7 +48,7 @@ export const LATEST_PODCASTS_DATA: Podcast[][] = [
       title: "Ashan Ransilige, CEO - Link Natural Product (Pvt) Ltd at the Talent Suite Colombo 2025",
       edition: "Sri Lanka Edition",
       date: "September 1, 2025",
-      thumbnailUrl: VIDEO_THUMBNAILS.video2,
+      thumbnailUrl: "",
       videoUrl: "https://youtu.be/1K28-pJcTog?si=j4CEjbT4xUCZJGtx",
     },
     {
@@ -57,7 +56,7 @@ export const LATEST_PODCASTS_DATA: Podcast[][] = [
       title: "Inoka Dias, Senior Director/Head of Human Resource - Virtusa at the Talent Suite Colombo 2025",
       edition: "Sri Lanka Edition",
       date: "September 1, 2025",
-      thumbnailUrl: VIDEO_THUMBNAILS.video3,
+      thumbnailUrl: "",
       videoUrl: "https://youtu.be/OyiMnI01fPE?si=_-4e2_iAExLYn7Wy",
     },
     {
@@ -65,10 +64,116 @@ export const LATEST_PODCASTS_DATA: Podcast[][] = [
       title: "Karthik Badrinath, Head of Sales Development LinkedIn-India addresses the Talent Suite Colombo 2025",
       edition: "Sri Lanka Edition",
       date: "September 1, 2025",
-      thumbnailUrl: VIDEO_THUMBNAILS.video4,
+      thumbnailUrl: "",
       videoUrl: "https://youtu.be/OcOCgypmiU4?si=fxs8I5qhSUz_lUw2",
     },
   ],
+];
+
+// Colombo Edition Episodes (Sri Lanka)
+export const COLOMBO_EPISODES: Episode[] = [
+  {
+    id: "3",
+    image: "",
+    category: "SPEECH",
+    title: "Ayin Shah Jahan at Talent Suite Colombo 2025",
+    description: "Location Talent Leader - EY GDS Sri Lanka addressing the Talent Suite Colombo 2025, exploring leadership and talent trends.",
+    duration: "15 min",
+    date: "Sep 1, 2025",
+    videoUrl: "https://www.youtube.com/embed/WI_QCvUUfgw",
+    speakers: [
+      {
+        name: "Ayin Shah Jahan",
+        role: "Location Talent Leader - EY GDS",
+        avatar: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770883420/Frame_4449057_1_1_npu1wb.png",
+      },
+    ],
+  },
+  {
+    id: "4",
+    image: "",
+    category: "SPEECH",
+    title: "Sumudu Thanthirigoda at Talent Suite Colombo 2025",
+    description: "CEO - Maliban Group, Milk and Agri, sharing perspectives on industry leadership and business growth.",
+    duration: "20 min",
+    date: "Sep 1, 2025",
+    videoUrl: "https://www.youtube.com/embed/ZOVPQRmFpRw",
+    speakers: [
+      {
+        name: "Sumudu Thanthirigoda",
+        role: "CEO - Maliban Group",
+        avatar: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618639/1621657233961_1_helgwf.png",
+      },
+    ],
+  },
+  {
+    id: "5",
+    image: "",
+    category: "SPEECH",
+    title: "Surani Amarasinghe at Talent Suite Colombo 2025",
+    description: "Director Country People Partnering - LSEG, discussing talent development and organizational culture.",
+    duration: "18 min",
+    date: "Sep 1, 2025",
+    videoUrl: "https://www.youtube.com/embed/7qpLhKJr35o",
+    speakers: [
+      {
+        name: "Surani Amarasinghe",
+        role: "Director - LSEG",
+        avatar: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770886780/Frame_4449056_1_hxhoao.png",
+      },
+    ],
+  },
+  {
+    id: "6",
+    image: "",
+    category: "SPEECH",
+    title: "Ashan Ransilige at Talent Suite Colombo 2025",
+    description: "CEO - Link Natural Product (Pvt) Ltd, sharing insights on leadership and operational excellence.",
+    duration: "12 min",
+    date: "Sep 1, 2025",
+    videoUrl: "https://www.youtube.com/embed/1K28-pJcTog",
+    speakers: [
+      {
+        name: "Ashan Ransilige",
+        role: "CEO - Link Natural Product",
+        avatar: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770886856/Frame_4449055_1_tegt2m.png",
+      },
+    ],
+  },
+  {
+    id: "7",
+    image: "",
+    category: "SPEECH",
+    title: "Inoka Dias at Talent Suite Colombo 2025",
+    description: "Senior Director/Head of Human Resource - Virtusa, exploring HR transformation and future-ready talent.",
+    duration: "14 min",
+    date: "Sep 1, 2025",
+    videoUrl: "https://www.youtube.com/embed/OyiMnI01fPE",
+    speakers: [
+      {
+        name: "Inoka Dias",
+        role: "Head of HR - Virtusa",
+        avatar: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770887023/Frame_4449058_1_qy12hi.png",
+      },
+    ],
+  },
+  {
+    id: "8",
+    image: "",
+    category: "SPEECH",
+    title: "Karthik Badrinath at Talent Suite Colombo 2025",
+    description: "Head of Sales Development LinkedIn-India, presenting on talent networking and professional development.",
+    duration: "25 min",
+    date: "Sep 1, 2025",
+    videoUrl: "https://www.youtube.com/embed/OcOCgypmiU4",
+    speakers: [
+      {
+        name: "Karthik Badrinath",
+        role: "Head of Sales - LinkedIn India",
+        avatar: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618638/1545386579437_1_vl1nrk.png",
+      },
+    ],
+  },
 ];
 
 // Singapore Edition Episodes
@@ -139,13 +244,15 @@ export const DUBAI_EPISODES: Episode[] = [
 
 /**
  * Get episodes by edition
- * @param edition - "dubai" or "singapore"
+ * @param edition - "dubai" or "singapore" or "sri-lanka"
  * @returns Array of episodes for the specified edition
  */
 export const getEpisodesByEdition = (
-  edition: "dubai" | "singapore",
+  edition: "dubai" | "singapore" | "sri-lanka",
 ): Episode[] => {
-  return edition === "dubai" ? DUBAI_EPISODES : SINGAPORE_EPISODES;
+  if (edition === "dubai") return DUBAI_EPISODES;
+  if (edition === "singapore") return SINGAPORE_EPISODES;
+  return COLOMBO_EPISODES;
 };
 
 /**
@@ -156,7 +263,7 @@ export const getEpisodesByEdition = (
 export const getEpisodeById = (
   episodeId: string | number,
 ): Episode | undefined => {
-  const allEpisodes = [...DUBAI_EPISODES, ...SINGAPORE_EPISODES];
+  const allEpisodes = [...DUBAI_EPISODES, ...SINGAPORE_EPISODES, ...COLOMBO_EPISODES];
   return allEpisodes.find(
     (ep) => ep.id === episodeId || ep.id === String(episodeId),
   );

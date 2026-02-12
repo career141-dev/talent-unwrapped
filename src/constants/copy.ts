@@ -103,6 +103,7 @@ export const METADATA = {
 export const EDITION_NAMES = {
   DUBAI: "Dubai",
   SINGAPORE: "Singapore",
+  SRI_LANKA: "Sri Lanka",
 };
 
 export const HERO_CONTENT = {

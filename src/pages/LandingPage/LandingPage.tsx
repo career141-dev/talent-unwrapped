@@ -29,10 +29,8 @@ export const LandingPage = (): JSX.Element => {
           <GlobalHeader />
         </div>
 
-        {/* Constrained content sections */}
-        <div
-          className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0"
-        >
+        {/* Hero & About sections - now bypassing global layout */}
+        <div className="w-full overflow-x-hidden">
           <HeroBannerSection />
           <WisdomAndTestimonialsSection />
           <TalentIntroductionSection />
@@ -48,13 +46,6 @@ export const LandingPage = (): JSX.Element => {
           <SpeakersProfileSection />
         </div>
 
-        {/* Constrained content sections */}
-        <div
-          className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0"
-        >
-          {/* Constrained content */}
-        </div>
-
         {/* Full-width reels section */}
         <div id="reels" className="w-full overflow-x-hidden">
           <ReelsSection />
@@ -65,10 +56,8 @@ export const LandingPage = (): JSX.Element => {
           <EpisodeDetailsSection />
         </div>
 
-        {/* Constrained content sections */}
-        <div
-          className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-0"
-        >
+        {/* Footer sections - now bypassing global layout */}
+        <div className="w-full overflow-x-hidden">
           <SubmitFormSection />
           <ContactUsSection />
           <FooterSection />

@@ -6,7 +6,6 @@
 export {
   IMAGES,
   DECORATIVE_IMAGES,
-  SPEAKER_IMAGES,
   EPISODE_IMAGES,
   VIDEO_THUMBNAILS,
   KEY_QUESTIONS_IMAGES,
@@ -18,6 +17,7 @@ export {
   FORM_ICONS,
   FOOTER_IMAGES,
   EPISODE_AVATARS,
+  SPEAKER_IMAGES,
 } from "./images.config";
 export {
   VIDEOS,

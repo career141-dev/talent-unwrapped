@@ -37,13 +37,24 @@ export const SINGAPORE_VIDEO_SLIDES: VideoSlide[] = [
   },
 ];
 
+export const SRI_LANKA_VIDEO_SLIDES: VideoSlide[] = [
+  {
+    id: 1,
+    thumbnail: "",
+    title: "Sri Lanka Edition - Highlights",
+    videoUrl: "https://www.youtube.com/embed/WI_QCvUUfgw",
+  },
+];
+
 /**
  * Get video slides by edition
- * @param edition - "dubai" or "singapore"
+ * @param edition - "dubai" or "singapore" or "sri-lanka"
  * @returns Array of video slides for the specified edition
  */
 export const getVideoSlidesByEdition = (
-  edition: "dubai" | "singapore",
+  edition: "dubai" | "singapore" | "sri-lanka",
 ): VideoSlide[] => {
-  return edition === "dubai" ? DUBAI_VIDEO_SLIDES : SINGAPORE_VIDEO_SLIDES;
+  if (edition === "dubai") return DUBAI_VIDEO_SLIDES;
+  if (edition === "singapore") return SINGAPORE_VIDEO_SLIDES;
+  return SRI_LANKA_VIDEO_SLIDES;
 };

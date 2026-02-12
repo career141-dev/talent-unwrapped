@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Episode } from "../types";
 import { getEpisodesByEdition } from "../data";
 
-export type EditionType = "singapore" | "dubai";
+export type EditionType = "singapore" | "dubai" | "sri-lanka";
 
 interface UseEpisodeEditionReturn {
   episodes: Episode[];

@@ -69,7 +69,7 @@ export const HeroBannerSection = (): JSX.Element => {
 
   return (
     <section
-      className="relative w-full bg-white mx-auto overflow-hidden"
+      className="relative w-full bg-white mx-auto overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12"
       style={{
         paddingBottom: "clamp(20px, 4vw, 40px)",
       }}
@@ -146,10 +146,10 @@ export const HeroBannerSection = (): JSX.Element => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="font-['Geist',Helvetica] font-medium text-[#7bb302] leading-[0.85] block"
+              className="font-['Geist',Helvetica] font-medium text-[#7bb302] leading-[0.85] block whitespace-nowrap"
               style={{
-                fontSize: "clamp(3rem, 14vw, 4.75rem)",
-                letterSpacing: "-0.03em",
+                fontSize: "clamp(3rem, 14vw, 5rem)",
+                letterSpacing: "-0.01em",
                 width: "100%",
               }}
             >
@@ -426,10 +426,10 @@ export const HeroBannerSection = (): JSX.Element => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="font-['Geist',Helvetica] font-medium text-[#7bb302] leading-[1]"
+            className="font-['Geist',Helvetica] font-medium text-[#7bb302] leading-[1] whitespace-nowrap"
             style={{
-              fontSize: "clamp(54px, 9vw, 155px)",
-              letterSpacing: "-0.04em",
+              fontSize: "clamp(55px, 9.2vw, 165px)",
+              letterSpacing: "-0.02em",
             }}
           >
             {HERO_CONTENT.STAY_HEADING}

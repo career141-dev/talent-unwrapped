@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { Episode, EpisodeSpeaker } from "../../../../types";
 import { METADATA, NAV_LABELS } from "@/constants/copy";
 
@@ -8,6 +8,32 @@ interface EpisodeCardProps {
 }
 
 /**
+ * Helper to transform YouTube URLs into embed URLs
+ */
+// Removed getEmbedUrl as navigation is now handled by the parent
+
+
+/**
+ * Helper to get YouTube thumbnail URL
+ */
+const getYoutubeThumbnail = (url: string) => {
+  try {
+    let videoId = "";
+    if (url.includes("youtu.be")) {
+      videoId = url.split("youtu.be/")[1]?.split("?")[0];
+    } else if (url.includes("youtube.com/watch")) {
+      const urlObj = new URL(url);
+      videoId = urlObj.searchParams.get("v") || "";
+    } else if (url.includes("youtube.com/embed")) {
+      videoId = url.split("embed/")[1]?.split("?")[0];
+    }
+    return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : "";
+  } catch (e) {
+    return "";
+  }
+};
+
+/**
  * Reusable episode card component for displaying episode information
  * Handles UI rendering and user interactions for a single episode
  */
@@ -15,13 +41,9 @@ export const EpisodeCard = ({
   episode,
   onViewEpisode,
 }: EpisodeCardProps): JSX.Element => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
   const handlePlayClick = (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent card click
-    if (episode.videoUrl) {
-      setIsPlaying(true);
-    }
+    onViewEpisode(episode.id);
   };
 
   const handleCardClick = () => {
@@ -36,47 +58,55 @@ export const EpisodeCard = ({
     >
       {/* Episode Image and Featured Badge */}
       <div className="relative w-full h-[240px] bg-[#2d2d2d] overflow-hidden">
-        {isPlaying && episode.videoUrl ? (
-          <iframe
-            src={`${episode.videoUrl}?autoplay=1`}
-            className="w-full h-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title={episode.title}
+        {episode.image ? (
+          <img
+            src={episode.image}
+            alt={episode.title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
           />
         ) : (
-          <>
-            <img
-              src={episode.image}
-              alt={episode.title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-            />
-            {episode.featured && (
-              <div className="absolute top-[16px] left-[16px] bg-[#7c3] text-white text-[11px] font-bold px-[12px] py-[6px] rounded-[20px] uppercase tracking-[0.05em] z-10">
-                {METADATA.FEATURED}
-              </div>
-            )}
-            {/* Play Button - Only show if videoUrl exists */}
-            {episode.videoUrl && (
-              <button
-                onClick={handlePlayClick}
-                className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-colors duration-300 z-10"
-                aria-label="Play video"
+          episode.videoUrl && (
+            episode.videoUrl.includes("youtube") || episode.videoUrl.includes("youtu.be") ? (
+              <img
+                src={getYoutubeThumbnail(episode.videoUrl)}
+                alt={episode.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+            ) : (
+              <video
+                src={`${episode.videoUrl}#t=0.001`}
+                className="w-full h-full object-cover"
+                preload="metadata"
+                playsInline
+                muted
+              />
+            )
+          )
+        )}
+        {episode.featured && (
+          <div className="absolute top-[16px] left-[16px] bg-[#7c3] text-white text-[11px] font-bold px-[12px] py-[6px] rounded-[20px] uppercase tracking-[0.05em] z-10">
+            {METADATA.FEATURED}
+          </div>
+        )}
+        {/* Play Button - Always show if videoUrl exists */}
+        {episode.videoUrl && (
+          <button
+            onClick={handlePlayClick}
+            className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-colors duration-300 z-10"
+            aria-label="Play video"
+          >
+            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-16 h-16 bg-[#7bb302] rounded-full flex items-center justify-center hover:scale-110 active:scale-95">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="white"
+                className="ml-1"
               >
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-16 h-16 bg-[#7bb302] rounded-full flex items-center justify-center hover:scale-110 active:scale-95">
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="white"
-                    className="ml-1"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </button>
-            )}
-          </>
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </button>
         )}
       </div>
 
