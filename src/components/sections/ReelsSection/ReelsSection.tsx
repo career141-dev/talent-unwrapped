@@ -17,41 +17,58 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
     ? REELS_DATA.filter((reel) => reel.edition === edition)
     : REELS_DATA;
 
-  // Track active slide on scroll
+  // Track active slide using IntersectionObserver (more accurate for mobile)
+  useEffect(() => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 1024;
+    if (!isMobile) return;
+
+    const observerOptions = {
+      root: scrollContainerRef.current,
+      threshold: 0.6, // Item must be 60% visible to be considered "active"
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = slideRefs.current.findIndex((ref) => ref === entry.target);
+          if (index !== -1 && index !== activeIndex) {
+            setActiveIndex(index);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Observer all slides
+    slideRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, [reelVideos.length, activeIndex]);
+
+  // Pause playing when scrolling starts (detecting scroll movement)
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
 
-    const handleScroll = () => {
-      if (!container) return;
-
-      const scrollLeft = container.scrollLeft;
-      const width = container.offsetWidth;
-      const newIndex = Math.round(scrollLeft / width);
-
-      if (newIndex !== activeIndex) {
-        setActiveIndex(newIndex);
-      }
+    const handleScrollStart = () => {
+      setPlayingIndex(null); // Pause immediately on any scroll
     };
 
-    container.addEventListener("scroll", handleScroll, { passive: true });
+    container.addEventListener("scroll", handleScrollStart, { passive: true });
+    return () => container.removeEventListener("scroll", handleScrollStart);
+  }, []);
 
-    return () => {
-      container.removeEventListener("scroll", handleScroll);
-    };
-  }, [activeIndex]);
-
-  // Auto-play on mobile after delay
+  // Auto-play on mobile after a short delay of inactivity
   useEffect(() => {
-    // simplified mobile check
     const isMobile = typeof window !== "undefined" && window.innerWidth < 1024;
 
     if (isMobile) {
-      setPlayingIndex(null); // Reset immediately on scroll
-
       const timer = setTimeout(() => {
         setPlayingIndex(activeIndex);
-      }, 1500);
+      }, 800); // Faster response time for autoplay
 
       return () => clearTimeout(timer);
     }
@@ -120,20 +137,16 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
         </div>
       </div>
 
-      {/* Mobile Pagination Indicator */}
       <div className="flex lg:hidden justify-center items-center gap-2 mt-4">
         {reelVideos.map((_, index) => (
           <button
             key={index}
             onClick={() => {
-              const container = scrollContainerRef.current;
-              if (container) {
-                const width = container.offsetWidth;
-                container.scrollTo({
-                  left: index * width,
-                  behavior: "smooth",
-                });
-              }
+              slideRefs.current[index]?.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center",
+              });
             }}
             className={`transition-all duration-300 rounded-full ${activeIndex === index
               ? "w-8 h-2 bg-[#7bb302]"
