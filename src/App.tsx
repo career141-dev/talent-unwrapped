@@ -20,17 +20,34 @@ const ScrollToTop = () => {
 
   return null;
 };
+
+const removePreloader = () => {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    preloader.classList.add("preloader-hidden");
+    // Remove from DOM after transition completes to save resources
+    setTimeout(() => {
+      preloader.remove();
+    }, 600);
+  }
+};
+
 import { EpisodesPage } from "./pages/Episodes";
 import { PodcastEditionWrapper } from "./pages/PodcastEditions/PodcastEditionWrapper";
 import { FullEpisode } from "./pages/FullEpisode";
 import { Schedule } from "./pages/Schedule";
 import { NotFound } from "./pages/NotFound/NotFound";
-import { ErrorBoundary } from "./components/Common";
+import { ErrorBoundary, LoadingIndicator } from "./components/Common";
 
 export const App = (): JSX.Element => {
+  useEffect(() => {
+    removePreloader();
+  }, []);
+
   return (
     <Router>
       <ErrorBoundary>
+        <LoadingIndicator />
         <ScrollToTop />
         <div className="min-h-screen w-full relative bg-white">
           <Routes>

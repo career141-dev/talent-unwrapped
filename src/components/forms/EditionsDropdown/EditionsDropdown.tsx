@@ -12,9 +12,9 @@ interface Edition {
 
 export const EditionsDropdown = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -70,17 +70,17 @@ export const EditionsDropdown = (): JSX.Element => {
   };
 
   const handleMouseEnter = () => {
-    setIsHovered(true);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
     setIsOpen(true);
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
-    setTimeout(() => {
-      if (!isHovered) {
-        setIsOpen(false);
-      }
-    }, 150);
+    timeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 300); // 300ms buffer to close
   };
 
   return (
@@ -96,7 +96,7 @@ export const EditionsDropdown = (): JSX.Element => {
           e.stopPropagation();
           setIsOpen(!isOpen);
         }}
-        className="inline-flex items-end justify-center gap-2.5 px-4 relative flex-[0_0_auto] hover:bg-gray-50 rounded-md transition-all duration-300 group border-none bg-transparent mt-[-1.00px] pb-1 touch-manipulation"
+        className="inline-flex items-end justify-center gap-2.5 px-4 relative flex-[0_0_auto] glass-button rounded-md transition-all duration-300 group border-none bg-transparent mt-[-1.00px] pb-1 touch-manipulation"
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
@@ -112,8 +112,6 @@ export const EditionsDropdown = (): JSX.Element => {
       {isOpen && (
         <div
           className="absolute top-full left-0 mt-3 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-[102] animate-fade-in"
-          onMouseEnter={!isMobile ? () => setIsHovered(true) : undefined}
-          onMouseLeave={!isMobile ? () => setIsHovered(false) : undefined}
         >
           {editions.map((edition) => (
             <button

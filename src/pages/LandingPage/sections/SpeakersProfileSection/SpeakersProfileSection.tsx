@@ -165,7 +165,7 @@ export const SpeakersProfileSection = ({ edition, specificSpeakers }: SpeakersPr
                                 <>
                                     {/* Left Scroll Button - positioned outside container only on XL desktop */}
                                     <button
-                                        className="hidden xl:flex absolute left-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-10 transition-all"
+                                        className="hidden xl:flex absolute left-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-10 transition-all glass-button rounded-full"
                                         onClick={() => handleScroll("left")}
                                         type="button"
                                         aria-label="Scroll left"
@@ -178,7 +178,7 @@ export const SpeakersProfileSection = ({ edition, specificSpeakers }: SpeakersPr
 
                                     {/* Right Scroll Button - positioned outside container only on XL desktop */}
                                     <button
-                                        className="hidden xl:flex absolute right-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-10 transition-all"
+                                        className="hidden xl:flex absolute right-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-10 transition-all glass-button rounded-full"
                                         onClick={() => handleScroll("right")}
                                         type="button"
                                         aria-label="Scroll right"
@@ -269,7 +269,7 @@ export const SpeakersProfileSection = ({ edition, specificSpeakers }: SpeakersPr
                                                             href={speaker.linkedinUrl}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
-                                                            className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-[#7bb302] rounded-full flex items-center justify-center text-white hover:bg-[#689902] transition-colors"
+                                                            className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 glass-button-primary rounded-full flex items-center justify-center text-white active:scale-95 transition-all"
                                                             aria-label={`${speaker.name}'s LinkedIn profile`}
                                                             onClick={(e) => e.stopPropagation()}
                                                         >
@@ -291,7 +291,7 @@ export const SpeakersProfileSection = ({ edition, specificSpeakers }: SpeakersPr
                                     <button
                                         key={index}
                                         onClick={() => handlePaginationClick(index)}
-                                        className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentPage ? "bg-[#7bb302] w-6" : "bg-[#d0d0d0]"
+                                        className={`rounded-full transition-all duration-300 glass-button ${index === currentPage ? "bg-[#7bb302] w-6 h-2" : "bg-[#d0d0d0] w-2 h-2"
                                             }`}
                                         aria-label={`Page ${index + 1}`}
                                     />

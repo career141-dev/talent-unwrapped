@@ -235,9 +235,9 @@ export const JoinUsForm = (): JSX.Element => {
       <button
         type="submit"
         disabled={status === "sending"}
-        className={`flex w-full h-12 items-center justify-center gap-2 px-8 py-2 relative rounded-xl cursor-pointer transition-all duration-300 hover:shadow-lg border-none touch-manipulation ${status === "sending"
+        className={`flex w-full h-12 items-center justify-center gap-2 px-8 py-2 relative rounded-xl cursor-pointer shadow-sm hover:shadow-lg border-none touch-manipulation ${status === "sending"
           ? "bg-gray-400 cursor-not-allowed"
-          : "bg-[#7cb403] hover:bg-[#6da002]"
+          : "glass-button-primary active:scale-95"
           }`}
       >
         <span className="relative w-fit [font-family:'Geist',Helvetica] font-medium text-white text-base tracking-[0] leading-[normal]">

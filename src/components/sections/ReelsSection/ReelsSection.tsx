@@ -148,7 +148,7 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
                 inline: "center",
               });
             }}
-            className={`transition-all duration-300 rounded-full ${activeIndex === index
+            className={`transition-all duration-300 rounded-full glass-button ${activeIndex === index
               ? "w-8 h-2 bg-[#7bb302]"
               : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
               }`}

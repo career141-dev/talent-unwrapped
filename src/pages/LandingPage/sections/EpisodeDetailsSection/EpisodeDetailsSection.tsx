@@ -245,7 +245,7 @@ export const EpisodeDetailsSection = ({ }: EpisodeDetailsSectionProps): JSX.Elem
                 key={episode.id}
                 onClick={() => handleEpisodeClick(episode.id)}
                 onKeyDown={(e) => handleEpisodeKeyDown(e, episode.id)}
-                className={`flex h-10 sm:h-[60px] items-center justify-between pl-3 sm:pl-5 pr-1.5 py-2 sm:py-5 relative self-stretch w-full rounded-[60px] ${activeEpisode === episode.id
+                className={`flex h-10 sm:h-[60px] items-center justify-between pl-3 sm:pl-5 pr-1.5 py-2 sm:py-5 relative self-stretch w-full rounded-[60px] glass-button ${activeEpisode === episode.id
                   ? "bg-neutral-100"
                   : "border border-solid border-neutral-200"
                   } transition-all duration-200 hover:shadow-md active:scale-95 active:shadow-lg lg:active:scale-100 focus:outline-none focus:ring-2 focus:ring-[#7bb302] focus:ring-offset-2 cursor-pointer z-20 touch-manipulation`}

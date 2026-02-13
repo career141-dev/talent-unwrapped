@@ -257,7 +257,7 @@ export const HeroBannerSection = (): JSX.Element => {
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 type="button"
                 onClick={handlePlayVideo}
-                className="absolute top-1/2 left-1/2 bg-white/95 active:bg-white rounded-full flex items-center justify-center cursor-pointer z-20 shadow-lg"
+                className="absolute top-1/2 left-1/2 glass-button-white active:bg-white rounded-full flex items-center justify-center cursor-pointer z-20 shadow-lg"
                 aria-label="Play podcast episode"
                 style={{
                   width: "clamp(48px, 13vw, 60px)",
@@ -280,7 +280,7 @@ export const HeroBannerSection = (): JSX.Element => {
               <>
                 <button
                   onClick={handlePrevious}
-                  className="absolute top-1/2 -translate-y-1/2 bg-white/95 active:bg-white backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer active:scale-95 transition-all z-20 shadow-md touch-manipulation"
+                  className="absolute top-1/2 -translate-y-1/2 glass-button-white active:bg-white rounded-full flex items-center justify-center cursor-pointer active:scale-95 transition-all z-20 shadow-md touch-manipulation"
                   aria-label="Previous video"
                   style={{
                     left: "clamp(0.5rem, 2.2vw, 0.75rem)",
@@ -300,7 +300,7 @@ export const HeroBannerSection = (): JSX.Element => {
 
                 <button
                   onClick={handleNext}
-                  className="absolute top-1/2 -translate-y-1/2 bg-white/95 active:bg-white backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer active:scale-95 transition-all z-20 shadow-md touch-manipulation"
+                  className="absolute top-1/2 -translate-y-1/2 glass-button-white active:bg-white rounded-full flex items-center justify-center cursor-pointer active:scale-95 transition-all z-20 shadow-md touch-manipulation"
                   aria-label="Next video"
                   style={{
                     right: "clamp(0.5rem, 2.2vw, 0.75rem)",
@@ -535,7 +535,7 @@ export const HeroBannerSection = (): JSX.Element => {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               type="button"
               onClick={handlePlayVideo}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full flex items-center justify-center cursor-pointer z-20 shadow-xl"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 glass-button-white hover:bg-white rounded-full flex items-center justify-center cursor-pointer z-20 shadow-xl"
               aria-label="Play podcast episode"
               style={{
                 width: "clamp(60px, 7vw, 90px)",
@@ -558,7 +558,7 @@ export const HeroBannerSection = (): JSX.Element => {
             <>
               <button
                 onClick={handlePrevious}
-                className="absolute top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 z-20 shadow-lg"
+                className="absolute top-1/2 -translate-y-1/2 glass-button-white hover:bg-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 z-20 shadow-lg"
                 aria-label="Previous video"
                 style={{
                   left: "clamp(1rem, 2vw, 1.875rem)",
@@ -578,7 +578,7 @@ export const HeroBannerSection = (): JSX.Element => {
 
               <button
                 onClick={handleNext}
-                className="absolute top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 z-20 shadow-lg"
+                className="absolute top-1/2 -translate-y-1/2 glass-button-white hover:bg-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 z-20 shadow-lg"
                 aria-label="Next video"
                 style={{
                   right: "clamp(1rem, 2vw, 1.875rem)",
@@ -647,6 +647,6 @@ export const HeroBannerSection = (): JSX.Element => {
           </div>
         </div>
       </motion.div>
-    </section>
+    </section >
   );
 };

@@ -52,11 +52,81 @@
     a {
       text-decoration: none;
     }
+
+    /* Global Preloader Styles (Custom Design) */
+    .preloaderBg {
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      background: #fff;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+    }
+
+    .preloader-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preloader {
+      background: url(https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770915535/Artboard_3_1_5_kzzyhs.png) no-repeat center;
+      background-size: 230px;
+      width: 300px;
+      height: 300px;
+      z-index: 1;
+    }
+
+    .preloader2 {
+      border: 10px solid #f3f3f3;
+      border-top: 10px solid #7bb302;
+      border-radius: 50%;
+      width: 250px;
+      height: 250px;
+      animation: spin 1s ease-in-out infinite;
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      z-index: 2;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .preloader-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
   </style>
   <link href="tailwind.css" rel="stylesheet" />
 </head>
 
 <body>
+  <!-- Branded Global Preloader (Custom Design) -->
+  <div class="preloaderBg" id="preloader">
+    <div class="preloader-container">
+      <div class="preloader"></div>
+      <div class="preloader2"></div>
+    </div>
+  </div>
+
   <div id="app"></div>
   <script type="module" src="./src/index.tsx"></script>
 </body>

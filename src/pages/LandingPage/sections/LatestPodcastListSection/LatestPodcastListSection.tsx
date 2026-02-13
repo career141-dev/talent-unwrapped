@@ -269,7 +269,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
                         <motion.div
                           whileHover={{ scale: 1.15 }}
                           whileTap={{ scale: 0.9 }}
-                          className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-2xl"
+                          className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 glass-button-white rounded-full flex items-center justify-center shadow-2xl"
                         >
                           <PlayIcon
                             className="sm:w-6 sm:h-6 md:w-7 md:h-7 ml-0.5"
@@ -327,7 +327,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
             <button
               key={index}
               onClick={() => handlePaginationClick(index)}
-              className={`relative h-1.5 sm:h-2 rounded cursor-pointer transition-all duration-300 hover:scale-125 touch-manipulation ${index === currentPage
+              className={`relative h-1.5 sm:h-2 rounded cursor-pointer transition-all duration-300 hover:scale-125 touch-manipulation glass-button ${index === currentPage
                 ? "bg-[#7bb302] w-6 sm:w-8"
                 : "bg-neutral-90 w-1.5 sm:w-2"
                 }`}

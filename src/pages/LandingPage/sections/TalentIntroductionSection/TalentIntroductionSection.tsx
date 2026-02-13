@@ -167,7 +167,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsModalOpen(true)}
-                className="relative lg:absolute top-auto lg:top-[258px] left-0 lg:left-[400px] inline-flex h-12 md:h-[54px] items-center justify-center gap-2 px-4 md:px-5 py-3 md:py-4 bg-[#7bb302] rounded-[60px] cursor-pointer hover:bg-[#6da002] transition-colors mb-4 md:mb-0 mx-auto lg:mx-0"
+                className="relative lg:absolute top-auto lg:top-[258px] left-0 lg:left-[400px] inline-flex h-12 md:h-[54px] items-center justify-center gap-2 px-4 md:px-5 py-3 md:py-4 glass-button-primary rounded-[60px] cursor-pointer mb-4 md:mb-0 mx-auto lg:mx-0"
                 aria-label="More about the podcast"
               >
                 <span className="relative w-fit mt-[-0.50px] [font-family:'Geist',Helvetica] font-semibold text-white text-sm md:text-base tracking-[-0.48px] leading-[normal]">
@@ -242,7 +242,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
 
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className="inline-flex h-[38px] items-center justify-center gap-2 px-6 bg-[#7bb302] rounded-[40px] cursor-pointer hover:bg-[#6da002] transition-all duration-200 active:scale-95 shadow-sm hover:shadow-md"
+                    className="inline-flex h-[38px] items-center justify-center gap-2 px-6 glass-button-primary rounded-[40px] cursor-pointer active:scale-95 shadow-sm hover:shadow-md"
                     aria-label={BUTTONS.LEARN_MORE}
                   >
                     <span className="[font-family:'Geist',Helvetica] font-semibold text-white text-sm tracking-[-0.4px] leading-[normal]">

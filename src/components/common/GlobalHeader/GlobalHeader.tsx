@@ -217,7 +217,7 @@ export const GlobalHeader = (): JSX.Element => {
               href={LINKS.ourJourney}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-10 md:h-12 lg:h-[54px] items-center justify-center gap-1 md:gap-2 px-3 md:px-4 lg:px-5 py-2 md:py-3 lg:py-4 relative flex-[0_0_auto] bg-[#222223] rounded-[60px] hover:bg-[#333333] transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              className="inline-flex h-10 md:h-12 lg:h-[54px] items-center justify-center gap-1 md:gap-2 px-3 md:px-4 lg:px-5 py-2 md:py-3 lg:py-4 relative flex-[0_0_auto] glass-button-dark rounded-[60px] hover:scale-105 active:scale-95"
             >
               <span className="relative w-fit mt-[-0.50px] [font-family:'Geist',Helvetica] font-semibold text-white text-xs md:text-sm lg:text-base tracking-[-0.48px] leading-[normal] whitespace-nowrap">
                 {NAV_LABELS.CAREER_LINK}
@@ -233,7 +233,7 @@ export const GlobalHeader = (): JSX.Element => {
               href={LINKS.ourJourney}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:inline-flex lg:hidden h-10 items-center justify-center gap-2 px-4 py-2 bg-[#222223] rounded-[60px] hover:bg-[#333333] transition-all duration-300"
+              className="hidden md:inline-flex lg:hidden h-10 items-center justify-center gap-2 px-4 py-2 glass-button-dark rounded-[60px] active:scale-95"
             >
               <span className="relative [font-family:'Geist',Helvetica] font-semibold text-white text-sm tracking-[-0.32px] leading-none whitespace-nowrap">
                 {NAV_LABELS.CAREER_LINK}
@@ -245,7 +245,7 @@ export const GlobalHeader = (): JSX.Element => {
               href={LINKS.ourJourney}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex md:hidden h-6 items-center justify-center gap-1 px-3 py-1 bg-[#232323] rounded-[60px] hover:bg-[#333333] transition-all duration-300"
+              className="inline-flex md:hidden h-6 items-center justify-center gap-1 px-3 py-1 glass-button-dark rounded-[60px] active:scale-95"
             >
               <span className="relative [font-family:'Geist',Helvetica] font-semibold text-white text-[10px] tracking-[-0.32px] leading-none whitespace-nowrap">
                 career141
@@ -256,7 +256,7 @@ export const GlobalHeader = (): JSX.Element => {
             {/* Hamburger Button - Visible up to lg breakpoint */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="flex flex-col items-center justify-center w-10 h-10 gap-1.5 relative bg-transparent border-none cursor-pointer touch-manipulation"
+              className="flex flex-col items-center justify-center w-10 h-10 gap-1.5 relative glass-button rounded-full cursor-pointer touch-manipulation active:scale-90"
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
             >

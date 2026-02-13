@@ -64,7 +64,7 @@ export const WisdomAndTestimonialsSection = (): JSX.Element => {
                     .getElementById("episodes")
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="inline-flex h-12 sm:h-[54px] items-center justify-center gap-2 px-6 py-3 bg-[#7CB403] rounded-[60px] no-underline cursor-pointer hover:bg-[#6a9e02] transition-colors duration-300 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7bb302] focus:ring-offset-2 group touch-manipulation"
+                className="inline-flex h-12 sm:h-[54px] items-center justify-center gap-2 px-6 py-3 glass-button-primary rounded-[60px] no-underline cursor-pointer transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#7bb302] focus:ring-offset-2 group touch-manipulation shadow-sm hover:shadow-lg"
               >
                 <span className="w-fit [font-family:'Geist',Helvetica] font-semibold text-white text-sm sm:text-base tracking-[-0.48px] leading-[normal]">
                   {BUTTONS.EXPLORE}

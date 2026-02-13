@@ -1,6 +1,6 @@
-
 import { Episode, EpisodeSpeaker } from "../../../../types";
 import { METADATA, NAV_LABELS } from "@/constants/copy";
+import { MediaLoader } from "../../../../components/Common";
 
 interface EpisodeCardProps {
   episode: Episode;
@@ -66,18 +66,20 @@ export const EpisodeCard = ({
       {/* Episode Image and Featured Badge */}
       <div className="relative w-full h-[240px] bg-[#2d2d2d] overflow-hidden">
         {episode.image ? (
-          <img
+          <MediaLoader
             src={episode.image}
             alt={episode.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            className="group-hover:scale-110 transition-transform duration-300"
+            containerClassName="w-full h-full"
           />
         ) : (
           episode.videoUrl && (
             episode.videoUrl.includes("youtube") || episode.videoUrl.includes("youtu.be") ? (
-              <img
+              <MediaLoader
                 src={getYoutubeThumbnail(episode.videoUrl)}
                 alt={episode.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                className="group-hover:scale-110 transition-transform duration-300"
+                containerClassName="w-full h-full"
               />
             ) : (
               <video
@@ -178,13 +180,11 @@ export const EpisodeCard = ({
                 key={index}
                 className="flex items-center gap-[12px] flex-shrink-0 w-[180px] lg:w-full"
               >
-                <div className="w-[32px] h-[32px] rounded-full bg-[#e5e5e5] overflow-hidden flex-shrink-0">
-                  <img
-                    src={speaker.avatar}
-                    alt={speaker.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                <MediaLoader
+                  src={speaker.avatar}
+                  alt={speaker.name}
+                  containerClassName="w-[32px] h-[32px] rounded-full bg-[#e5e5e5] overflow-hidden flex-shrink-0"
+                />
                 <div className="flex-1 min-w-0">
                   <div className="text-[#1a1a1a] text-[13px] font-semibold truncate">
                     {speaker.name}
