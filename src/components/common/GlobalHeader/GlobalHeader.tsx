@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { EditionsDropdown } from "../../Forms/EditionsDropdown";
+import { EditionsDropdown } from "../../forms/EditionsDropdown";
 import { ASSETS, LINKS } from "@/assets";
-import { ArrowRightIcon, CloseIcon } from "../../Common/Icons";
+import { ArrowRightIcon, CloseIcon } from "../../common/Icons";
 import { NAV_LABELS } from "@/constants/copy";
 
 export const GlobalHeader = (): JSX.Element => {

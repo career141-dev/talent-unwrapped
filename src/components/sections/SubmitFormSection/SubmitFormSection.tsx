@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { JoinUsForm } from "../../Forms";
+import { JoinUsForm } from "../../forms";
 import { SECTION_DESCRIPTIONS, FORMS_CONTENT } from "@/constants/copy";
 
 export const SubmitFormSection = (): JSX.Element => {
