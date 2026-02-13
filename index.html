@@ -8,27 +8,23 @@
   <meta name="description"
     content="Talent Unwrapped podcast series featuring conversations about leadership, innovation, and the future of work across Singapore and Dubai editions." />
 
-  <!-- GitHub Pages SPA Redirect Script -->
-  <script>
-    // Single Page Apps for GitHub Pages
-    // https://github.com/rafgraph/spa-github-pages
-    (function (l) {
-      if (l.search[1] === "/") {
-        var decoded = l.search
-          .slice(1)
-          .split("&")
-          .map(function (s) {
-            return s.replace(/~and~/g, "&");
-          })
-          .join("?");
-        window.history.replaceState(
-          null,
-          null,
-          l.pathname.slice(0, -1) + decoded + l.hash,
-        );
-      }
-    })(window.location);
-  </script>
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://talentunwrapped.com/" />
+  <meta property="og:title" content="Talent Unwrapped - Podcast Series" />
+  <meta property="og:description"
+    content="Exploring the human dimensions of ambition, design, and leadership through insightful conversations." />
+  <meta property="og:image"
+    content="https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770915535/Artboard_3_1_5_kzzyhs.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://talentunwrapped.com/" />
+  <meta property="twitter:title" content="Talent Unwrapped - Podcast Series" />
+  <meta property="twitter:description"
+    content="Exploring the human dimensions of ambition, design, and leadership through insightful conversations." />
+  <meta property="twitter:image"
+    content="https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770915535/Artboard_3_1_5_kzzyhs.png" />
 
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap");
@@ -63,10 +59,6 @@
 <body>
   <div id="app"></div>
   <script type="module" src="./src/index.tsx"></script>
-  <!-- <script>
-    window.__ANIMA_PLAYGROUND_ID__ = "6IK4krLc";
-  </script>
-  <script src="https://unpkg.com/@animaapp/playground-sdk@0"></script> -->
 </body>
 
 </html>

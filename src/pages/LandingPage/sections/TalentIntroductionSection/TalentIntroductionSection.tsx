@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { LearnMoreModal } from "../../../../pages/Schedule/Components";
 import { MobileCarouselSection } from "../../../../components/Sections/MobileCarouselSection";
 import { EditionFilter } from "../../../../components/UI/EditionFilter";
 import { getEditionContent } from "../../../../data";
-import { DECORATIVE_IMAGES } from "@/assets";
+import { ASSETS } from "@/assets";
 import { ArrowRightIcon, VideoCircleFilledIcon, ExportIcon } from "@/components/Common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, BUTTONS, TALENT_INTRO_CONTENT } from "@/constants/copy";
 
@@ -12,7 +12,16 @@ export const TalentIntroductionSection = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEdition, setSelectedEdition] = useState<"singapore" | "dubai">("singapore");
 
-  const editionData = getEditionContent(selectedEdition);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const editionData = getEditionContent(selectedEdition as any);
   const { name: editionName, schedule, chapters } = editionData;
 
   const decorativeImages = [
@@ -20,23 +29,27 @@ export const TalentIntroductionSection = (): JSX.Element => {
       id: 1,
       src: selectedEdition === "singapore"
         ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770889047/Frame_1000003696_2_iplpla.png"
-        : DECORATIVE_IMAGES.manInHeadphones,
+        : ASSETS.manInHeadphones,
       alt: "Decorative image 1",
-      containerClass:
-        "absolute top-[260px] left-[0px] w-[100px] h-[78px] z-0 lg:flex lg:top-[150px] lg:left-[871px] lg:w-[152px] lg:h-[114px] rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017]",
+      containerClass: `absolute ${isMobile ? "top-[280px]" : "top-[150px] lg:top-[150px]"} left-[5%] lg:left-[871px] w-[100px] h-[78px] z-0 lg:flex lg:w-[152px] lg:h-[114px] rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017]`,
       baseRotate: -7.30,
-      objectPosition: "50% 18%",
+      objectPosition: selectedEdition === "singapore" ? "50% 18%" : undefined,
+      imageScale: selectedEdition === "singapore" ? 3.5 : (isMobile ? 1.8 : 2.2),
+      imageTranslateX: selectedEdition === "singapore" ? "0px" : (isMobile ? "20px" : "40px"),
+      imageTranslateY: selectedEdition === "singapore" ? "0px" : (isMobile ? "10px" : "25px"),
     },
     {
       id: 2,
       src: selectedEdition === "singapore"
         ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770889046/Frame_1000003561_3_q3bsmg.png"
-        : DECORATIVE_IMAGES.youngBlackMan,
+        : ASSETS.youngBlackMan,
       alt: "Decorative image 2",
-      containerClass:
-        "absolute top-[75px] left-[230px] w-[120px] h-[92px] z-0 lg:flex lg:top-52 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[114px] rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017]",
+      containerClass: `absolute ${isMobile ? "top-[70px]" : "top-52 lg:top-52"} right-[5%] sm:left-[230px] lg:left-[1125px] w-[120px] h-[92px] z-0 lg:flex lg:right-auto lg:w-[152px] lg:h-[114px] rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017]`,
       baseRotate: 6.49,
-      objectPosition: "50% 14%",
+      objectPosition: selectedEdition === "singapore" ? "50% 14%" : undefined,
+      imageScale: selectedEdition === "singapore" ? 3.5 : (isMobile ? 1.8 : 2.2),
+      imageTranslateX: selectedEdition === "singapore" ? "0px" : (isMobile ? "20px" : "40px"),
+      imageTranslateY: selectedEdition === "singapore" ? "0px" : (isMobile ? "10px" : "25px"),
     },
   ];
 
@@ -61,7 +74,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
 
   return (
     <section
-      id="schedule"
+      id="three-chapters"
       className="relative z-20 w-full max-w-[1440px] bg-white mx-auto"
       style={{
         overflow: 'hidden',
@@ -266,9 +279,11 @@ export const TalentIntroductionSection = (): JSX.Element => {
             <motion.img
               className="absolute inset-0 w-full h-full object-cover"
               style={{
-                scale: 3.5,
+                scale: image.imageScale,
                 transformOrigin: 'center center',
-                objectPosition: image.objectPosition
+                objectPosition: image.objectPosition,
+                x: image.imageTranslateX,
+                y: image.imageTranslateY,
               }}
               alt={image.alt}
               src={image.src}

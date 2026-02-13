@@ -130,7 +130,7 @@ const SRI_LANKA_REELS_SOURCE = [
         id: 15,
         title: "Building Future-Ready Talent in Sri Lanka",
         videoUrl: "https://www.youtube.com/embed/WI_QCvUUfgw",
-        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-2@2x.png",
+        thumbnailUrl: "/src/assets/images/thumbnails/video3.png",
         description: "Insights from the Talent Suite Colombo 2025 on reshaping leadership and talent development in the region.",
         edition: "Sri Lanka"
     },
@@ -138,7 +138,7 @@ const SRI_LANKA_REELS_SOURCE = [
         id: 16,
         title: "CEO Insights: Growth and Agility",
         videoUrl: "https://www.youtube.com/embed/ZOVPQRmFpRw",
-        thumbnailUrl: "https://c.animaapp.com/6IK4krLc/img/video-3@2x.png",
+        thumbnailUrl: "/src/assets/images/thumbnails/video4.png",
         description: "Maliban Group CEO shares perspectives on driving agility and sustainable growth in competitive markets.",
         edition: "Sri Lanka"
     }

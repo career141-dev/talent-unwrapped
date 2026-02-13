@@ -42,6 +42,8 @@ export const PodcastEditionWrapper = (): JSX.Element | null => {
   // Smooth scroll to top when edition changes
   useEffect(() => {
     if (validEdition) {
+      const editionTitle = validEdition.charAt(0).toUpperCase() + validEdition.slice(1);
+      document.title = `Talent Unwrapped - ${editionTitle} Edition`;
       window.scrollTo({
         top: 0,
         behavior: "smooth",

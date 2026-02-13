@@ -35,6 +35,7 @@ export interface Episode {
   speakers?: EpisodeSpeaker[];
   featured?: boolean;
   videoUrl?: string;
+  edition?: string;
 }
 
 // Speaker interface used in episodes with minimal properties

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { LANDING_VIDEO_SLIDES } from "@/data/videoSlideData";
-import { LOGOS } from "@/assets";
+import { ASSETS } from "@/assets";
 import {
   PlayCircleFilledIcon,
   ChevronLeftIcon,
@@ -94,7 +94,7 @@ export const HeroBannerSection = (): JSX.Element => {
               <img
                 className="w-full h-full object-contain scale-[2.6]"
                 alt="Prasperant Logo"
-                src={LOGOS.prasperant}
+                src={ASSETS.prasperant}
               />
             </motion.div>
 
@@ -146,10 +146,10 @@ export const HeroBannerSection = (): JSX.Element => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="font-['Geist',Helvetica] font-medium text-[#7bb302] leading-[0.85] block whitespace-nowrap"
+              className="font-['Geist',Helvetica] font-medium text-[#7bb302] leading-tight block whitespace-nowrap"
               style={{
-                fontSize: "clamp(3rem, 14vw, 5rem)",
-                letterSpacing: "-0.01em",
+                fontSize: "clamp(2.5rem, 16vw, 5rem)",
+                letterSpacing: "-0.07em",
                 width: "100%",
               }}
             >
@@ -173,7 +173,7 @@ export const HeroBannerSection = (): JSX.Element => {
           >
             {/* Video Slides */}
             <div className="absolute inset-0">
-              {videoSlides.map((slide, index) => (
+              {videoSlides.map((slide: any, index: number) => (
                 <div
                   key={slide.id}
                   className={`absolute inset-0 transition-opacity duration-700 ${index === currentSlide
@@ -329,7 +329,7 @@ export const HeroBannerSection = (): JSX.Element => {
                   gap: "clamp(0.375rem, 1.6vw, 0.5rem)",
                 }}
               >
-                {videoSlides.map((_, index) => (
+                {videoSlides.map((_: any, index: number) => (
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
@@ -376,7 +376,7 @@ export const HeroBannerSection = (): JSX.Element => {
           <img
             className="w-full h-full object-contain scale-[2.0]"
             alt="Prasperant Logo"
-            src="https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770609977/Artboard_1_copy_2x_xhwixf.png"
+            src={ASSETS.prasperant}
           />
         </motion.div>
 
@@ -454,7 +454,7 @@ export const HeroBannerSection = (): JSX.Element => {
         >
           {/* Video Slides */}
           <div className="absolute inset-0 w-full h-full">
-            {videoSlides.map((slide, index) => (
+            {videoSlides.map((slide: any, index: number) => (
               <div
                 key={slide.id}
                 className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
@@ -606,7 +606,7 @@ export const HeroBannerSection = (): JSX.Element => {
                 bottom: "clamp(1rem, 2vw, 1.875rem)",
               }}
             >
-              {videoSlides.map((_, index) => (
+              {videoSlides.map((_: any, index: number) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}

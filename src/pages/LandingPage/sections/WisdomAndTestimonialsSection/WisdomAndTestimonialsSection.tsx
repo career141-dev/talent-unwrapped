@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { DECORATIVE_IMAGES } from "@/assets";
+import { ASSETS } from "@/assets";
 import { ArrowRightIcon, VerticalLineIcon } from "@/components/Common/Icons";
 import { WISDOM_CONTENT, NAV_LABELS, BUTTONS } from "@/constants/copy";
 
@@ -24,7 +24,7 @@ export const WisdomAndTestimonialsSection = (): JSX.Element => {
             <img
               className="w-full h-full -rotate-180 object-cover hover:scale-105 transition-transform duration-500"
               alt="Professional microphone and studio equipment"
-              src={DECORATIVE_IMAGES.professionalMicrophone}
+              src={ASSETS.professionalMicrophone}
             />
           </div>
         </motion.div>

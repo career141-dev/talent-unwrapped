@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import { DecorativeArrowIcon } from "@/components/Common/Icons";
-import { LOGOS } from "@/assets";
-import { EXTERNAL_LINKS } from "@/constants";
+import { ASSETS } from "@/assets";
+import { LINKS } from "@/config/links";
 import { NAV_LABELS } from "@/constants/copy";
 
 interface Link {
@@ -53,17 +53,17 @@ export const ContactUsSection = (): JSX.Element => {
     { label: NAV_LABELS.HOME, href: "/", onClick: handleHomeClick, external: false },
     {
       label: NAV_LABELS.EXECUTIVE_SEARCH,
-      href: EXTERNAL_LINKS.CAREER141_EXECUTIVE_SEARCH,
+      href: LINKS.executiveSearch,
       external: true,
     },
     {
       label: NAV_LABELS.CULTURE,
-      href: EXTERNAL_LINKS.CAREER141_OUR_CULTURE,
+      href: LINKS.culture,
       external: true,
     },
     {
       label: NAV_LABELS.OUR_JOURNEY,
-      href: EXTERNAL_LINKS.CAREER141_OUR_JOURNEY,
+      href: LINKS.ourJourney,
       external: true,
     },
   ];
@@ -71,7 +71,7 @@ export const ContactUsSection = (): JSX.Element => {
   const informationLinks: Link[] = [
     {
       label: NAV_LABELS.JOBS,
-      href: EXTERNAL_LINKS.CAREER141_JOB_OPENINGS,
+      href: LINKS.jobs,
       external: true,
     },
     {
@@ -85,7 +85,7 @@ export const ContactUsSection = (): JSX.Element => {
   const supportLinks: Link[] = [
     {
       label: NAV_LABELS.CONTACT_US,
-      href: EXTERNAL_LINKS.CAREER141_CONTACT_US,
+      href: LINKS.contactUs,
       external: true,
     },
   ];
@@ -98,7 +98,7 @@ export const ContactUsSection = (): JSX.Element => {
 
   return (
     <footer
-      id="schedule"
+      id="about-us"
       className="flex w-full max-w-[1440px] flex-col lg:flex-row items-center justify-center gap-8 lg:gap-[60px] pt-0 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative bg-white mx-auto"
     >
       {/* Image Section - Fully Responsive */}
@@ -112,7 +112,7 @@ export const ContactUsSection = (): JSX.Element => {
         <img
           className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
           alt="Contact Section Banner"
-          src={LOGOS.contactBanner}
+          src={ASSETS.contactBanner}
         />
       </motion.div>
 

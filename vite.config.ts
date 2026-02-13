@@ -1,4 +1,3 @@
-import { screenGraphPlugin } from "@animaapp/vite-plugin-screen-graph";
 import react from "@vitejs/plugin-react";
 import tailwind from "tailwindcss";
 import { defineConfig } from "vite";
@@ -10,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
-  plugins: [react(), ...(mode === "development" ? [screenGraphPlugin()] : [])],
+  plugins: [react()],
   publicDir: "./static",
   base: mode === "production" ? "/talent-unwrapped/" : "/",
   resolve: {

@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { TheThreeChaptersSectionProps } from "../../../../types";
 import { getEditionContent } from "../../../../data";
 import { MobileCarouselSection } from "../../../../components/Sections/MobileCarouselSection";
 import { LearnMoreModal } from "../../../../pages/Schedule/Components";
-import { DECORATIVE_IMAGES } from "@/assets";
+import { ASSETS } from "@/assets";
 import { ArrowRightIcon, VideoCircleFilledIcon, ExportIcon } from "@/components/Common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, BUTTONS, TALENT_INTRO_CONTENT } from "@/constants/copy";
 
@@ -17,6 +17,14 @@ export const TheThreeChaptersSection = ({
   hideTopSection = false,
 }: TheThreeChaptersSectionProps): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const editionData = getEditionContent(edition);
   const { name: editionName, schedule, chapters } = editionData;
@@ -24,21 +32,21 @@ export const TheThreeChaptersSection = ({
   const decorativeImages = [
     {
       id: 1,
-      src: DECORATIVE_IMAGES.manInHeadphones,
+      src: ASSETS.manInHeadphones,
       alt: "Man in headphones",
       containerClass:
-        "absolute top-[260px] left-[0px] w-[100px] h-[70px] z-0 md:hidden lg:flex lg:top-[150px] lg:left-[871px] lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[-7.30deg] shadow-[12px_12px_30px_#00000017]",
+        `absolute ${isMobile ? "top-[280px]" : "top-[260px] lg:top-[150px]"} left-[5%] lg:left-[871px] w-[100px] h-[70px] z-0 md:hidden lg:flex lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[-7.30deg] shadow-[12px_12px_30px_#00000017]`,
       imageClass:
-        "w-full h-full object-cover rotate-[7.30deg] scale-[2.2] translate-x-[40px] translate-y-[25px]",
+        `w-full h-full object-cover rotate-[7.30deg] ${isMobile ? "scale-[1.8] translate-x-[20px] translate-y-[10px]" : "scale-[2.2] translate-x-[40px] translate-y-[25px]"}`,
     },
     {
       id: 2,
-      src: DECORATIVE_IMAGES.youngBlackMan,
+      src: ASSETS.youngBlackMan,
       alt: "Young black man in headphones",
       containerClass:
-        "absolute top-[75px] left-[230px] w-[120px] h-[84px] z-0 md:hidden lg:flex lg:top-52 lg:left-[1125px] lg:right-auto lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017]",
+        `absolute ${isMobile ? "top-[70px] right-[5%]" : "top-[75px] sm:left-[230px] lg:left-[1125px]"} w-[120px] h-[84px] z-0 md:hidden lg:flex lg:top-52 lg:right-auto lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017]`,
       imageClass:
-        "w-full h-full object-cover rotate-[-6.49deg] scale-[2.2] translate-x-[40px] translate-y-[25px]",
+        `w-full h-full object-cover rotate-[-6.49deg] ${isMobile ? "scale-[1.8] translate-x-[20px] translate-y-[10px]" : "scale-[2.2] translate-x-[40px] translate-y-[25px]"}`,
     },
   ];
 

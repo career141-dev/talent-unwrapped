@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { LATEST_PODCASTS_DATA } from "@/data/episodeData";
+import { LATEST_PODCASTS } from "@/data/episodes";
 import { BackArrowIcon, NextArrowIcon, PlayIcon } from "@/components/Common/Icons";
 import { EDITION_NAMES } from "@/constants/copy";
 
@@ -13,9 +13,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isManualScrollRef = useRef(true);
 
-  const allPodcastDataSets = LATEST_PODCASTS_DATA;
-
-  const podcastData = allPodcastDataSets[0]; // Use first dataset
+  const podcastData = LATEST_PODCASTS;
   const ITEMS_PER_PAGE = 5;
   const totalPages = Math.ceil(podcastData.length / ITEMS_PER_PAGE);
   const currentPage = Math.floor(currentIndex / ITEMS_PER_PAGE);
@@ -165,7 +163,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
     <section
       ref={sectionRef}
       id="episodes"
-      className="relative w-full bg-white py-2 sm:py-3 md:py-4 lg:py-[8px] px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden"
+      className="relative w-full bg-white py-10 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden"
     >
       <div className="w-full">
         <motion.div
@@ -173,7 +171,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col items-start gap-8 md:gap-10 lg:gap-12 w-full transition-all duration-700"
+          className="flex flex-col items-start gap-8 md:gap-10 lg:gap-12 w-full"
         >
           <header className="flex flex-col items-start gap-2 relative w-full">
             <h2 className="relative w-full max-w-full lg:max-w-[721px] [font-family:'Geist',Helvetica] font-medium text-transparent text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] xl:text-[52px] tracking-[-0.02em] sm:tracking-[-0.025em] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">
@@ -216,7 +214,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
           {/* Scrollable Podcasts Container */}
           <div
             ref={scrollContainerRef}
-            className="w-full max-w-full overflow-x-auto overscroll-x-contain scrollbar-hide snap-x snap-mandatory relative pb-4"
+            className="w-full max-w-full overflow-x-auto overscroll-x-contain scrollbar-hide snap-x snap-mandatory relative pb-8"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
@@ -234,7 +232,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
                 <motion.article
                   key={podcast.id}
                   variants={itemVariants}
-                  className="relative w-[250px] sm:w-[270px] md:w-[282px] flex flex-col gap-3 md:gap-4 group transition-all duration-500 flex-shrink-0 snap-start"
+                  className="relative w-[250px] sm:w-[270px] md:w-[282px] flex flex-col gap-3 md:gap-4 group flex-shrink-0 snap-start"
                 >
                   <div
                     className="relative w-full h-[150px] sm:h-[160px] md:h-[180px] bg-black rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 group cursor-pointer"

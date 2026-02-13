@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { EPISODE_IMAGES } from "@/assets";
+import { ASSETS } from "@/assets";
 import { ArrowRightIcon } from "@/components/Common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, GUEST_SECTION_CONTENT } from "@/constants/copy";
 
@@ -31,27 +31,27 @@ export const EpisodeDetailsSection = ({ }: EpisodeDetailsSectionProps): JSX.Elem
   const images: ImageItem[] = [
     {
       id: 1,
-      src: EPISODE_IMAGES.handsomeElegantMen,
+      src: ASSETS.handsomeElegantMen,
       alt: "Handsome elegant men",
     },
     {
       id: 2,
-      src: EPISODE_IMAGES.professionalBusinessman,
+      src: ASSETS.professionalBusinessman,
       alt: "Professional",
     },
     {
       id: 3,
-      src: EPISODE_IMAGES.recreationArea,
+      src: ASSETS.recreationArea,
       alt: "In recreation area",
     },
     {
       id: 4,
-      src: EPISODE_IMAGES.teamReporters,
+      src: ASSETS.teamReporters,
       alt: "Team of reporters",
     },
     {
       id: 5,
-      src: EPISODE_IMAGES.fourPeopleMeeting,
+      src: ASSETS.fourPeopleMeeting,
       alt: "Four people meeting",
     },
   ];
@@ -277,7 +277,7 @@ export const EpisodeDetailsSection = ({ }: EpisodeDetailsSectionProps): JSX.Elem
       <div className="relative w-full overflow-hidden z-10 mt-8 lg:mt-[-200px]" aria-hidden="true">
         <motion.div
           animate={{ x: "-25%" }}
-          transition={{ duration: 30, ease: "linear", repeat: Infinity }}
+          transition={{ duration: 25, ease: "linear", repeat: Infinity }}
           className="flex whitespace-nowrap w-max"
         >
           {Array(4).fill(null).map((_, i) => (

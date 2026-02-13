@@ -4,19 +4,14 @@ This directory contains centralized configuration for all static assets (images,
 
 ## Structure
 
-```
 src/assets/
-├── index.ts           # Main export file
-├── images.config.ts   # Image URLs configuration
-├── videos.config.ts   # Video URLs configuration
-├── images/           # Physical image files (when needed)
+├── index.ts           # Main export file (Standardizes all assets/links)
+├── images/           # Physical image files
 │   ├── decorative/
 │   ├── episodes/
 │   ├── logos/
 │   └── speakers/
-└── videos/           # Physical video files (when needed)
-    ├── episodes/
-    └── reels/
+└── videos/           # Physical video files
 ```
 
 ## Usage

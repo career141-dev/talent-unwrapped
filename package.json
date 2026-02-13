@@ -7,6 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "preview": "vite preview",
+    "lint": "tsc",
     "deploy": "npm run build && gh-pages -d dist",
     "predeploy": "npm run build"
   },
@@ -27,7 +29,6 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@animaapp/vite-plugin-screen-graph": "^0.1.5",
     "@types/node": "^25.1.0",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.0",

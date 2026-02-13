@@ -1,5 +1,5 @@
 // Centralized data exports for the application
-export * from "./episodeData";
+export * from "./episodes";
 export * from "./chapterData";
 export * from "./videoSlideData";
 export * from "./speakerData";

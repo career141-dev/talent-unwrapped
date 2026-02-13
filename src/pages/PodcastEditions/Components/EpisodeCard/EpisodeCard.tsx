@@ -51,10 +51,17 @@ export const EpisodeCard = ({
   };
 
   return (
-    <button
-      key={episode.id}
+    <div
       onClick={handleCardClick}
-      className="flex flex-col bg-white rounded-[16px] overflow-hidden shadow-[0px_4px_16px_rgba(0,0,0,0.08)] hover:shadow-[0px_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:scale-[1.02] text-left border-none cursor-pointer group"
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleCardClick();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      className="flex flex-col bg-white rounded-[16px] overflow-hidden shadow-[0px_4px_16px_rgba(0,0,0,0.08)] hover:shadow-[0px_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 hover:scale-[1.02] text-left border-none cursor-pointer group outline-none focus:ring-2 focus:ring-[#7bb302] focus:ring-offset-2"
     >
       {/* Episode Image and Featured Badge */}
       <div className="relative w-full h-[240px] bg-[#2d2d2d] overflow-hidden">
@@ -193,6 +200,6 @@ export const EpisodeCard = ({
           </div>
         </div>
       </div>
-    </button>
+    </div>
   );
 };

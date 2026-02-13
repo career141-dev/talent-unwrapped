@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   FooterSection,
@@ -7,7 +7,7 @@ import {
   SubmitFormSection,
 } from "../../components";
 import { EpisodeCard } from "../PodcastEditions/Components/EpisodeCard";
-import { DUBAI_EPISODES, SINGAPORE_EPISODES, COLOMBO_EPISODES } from "../../data/episodeData";
+import { EPISODES, getEpisodesByEdition } from "../../data/episodes";
 import { TalentIntroductionSection } from "../LandingPage/Sections/TalentIntroductionSection/TalentIntroductionSection";
 import { SECTION_TITLES, NAV_LABELS, EDITION_NAMES, FEEDBACK_MESSAGES } from "@/constants/copy";
 
@@ -15,23 +15,20 @@ export const EpisodesPage = (): JSX.Element => {
   const navigate = useNavigate();
   const [filter, setFilter] = useState<"all" | "dubai" | "singapore" | "sri-lanka">("all");
 
-  const allEpisodes = [...DUBAI_EPISODES, ...SINGAPORE_EPISODES, ...COLOMBO_EPISODES];
+  useEffect(() => {
+    document.title = "Talent Unwrapped - All Episodes";
+  }, []);
 
-  const displayedEpisodes =
-    filter === "all"
-      ? allEpisodes
-      : filter === "dubai"
-        ? DUBAI_EPISODES
-        : filter === "singapore"
-          ? SINGAPORE_EPISODES
-          : COLOMBO_EPISODES;
+  const displayedEpisodes = getEpisodesByEdition(filter);
 
   const handleViewEpisode = (episodeId: string | number) => {
     // Determine edition for the episode to pass in state
+    const episode = EPISODES.find(ep => ep.id === String(episodeId));
     let editionName = EDITION_NAMES.DUBAI;
-    if (SINGAPORE_EPISODES.find(ep => ep.id === episodeId || ep.id === String(episodeId))) {
+
+    if (episode?.edition === "Singapore") {
       editionName = EDITION_NAMES.SINGAPORE;
-    } else if (COLOMBO_EPISODES.find(ep => ep.id === episodeId || ep.id === String(episodeId))) {
+    } else if (episode?.edition === "Sri Lanka") {
       editionName = EDITION_NAMES.SRI_LANKA;
     }
 
@@ -65,10 +62,10 @@ export const EpisodesPage = (): JSX.Element => {
                 </h1>
 
                 {/* Filter Controls */}
-                <div className="flex items-center gap-2 sm:gap-4 bg-gray-50 p-1 rounded-full border border-gray-100">
+                <div className="flex items-center gap-2 sm:gap-4 bg-gray-50 p-1 rounded-full border border-gray-100 overflow-x-auto scrollbar-hide max-w-[calc(100vw-32px)] sm:max-w-full">
                   <button
                     onClick={() => setFilter("all")}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === "all"
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${filter === "all"
                       ? "bg-white text-[#7bb302] shadow-sm"
                       : "text-gray-500 hover:text-gray-900"
                       }`}
@@ -77,7 +74,7 @@ export const EpisodesPage = (): JSX.Element => {
                   </button>
                   <button
                     onClick={() => setFilter("dubai")}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === "dubai"
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${filter === "dubai"
                       ? "bg-white text-[#ed2939] shadow-sm"
                       : "text-gray-500 hover:text-gray-900"
                       }`}
@@ -86,7 +83,7 @@ export const EpisodesPage = (): JSX.Element => {
                   </button>
                   <button
                     onClick={() => setFilter("singapore")}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === "singapore"
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${filter === "singapore"
                       ? "bg-white text-[#7cb403] shadow-sm"
                       : "text-gray-500 hover:text-gray-900"
                       }`}
@@ -95,7 +92,7 @@ export const EpisodesPage = (): JSX.Element => {
                   </button>
                   <button
                     onClick={() => setFilter("sri-lanka")}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === "sri-lanka"
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${filter === "sri-lanka"
                       ? "bg-white text-[#7bb302] shadow-sm"
                       : "text-gray-500 hover:text-gray-900"
                       }`}

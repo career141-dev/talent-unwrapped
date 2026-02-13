@@ -149,6 +149,15 @@ export const FullEpisode = (): JSX.Element => {
     };
   }, []);
 
+  // Set page title
+  useEffect(() => {
+    if (episode) {
+      document.title = `Talent Unwrapped - ${episode.title}`;
+    } else {
+      document.title = "Talent Unwrapped - Episode Details";
+    }
+  }, [episode]);
+
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);

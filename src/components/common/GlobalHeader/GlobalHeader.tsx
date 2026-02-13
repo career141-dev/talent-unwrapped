@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { EditionsDropdown } from "../../Forms/EditionsDropdown";
-import { LOGOS } from "@/assets";
+import { ASSETS, LINKS } from "@/assets";
 import { ArrowRightIcon, CloseIcon } from "../../Common/Icons";
-import { EXTERNAL_LINKS } from "@/constants";
 import { NAV_LABELS } from "@/constants/copy";
 
 export const GlobalHeader = (): JSX.Element => {
@@ -167,7 +166,7 @@ export const GlobalHeader = (): JSX.Element => {
           {/* Logo */}
           <a
             href="/"
-            className="relative w-32 sm:w-36 md:w-40 lg:w-60 h-12 sm:h-14 md:h-14 lg:h-16 flex-shrink-0 transition-transform duration-300 hover:scale-105 z-[101]"
+            className="relative w-32 sm:w-36 md:w-40 lg:w-60 h-10 sm:h-12 md:h-14 lg:h-16 flex-shrink-0 transition-all duration-500 hover:scale-[1.03] z-[101] group"
             onClick={(e) => {
               e.preventDefault();
               navigate("/");
@@ -175,9 +174,9 @@ export const GlobalHeader = (): JSX.Element => {
             }}
           >
             <img
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.05)] transition-all duration-500 group-hover:drop-shadow-[0_8px_16px_rgba(0,0,0,0.1)] group-hover:brightness-[1.02]"
               alt="Career141 Logo"
-              src={LOGOS.career141}
+              src={ASSETS.logo}
             />
           </a>
 
@@ -215,7 +214,7 @@ export const GlobalHeader = (): JSX.Element => {
 
           <div className="hidden lg:inline-flex items-center gap-2 md:gap-4 relative flex-shrink-0">
             <a
-              href={EXTERNAL_LINKS.CAREER141}
+              href={LINKS.ourJourney}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-10 md:h-12 lg:h-[54px] items-center justify-center gap-1 md:gap-2 px-3 md:px-4 lg:px-5 py-2 md:py-3 lg:py-4 relative flex-[0_0_auto] bg-[#222223] rounded-[60px] hover:bg-[#333333] transition-all duration-300 hover:scale-105 hover:shadow-lg"
@@ -231,7 +230,7 @@ export const GlobalHeader = (): JSX.Element => {
           <div className="flex lg:hidden items-center gap-3 relative flex-shrink-0 z-[101]">
             {/* Tablet CTA Button (visible on md to lg) */}
             <a
-              href={EXTERNAL_LINKS.CAREER141}
+              href={LINKS.ourJourney}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:inline-flex lg:hidden h-10 items-center justify-center gap-2 px-4 py-2 bg-[#222223] rounded-[60px] hover:bg-[#333333] transition-all duration-300"
@@ -243,7 +242,7 @@ export const GlobalHeader = (): JSX.Element => {
 
             {/* Mobile CTA Button (Compact, visible only below md) */}
             <a
-              href={EXTERNAL_LINKS.CAREER141}
+              href={LINKS.ourJourney}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex md:hidden h-6 items-center justify-center gap-1 px-3 py-1 bg-[#232323] rounded-[60px] hover:bg-[#333333] transition-all duration-300"

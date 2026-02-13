@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   GlobalHeader,
   ContactUsSection,
@@ -15,6 +16,10 @@ import { TheThreeChaptersSection } from "../../PodcastEditions/Sections";
  * - FooterSection for copyright footer
  */
 export const Schedule = (): JSX.Element => {
+  useEffect(() => {
+    document.title = "Talent Unwrapped - Event Schedule";
+  }, []);
+
   return (
     <main className="flex flex-col items-center relative bg-white w-full">
       {/* Header - Consistent across all pages */}

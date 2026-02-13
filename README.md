@@ -1,26 +1,49 @@
-## Getting started
+# Talent Unwrapped
 
-> **Prerequisites:**
-> The following steps require [NodeJS](https://nodejs.org/en/) to be installed on your system, so please
-> install it beforehand if you haven't already.
+Talent Unwrapped is a podcast series exploring the human dimensions of ambition, design, and leadership.
 
-To get started with your project, you'll first need to install the dependencies with:
+## Prerequisites
 
-```
-npm install
-```
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [npm](https://www.npmjs.com/)
 
-Then, you'll be able to run a development version of the project with:
+## Getting Started
 
-```
-npm run dev
-```
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-After a few seconds, your project should be accessible at the address
-[http://localhost:5173/](http://localhost:5173/)
+2. **Development Mode**
+   ```bash
+   npm run dev
+   ```
+   Access the app at [http://localhost:5173/](http://localhost:5173/)
 
-If you are satisfied with the result, you can finally build the project for release with:
+3. **Build for Production**
+   ```bash
+   npm run build
+   ```
+   The production-ready assets will be in the `dist/` directory.
 
-```
-npm run build
-```
+4. **Preview Production Build**
+   ```bash
+   npm run preview
+   ```
+   Test the actual production build locally before deploying.
+
+## Environment Variables
+
+- `VITE_CLOUDINARY_CLOUD_NAME`: Your Cloudinary cloud name.
+- `VITE_EMAILJS_SERVICE_ID`: EmailJS service ID for forms.
+- `VITE_EMAILJS_TEMPLATE_ID`: EmailJS template ID.
+- `VITE_EMAILJS_PUBLIC_KEY`: EmailJS public API key.
+
+> [!NOTE]
+> All frontend environment variables must start with `VITE_`.
+
+## Deployment (Cloudflare Pages)
+
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+- **Fallback Routing**: Handled by `static/_redirects` for SPA support.

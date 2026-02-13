@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   FooterSection,
   GlobalHeader,
@@ -22,6 +23,10 @@ import {
  * SpeakersProfileSection breaks out of global layout constraints for full-width design
  */
 export const LandingPage = (): JSX.Element => {
+  useEffect(() => {
+    document.title = "Talent Unwrapped - Home";
+  }, []);
+
   return (
     <>
       <main className="flex flex-col items-center relative bg-white w-full">
