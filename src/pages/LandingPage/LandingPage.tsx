@@ -12,7 +12,7 @@ import {
   SpeakersProfileSection,
   TalentIntroductionSection,
   WisdomAndTestimonialsSection,
-} from "./Sections";
+} from "./sections";
 import SEO from "../../components/common/SEO/SEO";
 
 /**

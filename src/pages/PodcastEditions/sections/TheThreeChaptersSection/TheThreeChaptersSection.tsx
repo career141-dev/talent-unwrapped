@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { TheThreeChaptersSectionProps } from "../../../../types";
 import { getEditionContent } from "../../../../data";
 import { MobileCarouselSection } from "../../../../components/sections/MobileCarouselSection";
-import { LearnMoreModal } from "../../../../pages/Schedule/Components";
+import { LearnMoreModal } from "../../../../pages/Schedule/components";
 import { ASSETS } from "@/assets";
 import { ArrowRightIcon, VideoCircleFilledIcon, ExportIcon } from "@/components/common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, BUTTONS, TALENT_INTRO_CONTENT } from "@/constants/copy";

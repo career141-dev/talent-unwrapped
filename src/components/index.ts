@@ -7,7 +7,7 @@ export {
   SubmitFormSection,
   FooterSection,
   ContactUsSection,
-} from "./Sections";
+} from "./sections";
 
 // Form components
-export { EditionsDropdown } from "./Forms";
+export { EditionsDropdown } from "./forms";

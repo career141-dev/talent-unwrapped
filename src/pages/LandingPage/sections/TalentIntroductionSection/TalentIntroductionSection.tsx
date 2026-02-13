@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { LearnMoreModal } from "../../../../pages/Schedule/Components";
+import { LearnMoreModal } from "../../../../pages/Schedule/components";
 import { MobileCarouselSection } from "../../../../components/sections/MobileCarouselSection";
 import { EditionFilter } from "../../../../components/UI/EditionFilter";
 import { getEditionContent } from "../../../../data";

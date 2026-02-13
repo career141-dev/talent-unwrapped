@@ -3,7 +3,7 @@ import {
   ContactUsSection,
   FooterSection,
 } from "../../../components";
-import { TheThreeChaptersSection } from "../../PodcastEditions/Sections";
+import { TheThreeChaptersSection } from "../../PodcastEditions/sections";
 import SEO from "../../../components/common/SEO/SEO";
 
 /**
