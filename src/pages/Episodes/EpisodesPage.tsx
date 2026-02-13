@@ -6,7 +6,7 @@ import {
   ContactUsSection,
   SubmitFormSection,
 } from "../../components";
-import { EpisodeCard } from "../PodcastEditions/Components/EpisodeCard";
+import { EpisodeCard } from "../PodcastEditions/components/EpisodeCard";
 import { EPISODES, getEpisodesByEdition } from "../../data/episodes";
 import { TalentIntroductionSection } from "../LandingPage/sections/TalentIntroductionSection/TalentIntroductionSection";
 import { SECTION_TITLES, NAV_LABELS, EDITION_NAMES, FEEDBACK_MESSAGES } from "@/constants/copy";

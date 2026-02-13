@@ -8,7 +8,7 @@ import {
   FooterSection,
   SubmitFormSection,
 } from "../../components";
-import { KeyQuestionsSection } from "./Sections/KeyQuestionsSection";
+import { KeyQuestionsSection } from "./sections/KeyQuestionsSection";
 import {
   SpeakersProfileSection,
   EpisodeDetailsSection,
