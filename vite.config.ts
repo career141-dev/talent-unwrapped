@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 export default defineConfig(({ mode }) => ({
   plugins: [react()],
   publicDir: "./static",
-  base: mode === "production" ? "/talent-unwrapped/" : "/",
+  base: "/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
