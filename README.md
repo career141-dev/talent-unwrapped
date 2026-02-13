@@ -1,49 +1,81 @@
 # Talent Unwrapped
 
-Talent Unwrapped is a podcast series exploring the human dimensions of ambition, design, and leadership.
+> A podcast series exploring the human dimensions of ambition, design, and leadership.
 
-## Prerequisites
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/career141/talent-unwrapped)
+[![Deployment](https://img.shields.io/badge/deployment-Cloudflare%20Pages-orange.svg)](https://talentunwrapped.com)
 
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- [npm](https://www.npmjs.com/)
+## 🎯 About
 
-## Getting Started
+Talent Unwrapped features conversations about leadership, innovation, and the future of work across Singapore, Dubai, and the GCC region. Created by [Career141](https://career141.com).
 
-1. **Install Dependencies**
-   ```bash
-   npm install
-   ```
+## 🚀 Tech Stack
 
-2. **Development Mode**
-   ```bash
-   npm run dev
-   ```
-   Access the app at [http://localhost:5173/](http://localhost:5173/)
+- **Framework:** React 18 + TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **SEO:** React Helmet Async
+- **Hosting:** Cloudflare Pages
+- **CDN:** Cloudinary (Images), YouTube (Videos)
 
-3. **Build for Production**
-   ```bash
-   npm run build
-   ```
-   The production-ready assets will be in the `dist/` directory.
+## 📦 Installation
 
-4. **Preview Production Build**
-   ```bash
-   npm run preview
-   ```
-   Test the actual production build locally before deploying.
+```bash
+# Clone repository
+git clone https://github.com/career141/talent-unwrapped.git
+cd talent-unwrapped
 
-## Environment Variables
+# Install dependencies
+npm install
 
-- `VITE_CLOUDINARY_CLOUD_NAME`: Your Cloudinary cloud name.
-- `VITE_EMAILJS_SERVICE_ID`: EmailJS service ID for forms.
-- `VITE_EMAILJS_TEMPLATE_ID`: EmailJS template ID.
-- `VITE_EMAILJS_PUBLIC_KEY`: EmailJS public API key.
+# Build for production
+npm run build
+```
 
-> [!NOTE]
-> All frontend environment variables must start with `VITE_`.
+## 🛠️ Available Scripts
 
-## Deployment (Cloudflare Pages)
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run lint         # Run ESLint check
+npm run type-check   # TypeScript type checking
+npm run release      # Create new release (auto-versioning)
+```
 
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
-- **Fallback Routing**: Handled by `static/_redirects` for SPA support.
+## 🌍 Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `VITE_CLOUDINARY_CLOUD_NAME` | Cloudinary account name |
+| `VITE_EMAILJS_SERVICE_ID` | EmailJS Service ID |
+| `VITE_EMAILJS_PUBLIC_KEY` | EmailJS Public Key |
+
+## 📁 Project Structure
+
+```
+talent-unwrapped/
+├── public/              # Static assets (including _headers, _redirects)
+├── src/                 # Application source code
+│   ├── components/      # Reusable UI components
+│   ├── pages/           # Page components & sections
+│   ├── data/            # Static data & mocks
+│   ├── types/           # TS Interfaces
+│   └── assets/          # Global styles & assets
+├── scripts/             # Utility scripts (Sitemap gen)
+└── package.json
+```
+
+## 🔄 Release Process
+
+```bash
+# Patch release (1.0.0 → 1.0.1)
+npm run release:patch
+
+# Push tags
+git push --follow-tags origin main
+```
+
+---
+Made with ❤️ by Career141

@@ -20,7 +20,7 @@ interface EpisodeDetailsSectionProps {
   // Props removed to maintain consistent design
 }
 
-export const EpisodeDetailsSection = ({ }: EpisodeDetailsSectionProps): JSX.Element => {
+export const EpisodeDetailsSection = (_props: EpisodeDetailsSectionProps): JSX.Element => {
   const episodeTypes: EpisodeType[] = [
     { id: 1, title: GUEST_SECTION_CONTENT.FIRESIDE_CHATS, isActive: true },
     { id: 2, title: GUEST_SECTION_CONTENT.ONE_ON_ONE, isActive: false },

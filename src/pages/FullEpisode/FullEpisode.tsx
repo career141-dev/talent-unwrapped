@@ -21,6 +21,7 @@ import {
 import { HERO_CONTENT } from "@/constants/copy";
 import { getVideoSlidesByEdition, getEpisodeById, getEpisodesByEdition } from "@/data";
 import { EpisodeSpeaker, Speaker, Episode } from "@/types";
+import SEO from "../../components/Common/SEO/SEO";
 
 /**
  * Helper to transform YouTube URLs into embed URLs
@@ -102,6 +103,32 @@ export const FullEpisode = (): JSX.Element => {
     thumbnail: episode?.image || videoSlides[0].thumbnail,
   };
 
+  // Episode Schema
+  const episodeSchema = episode ? {
+    "@context": "https://schema.org",
+    "@type": "PodcastEpisode",
+    "name": episode.title,
+    "description": episode.description,
+    "url": `https://talentunwrapped.com/episode/${episode.id}`,
+    "datePublished": episode.date,
+    "image": episode.image || getYoutubeThumbnail(episode.videoUrl),
+    "associatedMedia": {
+      "@type": "MediaObject",
+      "contentUrl": episode.videoUrl,
+    },
+    "partOfSeries": {
+      "@type": "PodcastSeries",
+      "name": "Talent Unwrapped",
+      "url": "https://talentunwrapped.com",
+    },
+    "actor": episode.speakers?.map(s => ({
+      "@type": "Person",
+      "name": s.name,
+    })),
+    "genre": ["Business", "Leadership"],
+    "inLanguage": "en",
+  } : undefined;
+
   // Convert episode speakers to Speaker type for the section
   // If episode has no speakers, specificSpeakers will be undefined and the component will fall back to edition speakers
   const specificSpeakers: Speaker[] | undefined = episode?.speakers?.map((s: EpisodeSpeaker, index: number) => ({
@@ -110,7 +137,7 @@ export const FullEpisode = (): JSX.Element => {
     views: "",
     name: s.name,
     position: s.role || "",
-    image: s.avatar,
+    image: s.avatar || "",
     edition: edition,
   }));
 
@@ -148,15 +175,6 @@ export const FullEpisode = (): JSX.Element => {
       }
     };
   }, []);
-
-  // Set page title
-  useEffect(() => {
-    if (episode) {
-      document.title = `Talent Unwrapped - ${episode.title}`;
-    } else {
-      document.title = "Talent Unwrapped - Episode Details";
-    }
-  }, [episode]);
 
   // Scroll to top on mount
   useEffect(() => {
@@ -441,30 +459,42 @@ export const FullEpisode = (): JSX.Element => {
   );
 
   return (
-    <main className="flex flex-col items-center relative w-full bg-white">
-      <GlobalHeader />
+    <>
+      <SEO
+        title={episode?.title || "Episode Details"}
+        description={episode?.description}
+        keywords={`${episode?.speakers?.map(s => s.name).join(", ")}, ${episode?.title}, talent unwrapped, ${edition} podcast`}
+        url={`/episode/${episodeId}`}
+        image={episode?.image || getYoutubeThumbnail(episode?.videoUrl || "")}
+        type="article"
+        publishedTime={episode?.date}
+        podcastSchema={episodeSchema}
+      />
+      <main className="flex flex-col items-center relative w-full bg-white">
+        <GlobalHeader />
 
-      {content}
+        {content}
 
-      {/* Key Questions Section */}
-      <KeyQuestionsSection edition={editionKey} episodeId={episode?.id} />
+        {/* Key Questions Section */}
+        <KeyQuestionsSection edition={editionKey} episodeId={episode?.id} />
 
-      {/* Reels Section */}
-      <ReelsSection edition={edition as "Dubai" | "Singapore" | "Sri Lanka"} />
+        {/* Reels Section */}
+        <ReelsSection edition={edition as "Dubai" | "Singapore" | "Sri Lanka"} />
 
-      {/* Episode Details Section - Outside layout for full-width scrolling text */}
-      <EpisodeDetailsSection />
+        {/* Episode Details Section - Outside layout for full-width scrolling text */}
+        <EpisodeDetailsSection />
 
-      {/* About Section - The Three Chapters */}
-      <TalentIntroductionSection />
+        {/* About Section - The Three Chapters */}
+        <TalentIntroductionSection />
 
-      {/* Submit Form Section */}
-      <SubmitFormSection />
+        {/* Submit Form Section */}
+        <SubmitFormSection />
 
-      {/* About Us Section */}
-      <ContactUsSection />
+        {/* About Us Section */}
+        <ContactUsSection />
 
-      <FooterSection />
-    </main>
+        <FooterSection />
+      </main>
+    </>
   );
 };

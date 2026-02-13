@@ -1,1 +1,6 @@
-/* /index.html 200
+# Legacy redirects
+/singapore  /edition/singapore  301
+/dubai      /edition/dubai      301
+
+# SPA fallback (MUST be last)
+/*  /index.html  200

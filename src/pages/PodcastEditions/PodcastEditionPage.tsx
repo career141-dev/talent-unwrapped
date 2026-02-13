@@ -1,6 +1,7 @@
 import { EpisodeLayout, EditionType } from "../../layouts/EpisodeLayout";
 import { Episode } from "../../types";
 import { EpisodeCard } from "./Components/EpisodeCard";
+import SEO from "../../components/Common/SEO/SEO";
 
 interface PodcastEditionPageProps {
   edition: EditionType;
@@ -20,8 +21,57 @@ export const PodcastEditionPage = ({
   onViewEpisode,
   children,
 }: PodcastEditionPageProps): JSX.Element => {
-  // Determine color scheme based on edition
   const isDubai = edition === "dubai";
+
+  const seoData = {
+    dubai: {
+      title: "Dubai Edition - Building Future-Ready Talent in the GCC",
+      description:
+        "Talent Unwrapped Dubai Edition features conversations on HR transformation, business impact, and future-ready talent strategies in the GCC and Middle East.",
+      keywords:
+        "dubai podcast, GCC talent podcast, dubai leadership, middle east business, HR transformation GCC, future-ready talent dubai, UAE podcast",
+      image:
+        "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770693712/WhatsApp_Image_2026-02-10_at_7.20.05_AM_unwtyi.jpg",
+    },
+    singapore: {
+      title: "Singapore Edition - Beyond Resilience & Leadership Strength",
+      description:
+        "Talent Unwrapped Singapore Edition explores leadership strength, organizational agility, and talent trends shaping Southeast Asia's business landscape.",
+      keywords:
+        "singapore leadership podcast, singapore talent trends, organizational agility singapore, southeast asia leadership, singapore business podcast, resilience leadership",
+      image:
+        "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770693712/Frame_1000003689_1_pq4rv5.png",
+    },
+    "sri-lanka": {
+      title: "Sri Lanka Edition - Colombo Talent Suite Leadership Stories",
+      description:
+        "Talent Unwrapped Sri Lanka Edition explores leadership journeys and talent development in Colombo and across Sri Lanka's business ecosystem.",
+      keywords:
+        "sri lanka leadership podcast, colombo talent, sri lanka business podcast, leadership sri lanka, talent development colombo",
+      image:
+        "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770883420/Frame_4449057_1_1_npu1wb.png",
+    },
+  };
+
+  const currentSEO = seoData[edition as keyof typeof seoData] || seoData.dubai;
+
+  const editionSchema = {
+    "@context": "https://schema.org",
+    "@type": "PodcastSeason",
+    "name": `Talent Unwrapped - ${edition.charAt(0).toUpperCase() + edition.slice(1)} Edition`,
+    "description": currentSEO.description,
+    "partOfSeries": {
+      "@type": "PodcastSeries",
+      "name": "Talent Unwrapped",
+      "url": "https://talentunwrapped.com",
+    },
+    "location": {
+      "@type": "Place",
+      "name": edition.charAt(0).toUpperCase() + edition.slice(1),
+    },
+  };
+
+  // Determine color scheme based on edition
   const titleColorClass = isDubai
     ? "text-[#ed2939]" // Dubai: Red first
     : "text-[#7cb403]"; // Singapore: Green first
@@ -64,8 +114,18 @@ export const PodcastEditionPage = ({
   );
 
   return (
-    <EpisodeLayout edition={edition} showChapters showContact showFooter>
-      {episodesContent}
-    </EpisodeLayout>
+    <>
+      <SEO
+        title={currentSEO.title}
+        description={currentSEO.description}
+        keywords={currentSEO.keywords}
+        url={`/edition/${edition}`}
+        image={currentSEO.image}
+        podcastSchema={editionSchema}
+      />
+      <EpisodeLayout edition={edition} showChapters showContact showFooter>
+        {episodesContent}
+      </EpisodeLayout>
+    </>
   );
 };
