@@ -5,8 +5,14 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
-import { useEffect } from "react";
-import { LandingPage } from "./pages/LandingPage";
+import { Suspense, lazy, useEffect } from "react";
+const LandingPage = lazy(() => import("./pages/LandingPage").then(module => ({ default: module.LandingPage })));
+const EpisodesPage = lazy(() => import("./pages/Episodes").then(module => ({ default: module.EpisodesPage })));
+const PodcastEditionWrapper = lazy(() => import("./pages/PodcastEditions/PodcastEditionWrapper").then(module => ({ default: module.PodcastEditionWrapper })));
+const FullEpisode = lazy(() => import("./pages/FullEpisode").then(module => ({ default: module.FullEpisode })));
+const Schedule = lazy(() => import("./pages/Schedule").then(module => ({ default: module.Schedule })));
+const NotFound = lazy(() => import("./pages/NotFound/NotFound").then(module => ({ default: module.NotFound })));
+import { ErrorBoundary, LoadingIndicator } from "./components/Common";
 
 /**
  * Helper component to scroll to top on every route change
@@ -32,13 +38,6 @@ const removePreloader = () => {
   }
 };
 
-import { EpisodesPage } from "./pages/Episodes";
-import { PodcastEditionWrapper } from "./pages/PodcastEditions/PodcastEditionWrapper";
-import { FullEpisode } from "./pages/FullEpisode";
-import { Schedule } from "./pages/Schedule";
-import { NotFound } from "./pages/NotFound/NotFound";
-import { ErrorBoundary, LoadingIndicator } from "./components/Common";
-
 export const App = (): JSX.Element => {
   useEffect(() => {
     removePreloader();
@@ -47,39 +46,40 @@ export const App = (): JSX.Element => {
   return (
     <Router>
       <ErrorBoundary>
-        <LoadingIndicator />
-        <ScrollToTop />
-        <div className="min-h-screen w-full relative bg-white">
-          <Routes>
-            {/* Landing Page - Root (Default Initial View) */}
-            <Route path="/" element={<LandingPage />} />
+        <Suspense fallback={<LoadingIndicator />}>
+          <ScrollToTop />
+          <div className="min-h-screen w-full relative bg-white">
+            <Routes>
+              {/* Landing Page - Root (Default Initial View) */}
+              <Route path="/" element={<LandingPage />} />
 
-            {/* Episodes Page - List of all episodes */}
-            <Route path="/episodes" element={<EpisodesPage />} />
+              {/* Episodes Page - List of all episodes */}
+              <Route path="/episodes" element={<EpisodesPage />} />
 
-            {/* Single route for both Singapore & Dubai editions - NO remount on switch */}
-            <Route path="/edition/:edition" element={<PodcastEditionWrapper />} />
+              {/* Single route for both Singapore & Dubai editions - NO remount on switch */}
+              <Route path="/edition/:edition" element={<PodcastEditionWrapper />} />
 
-            {/* Legacy routes - redirect for backward compatibility */}
-            <Route
-              path="/singapore"
-              element={<Navigate to="/edition/singapore" replace />}
-            />
-            <Route
-              path="/dubai"
-              element={<Navigate to="/edition/dubai" replace />}
-            />
+              {/* Legacy routes - redirect for backward compatibility */}
+              <Route
+                path="/singapore"
+                element={<Navigate to="/edition/singapore" replace />}
+              />
+              <Route
+                path="/dubai"
+                element={<Navigate to="/edition/dubai" replace />}
+              />
 
-            {/* Schedule Page - Accessible from edition pages */}
-            <Route path="/schedule" element={<Schedule />} />
+              {/* Schedule Page - Accessible from edition pages */}
+              <Route path="/schedule" element={<Schedule />} />
 
-            {/* Full Episode Details Page - Accessible only through navigation */}
-            <Route path="/episode/:episodeId" element={<FullEpisode />} />
+              {/* Full Episode Details Page - Accessible only through navigation */}
+              <Route path="/episode/:episodeId" element={<FullEpisode />} />
 
-            {/* Catch-all route - Show custom 404 page */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
+              {/* Catch-all route - Show custom 404 page */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+        </Suspense>
       </ErrorBoundary>
     </Router>
   );

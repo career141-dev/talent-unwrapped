@@ -106,15 +106,15 @@ export const TalentIntroductionSection = (): JSX.Element => {
         {/* Main Content Layout - Responsive Grid for Tablet, Absolute for Desktop */}
         <div className="relative z-10 flex flex-col md:grid md:grid-cols-12 lg:block gap-8 lg:gap-0 mt-4 lg:mt-0">
           <div className="md:col-span-4 lg:contents">
-            <motion.header
+            <motion.h2
               initial={{ x: -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-[10px] w-full lg:w-[203px] text-left mb-4 md:mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-[8px] md:text-sm tracking-[-0.32px] leading-[normal]"
+              className="relative lg:absolute top-0 lg:top-0 left-0 lg:left-[10px] w-full lg:w-[203px] text-left mb-4 md:mb-8 lg:mb-0 [font-family:'Geist',Helvetica] font-bold text-[#7bb302] text-sm md:text-sm tracking-[-0.32px] leading-[normal]"
             >
               {SECTION_TITLES.THE_THREE_CHAPTERS}
-            </motion.header>
+            </motion.h2>
 
             <div className="flex flex-col w-full lg:w-[203px] items-start gap-2 lg:gap-3 relative lg:absolute top-auto lg:top-[164px] left-0 lg:left-[10px] mb-4 md:mb-0">
               <motion.div
