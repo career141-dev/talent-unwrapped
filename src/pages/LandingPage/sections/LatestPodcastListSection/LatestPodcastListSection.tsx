@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { LATEST_PODCASTS } from "@/data/episodes";
-import { BackArrowIcon, NextArrowIcon, PlayIcon } from "@/components/Common/Icons";
+import { BackArrowIcon, NextArrowIcon, PlayIcon } from "@/components/common/Icons";
 import { EDITION_NAMES } from "@/constants/copy";
 
 export const LatestPodcastListSection = (): JSX.Element => {

@@ -1,7 +1,7 @@
 import { EpisodeLayout, EditionType } from "../../layouts/EpisodeLayout";
 import { Episode } from "../../types";
 import { EpisodeCard } from "./Components/EpisodeCard";
-import SEO from "../../components/Common/SEO/SEO";
+import SEO from "../../components/common/SEO/SEO";
 
 interface PodcastEditionPageProps {
   edition: EditionType;

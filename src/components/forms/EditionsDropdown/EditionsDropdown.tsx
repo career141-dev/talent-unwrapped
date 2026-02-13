@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ROUTES } from "../../../constants";
-import { ChevronDownIcon } from "@/components/Common/Icons";
+import { ChevronDownIcon } from "@/components/common/Icons";
 import { NAV_LABELS, EDITION_NAMES } from "@/constants/copy";
 
 interface Edition {

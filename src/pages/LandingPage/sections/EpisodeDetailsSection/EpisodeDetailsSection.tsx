@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ASSETS } from "@/assets";
-import { ArrowRightIcon } from "@/components/Common/Icons";
+import { ArrowRightIcon } from "@/components/common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, GUEST_SECTION_CONTENT } from "@/constants/copy";
 
 interface EpisodeType {

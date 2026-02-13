@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ASSETS } from "@/assets";
-import { ArrowRightIcon, VerticalLineIcon } from "@/components/Common/Icons";
+import { ArrowRightIcon, VerticalLineIcon } from "@/components/common/Icons";
 import { WISDOM_CONTENT, NAV_LABELS, BUTTONS } from "@/constants/copy";
 
 export const WisdomAndTestimonialsSection = (): JSX.Element => {

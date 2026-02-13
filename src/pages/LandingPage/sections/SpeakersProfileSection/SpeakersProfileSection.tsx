@@ -4,7 +4,7 @@ import {
     BackArrowIcon, NextArrowIcon,
     PlayCircleFilledIcon,
     LinkedinIcon,
-} from "@/components/Common/Icons";
+} from "@/components/common/Icons";
 import { Speaker } from "@/types";
 
 interface SpeakersProfileSectionProps {

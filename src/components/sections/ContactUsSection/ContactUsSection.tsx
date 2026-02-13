@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
-import { DecorativeArrowIcon } from "@/components/Common/Icons";
+import { DecorativeArrowIcon } from "@/components/common/Icons";
 import { ASSETS } from "@/assets";
 import { LINKS } from "@/config/links";
 import { NAV_LABELS } from "@/constants/copy";

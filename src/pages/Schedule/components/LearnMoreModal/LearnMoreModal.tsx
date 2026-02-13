@@ -1,4 +1,4 @@
-import { JoinUsForm } from "../../../../components/Forms";
+import { JoinUsForm } from "../../../../components/forms";
 
 interface LearnMoreModalProps {
   isOpen: boolean;

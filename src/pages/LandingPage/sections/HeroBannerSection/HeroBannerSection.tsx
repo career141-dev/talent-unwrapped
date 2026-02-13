@@ -7,7 +7,7 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   PlayIcon
-} from "@/components/Common/Icons";
+} from "@/components/common/Icons";
 import { HERO_CONTENT } from "@/constants/copy";
 
 /**

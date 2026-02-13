@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRightIcon } from "@/components/Common/Icons";
+import { ArrowRightIcon } from "@/components/common/Icons";
 
 export const NotFound = (): JSX.Element => {
     return (

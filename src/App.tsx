@@ -12,7 +12,7 @@ const PodcastEditionWrapper = lazy(() => import("./pages/PodcastEditions/Podcast
 const FullEpisode = lazy(() => import("./pages/FullEpisode").then(module => ({ default: module.FullEpisode })));
 const Schedule = lazy(() => import("./pages/Schedule").then(module => ({ default: module.Schedule })));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound").then(module => ({ default: module.NotFound })));
-import { ErrorBoundary, LoadingIndicator } from "./components/Common";
+import { ErrorBoundary, LoadingIndicator } from "./components/common";
 
 /**
  * Helper component to scroll to top on every route change

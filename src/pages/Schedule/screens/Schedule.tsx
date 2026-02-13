@@ -4,7 +4,7 @@ import {
   FooterSection,
 } from "../../../components";
 import { TheThreeChaptersSection } from "../../PodcastEditions/Sections";
-import SEO from "../../../components/Common/SEO/SEO";
+import SEO from "../../../components/common/SEO/SEO";
 
 /**
  * Schedule Page - Fully Responsive

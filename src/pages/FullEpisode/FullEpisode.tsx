@@ -13,15 +13,15 @@ import {
   SpeakersProfileSection,
   EpisodeDetailsSection,
   TalentIntroductionSection,
-} from "../LandingPage/Sections";
+} from "../LandingPage/sections";
 import {
   PlayCircleFilledIcon,
   PlayIcon,
-} from "@/components/Common/Icons";
+} from "@/components/common/Icons";
 import { HERO_CONTENT } from "@/constants/copy";
 import { getVideoSlidesByEdition, getEpisodeById, getEpisodesByEdition } from "@/data";
 import { EpisodeSpeaker, Speaker, Episode } from "@/types";
-import SEO from "../../components/Common/SEO/SEO";
+import SEO from "../../components/common/SEO/SEO";
 
 /**
  * Helper to transform YouTube URLs into embed URLs

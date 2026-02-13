@@ -13,7 +13,7 @@ import {
   TalentIntroductionSection,
   WisdomAndTestimonialsSection,
 } from "./Sections";
-import SEO from "../../components/Common/SEO/SEO";
+import SEO from "../../components/common/SEO/SEO";
 
 /**
  * Landing Page

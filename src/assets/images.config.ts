@@ -77,7 +77,7 @@ export const LOGOS = {
   contactBanner: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770627360/Artboard_3_1_4_tihw3f.png",
 } as const;
 
-// Icon Images - Replaced by Lucide and local SVG components in src/components/Common/Icons.tsx
+// Icon Images - Replaced by Lucide and local SVG components in src/components/common/Icons.tsx
 export const ICONS = {
   // Navigation
   chevronDown: "",

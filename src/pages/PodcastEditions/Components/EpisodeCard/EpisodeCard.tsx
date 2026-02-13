@@ -1,6 +1,6 @@
 import { Episode, EpisodeSpeaker } from "../../../../types";
 import { METADATA, NAV_LABELS } from "@/constants/copy";
-import { MediaLoader } from "../../../../components/Common";
+import { MediaLoader } from "../../../../components/common";
 
 interface EpisodeCardProps {
   episode: Episode;

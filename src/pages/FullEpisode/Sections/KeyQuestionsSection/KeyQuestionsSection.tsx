@@ -8,7 +8,7 @@ import {
   EPISODE_7_CUSTOM_CONTENT,
   EPISODE_8_CUSTOM_CONTENT
 } from "@/data/fullEpisodeData";
-import { VideoCircleFilledIcon, ExportIcon } from "@/components/Common/Icons";
+import { VideoCircleFilledIcon, ExportIcon } from "@/components/common/Icons";
 import { SECTION_TITLES, FORMS_CONTENT } from "@/constants/copy";
 
 interface KeyQuestionsSectionProps {

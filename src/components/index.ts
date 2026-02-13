@@ -1,5 +1,5 @@
 // Common components
-export { GlobalHeader } from "./Common";
+export { GlobalHeader } from "./common";
 
 // Section components
 export {

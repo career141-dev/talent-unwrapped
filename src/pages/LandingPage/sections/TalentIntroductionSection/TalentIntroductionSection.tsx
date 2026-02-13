@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { LearnMoreModal } from "../../../../pages/Schedule/Components";
-import { MobileCarouselSection } from "../../../../components/Sections/MobileCarouselSection";
+import { MobileCarouselSection } from "../../../../components/sections/MobileCarouselSection";
 import { EditionFilter } from "../../../../components/UI/EditionFilter";
 import { getEditionContent } from "../../../../data";
 import { ASSETS } from "@/assets";
-import { ArrowRightIcon, VideoCircleFilledIcon, ExportIcon } from "@/components/Common/Icons";
+import { ArrowRightIcon, VideoCircleFilledIcon, ExportIcon } from "@/components/common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, BUTTONS, TALENT_INTRO_CONTENT } from "@/constants/copy";
 
 export const TalentIntroductionSection = (): JSX.Element => {

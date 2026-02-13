@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { VideoCircleFilledIcon, ArrowRightIcon } from "@/components/Common/Icons";
+import { VideoCircleFilledIcon, ArrowRightIcon } from "@/components/common/Icons";
 import { BUTTONS } from "@/constants/copy";
 
 interface PodcastCard {
