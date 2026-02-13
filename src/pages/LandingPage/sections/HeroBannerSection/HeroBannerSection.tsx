@@ -270,6 +270,7 @@ export const HeroBannerSection = (): JSX.Element => {
                   style={{
                     width: "clamp(20px, 5.5vw, 26px)",
                     height: "clamp(20px, 5.5vw, 26px)",
+                    marginLeft: "3px", // Optical centering
                   }}
                 />
               </motion.button>
@@ -528,14 +529,14 @@ export const HeroBannerSection = (): JSX.Element => {
           {/* Play Button - Desktop */}
           {!isPlaying && (
             <motion.button
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
+              initial={{ scale: 0.8, opacity: 0, x: "-50%", y: "-50%" }}
+              animate={{ scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               type="button"
               onClick={handlePlayVideo}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 glass-button-white hover:bg-white rounded-full flex items-center justify-center cursor-pointer z-20 shadow-xl"
+              className="absolute top-1/2 left-1/2 glass-button-white hover:bg-white rounded-full flex items-center justify-center cursor-pointer z-20 shadow-xl"
               aria-label="Play podcast episode"
               style={{
                 width: "clamp(60px, 7vw, 90px)",
@@ -548,6 +549,7 @@ export const HeroBannerSection = (): JSX.Element => {
                 style={{
                   width: "clamp(24px, 2.5vw, 36px)",
                   height: "clamp(24px, 2.5vw, 36px)",
+                  marginLeft: "4px", // Optical centering
                 }}
               />
             </motion.button>

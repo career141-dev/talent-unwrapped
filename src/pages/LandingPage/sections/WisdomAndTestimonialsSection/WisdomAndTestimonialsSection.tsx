@@ -18,7 +18,7 @@ export const WisdomAndTestimonialsSection = (): JSX.Element => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="hidden lg:block w-full lg:w-[35%] xl:w-[40%] max-w-[450px] lg:max-w-none order-1 lg:order-1 lg:-ml-8"
+          className="hidden lg:block w-full lg:w-[35%] xl:w-[40%] max-w-[450px] lg:max-w-none order-1 lg:order-1 lg:ml-4"
         >
           <div className="relative w-full aspect-[3/4] lg:aspect-[2/3] xl:aspect-[3/4] bg-[#cecece] rounded-2xl md:rounded-3xl overflow-hidden rotate-180 shadow-lg hover:shadow-2xl transition-shadow duration-500">
             <img

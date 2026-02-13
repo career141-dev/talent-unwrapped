@@ -26,7 +26,7 @@ export const SpeakersProfileSection = ({ edition, specificSpeakers }: SpeakersPr
             ? allSpeakersData[0].filter((s) => s.edition === edition)
             : allSpeakersData[0];
 
-    const speakers = initialSpeakers.slice(0, 6);
+    const speakers = initialSpeakers.slice(0, 12);
 
     const ITEMS_PER_PAGE = 5;
     const totalPages = Math.ceil(speakers.length / ITEMS_PER_PAGE);
@@ -165,7 +165,7 @@ export const SpeakersProfileSection = ({ edition, specificSpeakers }: SpeakersPr
                                 <>
                                     {/* Left Scroll Button - positioned outside container only on XL desktop */}
                                     <button
-                                        className="hidden xl:flex absolute left-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-10 transition-all glass-button rounded-full"
+                                        className="hidden xl:flex absolute left-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-10 transition-all rounded-full"
                                         onClick={() => handleScroll("left")}
                                         type="button"
                                         aria-label="Scroll left"
@@ -178,7 +178,7 @@ export const SpeakersProfileSection = ({ edition, specificSpeakers }: SpeakersPr
 
                                     {/* Right Scroll Button - positioned outside container only on XL desktop */}
                                     <button
-                                        className="hidden xl:flex absolute right-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-10 transition-all glass-button rounded-full"
+                                        className="hidden xl:flex absolute right-[-60px] top-1/2 -translate-y-1/2 w-[120px] h-[120px] items-center justify-center cursor-pointer z-10 transition-all rounded-full"
                                         onClick={() => handleScroll("right")}
                                         type="button"
                                         aria-label="Scroll right"
