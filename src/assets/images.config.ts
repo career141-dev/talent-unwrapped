@@ -116,9 +116,9 @@ export const FORM_ICONS = {
 
 // Hero Section Images
 export const SPEAKER_IMAGES = {
-  echoWu: "https://c.animaapp.com/mknscg4zvttudp/img/1756292060602-1.png",
-  avikGhosh: "https://c.animaapp.com/mknscg4zvttudp/img/1621657233961-1.png",
-  ellaSherman: "https://c.animaapp.com/mknscg4zvttudp/img/1545386579437-1.png",
+  echoWu: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770617937/1756292060602_1_5_arkico.png",
+  avikGhosh: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770617937/1621657233961_1_dbrjce.png",
+  ellaSherman: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770617937/1545386579437_1_rv6wmx.png",
 } as const;
 
 export const EXPERT_IMAGES = SPEAKER_IMAGES;

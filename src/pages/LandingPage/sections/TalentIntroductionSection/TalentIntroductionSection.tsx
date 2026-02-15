@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { LearnMoreModal } from "../../../../pages/Schedule/components";
 import { MobileCarouselSection } from "../../../../components/sections/MobileCarouselSection";
 import { EditionFilter } from "../../../../components/UI/EditionFilter";
@@ -20,6 +20,25 @@ export const TalentIntroductionSection = (): JSX.Element => {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  const Counter = ({ value, suffix = "" }: { value: number; suffix?: string }) => {
+    const count = useMotionValue(0);
+    const rounded = useTransform(count, (latest) => Math.round(latest) + suffix);
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true, margin: "-100px" });
+
+    useEffect(() => {
+      if (inView) {
+        const controls = animate(count, value, {
+          duration: 1,
+          ease: "easeOut",
+        });
+        return controls.stop;
+      }
+    }, [inView, count, value]);
+
+    return <motion.span ref={ref}>{rounded}</motion.span>;
+  };
 
   const editionData = getEditionContent(selectedEdition as any);
   const { name: editionName, schedule, chapters } = editionData;
@@ -95,7 +114,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative lg:absolute top-0 lg:top-[478px] right-0 lg:right-[10px] mb-6 lg:mb-0 flex justify-center sm:justify-end px-4 sm:px-6 md:px-8 lg:px-0 z-20"
+          className="relative lg:absolute top-0 lg:top-[478px] right-0 lg:right-[32px] xl:right-[52px] mb-6 lg:mb-0 flex justify-center sm:justify-end px-4 sm:px-6 md:px-8 lg:px-0 z-20"
         >
           <EditionFilter
             selectedEdition={selectedEdition}
@@ -124,7 +143,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
                 className="relative self-stretch mt-[-1.00px] [font-family:'Geist',Helvetica] font-medium text-[#232323] text-[30px] sm:text-[36px] md:text-[42px] lg:text-[50px] xl:text-[60px] tracking-[-0.03em] sm:tracking-[-0.04em] lg:tracking-[-0.05em] leading-[1.1] text-left"
               >
-                {TALENT_INTRO_CONTENT.VIEWER_COUNT}
+                <Counter value={100} suffix="K+" />
               </motion.div>
 
               <motion.div
@@ -185,9 +204,9 @@ export const TalentIntroductionSection = (): JSX.Element => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col w-full items-start gap-2 relative lg:absolute top-auto lg:top-[478px] left-0 lg:left-[120px] text-left mb-6 lg:ml-0 px-4 sm:px-6 md:px-8 lg:px-0"
+          className="flex flex-col w-full items-start gap-2 relative lg:absolute top-auto lg:top-[478px] left-0 lg:left-[56px] xl:left-[96px] lg:w-[calc(100%-420px)] xl:w-auto text-left mb-6 lg:ml-0 px-4 sm:px-6 md:px-8 lg:px-0"
         >
-          <p className="relative w-full max-w-none lg:w-auto lg:absolute lg:left-0 [font-family:'Geist',Helvetica] font-medium text-[20px] sm:text-[24px] lg:text-[32px] leading-[24px] sm:leading-[28px] lg:leading-[38px] whitespace-normal lg:whitespace-nowrap">
+          <p className="relative w-full max-w-none lg:max-w-full xl:w-auto [font-family:'Geist',Helvetica] font-medium text-[20px] sm:text-[24px] lg:text-[28px] xl:text-[32px] leading-[24px] sm:leading-[28px] lg:leading-[34px] xl:leading-[38px] whitespace-normal xl:whitespace-nowrap">
             <span className="text-[#7cb403]">{TALENT_INTRO_CONTENT.SCHEDULE_FOR} {editionName} Edition </span>
             <time className="text-[#ed2939]" dateTime={schedule.dateTime}>
               {schedule.date}
@@ -195,7 +214,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-8 relative lg:absolute top-auto lg:top-[589px] left-0 lg:left-1/2 lg:-translate-x-1/2 w-full lg:w-auto overflow-x-hidden scrollbar-hide pl-4 sm:pl-6 md:pl-8 lg:pl-0">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-4 xl:gap-8 relative lg:absolute top-auto lg:top-[589px] left-0 lg:left-1/2 lg:-translate-x-1/2 w-full max-w-full scrollbar-hide pl-4 sm:pl-6 md:pl-8 lg:pl-0">
           {/* Mobile Carousel - Only visible on mobile */}
           <div className="lg:hidden w-full mb-8">
             <MobileCarouselSection
@@ -209,7 +228,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
           </div>
 
           {/* Desktop Cards - Only visible on lg+ */}
-          <div className="hidden lg:flex gap-8 w-full lg:w-auto justify-center">
+          <div className="hidden lg:flex gap-4 xl:gap-8 w-full lg:w-[95%] xl:w-auto justify-center">
             {chapters.map((chapter, index) => (
               <motion.article
                 key={chapter.id}
@@ -218,7 +237,7 @@ export const TalentIntroductionSection = (): JSX.Element => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
                 whileHover={{ y: -10, boxShadow: "0px 20px 40px rgba(0,0,0,0.1)" }}
-                className="relative w-full max-w-[360px] lg:w-[380px] h-[260px] lg:h-[280px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[24px] transition-colors duration-300 hover:bg-white cursor-pointer overflow-hidden"
+                className="relative w-full max-w-[360px] lg:flex-1 lg:max-w-[380px] xl:w-[380px] h-[260px] lg:h-[280px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[24px] transition-colors duration-300 hover:bg-white cursor-pointer overflow-hidden"
               >
                 <div
                   className="inline-flex items-center gap-2 lg:gap-2.5 p-2 lg:p-3 absolute top-4 lg:top-6 left-4 lg:left-6 bg-[#7bb302] rounded-[40px]"

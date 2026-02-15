@@ -6,14 +6,19 @@ import { BackArrowIcon, NextArrowIcon, PlayIcon } from "@/components/common/Icon
 import { EDITION_NAMES } from "@/constants/copy";
 
 export const LatestPodcastListSection = (): JSX.Element => {
-  const [activeTab] = useState("all");
+  const [activeFilter, setActiveFilter] = useState("All");
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isManualScrollRef = useRef(true);
 
-  const podcastData = LATEST_PODCASTS;
+  // Filter podcasts based on active tab
+  const podcastData = LATEST_PODCASTS.filter(podcast => {
+    if (activeFilter === "All") return true;
+    return podcast.edition.includes(activeFilter);
+  });
+
   const ITEMS_PER_PAGE = 5;
   const totalPages = Math.ceil(podcastData.length / ITEMS_PER_PAGE);
   const currentPage = Math.floor(currentIndex / ITEMS_PER_PAGE);
@@ -35,6 +40,15 @@ export const LatestPodcastListSection = (): JSX.Element => {
       return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : "";
     } catch (e) {
       return "";
+    }
+  };
+
+  // Reset pagination when filter changes
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
+    setCurrentIndex(0);
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({ left: 0, behavior: "smooth" });
     }
   };
 
@@ -171,28 +185,33 @@ export const LatestPodcastListSection = (): JSX.Element => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col items-start gap-8 md:gap-10 lg:gap-12 w-full"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-0 relative w-full mb-8 md:mb-10 lg:mb-12"
         >
-          <header className="flex flex-col items-start gap-2 relative w-full">
-            <h2 className="relative w-full max-w-full lg:max-w-[721px] [font-family:'Geist',Helvetica] font-medium text-transparent text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] xl:text-[52px] tracking-[-0.02em] sm:tracking-[-0.025em] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">
+          <header className="flex flex-col items-start gap-2 relative flex-[0_0_auto]">
+            <h2 className="relative w-full max-w-full lg:max-w-none [font-family:'Geist',Helvetica] font-medium text-transparent text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] xl:text-[52px] tracking-[-0.02em] sm:tracking-[-0.025em] leading-[1.3] sm:leading-[1.25] lg:leading-[1.2]">
               <span className="text-[#ed2939]">Latest</span>
               <span className="text-[#7cb403]"> Podcast</span>
             </h2>
           </header>
 
-          <nav className="flex flex-col items-start gap-6 md:gap-8 lg:gap-10 relative w-full">
-            <div className="flex flex-col sm:flex-row items-start sm:items-baseline justify-between w-full gap-4 sm:gap-0">
-              <div className="inline-flex items-start relative flex-[0_0_auto]">
-                <button
-                  className="inline-flex items-start px-4 sm:px-5 md:px-6 py-2 relative flex-[0_0_auto] border-b-2 md:border-b-[3px] [border-bottom-style:solid] border-[#7bb302] transition-all duration-300 hover:bg-green-50"
-                  aria-current={activeTab === "all" ? "page" : undefined}
-                >
-                  <span className="relative w-fit mt-[-3.00px] font-body-large-regular font-[number:var(--body-large-regular-font-weight)] text-[#7bb302] text-sm sm:text-base md:text-[length:var(--body-large-regular-font-size)] tracking-[var(--body-large-regular-letter-spacing)] leading-[var(--body-large-regular-line-height)] whitespace-nowrap [font-style:var(--body-large-regular-font-style)]">
-                    All
-                  </span>
-                </button>
-              </div>
-            </div>
+          <nav
+            className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-8 relative flex-[0_0_auto]"
+            aria-label="Podcast categories"
+          >
+            {["All", "Singapore", "Dubai", "Sri Lanka"].map((filter) => (
+              <button
+                key={filter}
+                onClick={() => handleFilterChange(filter)}
+                className={`inline-flex items-center justify-center relative flex-[0_0_auto] py-2 border-b-[3px] transition-colors duration-300 ${activeFilter === filter
+                  ? "border-[#7bb302]"
+                  : "border-transparent hover:border-[#7bb302]/30"
+                  }`}
+              >
+                <span className={`[font-family:'Geist',Helvetica] font-medium text-sm sm:text-base tracking-[0] leading-[normal] whitespace-nowrap ${activeFilter === filter ? "text-[#7bb302]" : "text-[#8d8d8d]"}`}>
+                  {filter}
+                </span>
+              </button>
+            ))}
           </nav>
         </motion.div>
 
@@ -222,6 +241,7 @@ export const LatestPodcastListSection = (): JSX.Element => {
             }}
           >
             <motion.div
+              key={activeFilter}
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -315,8 +335,6 @@ export const LatestPodcastListSection = (): JSX.Element => {
             />
           </button>
         </div>
-
-        {/* Pagination Grid removed as per previous step */}
 
         <div
           className="flex w-full h-2 items-start justify-center gap-1.5 sm:gap-2 mt-8 md:mt-10 lg:mt-12"

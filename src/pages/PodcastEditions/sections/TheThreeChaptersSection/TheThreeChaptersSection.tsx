@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { TheThreeChaptersSectionProps } from "../../../../types";
 import { getEditionContent } from "../../../../data";
 import { MobileCarouselSection } from "../../../../components/sections/MobileCarouselSection";
@@ -25,6 +25,25 @@ export const TheThreeChaptersSection = ({
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  const Counter = ({ value, suffix = "" }: { value: number; suffix?: string }) => {
+    const count = useMotionValue(0);
+    const rounded = useTransform(count, (latest) => Math.round(latest) + suffix);
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true, margin: "-100px" });
+
+    useEffect(() => {
+      if (inView) {
+        const controls = animate(count, value, {
+          duration: 1,
+          ease: "easeOut",
+        });
+        return controls.stop;
+      }
+    }, [inView, count, value]);
+
+    return <motion.span ref={ref}>{rounded}</motion.span>;
+  };
 
   const editionData = getEditionContent(edition);
   const { name: editionName, schedule, chapters } = editionData;
@@ -106,7 +125,7 @@ export const TheThreeChaptersSection = ({
                   className="flex flex-col w-full lg:w-[203px] items-start gap-2 lg:gap-3 relative lg:absolute top-auto lg:top-[164px] left-0 lg:left-[10px] mb-4 md:mb-0"
                 >
                   <div className="relative self-stretch mt-[-1.00px] [font-family:'Geist',Helvetica] font-medium text-[#232323] text-[30px] sm:text-[36px] md:text-[42px] lg:text-[50px] xl:text-[60px] tracking-[-0.03em] sm:tracking-[-0.04em] lg:tracking-[-0.05em] leading-[1.1] text-left">
-                    {TALENT_INTRO_CONTENT.VIEWER_COUNT}
+                    <Counter value={100} suffix="K+" />
                   </div>
 
                   <div className="relative self-stretch [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-xs md:text-sm text-left tracking-[-0.32px] lg:tracking-[-0.64px] leading-[normal]">
@@ -176,7 +195,7 @@ export const TheThreeChaptersSection = ({
         </motion.div>
 
         <div
-          className={`flex flex-col lg:flex-row items-center justify-start gap-4 lg:gap-8 relative lg:absolute top-auto ${hideTopSection ? "lg:top-[60px]" : "lg:top-[589px]"} left-0 lg:left-[120px] w-full lg:w-auto overflow-x-hidden scrollbar-hide pl-4 sm:pl-6 md:pl-8 lg:pl-0`}
+          className={`flex flex-col lg:flex-row items-center justify-start gap-4 xl:gap-8 relative lg:absolute top-auto ${hideTopSection ? "lg:top-[60px]" : "lg:top-[589px]"} left-0 lg:left-[120px] w-full max-w-full scrollbar-hide pl-4 sm:pl-6 md:pl-8 lg:pl-0`}
         >
           {/* Mobile Carousel - Only visible on mobile */}
           <div className="lg:hidden w-full mb-8">
@@ -196,13 +215,13 @@ export const TheThreeChaptersSection = ({
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="hidden lg:flex gap-8 w-full lg:w-auto"
+            className="hidden lg:flex gap-4 xl:gap-8 w-full lg:w-[95%] xl:w-auto justify-start"
           >
             {chapters.map((episode) => (
               <motion.article
                 key={episode.id}
                 variants={itemVariants}
-                className="relative w-full max-w-[360px] lg:w-[380px] h-[260px] lg:h-[280px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[24px] transition-all duration-300 hover:shadow-lg hover:bg-white cursor-pointer overflow-hidden"
+                className="relative w-full max-w-[360px] lg:flex-1 lg:max-w-[380px] xl:w-[380px] h-[260px] lg:h-[280px] bg-[#f8f8f8] rounded-[20px] lg:rounded-[24px] transition-all duration-300 hover:shadow-lg hover:bg-white cursor-pointer overflow-hidden"
                 whileHover={{ scale: 1.05 }}
               >
                 <div

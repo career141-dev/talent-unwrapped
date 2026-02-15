@@ -78,7 +78,7 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
     <section
       id="reels"
       ref={sectionRef}
-      className="relative w-full bg-white pt-10 pb-16 sm:py-20 md:py-24 lg:py-[90px]"
+      className="relative w-full bg-white pt-4 pb-4 sm:pt-8 sm:pb-8 md:pt-10 md:pb-10 lg:pt-12 lg:pb-12"
     >
       <div
         className="w-full max-w-full overflow-x-auto overscroll-x-contain scrollbar-hide snap-x snap-mandatory relative pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-8 md:pr-8 py-12"

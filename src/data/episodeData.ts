@@ -102,7 +102,7 @@ export const COLOMBO_EPISODES: Episode[] = [
       {
         name: "Sumudu Thanthirigoda",
         role: "CEO - Maliban Group",
-        avatar: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618639/1621657233961_1_helgwf.png",
+        avatar: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>",
       },
     ],
   },
@@ -170,7 +170,7 @@ export const COLOMBO_EPISODES: Episode[] = [
       {
         name: "Karthik Badrinath",
         role: "Head of Sales - LinkedIn India",
-        avatar: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618638/1545386579437_1_vl1nrk.png",
+        avatar: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>",
       },
     ],
   },
@@ -192,17 +192,17 @@ export const SINGAPORE_EPISODES: Episode[] = [
       {
         name: "Echo Wu",
         role: "Leadership & Mental Toughness Expert",
-        avatar: "https://c.animaapp.com/mknscg4zvttudp/img/1756292060602-1.png",
+        avatar: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770617937/1756292060602_1_5_arkico.png",
       },
       {
         name: "Avik Ghosh",
         role: "Executive Director",
-        avatar: "https://c.animaapp.com/mknscg4zvttudp/img/1621657233961-1.png",
+        avatar: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770617937/1621657233961_1_dbrjce.png",
       },
       {
         name: "Ella Sherman",
         role: "Head of HR APAC",
-        avatar: "https://c.animaapp.com/mknscg4zvttudp/img/1545386579437-1.png",
+        avatar: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770617937/1545386579437_1_rv6wmx.png",
       },
     ],
     featured: true,

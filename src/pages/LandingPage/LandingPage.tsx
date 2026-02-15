@@ -73,7 +73,7 @@ export const LandingPage = (): JSX.Element => {
         </div>
 
         {/* Full-width reels section */}
-        <div id="reels" className="w-full overflow-x-hidden">
+        <div className="w-full overflow-x-hidden">
           <ReelsSection />
         </div>
 
@@ -83,7 +83,7 @@ export const LandingPage = (): JSX.Element => {
         </div>
 
         {/* Footer sections - now bypassing global layout */}
-        <div className="w-full overflow-x-hidden">
+        <div className="w-full overflow-x-clip">
           <SubmitFormSection />
           <ContactUsSection />
           <FooterSection />

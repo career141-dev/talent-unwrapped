@@ -104,6 +104,7 @@ export const EDITION_NAMES = {
   DUBAI: "Dubai",
   SINGAPORE: "Singapore",
   SRI_LANKA: "Sri Lanka",
+  COLOMBO: "Colombo",
 };
 
 export const HERO_CONTENT = {
@@ -128,7 +129,7 @@ export const WISDOM_CONTENT = {
 
 export const GUEST_SECTION_CONTENT = {
   SUBTITLE: "Your words, Your wisdom",
-  UNWRAPPED_PREFIX: "Your ",
+  UNWRAPPED_PREFIX: "Your",
   UNWRAPPED_TEXT: "unwrapped moment",
   FIRESIDE_CHATS: "Fireside Chats",
   ONE_ON_ONE: "1 on 1 Interviews",

@@ -111,7 +111,7 @@ export const FullEpisode = (): JSX.Element => {
     "description": episode.description,
     "url": `https://talentunwrapped.com/episode/${episode.id}`,
     "datePublished": episode.date,
-    "image": episode.image || getYoutubeThumbnail(episode.videoUrl),
+    "image": episode.image || getYoutubeThumbnail(episode.videoUrl || ""),
     "associatedMedia": {
       "@type": "MediaObject",
       "contentUrl": episode.videoUrl,
@@ -478,11 +478,15 @@ export const FullEpisode = (): JSX.Element => {
         {/* Key Questions Section */}
         <KeyQuestionsSection edition={editionKey} episodeId={episode?.id} />
 
-        {/* Reels Section */}
-        <ReelsSection edition={edition as "Dubai" | "Singapore" | "Sri Lanka"} />
+        {/* Reels Section - Show only for Dubai and Singapore editions */}
+        {edition !== "Sri Lanka" && (
+          <ReelsSection edition={edition as "Dubai" | "Singapore"} />
+        )}
 
         {/* Episode Details Section - Outside layout for full-width scrolling text */}
-        <EpisodeDetailsSection />
+        <div className={edition === "Sri Lanka" ? "mt-[-40px] lg:mt-[-60px]" : ""}>
+          <EpisodeDetailsSection />
+        </div>
 
         {/* About Section - The Three Chapters */}
         <TalentIntroductionSection />

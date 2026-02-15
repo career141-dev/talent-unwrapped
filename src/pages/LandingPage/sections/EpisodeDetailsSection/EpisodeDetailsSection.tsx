@@ -162,7 +162,7 @@ export const EpisodeDetailsSection = (_props: EpisodeDetailsSectionProps): JSX.E
     <>
       <section
         ref={sectionRef}
-        className="relative w-full bg-white py-4 sm:py-8 md:py-12 lg:py-[50px] mt-2 sm:mt-8 md:mt-12 lg:mt-[70px] min-h-0 overflow-hidden sm:min-h-[900px]"
+        className="relative w-full bg-white py-4 sm:py-8 md:py-12 lg:py-[50px] mt-0 sm:mt-2 md:mt-4 lg:mt-6 min-h-0 overflow-hidden sm:min-h-[900px]"
         aria-labelledby="episode-details-heading"
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative">
@@ -181,15 +181,15 @@ export const EpisodeDetailsSection = (_props: EpisodeDetailsSectionProps): JSX.E
               >
                 {SECTION_TITLES.WHY_BE_A_GUEST}
               </h2>
-              <p className="[font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[48px] tracking-[-1.1px] sm:tracking-[-1.3px] lg:tracking-[-2px] leading-tight lg:leading-[normal] whitespace-normal lg:whitespace-nowrap flex flex-col items-start justify-start text-left">
-                <span className="text-[#232323] tracking-[-1.1px] whitespace-normal lg:whitespace-nowrap">{GUEST_SECTION_CONTENT.SUBTITLE}</span>
+              <p className="[font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[48px] tracking-[-1.1px] sm:tracking-[-1.3px] lg:tracking-[-2px] leading-tight flex flex-col items-start justify-start text-left">
+                <span className="text-[#232323] tracking-[-1.1px] block w-full">{GUEST_SECTION_CONTENT.SUBTITLE}</span>
               </p>
-              <div className="relative w-full flex items-center gap-1 sm:gap-3 lg:gap-4 text-left">
-                <span className="inline-block w-8 h-6 sm:w-[70px] sm:h-9 lg:w-[120px] lg:h-[48px] bg-[#00000033] rounded-[80px] flex-shrink-0" aria-hidden="true"></span>
-                <p className="[font-family:'Geist',Helvetica] font-medium text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-[48px] tracking-[-1.1px] sm:tracking-[-1.3px] lg:tracking-[-2px] leading-6 sm:leading-[2.5rem] lg:leading-[48px] whitespace-normal lg:whitespace-nowrap min-h-8 sm:min-h-10 lg:min-h-[48px] h-auto flex items-center text-left">
+              <div className="relative w-full flex items-center lg:items-center gap-2 sm:gap-3 lg:gap-4 text-left">
+                <span className="inline-block w-12 h-6 sm:w-[70px] sm:h-9 lg:w-[120px] lg:h-[48px] bg-[#00000033] rounded-[80px] flex-shrink-0" aria-hidden="true"></span>
+                <div className="[font-family:'Geist',Helvetica] font-medium text-2xl sm:text-3xl md:text-4xl lg:text-[48px] tracking-[-1.1px] sm:tracking-[-1.3px] lg:tracking-[-2px] leading-snug sm:leading-[2.5rem] lg:leading-[48px] flex items-center flex-wrap gap-2 sm:gap-3 text-left">
                   <span className="text-[#232323] tracking-[-1.1px]">{GUEST_SECTION_CONTENT.UNWRAPPED_PREFIX}</span>
                   <span className="text-[#ed2939] tracking-[-1.1px]">{GUEST_SECTION_CONTENT.UNWRAPPED_TEXT}</span>
-                </p>
+                </div>
               </div>
             </div>
             <blockquote className="block static w-full max-w-full sm:max-w-[400px] md:max-w-[500px] lg:max-w-[420px] ml-0 mr-auto [font-family:'Geist',Helvetica] font-normal text-[#8d8d8d] text-base sm:text-lg tracking-[-0.64px] leading-[normal] z-10 mb-4 lg:mb-0">
@@ -245,7 +245,7 @@ export const EpisodeDetailsSection = (_props: EpisodeDetailsSectionProps): JSX.E
                 key={episode.id}
                 onClick={() => handleEpisodeClick(episode.id)}
                 onKeyDown={(e) => handleEpisodeKeyDown(e, episode.id)}
-                className={`flex h-10 sm:h-[60px] items-center justify-between pl-3 sm:pl-5 pr-1.5 py-2 sm:py-5 relative self-stretch w-full rounded-[60px] glass-button ${activeEpisode === episode.id
+                className={`flex h-12 sm:h-[60px] items-center justify-between pl-4 sm:pl-5 pr-2 py-3 sm:py-5 relative self-stretch w-full rounded-[60px] glass-button ${activeEpisode === episode.id
                   ? "bg-neutral-100"
                   : "border border-solid border-neutral-200"
                   } transition-all duration-200 hover:shadow-md active:scale-95 active:shadow-lg lg:active:scale-100 focus:outline-none focus:ring-2 focus:ring-[#7bb302] focus:ring-offset-2 cursor-pointer z-20 touch-manipulation`}

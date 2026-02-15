@@ -37,9 +37,9 @@ export const DECORATIVE_IMAGES = {
 };
 
 export const EXPERT_IMAGES = {
-    echoWu: "/src/assets/images/speakers/echo-wu.png",
-    avikGhosh: "/src/assets/images/speakers/avik-ghosh.png",
-    ellaSherman: "/src/assets/images/speakers/ella-sherman.png",
+    echoWu: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770617937/1756292060602_1_5_arkico.png",
+    avikGhosh: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770617937/1621657233961_1_dbrjce.png",
+    ellaSherman: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770617937/1545386579437_1_rv6wmx.png",
 };
 
 export const SPEAKER_IMAGES = EXPERT_IMAGES;

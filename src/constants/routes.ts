@@ -13,7 +13,8 @@ export const ROUTES = {
   EDITION_BASE: "/edition",
   SINGAPORE: "/edition/singapore",
   DUBAI: "/edition/dubai",
-  EDITION: (edition: "singapore" | "dubai") => `/edition/${edition}`,
+  SRI_LANKA: "/edition/sri-lanka",
+  EDITION: (edition: "singapore" | "dubai" | "sri-lanka") => `/edition/${edition}`,
 
   // Legacy routes (for backward compatibility - now redirect)
   SINGAPORE_LEGACY: "/singapore",

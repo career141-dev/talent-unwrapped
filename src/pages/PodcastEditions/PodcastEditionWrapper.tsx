@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { PodcastEditionPage } from "./PodcastEditionPage";
 import { useEpisodeEdition } from "../../hooks/useEpisodeEdition";
 
-type EditionType = "singapore" | "dubai";
+type EditionType = "singapore" | "dubai" | "sri-lanka";
 
 /**
  * PodcastEditionWrapper - Smooth Edition Switching Handler
@@ -23,7 +23,7 @@ export const PodcastEditionWrapper = (): JSX.Element | null => {
 
   // Validate edition is one of the allowed values
   const validEdition = useMemo(() => {
-    const isValid = edition === "singapore" || edition === "dubai";
+    const isValid = edition === "singapore" || edition === "dubai" || edition === "sri-lanka";
 
     if (!isValid && edition) {
       // Invalid edition - redirect to singapore

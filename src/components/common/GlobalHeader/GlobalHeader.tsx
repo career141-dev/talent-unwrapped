@@ -16,49 +16,47 @@ export const GlobalHeader = (): JSX.Element => {
   const isLandingPage =
     location.pathname === "/" || location.pathname === "/talent-unwrapped/";
 
-  const navigationItems = isLandingPage
-    ? [
-      { label: NAV_LABELS.HOME, href: "/", action: () => navigate("/") },
-      {
-        label: NAV_LABELS.ABOUT,
-        href: "#about",
-        action: () => scrollToSection("about"),
+  const handleSectionNavigation = (sectionId: string) => {
+    if (isLandingPage) {
+      scrollToSection(sectionId);
+    } else {
+      navigate(`/#${sectionId}`);
+      // Small timeout to allow navigation to happen before scrolling checks
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }
+  };
+
+  const navigationItems = [
+    { label: NAV_LABELS.HOME, href: "/", action: () => navigate("/") },
+    {
+      label: NAV_LABELS.ABOUT,
+      href: "/#about",
+      action: () => handleSectionNavigation("about"),
+    },
+    {
+      label: NAV_LABELS.EPISODES,
+      href: "/episodes",
+      action: () => navigate("/episodes"),
+    },
+    {
+      label: NAV_LABELS.REELS,
+      href: "/#reels",
+      action: () => handleSectionNavigation("reels"),
+    },
+    {
+      label: NAV_LABELS.SCHEDULE,
+      href: "/schedule",
+      action: () => {
+        navigate("/schedule");
+        setActiveNav(NAV_LABELS.SCHEDULE);
       },
-      {
-        label: NAV_LABELS.EPISODES,
-        href: "/episodes",
-        action: () => navigate("/episodes"),
-      },
-      {
-        label: NAV_LABELS.REELS,
-        href: "#reels",
-        action: () => scrollToSection("reels"),
-      },
-      {
-        label: NAV_LABELS.SCHEDULE,
-        href: "/schedule",
-        action: () => {
-          navigate("/schedule");
-          setActiveNav(NAV_LABELS.SCHEDULE);
-        },
-      },
-    ]
-    : [
-      { label: NAV_LABELS.HOME, href: "/", action: () => navigate("/") },
-      {
-        label: NAV_LABELS.EPISODES,
-        href: "/episodes",
-        action: () => navigate("/episodes"),
-      },
-      {
-        label: NAV_LABELS.SCHEDULE,
-        href: "/schedule",
-        action: () => {
-          navigate("/schedule");
-          setActiveNav(NAV_LABELS.SCHEDULE);
-        },
-      },
-    ];
+    },
+  ];
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -92,10 +90,10 @@ export const GlobalHeader = (): JSX.Element => {
       // 2. Scroll-based tracking for landing page sections
       if (isLandingPage || isEditionPage) {
         const sections = navigationItems
-          .filter(item => item.href.startsWith("#"))
+          .filter(item => item.href.includes("#"))
           .map((item) => ({
             label: item.label,
-            id: item.href.substring(1),
+            id: item.href.split("#")[1],
           }));
 
         let currentActive = "";

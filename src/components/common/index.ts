@@ -4,3 +4,5 @@ export * from "./ErrorBoundary";
 export * from "./Loading/LoadingIndicator";
 export * from "./Loading/Skeleton";
 export * from "./Loading/MediaLoader";
+export * from "./ScrollToTopButton";
+

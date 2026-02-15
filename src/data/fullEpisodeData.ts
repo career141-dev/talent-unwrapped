@@ -97,7 +97,7 @@ export const EXPERT_PROFILES: ExpertProfile[] = [
         title: "CEO",
         subtitle: "Maliban Group",
         linkedin: "https://www.linkedin.com/",
-        imageUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618639/1621657233961_1_helgwf.png",
+        imageUrl: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>",
         imageStyles: "w-[60px] h-[60px] object-cover",
     },
 ];
@@ -298,7 +298,7 @@ export const EPISODE_4_CUSTOM_CONTENT = {
     expertTitle: "CEO",
     expertSubtitle: "Maliban Group, Milk and Agri",
     linkedin: "https://www.linkedin.com/",
-    imageUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618639/1621657233961_1_helgwf.png",
+    imageUrl: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>",
     imageStyles: "w-[60px] h-[60px] object-cover",
     questions: [
         {
@@ -390,7 +390,7 @@ export const EPISODE_8_CUSTOM_CONTENT = {
     expertTitle: "Head of Sales Development",
     expertSubtitle: "LinkedIn-India",
     linkedin: "https://www.linkedin.com/",
-    imageUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618638/1545386579437_1_vl1nrk.png",
+    imageUrl: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>",
     imageStyles: "w-[60px] h-[60px] object-cover",
     questions: [
         {

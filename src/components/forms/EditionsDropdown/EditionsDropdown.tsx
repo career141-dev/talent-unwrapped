@@ -29,6 +29,11 @@ export const EditionsDropdown = (): JSX.Element => {
       path: ROUTES.DUBAI,
       flag: "🇦🇪",
     },
+    {
+      name: `${EDITION_NAMES.SRI_LANKA} Edition`,
+      path: ROUTES.SRI_LANKA,
+      flag: "🇱🇰",
+    },
   ];
 
   const currentEdition = editions.find(

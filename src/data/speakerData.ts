@@ -79,7 +79,7 @@ export const LANDING_SPEAKERS_DATA: Speaker[][] = [
             views: "10m+ Views",
             name: "Sumudu Thanthirigoda",
             position: "CEO - Maliban Group",
-            image: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618639/1621657233961_1_helgwf.png",
+            image: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>",
             edition: "Sri Lanka",
         },
         {
@@ -115,7 +115,7 @@ export const LANDING_SPEAKERS_DATA: Speaker[][] = [
             views: "12m+ Views",
             name: "Karthik Badrinath",
             position: "Head of Sales - LinkedIn India",
-            image: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618638/1545386579437_1_vl1nrk.png",
+            image: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>",
             edition: "Sri Lanka",
         },
     ],

@@ -1,6 +1,7 @@
 # Legacy redirects
 /singapore  /edition/singapore  301
 /dubai      /edition/dubai      301
+/sri-lanka  /edition/sri-lanka  301
 
 # SPA fallback (MUST be last)
 /*  /index.html  200

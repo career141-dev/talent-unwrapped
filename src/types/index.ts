@@ -56,7 +56,7 @@ export interface VideoSlide {
 
 // Props for TheThreeChaptersSection component
 export interface TheThreeChaptersSectionProps {
-  edition?: "dubai" | "singapore";
+  edition?: "dubai" | "singapore" | "sri-lanka";
   hideTopSection?: boolean;
 }
 

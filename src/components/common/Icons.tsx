@@ -13,6 +13,7 @@ import {
     ClipboardList,
     FileText,
     Linkedin,
+    ArrowUp,
     type LucideProps
 } from "lucide-react";
 
@@ -121,6 +122,7 @@ export const ArrowLeftIcon = (props: LucideProps) => <ArrowLeft {...props} />;
 export const AssignmentIndIcon = (props: LucideProps) => <ClipboardList {...props} />;
 export const DynamicFormIcon = (props: LucideProps) => <FileText {...props} />;
 export const LinkedinIcon = (props: LucideProps) => <Linkedin fill="currentColor" {...props} />;
+export const ArrowUpIcon = (props: LucideProps) => <ArrowUp {...props} />;
 
 /**
  * Slide Arrows using Cloudinary images
@@ -166,4 +168,5 @@ export const AppIcons = {
     AssignmentInd: AssignmentIndIcon,
     DynamicForm: DynamicFormIcon,
     Linkedin: LinkedinIcon,
+    ArrowUp: ArrowUpIcon,
 };
