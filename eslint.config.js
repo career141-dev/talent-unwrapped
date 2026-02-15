@@ -8,7 +8,7 @@ import globals from "globals";
 
 export default [
     {
-        ignores: ["dist/**", "node_modules/**", "build/**"],
+        ignores: ["dist/**", "node_modules/**", "build/**", ".venv/**", "qa-artifacts/**", "scripts/**"],
     },
     js.configs.recommended,
     {
