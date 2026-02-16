@@ -164,7 +164,7 @@ export const GlobalHeader = (): JSX.Element => {
           {/* Logo */}
           <a
             href="/"
-            className="relative w-32 sm:w-36 md:w-40 lg:w-60 h-10 sm:h-12 md:h-14 lg:h-16 flex-shrink-0 transition-all duration-500 hover:scale-[1.03] z-[101] group"
+            className="relative w-36 sm:w-40 md:w-48 lg:w-72 h-12 sm:h-14 md:h-16 lg:h-20 flex-shrink-0 transition-all duration-500 hover:scale-[1.03] z-[101] group"
             onClick={(e) => {
               e.preventDefault();
               navigate("/");
@@ -173,7 +173,7 @@ export const GlobalHeader = (): JSX.Element => {
           >
             <img
               className="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.05)] transition-all duration-500 group-hover:drop-shadow-[0_8px_16px_rgba(0,0,0,0.1)] group-hover:brightness-[1.02]"
-              alt="Career141 Logo"
+              alt="Talent Unwrapped Logo"
               src={ASSETS.logo}
             />
           </a>

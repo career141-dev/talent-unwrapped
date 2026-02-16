@@ -61,7 +61,7 @@ export const LATEST_PODCASTS_DATA: Podcast[][] = [
     },
     {
       id: 8,
-      title: "Karthik Badrinath, Head of Sales Development LinkedIn-India addresses the Talent Suite Colombo 2025",
+      title: "Karthik Badrinath, Head of Sales Development - LinkedIn India addresses the Talent Suite Colombo 2025",
       edition: "Sri Lanka Edition",
       date: "September 1, 2025",
       thumbnailUrl: "",
@@ -102,7 +102,7 @@ export const COLOMBO_EPISODES: Episode[] = [
       {
         name: "Sumudu Thanthirigoda",
         role: "CEO - Maliban Group",
-        avatar: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>",
+        avatar: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771218003/1764928872339_j91re3.jpg",
       },
     ],
   },
@@ -169,8 +169,8 @@ export const COLOMBO_EPISODES: Episode[] = [
     speakers: [
       {
         name: "Karthik Badrinath",
-        role: "Head of Sales - LinkedIn India",
-        avatar: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👤</text></svg>",
+        role: "Head of Sales Development - LinkedIn India",
+        avatar: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771217891/1756738002848_mxqtdy.jpg",
       },
     ],
   },

@@ -52,13 +52,13 @@ export const TheThreeChaptersSection = ({
     {
       id: 1,
       src: edition === "singapore"
-        ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771212144/1545386579437_1_3_fadsum.png"
+        ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770709852/Unwrapped_thumbnail_-_Ella_2_r6uwdx.png"
         : ASSETS.manInHeadphones,
       alt: edition === "singapore" ? "Ella Sherman" : "Man in headphones",
       containerClass: `absolute ${isMobile ? "top-[320px] left-[20px]" : "top-[260px] lg:top-[170px] left-[5%] lg:left-[871px]"} w-[80px] h-[60px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
       baseRotate: -7.30,
-      objectPosition: edition === "singapore" ? "50% 15%" : undefined,
-      imageScale: edition === "singapore" ? (isMobile ? 1.1 : 1.2) : (isMobile ? 1.8 : 2.2),
+      objectPosition: edition === "singapore" ? "center center" : undefined,
+      imageScale: edition === "singapore" ? (isMobile ? 1.05 : 1.1) : (isMobile ? 1.8 : 2.2),
       imageTranslateX: edition === "singapore" ? "0px" : (isMobile ? "20px" : "40px"),
       imageTranslateY: edition === "singapore" ? "0px" : (isMobile ? "10px" : "25px"),
       animY: isMobile ? [0, -8, 0] : [0, -15, 0],
@@ -66,13 +66,13 @@ export const TheThreeChaptersSection = ({
     {
       id: 2,
       src: edition === "singapore"
-        ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771212145/1621657233961_1_3_sv9bny.png"
+        ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770709853/Unwrapped_thumbnail_-_Echo_1_g0i2ae.png"
         : ASSETS.youngBlackMan,
       alt: edition === "singapore" ? "Avik Ghosh" : "Young black man in headphones",
       containerClass: `absolute ${isMobile ? "top-[40px] right-[20px]" : "top-[140px] sm:left-[230px] lg:left-[1125px] right-[5%] lg:right-auto"} w-[90px] h-[68px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
       baseRotate: 6.49,
-      objectPosition: edition === "singapore" ? "50% 15%" : undefined,
-      imageScale: edition === "singapore" ? (isMobile ? 1.1 : 1.2) : (isMobile ? 1.8 : 2.2),
+      objectPosition: edition === "singapore" ? "center center" : undefined,
+      imageScale: edition === "singapore" ? (isMobile ? 1.05 : 1.1) : (isMobile ? 1.8 : 2.2),
       imageTranslateX: edition === "singapore" ? "0px" : (isMobile ? "20px" : "40px"),
       imageTranslateY: edition === "singapore" ? "0px" : (isMobile ? "10px" : "25px"),
       animY: isMobile ? [0, -8, 0] : [0, -15, 0],

@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import { DecorativeArrowIcon } from "@/components/common/Icons";
-import { ASSETS } from "@/assets";
 import { LINKS } from "@/config/links";
 import { NAV_LABELS } from "@/constants/copy";
 
@@ -112,7 +111,7 @@ export const ContactUsSection = (): JSX.Element => {
         <img
           className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
           alt="Contact Section Banner"
-          src={ASSETS.contactBanner}
+          src="https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771220347/Artboard_3_1_nbtue5.svg"
         />
       </motion.div>
 

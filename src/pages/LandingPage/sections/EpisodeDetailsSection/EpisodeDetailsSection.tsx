@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ASSETS } from "@/assets";
 import { ArrowRightIcon } from "@/components/common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, GUEST_SECTION_CONTENT } from "@/constants/copy";
 
@@ -31,28 +30,28 @@ export const EpisodeDetailsSection = (_props: EpisodeDetailsSectionProps): JSX.E
   const images: ImageItem[] = [
     {
       id: 1,
-      src: ASSETS.handsomeElegantMen,
-      alt: "Handsome elegant men",
+      src: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770791419/Frame_1000003798_chw5ji.png",
+      alt: "Fireside chat scene",
     },
     {
       id: 2,
-      src: ASSETS.professionalBusinessman,
-      alt: "Professional",
+      src: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770709853/Unwrapped_thumbnail_-_Echo_1_g0i2ae.png",
+      alt: "Echo Wu session",
     },
     {
       id: 3,
-      src: ASSETS.recreationArea,
-      alt: "In recreation area",
+      src: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770709852/Unwrapped_thumbnail_-_Ella_2_r6uwdx.png",
+      alt: "Ella Sherman session",
     },
     {
       id: 4,
-      src: ASSETS.teamReporters,
-      alt: "Team of reporters",
+      src: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770791427/Frame_1000003800_t6advc.png",
+      alt: "Roundtable discussion",
     },
     {
       id: 5,
-      src: ASSETS.fourPeopleMeeting,
-      alt: "Four people meeting",
+      src: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770709637/Unwrapped_thumbnail_-_Avik_4_zro5d4.png",
+      alt: "Avik Ghosh session",
     },
   ];
 

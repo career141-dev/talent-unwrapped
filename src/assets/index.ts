@@ -3,9 +3,9 @@
  */
 
 export const ASSETS = {
-    logo: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770915535/Artboard_3_1_5_kzzyhs.png",
+    logo: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771220347/Artboard_3_1_nbtue5.svg",
     prasperant: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770609977/Artboard_1_copy_2x_xhwixf.png",
-    contactBanner: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770915535/Artboard_3_1_5_kzzyhs.png",
+    contactBanner: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771220347/Artboard_3_1_nbtue5.svg",
     manInHeadphones: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770805222/Frame_1000003696_kdgg5i.png",
     youngBlackMan: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770805222/Frame_1000003561_1_uzsupn.png",
     professionalMicrophone: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770915545/Frame_1000003710_zcypj4.png",

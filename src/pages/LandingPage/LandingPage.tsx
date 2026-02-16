@@ -31,7 +31,7 @@ export const LandingPage = (): JSX.Element => {
       "A podcast series exploring the human dimensions of ambition, design, and leadership across Singapore, Dubai, and the GCC region.",
     "url": "https://talentunwrapped.com",
     "image":
-      "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770915535/Artboard_3_1_5_kzzyhs.png",
+      "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771220347/Artboard_3_1_nbtue5.svg",
     "author": {
       "@type": "Organization",
       "name": "Career141",
