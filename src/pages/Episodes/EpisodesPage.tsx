@@ -45,7 +45,9 @@ export const EpisodesPage = (): JSX.Element => {
         </div>
 
         {/* Hero Content Section */}
-        <TalentIntroductionSection />
+        <div className="w-full overflow-x-clip">
+          <TalentIntroductionSection />
+        </div>
 
         <section
           id="episodes"

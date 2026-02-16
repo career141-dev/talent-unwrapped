@@ -11,6 +11,32 @@ import {
 import { HERO_CONTENT } from "@/constants/copy";
 
 /**
+ * Helper to transform YouTube URLs into embed URLs
+ */
+const getEmbedUrl = (url: string, autoplay: boolean = true) => {
+  try {
+    const autoplayParam = autoplay ? "autoplay=1" : "autoplay=0";
+    const baseParams = `&rel=0&playsinline=1&enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}&modestbranding=1&iv_load_policy=3&widget_referrer=${encodeURIComponent(window.location.href)}`;
+
+    if (url.includes("youtube.com/embed")) {
+      return `${url.split('?')[0]}?${autoplayParam}${baseParams}`;
+    }
+    if (url.includes("youtu.be")) {
+      const videoId = url.split("youtu.be/")[1]?.split("?")[0];
+      return videoId ? `https://www.youtube.com/embed/${videoId}?${autoplayParam}${baseParams}` : url;
+    }
+    if (url.includes("youtube.com/watch")) {
+      const urlObj = new URL(url);
+      const videoId = urlObj.searchParams.get("v");
+      return videoId ? `https://www.youtube.com/embed/${videoId}?${autoplayParam}${baseParams}` : url;
+    }
+    return url;
+  } catch (e) {
+    return url;
+  }
+};
+
+/**
  * HeroBannerSection - Exact Figma Design Recreation
  * Desktop: 1440px layout with absolute positioning
  * Mobile/Tablet: Fully responsive with clamp() values
@@ -18,7 +44,16 @@ import { HERO_CONTENT } from "@/constants/copy";
 export const HeroBannerSection = (): JSX.Element => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 767px)");
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    setIsMobile(mql.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
 
   const videoSlides = LANDING_VIDEO_SLIDES;
 
@@ -181,28 +216,41 @@ export const HeroBannerSection = (): JSX.Element => {
                     : "opacity-0 z-0"
                     }`}
                 >
-                  {isPlaying && index === currentSlide && slide.videoUrl ? (
-                    slide.videoUrl.includes("youtube") || slide.videoUrl.includes("youtu.be") ? (
-                      <iframe
-                        className="w-full h-full object-cover"
-                        src={`${slide.videoUrl}${slide.videoUrl.includes("?") ? "&" : "?"}autoplay=1&rel=0`}
-                        title={slide.title}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    ) : (
-                      <video
-                        ref={videoRef}
-                        className="w-full h-full object-cover"
-                        src={slide.videoUrl}
-                        controls
-                        autoPlay
-                        onEnded={handleVideoEnded}
-                        controlsList="nodownload"
-                        playsInline
-                      />
-                    )
+                  {isMobile && isPlaying && index === currentSlide && slide.videoUrl ? (
+                    <>
+                      {slide.videoUrl.includes("youtube") || slide.videoUrl.includes("youtu.be") ? (
+                        <>
+                          <iframe
+                            className="w-full h-full object-cover"
+                            src={getEmbedUrl(slide.videoUrl || "", true)}
+                            title={slide.title}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            style={{ pointerEvents: "auto" }}
+                          />
+                          <div
+                            className="absolute inset-0 z-30 cursor-pointer bg-transparent"
+                            style={{ height: '80%' }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setIsPlaying(false);
+                            }}
+                          />
+                        </>
+                      ) : (
+                        <video
+                          ref={videoRef}
+                          className="w-full h-full object-cover"
+                          src={slide.videoUrl}
+                          controls
+                          autoPlay
+                          onEnded={handleVideoEnded}
+                          controlsList="nodownload"
+                          playsInline
+                        />
+                      )}
+                    </>
                   ) : (
                     <img
                       className="w-full h-full object-cover"
@@ -461,28 +509,41 @@ export const HeroBannerSection = (): JSX.Element => {
                 className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
                   }`}
               >
-                {isPlaying && index === currentSlide && slide.videoUrl ? (
-                  slide.videoUrl.includes("youtube") || slide.videoUrl.includes("youtu.be") ? (
-                    <iframe
-                      className="w-full h-full object-cover"
-                      src={`${slide.videoUrl}${slide.videoUrl.includes("?") ? "&" : "?"}autoplay=1&rel=0`}
-                      title={slide.title}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  ) : (
-                    <video
-                      ref={videoRef}
-                      className="w-full h-full object-cover"
-                      src={slide.videoUrl}
-                      controls
-                      autoPlay
-                      onEnded={handleVideoEnded}
-                      controlsList="nodownload"
-                      playsInline
-                    />
-                  )
+                {!isMobile && isPlaying && index === currentSlide && slide.videoUrl ? (
+                  <>
+                    {slide.videoUrl.includes("youtube") || slide.videoUrl.includes("youtu.be") ? (
+                      <>
+                        <iframe
+                          className="w-full h-full object-cover"
+                          src={getEmbedUrl(slide.videoUrl || "", true)}
+                          title={slide.title}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          style={{ pointerEvents: "auto" }}
+                        />
+                        <div
+                          className="absolute inset-0 z-30 cursor-pointer bg-transparent"
+                          style={{ height: '85%' }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setIsPlaying(false);
+                          }}
+                        />
+                      </>
+                    ) : (
+                      <video
+                        ref={videoRef}
+                        className="w-full h-full object-cover"
+                        src={slide.videoUrl}
+                        controls
+                        autoPlay
+                        onEnded={handleVideoEnded}
+                        controlsList="nodownload"
+                        playsInline
+                      />
+                    )}
+                  </>
                 ) : (
                   <img
                     className="w-full h-full object-cover"

@@ -29,12 +29,14 @@ export const Schedule = (): JSX.Element => {
         <GlobalHeader />
 
         {/* Main Content - Constrained width, responsive padding */}
-        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
-          {/* Singapore Edition - Three Chapters */}
-          <TheThreeChaptersSection edition="singapore" />
+        <div className="w-full overflow-x-clip">
+          <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+            {/* Singapore Edition - Three Chapters */}
+            <TheThreeChaptersSection edition="singapore" />
 
-          {/* Dubai Edition - Three Chapters */}
-          <TheThreeChaptersSection edition="dubai" hideTopSection={true} />
+            {/* Dubai Edition - Three Chapters */}
+            <TheThreeChaptersSection edition="dubai" hideTopSection={true} />
+          </div>
         </div>
 
         {/* About Us Section */}

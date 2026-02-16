@@ -29,15 +29,19 @@ import SEO from "../../components/common/SEO/SEO";
 const getEmbedUrl = (url: string, autoplay: boolean = true) => {
   try {
     const autoplayParam = autoplay ? "autoplay=1" : "autoplay=0";
-    if (url.includes("youtube.com/embed")) return `${url}${url.includes("?") ? "&" : "?"}${autoplayParam}& rel=0`;
+    const baseParams = `&rel=0&playsinline=1&enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}&modestbranding=1&iv_load_policy=3&widget_referrer=${encodeURIComponent(window.location.href)}`;
+
+    if (url.includes("youtube.com/embed")) {
+      return `${url.split('?')[0]}?${autoplayParam}${baseParams}`;
+    }
     if (url.includes("youtu.be")) {
       const videoId = url.split("youtu.be/")[1]?.split("?")[0];
-      return videoId ? `https://www.youtube.com/embed/${videoId}?${autoplayParam}&rel=0` : url;
+      return videoId ? `https://www.youtube.com/embed/${videoId}?${autoplayParam}${baseParams}` : url;
     }
     if (url.includes("youtube.com/watch")) {
       const urlObj = new URL(url);
       const videoId = urlObj.searchParams.get("v");
-      return videoId ? `https://www.youtube.com/embed/${videoId}?${autoplayParam}&rel=0` : url;
+      return videoId ? `https://www.youtube.com/embed/${videoId}?${autoplayParam}${baseParams}` : url;
     }
     return url;
   } catch (e) {
@@ -75,8 +79,17 @@ export const FullEpisode = (): JSX.Element => {
   const { episodeId } = useParams<{ episodeId: string }>();
   const location = useLocation();
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 767px)");
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    setIsMobile(mql.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
 
   // Get the specific episode data if episodeId is provided
   const episode = episodeId ? getEpisodeById(episodeId) : undefined;
@@ -194,7 +207,7 @@ export const FullEpisode = (): JSX.Element => {
 
   const content = (
     <div
-      className="flex flex-col items-center relative w-full"
+      className="flex flex-col items-center relative w-full overflow-x-clip"
       data-model-id="905:6609"
     >
       {/* Hero Section with Video Carousel - RESPONSIVE */}
@@ -212,29 +225,42 @@ export const FullEpisode = (): JSX.Element => {
           >
             {/* Single Video / Thumbnail */}
             <div className="absolute inset-0 w-full h-full">
-              {isPlaying && currentVideo.videoUrl ? (
-                currentVideo.videoUrl.includes("youtube") || currentVideo.videoUrl.includes("youtu.be") ? (
-                  <iframe
-                    className="w-full h-full object-cover"
-                    src={getEmbedUrl(currentVideo.videoUrl || "", true)}
-                    title={currentVideo.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    scrolling="no"
-                    style={{ border: "none", overflow: "hidden" }}
-                  />
-                ) : (
-                  <video
-                    ref={videoRef}
-                    className="w-full h-full object-cover"
-                    src={`${currentVideo.videoUrl}#t=0.001`}
-                    preload="metadata"
-                    playsInline
-                    onEnded={handleVideoEnded}
-                    controls={true}
-                  />
-                )
+              {isMobile && isPlaying && currentVideo.videoUrl ? (
+                <>
+                  {currentVideo.videoUrl.includes("youtube") || currentVideo.videoUrl.includes("youtu.be") ? (
+                    <>
+                      <iframe
+                        className="w-full h-full object-cover"
+                        src={getEmbedUrl(currentVideo.videoUrl || "", true)}
+                        title={currentVideo.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        scrolling="no"
+                        style={{ border: "none", overflow: "hidden", pointerEvents: "auto" }}
+                      />
+                      {/* Overlay to catch taps and pause/stop instead of redirecting to YouTube */}
+                      <div
+                        className="absolute inset-0 z-30 cursor-pointer bg-transparent"
+                        style={{ height: '80%' }} // Leave bottom 20% for YouTube native controls if needed
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setIsPlaying(false);
+                        }}
+                      />
+                    </>
+                  ) : (
+                    <video
+                      ref={videoRef}
+                      className="w-full h-full object-cover"
+                      src={`${currentVideo.videoUrl}#t=0.001`}
+                      preload="metadata"
+                      playsInline
+                      onEnded={handleVideoEnded}
+                      controls={true}
+                    />
+                  )}
+                </>
               ) : (
                 currentVideo.thumbnail ? (
                   <img
@@ -335,29 +361,41 @@ export const FullEpisode = (): JSX.Element => {
           >
             {/* Single Video / Thumbnail */}
             <div className="absolute inset-0 w-full h-full">
-              {isPlaying && currentVideo.videoUrl ? (
-                currentVideo.videoUrl.includes("youtube") || currentVideo.videoUrl.includes("youtu.be") ? (
-                  <iframe
-                    className="w-full h-full object-cover"
-                    src={getEmbedUrl(currentVideo.videoUrl || "", true)}
-                    title={currentVideo.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    scrolling="no"
-                    style={{ border: "none", overflow: "hidden" }}
-                  />
-                ) : (
-                  <video
-                    ref={videoRef}
-                    className="w-full h-full object-cover"
-                    src={`${currentVideo.videoUrl}#t=0.001`}
-                    preload="metadata"
-                    playsInline
-                    onEnded={handleVideoEnded}
-                    controls={true}
-                  />
-                )
+              {!isMobile && isPlaying && currentVideo.videoUrl ? (
+                <>
+                  {currentVideo.videoUrl.includes("youtube") || currentVideo.videoUrl.includes("youtu.be") ? (
+                    <>
+                      <iframe
+                        className="w-full h-full object-cover"
+                        src={getEmbedUrl(currentVideo.videoUrl || "", true)}
+                        title={currentVideo.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        scrolling="no"
+                        style={{ border: "none", overflow: "hidden", pointerEvents: "auto" }}
+                      />
+                      <div
+                        className="absolute inset-0 z-30 cursor-pointer bg-transparent"
+                        style={{ height: '85%' }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setIsPlaying(false);
+                        }}
+                      />
+                    </>
+                  ) : (
+                    <video
+                      ref={videoRef}
+                      className="w-full h-full object-cover"
+                      src={`${currentVideo.videoUrl}#t=0.001`}
+                      preload="metadata"
+                      playsInline
+                      onEnded={handleVideoEnded}
+                      controls={true}
+                    />
+                  )}
+                </>
               ) : (
                 currentVideo.thumbnail ? (
                   <img
@@ -471,33 +509,40 @@ export const FullEpisode = (): JSX.Element => {
         podcastSchema={episodeSchema}
       />
       <main className="flex flex-col items-center relative w-full bg-white">
-        <GlobalHeader />
+        <div className="w-full">
+          <GlobalHeader />
+        </div>
 
         {content}
 
         {/* Key Questions Section */}
-        <KeyQuestionsSection edition={editionKey} episodeId={episode?.id} />
+        <div className="w-full overflow-x-clip">
+          <KeyQuestionsSection edition={editionKey} episodeId={episode?.id} />
+        </div>
 
         {/* Reels Section - Show only for Dubai and Singapore editions */}
         {edition !== "Sri Lanka" && (
-          <ReelsSection edition={edition as "Dubai" | "Singapore"} />
+          <div className="w-full overflow-x-clip">
+            <ReelsSection edition={edition as "Dubai" | "Singapore"} />
+          </div>
         )}
 
         {/* Episode Details Section - Outside layout for full-width scrolling text */}
-        <div className={edition === "Sri Lanka" ? "mt-[-40px] lg:mt-[-60px]" : ""}>
+        <div className={`w-full overflow-x-clip ${edition === "Sri Lanka" ? "mt-[-40px] lg:mt-[-60px]" : ""}`}>
           <EpisodeDetailsSection />
         </div>
 
         {/* About Section - The Three Chapters */}
-        <TalentIntroductionSection />
+        <div className="w-full overflow-x-clip">
+          <TalentIntroductionSection />
+        </div>
 
-        {/* Submit Form Section */}
-        <SubmitFormSection />
-
-        {/* About Us Section */}
-        <ContactUsSection />
-
-        <FooterSection />
+        {/* Footer sections */}
+        <div className="w-full overflow-x-clip">
+          <SubmitFormSection />
+          <ContactUsSection />
+          <FooterSection />
+        </div>
       </main>
     </>
   );

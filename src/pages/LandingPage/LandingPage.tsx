@@ -56,29 +56,29 @@ export const LandingPage = (): JSX.Element => {
         </div>
 
         {/* Hero & About sections - now bypassing global layout */}
-        <div className="w-full overflow-x-hidden">
+        <div className="w-full overflow-x-clip">
           <HeroBannerSection />
           <WisdomAndTestimonialsSection />
           <TalentIntroductionSection />
         </div>
 
         {/* Full-width latest podcast section */}
-        <div className="w-full overflow-x-hidden">
+        <div className="w-full overflow-x-clip">
           <LatestPodcastListSection />
         </div>
 
         {/* Full-width speakers section - breaks out of global layout */}
-        <div className="w-full overflow-x-hidden">
+        <div className="w-full overflow-x-clip">
           <SpeakersProfileSection />
         </div>
 
         {/* Full-width reels section */}
-        <div className="w-full overflow-x-hidden">
+        <div className="w-full overflow-x-clip">
           <ReelsSection />
         </div>
 
         {/* Full-width episode details section */}
-        <div className="w-full overflow-x-hidden">
+        <div className="w-full overflow-x-clip">
           <EpisodeDetailsSection />
         </div>
 

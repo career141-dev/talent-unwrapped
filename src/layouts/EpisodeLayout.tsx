@@ -37,15 +37,17 @@ export const EpisodeLayout = ({
       {/* Header - Consistent across all pages */}
       <GlobalHeader />
 
-      {/* Main Content Area - Constrained width, responsive padding */}
-      {children && (
-        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
-          <div className={className}>{children}</div>
-        </div>
-      )}
+      <div className="w-full overflow-x-clip">
+        {/* Main Content Area - Constrained width, responsive padding */}
+        {children && (
+          <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+            <div className={className}>{children}</div>
+          </div>
+        )}
 
-      {/* Chapters Section - Optional, shown by default - Full width without wrapper */}
-      {showChapters && edition && <TheThreeChaptersSection edition={edition} />}
+        {/* Chapters Section - Optional, shown by default - Full width without wrapper */}
+        {showChapters && edition && <TheThreeChaptersSection edition={edition} />}
+      </div>
 
       {/* Contact Section - Optional, shown by default */}
       {showContact && <ContactUsSection />}

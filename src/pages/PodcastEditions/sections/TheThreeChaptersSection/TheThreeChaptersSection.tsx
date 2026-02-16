@@ -8,6 +8,25 @@ import { ASSETS } from "@/assets";
 import { ArrowRightIcon, VideoCircleFilledIcon, ExportIcon } from "@/components/common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, BUTTONS, TALENT_INTRO_CONTENT } from "@/constants/copy";
 
+const Counter = ({ value, suffix = "" }: { value: number; suffix?: string }) => {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest) + suffix);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (inView) {
+      const controls = animate(count, value, {
+        duration: 2,
+        ease: "easeOut",
+      });
+      return controls.stop;
+    }
+  }, [inView, count, value]);
+
+  return <motion.span ref={ref}>{rounded}</motion.span>;
+};
+
 /**
  * TheThreeChaptersSection - Complete section
  * Shows specific edition content without filter
@@ -26,46 +45,33 @@ export const TheThreeChaptersSection = ({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const Counter = ({ value, suffix = "" }: { value: number; suffix?: string }) => {
-    const count = useMotionValue(0);
-    const rounded = useTransform(count, (latest) => Math.round(latest) + suffix);
-    const ref = useRef(null);
-    const inView = useInView(ref, { once: true, margin: "-100px" });
-
-    useEffect(() => {
-      if (inView) {
-        const controls = animate(count, value, {
-          duration: 1,
-          ease: "easeOut",
-        });
-        return controls.stop;
-      }
-    }, [inView, count, value]);
-
-    return <motion.span ref={ref}>{rounded}</motion.span>;
-  };
-
   const editionData = getEditionContent(edition);
   const { name: editionName, schedule, chapters } = editionData;
 
   const decorativeImages = [
     {
       id: 1,
-      src: ASSETS.manInHeadphones,
-      alt: "Man in headphones",
+      src: edition === "singapore"
+        ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771212144/1545386579437_1_3_fadsum.png"
+        : ASSETS.manInHeadphones,
+      alt: edition === "singapore" ? "Ella Sherman" : "Man in headphones",
       containerClass:
-        `absolute ${isMobile ? "top-[280px]" : "top-[260px] lg:top-[150px]"} left-[5%] lg:left-[871px] w-[100px] h-[70px] z-0 md:hidden lg:flex lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[-7.30deg] shadow-[12px_12px_30px_#00000017]`,
+        `absolute ${isMobile ? "top-[320px] left-[20px]" : "top-[260px] lg:top-[170px] left-[5%] lg:left-[871px]"} w-[80px] h-[60px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden rotate-[-7.30deg] shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
       imageClass:
-        `w-full h-full object-cover rotate-[7.30deg] ${isMobile ? "scale-[1.8] translate-x-[20px] translate-y-[10px]" : "scale-[2.2] translate-x-[40px] translate-y-[25px]"}`,
+        `w-full h-full object-cover rotate-[7.30deg] ${isMobile ? "scale-[1.1]" : "scale-[1.2]"}`,
+      animY: isMobile ? [0, -8, 0] : [0, -15, 0],
     },
     {
       id: 2,
-      src: ASSETS.youngBlackMan,
-      alt: "Young black man in headphones",
+      src: edition === "singapore"
+        ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771212145/1621657233961_1_3_sv9bny.png"
+        : ASSETS.youngBlackMan,
+      alt: edition === "singapore" ? "Avik Ghosh" : "Young black man in headphones",
       containerClass:
-        `absolute ${isMobile ? "top-[70px] right-[5%]" : "top-[75px] sm:left-[230px] lg:left-[1125px]"} w-[120px] h-[84px] z-0 md:hidden lg:flex lg:top-52 lg:right-auto lg:w-[152px] lg:h-[106px] rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017]`,
+        `absolute ${isMobile ? "top-[40px] right-[20px]" : "top-[75px] sm:left-[230px] lg:left-[1125px] right-[5%] lg:right-auto"} w-[90px] h-[68px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
       imageClass:
-        `w-full h-full object-cover rotate-[-6.49deg] ${isMobile ? "scale-[1.8] translate-x-[20px] translate-y-[10px]" : "scale-[2.2] translate-x-[40px] translate-y-[25px]"}`,
+        `w-full h-full object-cover rotate-[-6.49deg] ${isMobile ? "scale-[1.1]" : "scale-[1.2]"}`,
+      animY: isMobile ? [0, -8, 0] : [0, -15, 0],
     },
   ];
 
@@ -281,7 +287,7 @@ export const TheThreeChaptersSection = ({
             >
               <motion.div
                 animate={{
-                  y: [0, -15, 0],
+                  y: image.animY || [0, -15, 0],
                   rotate: [0, 2, -2, 0],
                 }}
                 transition={{
