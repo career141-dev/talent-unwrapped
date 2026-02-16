@@ -55,10 +55,12 @@ export const TheThreeChaptersSection = ({
         ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771212144/1545386579437_1_3_fadsum.png"
         : ASSETS.manInHeadphones,
       alt: edition === "singapore" ? "Ella Sherman" : "Man in headphones",
-      containerClass:
-        `absolute ${isMobile ? "top-[320px] left-[20px]" : "top-[260px] lg:top-[170px] left-[5%] lg:left-[871px]"} w-[80px] h-[60px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden rotate-[-7.30deg] shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
-      imageClass:
-        `w-full h-full object-cover rotate-[7.30deg] ${isMobile ? "scale-[1.1]" : "scale-[1.2]"}`,
+      containerClass: `absolute ${isMobile ? "top-[320px] left-[20px]" : "top-[260px] lg:top-[170px] left-[5%] lg:left-[871px]"} w-[80px] h-[60px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
+      baseRotate: -7.30,
+      objectPosition: edition === "singapore" ? "50% 15%" : undefined,
+      imageScale: edition === "singapore" ? (isMobile ? 1.1 : 1.2) : (isMobile ? 1.8 : 2.2),
+      imageTranslateX: edition === "singapore" ? "0px" : (isMobile ? "20px" : "40px"),
+      imageTranslateY: edition === "singapore" ? "0px" : (isMobile ? "10px" : "25px"),
       animY: isMobile ? [0, -8, 0] : [0, -15, 0],
     },
     {
@@ -67,13 +69,24 @@ export const TheThreeChaptersSection = ({
         ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771212145/1621657233961_1_3_sv9bny.png"
         : ASSETS.youngBlackMan,
       alt: edition === "singapore" ? "Avik Ghosh" : "Young black man in headphones",
-      containerClass:
-        `absolute ${isMobile ? "top-[40px] right-[20px]" : "top-[75px] sm:left-[230px] lg:left-[1125px] right-[5%] lg:right-auto"} w-[90px] h-[68px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden rotate-[6.49deg] shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
-      imageClass:
-        `w-full h-full object-cover rotate-[-6.49deg] ${isMobile ? "scale-[1.1]" : "scale-[1.2]"}`,
+      containerClass: `absolute ${isMobile ? "top-[40px] right-[20px]" : "top-[140px] sm:left-[230px] lg:left-[1125px] right-[5%] lg:right-auto"} w-[90px] h-[68px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
+      baseRotate: 6.49,
+      objectPosition: edition === "singapore" ? "50% 15%" : undefined,
+      imageScale: edition === "singapore" ? (isMobile ? 1.1 : 1.2) : (isMobile ? 1.8 : 2.2),
+      imageTranslateX: edition === "singapore" ? "0px" : (isMobile ? "20px" : "40px"),
+      imageTranslateY: edition === "singapore" ? "0px" : (isMobile ? "10px" : "25px"),
       animY: isMobile ? [0, -8, 0] : [0, -15, 0],
     },
   ];
+
+  const getCounterRotation = (baseRotate: number) => ({
+    rotate: [(-baseRotate - 4), (-(baseRotate + 2) - 4), (-baseRotate - 4)],
+    transition: {
+      duration: 6,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -280,30 +293,39 @@ export const TheThreeChaptersSection = ({
         {/* Decorative Images */}
         {!hideTopSection &&
           decorativeImages.map((image) => (
-            <div
+            <motion.div
               key={image.id}
-              className={`${image.containerClass}`}
+              className={`${image.containerClass} will-change-transform shadow-[12px_12px_30px_#00000017]`}
               aria-hidden="true"
+              animate={{
+                y: image.animY || [0, -15, 0],
+                rotate: [image.baseRotate, image.baseRotate + 2, image.baseRotate],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              style={{
+                perspective: "1000px",
+                backfaceVisibility: "hidden",
+                WebkitBackfaceVisibility: "hidden"
+              }}
             >
-              <motion.div
-                animate={{
-                  y: image.animY || [0, -15, 0],
-                  rotate: [0, 2, -2, 0],
+              <motion.img
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{
+                  scale: image.imageScale,
+                  transformOrigin: 'center center',
+                  objectPosition: image.objectPosition,
+                  x: image.imageTranslateX,
+                  y: image.imageTranslateY,
                 }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="w-full h-full"
-              >
-                <img
-                  className={image.imageClass}
-                  alt={image.alt}
-                  src={image.src}
-                />
-              </motion.div>
-            </div>
+                alt={image.alt}
+                src={image.src}
+                animate={getCounterRotation(image.baseRotate)}
+              />
+            </motion.div>
           ))}
 
         <LearnMoreModal
