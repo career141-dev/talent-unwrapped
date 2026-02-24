@@ -6,6 +6,14 @@ import { ASSETS, LINKS } from "@/assets";
 import { ArrowRightIcon, CloseIcon } from "../../common/Icons";
 import { NAV_LABELS } from "@/constants/copy";
 
+/**
+ * GlobalHeader Component
+ * Provides the main navigation menu for the application.
+ * Features:
+ * - Responsive desktop/mobile navigation drawers.
+ * - Scroll-based section tracking for landing page.
+ * - Editions dropdown for location-based filtering.
+ */
 export const GlobalHeader = (): JSX.Element => {
   const navigate = useNavigate();
   const location = useLocation();
