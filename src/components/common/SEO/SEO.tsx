@@ -1,5 +1,10 @@
 import { Helmet } from "react-helmet-async";
 
+/**
+ * SEO Component
+ * Handles all meta tags, social sharing (OG/Twitter), and structured data (JSON-LD).
+ * Uses react-helmet-async for dynamic head management.
+ */
 interface SEOProps {
     title?: string;
     description?: string;
@@ -26,19 +31,20 @@ const SEO: React.FC<SEOProps> = ({
     const siteTitle = "Talent Unwrapped";
     const fullTitle = title.includes(siteTitle) ? title : `${title} | ${siteTitle}`;
 
-    // Ensure absolute URL
+    // Ensure absolute URL for canonical and sharing purposes
     const absoluteUrl = url.startsWith("http") ? url : `https://talentunwrapped.com${url}`;
 
     return (
         <Helmet>
             <html lang="en" />
-            {/* Primary Meta Tags */}
+            {/* Primary Meta Tags: Essential for search engines and browser titles */}
             <title>{fullTitle}</title>
             <meta name="title" content={fullTitle} />
             <meta name="description" content={description} />
             <meta name="keywords" content={keywords} />
             <meta name="author" content={author} />
             <link rel="canonical" href={absoluteUrl} />
+            {/* Indexing instructions for crawler bots */}
             <meta name="robots" content="index, follow" />
             <meta name="googlebot" content="index, follow" />
 
