@@ -31,6 +31,7 @@ const SEO: React.FC<SEOProps> = ({
 
     return (
         <Helmet>
+            <html lang="en" />
             {/* Primary Meta Tags */}
             <title>{fullTitle}</title>
             <meta name="title" content={fullTitle} />
@@ -38,6 +39,8 @@ const SEO: React.FC<SEOProps> = ({
             <meta name="keywords" content={keywords} />
             <meta name="author" content={author} />
             <link rel="canonical" href={absoluteUrl} />
+            <meta name="robots" content="index, follow" />
+            <meta name="googlebot" content="index, follow" />
 
             {/* Open Graph / Facebook */}
             <meta property="og:type" content={type} />
