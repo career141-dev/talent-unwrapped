@@ -46,20 +46,27 @@ export const JoinUsForm = (): JSX.Element => {
     }
 
     const { firstName, lastName, email, company, designation } = data;
+    const cleanEmail = email.trim();
 
     const commonParams = {
       first_name: firstName,
       last_name: lastName,
-      email: email,
+      email: cleanEmail,
       company: company,
       designation: designation,
-      to_email: email, // Used for auto-reply
+      to_email: cleanEmail, // Used for auto-reply
     };
 
-    // Parallel execution for better performance
-    await Promise.all([
+    console.log("Attempting to send emails...", {
+      serviceId: SERVICE_ID,
+      teamTemplateId: TEMPLATE_TEAM_ID,
+      autoReplyTemplateId: TEMPLATE_AUTOREPLY_ID,
+      recipient: cleanEmail
+    });
+
+    try {
       // 1. Send Team Notification
-      emailjs.send(
+      await emailjs.send(
         SERVICE_ID,
         TEMPLATE_TEAM_ID,
         {
@@ -68,9 +75,16 @@ export const JoinUsForm = (): JSX.Element => {
           message: `New inquiry received from ${firstName} ${lastName} at ${company}.`,
         },
         PUBLIC_KEY
-      ),
+      );
+      console.log("Team notification sent successfully");
+    } catch (err) {
+      console.error("Failed to send Team Notification:", err);
+      throw err;
+    }
+
+    try {
       // 2. Send Auto-reply to User
-      emailjs.send(
+      await emailjs.send(
         SERVICE_ID,
         TEMPLATE_AUTOREPLY_ID,
         {
@@ -78,8 +92,12 @@ export const JoinUsForm = (): JSX.Element => {
           to_name: firstName, // Personalize auto-reply
         },
         PUBLIC_KEY
-      )
-    ]);
+      );
+      console.log("Auto-reply sent successfully");
+    } catch (err) {
+      console.error("Failed to send Auto-reply:", err);
+      throw err;
+    }
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
