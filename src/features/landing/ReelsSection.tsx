@@ -24,6 +24,7 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
 
     const observerOptions = {
       root: scrollContainerRef.current,
+      rootMargin: "0px",
       threshold: 0.6, // Item must be 60% visible to be considered "active"
     };
 
@@ -31,8 +32,8 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const index = slideRefs.current.findIndex((ref) => ref === entry.target);
-          if (index !== -1 && index !== activeIndex) {
-            setActiveIndex(index);
+          if (index !== -1) {
+            setActiveIndex((prev) => (prev !== index ? index : prev));
           }
         }
       });
@@ -46,7 +47,7 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
     });
 
     return () => observer.disconnect();
-  }, [reelVideos.length, activeIndex]);
+  }, [reelVideos.length]);
 
   // Pause playing when scrolling starts (detecting scroll movement)
   useEffect(() => {
