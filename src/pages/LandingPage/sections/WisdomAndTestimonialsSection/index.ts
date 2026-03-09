@@ -1,1 +1,0 @@
-export { WisdomAndTestimonialsSection } from "./WisdomAndTestimonialsSection";

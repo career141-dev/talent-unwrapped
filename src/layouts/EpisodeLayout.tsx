@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { GlobalHeader, FooterSection, ContactUsSection } from "../components";
-import { TheThreeChaptersSection } from "../pages/PodcastEditions/sections";
+import { TheThreeChaptersSection } from "../features/podcasts";
 
 export type EditionType = "singapore" | "dubai" | "sri-lanka";
 

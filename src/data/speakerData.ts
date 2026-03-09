@@ -71,6 +71,7 @@ export const LANDING_SPEAKERS_DATA: Speaker[][] = [
             name: "Ayin Shah Jahan",
             position: "Location Talent Leader - EY GDS Sri Lanka",
             image: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770883420/Frame_4449057_1_1_npu1wb.png",
+            linkedinUrl: "https://www.linkedin.com/search/results/people/?keywords=Ayin%20Shah%20Jahan",
             edition: "Sri Lanka",
         },
         {
@@ -80,6 +81,7 @@ export const LANDING_SPEAKERS_DATA: Speaker[][] = [
             name: "Sumudu Thanthirigoda",
             position: "CEO - Maliban Group",
             image: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771218003/1764928872339_j91re3.jpg",
+            linkedinUrl: "https://www.linkedin.com/search/results/people/?keywords=Sumudu%20Thanthirigoda",
             edition: "Sri Lanka",
         },
         {
@@ -89,6 +91,7 @@ export const LANDING_SPEAKERS_DATA: Speaker[][] = [
             name: "Surani Amarasinghe",
             position: "Director Country People Partnering - LSEG",
             image: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770886780/Frame_4449056_1_hxhoao.png",
+            linkedinUrl: "https://www.linkedin.com/search/results/people/?keywords=Surani%20Amarasinghe",
             edition: "Sri Lanka",
         },
         {
@@ -98,6 +101,7 @@ export const LANDING_SPEAKERS_DATA: Speaker[][] = [
             name: "Ashan Ransilige",
             position: "CEO - Link Natural Product",
             image: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770886856/Frame_4449055_1_tegt2m.png",
+            linkedinUrl: "https://www.linkedin.com/search/results/people/?keywords=Ashan%20Ransilige",
             edition: "Sri Lanka",
         },
         {
@@ -107,6 +111,7 @@ export const LANDING_SPEAKERS_DATA: Speaker[][] = [
             name: "Inoka Dias",
             position: "Head of HR - Virtusa",
             image: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770887023/Frame_4449058_1_qy12hi.png",
+            linkedinUrl: "https://www.linkedin.com/search/results/people/?keywords=Inoka%20Dias",
             edition: "Sri Lanka",
         },
         {
@@ -116,6 +121,7 @@ export const LANDING_SPEAKERS_DATA: Speaker[][] = [
             name: "Karthik Badrinath",
             position: "Head of Sales Development - LinkedIn India",
             image: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771217891/1756738002848_mxqtdy.jpg",
+            linkedinUrl: "https://www.linkedin.com/search/results/people/?keywords=Karthik%20Badrinath",
             edition: "Sri Lanka",
         },
     ],

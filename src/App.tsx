@@ -1,3 +1,17 @@
+/**
+ * App.tsx — The main routing file.
+ *
+ * Think of this as the "switchboard" of the app. Every URL the user visits
+ * gets matched to a Page component here. Pages live in src/pages/.
+ *
+ * All pages are lazy-loaded (loaded only when visited) to keep the
+ * initial bundle small and the site fast.
+ *
+ * Global wrappers applied here:
+ *   - ErrorBoundary: catches crashes so the whole app doesn't go blank
+ *   - Suspense: shows a loading spinner while a page is loading
+ *   - ScrollToTop: auto-scrolls to the top on every navigation
+ */
 import {
   BrowserRouter as Router,
   Routes,
@@ -6,12 +20,12 @@ import {
   useLocation,
 } from "react-router-dom";
 import { Suspense, lazy, useEffect } from "react";
-const LandingPage = lazy(() => import("./pages/LandingPage").then(module => ({ default: module.LandingPage })));
-const EpisodesPage = lazy(() => import("./pages/Episodes").then(module => ({ default: module.EpisodesPage })));
-const PodcastEditionWrapper = lazy(() => import("./pages/PodcastEditions/PodcastEditionWrapper").then(module => ({ default: module.PodcastEditionWrapper })));
-const FullEpisode = lazy(() => import("./pages/FullEpisode").then(module => ({ default: module.FullEpisode })));
-const Schedule = lazy(() => import("./pages/Schedule").then(module => ({ default: module.Schedule })));
-const NotFound = lazy(() => import("./pages/NotFound/NotFound").then(module => ({ default: module.NotFound })));
+const HomePage = lazy(() => import("./pages/HomePage").then(module => ({ default: module.HomePage })));
+const EpisodesPage = lazy(() => import("./pages/EpisodesPage").then(module => ({ default: module.EpisodesPage })));
+const PodcastEditionWrapper = lazy(() => import("./pages/PodcastEditionWrapper").then(module => ({ default: module.PodcastEditionWrapper })));
+const FullEpisodePage = lazy(() => import("./pages/FullEpisodePage").then(module => ({ default: module.FullEpisodePage })));
+const SchedulePage = lazy(() => import("./pages/SchedulePage").then(module => ({ default: module.SchedulePage })));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage").then(module => ({ default: module.NotFoundPage })));
 import { ErrorBoundary, LoadingIndicator, ScrollToTopButton } from "./components/common";
 
 /**
@@ -51,7 +65,7 @@ export const App = (): JSX.Element => {
           <div className="min-h-screen w-full relative bg-white">
             <Routes>
               {/* Landing Page - Root (Default Initial View) */}
-              <Route path="/" element={<LandingPage />} />
+              <Route path="/" element={<HomePage />} />
 
               {/* Episodes Page - List of all episodes */}
               <Route path="/episodes" element={<EpisodesPage />} />
@@ -70,13 +84,13 @@ export const App = (): JSX.Element => {
               />
 
               {/* Schedule Page - Accessible from edition pages */}
-              <Route path="/schedule" element={<Schedule />} />
+              <Route path="/schedule" element={<SchedulePage />} />
 
               {/* Full Episode Details Page - Accessible only through navigation */}
-              <Route path="/episode/:episodeId" element={<FullEpisode />} />
+              <Route path="/episode/:episodeId" element={<FullEpisodePage />} />
 
               {/* Catch-all route - Show custom 404 page */}
-              <Route path="*" element={<NotFound />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <ScrollToTopButton />
           </div>

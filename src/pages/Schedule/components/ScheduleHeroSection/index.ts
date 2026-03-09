@@ -1,1 +1,0 @@
-export { ScheduleHeroSection } from "./ScheduleHeroSection";

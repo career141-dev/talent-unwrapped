@@ -1,8 +1,8 @@
-export * from "./GlobalHeader";
 export * from "./Icons";
 export * from "./ErrorBoundary";
-export * from "./Loading/LoadingIndicator";
-export * from "./Loading/Skeleton";
-export * from "./Loading/MediaLoader";
+export * from "./LoadingIndicator";
+export * from "./Skeleton";
+export * from "./MediaLoader";
+export * from "./SEO";
 export * from "./ScrollToTopButton";
 

@@ -1,12 +1,10 @@
 /**
  * Layout Components
- * Centralized layout components for consistent page structure
  *
- * DefaultLayout - Standard pages with header
- * EpisodeLayout - Podcast/episode pages with header, chapters, contact, footer
- * AdminLayout - Future admin panel layout
+ * These are page-level wrappers that provide consistent structure.
+ * Pages in src/pages/ use these to avoid repeating header/footer logic.
+ *
+ *   EpisodeLayout — used by PodcastEditionPage. Includes header, chapters, contact, and footer.
  */
 
-export { DefaultLayout } from "./DefaultLayout";
 export { EpisodeLayout } from "./EpisodeLayout";
-export { AdminLayout } from "./AdminLayout";

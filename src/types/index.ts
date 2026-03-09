@@ -43,6 +43,7 @@ export interface EpisodeSpeaker {
   name: string;
   role?: string;
   avatar: string;
+  linkedinUrl?: string;
 }
 
 // Video slide interface for full episode pages
