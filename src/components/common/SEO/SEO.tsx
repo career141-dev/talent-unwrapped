@@ -22,7 +22,7 @@ const SEO: React.FC<SEOProps> = ({
     description = "Talent Unwrapped podcast series featuring conversations about leadership, innovation, and the future of work across Singapore, Dubai, and beyond.",
     keywords = "talent unwrapped, podcast, leadership, innovation, future of work, GCC, Singapore, Dubai, career development",
     image = "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771220347/Artboard_3_1_nbtue5.svg",
-    url = "https://talentunwrapped.com",
+    url = "https://talentunwrapped.career141.com",
     type = "website",
     author = "Career141",
     publishedTime,
@@ -32,7 +32,7 @@ const SEO: React.FC<SEOProps> = ({
     const fullTitle = title.includes(siteTitle) ? title : `${title} | ${siteTitle}`;
 
     // Ensure absolute URL for canonical and sharing purposes
-    const absoluteUrl = url.startsWith("http") ? url : `https://talentunwrapped.com${url}`;
+    const absoluteUrl = url.startsWith("http") ? url : `https://talentunwrapped.career141.com${url}`;
 
     return (
         <Helmet>

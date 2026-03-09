@@ -29,7 +29,7 @@ const Counter = ({ value, suffix = "" }: { value: number; suffix?: string }) => 
 
 export const TalentIntroductionSection = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedEdition, setSelectedEdition] = useState<"singapore" | "dubai">("singapore");
+  const [selectedEdition, setSelectedEdition] = useState<"singapore" | "dubai" | "sri-lanka">("singapore");
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -48,28 +48,32 @@ export const TalentIntroductionSection = (): JSX.Element => {
       id: 1,
       src: selectedEdition === "singapore"
         ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770709852/Unwrapped_thumbnail_-_Ella_2_r6uwdx.png"
-        : ASSETS.manInHeadphones,
-      alt: "Decorative image 1",
-      containerClass: `absolute ${isMobile ? "top-[320px] left-[20px]" : "top-[150px] lg:top-[150px] left-[5%] lg:left-[871px]"} w-[80px] h-[60px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
+        : selectedEdition === "sri-lanka"
+          ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771218003/1764928872339_j91re3.jpg"
+          : ASSETS.manInHeadphones,
+      alt: selectedEdition === "singapore" ? "Ella Sherman" : selectedEdition === "sri-lanka" ? "Sumudu Thanthirigoda" : "Man in headphones",
+      containerClass: `absolute ${isMobile ? "top-[260px] left-[10px]" : "top-[150px] lg:top-[150px] left-[5%] lg:left-[871px]"} w-[100px] h-[75px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
       baseRotate: -7.30,
-      objectPosition: selectedEdition === "singapore" ? "center center" : undefined,
-      imageScale: selectedEdition === "singapore" ? (isMobile ? 1.05 : 1.1) : (isMobile ? 1.8 : 2.2),
-      imageTranslateX: selectedEdition === "singapore" ? "0px" : (isMobile ? "20px" : "40px"),
-      imageTranslateY: selectedEdition === "singapore" ? "0px" : (isMobile ? "10px" : "25px"),
+      objectPosition: (selectedEdition === "singapore" || selectedEdition === "sri-lanka") ? "center center" : undefined,
+      imageScale: selectedEdition === "singapore" ? (isMobile ? 1.05 : 1.1) : selectedEdition === "sri-lanka" ? (isMobile ? 1.05 : 1.1) : (isMobile ? 1.8 : 2.2),
+      imageTranslateX: (selectedEdition === "singapore" || selectedEdition === "sri-lanka") ? "0px" : (isMobile ? "20px" : "40px"),
+      imageTranslateY: (selectedEdition === "singapore") ? "0px" : selectedEdition === "sri-lanka" ? (isMobile ? "10px" : "15px") : (isMobile ? "10px" : "25px"),
       animY: isMobile ? [0, -8, 0] : [0, -10, 0],
     },
     {
       id: 2,
       src: selectedEdition === "singapore"
         ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770709853/Unwrapped_thumbnail_-_Echo_1_g0i2ae.png"
-        : ASSETS.youngBlackMan,
-      alt: "Decorative image 2",
-      containerClass: `absolute ${isMobile ? "top-[40px] right-[20px]" : "top-52 lg:top-52 right-[5%] sm:left-[230px] lg:left-[1125px] lg:right-auto"} w-[90px] h-[68px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
+        : selectedEdition === "sri-lanka"
+          ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770883420/Frame_4449057_1_1_npu1wb.png"
+          : ASSETS.youngBlackMan,
+      alt: selectedEdition === "singapore" ? "Echo Wu" : selectedEdition === "sri-lanka" ? "Ayin Shah Jahan" : "Young black man in headphones",
+      containerClass: `absolute ${isMobile ? "top-[120px] right-[40px]" : "top-52 lg:top-52 right-[5%] sm:left-[230px] lg:left-[1125px] lg:right-auto"} w-[110px] h-[83px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
       baseRotate: 6.49,
-      objectPosition: selectedEdition === "singapore" ? "center center" : undefined,
-      imageScale: selectedEdition === "singapore" ? (isMobile ? 1.05 : 1.1) : (isMobile ? 1.8 : 2.2),
-      imageTranslateX: selectedEdition === "singapore" ? "0px" : (isMobile ? "20px" : "40px"),
-      imageTranslateY: selectedEdition === "singapore" ? "0px" : (isMobile ? "10px" : "25px"),
+      objectPosition: (selectedEdition === "singapore" || selectedEdition === "sri-lanka") ? "center center" : undefined,
+      imageScale: selectedEdition === "singapore" ? (isMobile ? 1.05 : 1.1) : selectedEdition === "sri-lanka" ? (isMobile ? 1.05 : 1.1) : (isMobile ? 1.8 : 2.2),
+      imageTranslateX: (selectedEdition === "singapore" || selectedEdition === "sri-lanka") ? "0px" : (isMobile ? "20px" : "40px"),
+      imageTranslateY: (selectedEdition === "singapore") ? "0px" : selectedEdition === "sri-lanka" ? (isMobile ? "10px" : "15px") : (isMobile ? "10px" : "25px"),
       animY: isMobile ? [0, -8, 0] : [0, -10, 0],
     },
   ];

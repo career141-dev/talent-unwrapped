@@ -5,7 +5,7 @@ import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const BASE_URL = 'https://talentunwrapped.com';
+const BASE_URL = 'https://talentunwrapped.career141.com';
 
 // Mock data or import from your data files if possible
 // For simplicity in this script, we'll define the core routes
