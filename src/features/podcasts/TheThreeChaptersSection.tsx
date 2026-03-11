@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { TheThreeChaptersSectionProps } from "../../types";
 import { getEditionContent } from "../../data";
-import { MobileCarouselSection } from "../../components/layout/MobileCarousel";
+import { MobileCarouselSection } from "@/components";
 import { LearnMoreModal } from "../schedule";
-import { ASSETS } from "@/assets";
+import { ASSETS } from "@/constants/assets";
 import { ArrowRightIcon, VideoCircleFilledIcon, ExportIcon } from "@/components/common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, BUTTONS, TALENT_INTRO_CONTENT } from "@/constants/copy";
 
@@ -73,7 +73,7 @@ export const TheThreeChaptersSection = ({
           ? "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770883420/Frame_4449057_1_1_npu1wb.png"
           : ASSETS.youngBlackMan,
       alt: edition === "singapore" ? "Avik Ghosh" : edition === "sri-lanka" ? "Ayin Shah Jahan" : "Young black man in headphones",
-      containerClass: `absolute ${isMobile ? "top-[120px] right-[40px]" : "top-[140px] sm:left-[230px] lg:left-[1125px] right-[5%] lg:right-auto"} w-[110px] h-[83px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
+      containerClass: `absolute ${isMobile ? "top-[20px] right-[40px]" : "top-[140px] sm:left-[230px] lg:left-[1125px] right-[5%] lg:right-auto"} w-[110px] h-[83px] lg:w-[152px] lg:h-[114px] z-0 lg:flex rounded-xl overflow-hidden shadow-[12px_12px_30px_#00000017] opacity-80 lg:opacity-100`,
       baseRotate: 6.49,
       objectPosition: (edition === "singapore" || edition === "sri-lanka") ? "center center" : undefined,
       imageScale: edition === "singapore" ? (isMobile ? 1.05 : 1.1) : edition === "sri-lanka" ? (isMobile ? 1.05 : 1.1) : (isMobile ? 1.8 : 2.2),
@@ -340,3 +340,5 @@ export const TheThreeChaptersSection = ({
     </section>
   );
 };
+
+

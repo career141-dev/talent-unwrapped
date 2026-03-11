@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {
   FooterSection,
   GlobalHeader,
-  ContactUsSection,
+  AboutUsSection,
   SubmitFormSection,
 } from "../components";
 import { EpisodeCard } from "../features/podcasts";
@@ -49,7 +49,7 @@ export const EpisodesPage = (): JSX.Element => {
 
   return (
     <>
-      <main className="flex flex-col items-center relative bg-white w-full">
+      <main className="flex flex-col items-center relative bg-white w-full overflow-x-clip">
         <div className="w-full">
           <GlobalHeader />
         </div>
@@ -136,7 +136,7 @@ export const EpisodesPage = (): JSX.Element => {
 
         {/* Footer Sections */}
         <SubmitFormSection />
-        <ContactUsSection />
+        <AboutUsSection />
         <FooterSection />
       </main>
     </>

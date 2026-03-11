@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-
   button,
   input,
   select,
@@ -18,6 +17,7 @@
   }
 
   :root {
+    /* Shadcn variables */
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -43,6 +43,31 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    /* Custom Design Tokens */
+    --basewhite: rgba(255, 255, 255, 1);
+    --gray-300: rgba(208, 213, 221, 1);
+    --gray-400: rgba(152, 162, 179, 1);
+    --gray-500: rgba(102, 112, 133, 1);
+    --gray-600: rgba(71, 84, 103, 1);
+    --gray-700: rgba(52, 64, 84, 1);
+    --shadows-shadow-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    --body-large-regular-font-family: "Geist", Helvetica, sans-serif;
+    --body-large-regular-font-size: 18px;
+    --body-large-regular-font-style: normal;
+    --body-large-regular-font-weight: 400;
+    --body-large-regular-letter-spacing: 0px;
+    --body-large-regular-line-height: 28px;
+    --body-small-regular-font-family: "Geist", Helvetica, sans-serif;
+    --body-small-regular-font-size: 14px;
+    --body-small-regular-font-style: normal;
+    --body-small-regular-font-weight: 400;
+    --body-small-regular-letter-spacing: 0px;
+    --body-small-regular-line-height: 22px;
+    --neutral-90: rgba(57, 57, 57, 1);
+
+    /* Animation variables */
+    --animate-spin: spin 1s linear infinite;
   }
 
   .dark {
@@ -73,70 +98,10 @@
   }
 }
 
-@tailwind components;
-@tailwind utilities;
-
 @layer components {
   .all-\[unset\] {
     all: unset;
   }
-}
-
-:root {
-  --basewhite: rgba(255, 255, 255, 1);
-  --gray-300: rgba(208, 213, 221, 1);
-  --gray-400: rgba(152, 162, 179, 1);
-  --gray-500: rgba(102, 112, 133, 1);
-  --gray-600: rgba(71, 84, 103, 1);
-  --gray-700: rgba(52, 64, 84, 1);
-  --shadows-shadow-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-  --body-large-regular-font-family: "Geist", Helvetica, sans-serif;
-  --body-large-regular-font-size: 18px;
-  --body-large-regular-font-style: normal;
-  --body-large-regular-font-weight: 400;
-  --body-large-regular-letter-spacing: 0px;
-  --body-large-regular-line-height: 28px;
-  --body-small-regular-font-family: "Geist", Helvetica, sans-serif;
-  --body-small-regular-font-size: 14px;
-  --body-small-regular-font-style: normal;
-  --body-small-regular-font-weight: 400;
-  --body-small-regular-letter-spacing: 0px;
-  --body-small-regular-line-height: 22px;
-  --neutral-90: rgba(57, 57, 57, 1);
-}
-
-* {
-  font-family: "Geist", Helvetica, sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  overflow-x: clip;
-  overflow-y: auto;
-  width: 100%;
-  height: auto;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: clip;
-  position: relative;
-  background-color: white;
-}
-
-#app {
-  width: 100%;
-  position: relative;
-}
-
-:root {
-  --animate-spin: spin 1s linear infinite;
 }
 
 .animate-fade-in {

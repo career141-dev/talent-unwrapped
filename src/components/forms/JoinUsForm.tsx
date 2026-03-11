@@ -16,8 +16,6 @@ export const JoinUsForm = (): JSX.Element => {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [showModal, setShowModal] = useState(false);
 
-  // Assuming light mode by default for now, or check system preference if needed
-  const isDarkMode = false;
   const showSuccessPopup = showModal;
 
   useEffect(() => {
@@ -259,7 +257,7 @@ export const JoinUsForm = (): JSX.Element => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.5, opacity: 0 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className={`max-w-sm w-full rounded-2xl p-8 shadow-2xl text-center relative ${isDarkMode ? "bg-gray-950 border border-gray-700" : "bg-white border border-gray-200"
+              className={`max-w-sm w-full rounded-2xl p-8 shadow-2xl text-center relative ${false ? "bg-gray-950 border border-gray-700" : "bg-white border border-gray-200"
                 }`}
             >
               {/* Close Button - Added manually for UX */}
@@ -320,7 +318,7 @@ export const JoinUsForm = (): JSX.Element => {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.4, type: "spring", duration: 0.5 }}
-                className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-4 ${isDarkMode ? "bg-green-500/20 text-green-400" : "bg-green-500/10 text-green-600"
+                className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-4 ${false ? "bg-green-500/20 text-green-400" : "bg-green-500/10 text-green-600"
                   }`}
               >
                 <CheckCircle className="w-6 h-6" />
@@ -333,7 +331,7 @@ export const JoinUsForm = (): JSX.Element => {
                 transition={{ delay: 0.6, duration: 0.5 }}
               >
                 <h3 className="text-xl font-bold mb-2">Thank You! ✨</h3>
-                <p className={`text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"}`}>
+                <p className={`text-sm ${false ? "text-gray-300" : "text-gray-600"}`}>
                   Your message has been sent successfully! I'll get back to you within 24 hours.
                 </p>
               </motion.div>

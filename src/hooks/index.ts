@@ -1,2 +1,3 @@
-export { useIntersectionObserver, useWindowSize } from "./useCustomHooks";
+export { useIntersectionObserver } from "./useIntersectionObserver";
+export { useWindowSize } from "./useWindowSize";
 export { useEpisodeEdition } from "./useEpisodeEdition";

@@ -1,6 +1,6 @@
 import {
   GlobalHeader,
-  ContactUsSection,
+  AboutUsSection,
   FooterSection,
 } from "../components";
 import { TheThreeChaptersSection } from "../features/podcasts";
@@ -24,7 +24,7 @@ export const SchedulePage = (): JSX.Element => {
         keywords="podcast guest, leadership speaker, be a podcast guest, share leadership story, talent unwrapped guest, innovation speaker"
         url="/schedule"
       />
-      <main className="flex flex-col items-center relative bg-white w-full">
+      <main className="flex flex-col items-center relative bg-white w-full overflow-x-clip">
         {/* Header - Consistent across all pages */}
         <GlobalHeader />
 
@@ -40,7 +40,7 @@ export const SchedulePage = (): JSX.Element => {
         </div>
 
         {/* About Us Section */}
-        <ContactUsSection />
+        <AboutUsSection />
 
         {/* Footer */}
         <FooterSection />

@@ -1,7 +1,7 @@
 import {
   FooterSection,
   GlobalHeader,
-  ContactUsSection,
+  AboutUsSection,
   SubmitFormSection,
 } from "../components";
 import {
@@ -94,7 +94,7 @@ export const HomePage = (): JSX.Element => {
         {/* Footer sections - now bypassing global layout */}
         <div className="w-full overflow-x-clip">
           <SubmitFormSection />
-          <ContactUsSection />
+          <AboutUsSection />
           <FooterSection />
         </div>
       </main>

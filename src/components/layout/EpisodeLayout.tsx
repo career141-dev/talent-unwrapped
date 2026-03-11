@@ -1,8 +1,10 @@
 import { ReactNode } from "react";
-import { GlobalHeader, FooterSection, ContactUsSection } from "../components";
-import { TheThreeChaptersSection } from "../features/podcasts";
+import { GlobalHeader, FooterSection } from "../index";
+import { EditionType } from "../../types";
+import { AboutUsSection } from "../../features/landing/AboutUsSection";
+import { TheThreeChaptersSection } from "../../features/podcasts";
 
-export type EditionType = "singapore" | "dubai" | "sri-lanka";
+
 
 interface EpisodeLayoutProps {
   edition?: EditionType;
@@ -33,7 +35,7 @@ export const EpisodeLayout = ({
   className = "",
 }: EpisodeLayoutProps): JSX.Element => {
   return (
-    <main className="flex flex-col items-center relative bg-white w-full">
+    <main className="flex flex-col items-center relative bg-white w-full overflow-x-clip">
       {/* Header - Consistent across all pages */}
       <GlobalHeader />
 
@@ -50,7 +52,7 @@ export const EpisodeLayout = ({
       </div>
 
       {/* Contact Section - Optional, shown by default */}
-      {showContact && <ContactUsSection />}
+      {showContact && <AboutUsSection />}
 
       {/* Footer - Optional, shown by default */}
       {showFooter && <FooterSection />}

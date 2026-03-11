@@ -1,4 +1,5 @@
-import { EpisodeLayout, EditionType } from "../layouts/EpisodeLayout";
+import { EpisodeLayout } from "../components";
+import { EditionType } from "../components/layout/EpisodeLayout";
 import { Episode } from "../types";
 import { EpisodeCard } from "../features/podcasts";
 import SEO from "../components/common/SEO";

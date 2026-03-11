@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { EditionsDropdown } from "../forms/EditionsDropdown";
-import { ASSETS, LINKS } from "@/assets";
+import { ASSETS } from "@/constants/assets";
+import { LINKS } from "@/constants/links";
 import { ArrowRightIcon, CloseIcon } from "../common/Icons";
 import { NAV_LABELS } from "@/constants/copy";
 

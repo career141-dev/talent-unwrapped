@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { LANDING_VIDEO_SLIDES } from "@/data/videoSlideData";
-import { ASSETS } from "@/assets";
+import { LANDING_VIDEO_SLIDES } from "@/data/videoSlides";
+import { ASSETS } from "@/constants/assets";
 import {
   PlayCircleFilledIcon,
   ChevronLeftIcon,
@@ -129,7 +129,7 @@ export const HeroBannerSection = (): JSX.Element => {
               <img
                 className="w-full h-full object-contain scale-[2.6]"
                 alt="Prasperant Logo"
-                src={ASSETS.prasperant}
+                src={ASSETS.prasperantLogo}
               />
             </motion.div>
 
@@ -425,7 +425,7 @@ export const HeroBannerSection = (): JSX.Element => {
           <img
             className="w-full h-full object-contain scale-[2.0]"
             alt="Prasperant Logo"
-            src={ASSETS.prasperant}
+            src={ASSETS.prasperantLogo}
           />
         </motion.div>
 

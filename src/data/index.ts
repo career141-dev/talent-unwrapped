@@ -1,7 +1,7 @@
 // Centralized data exports for the application
 export * from "./episodes";
-export * from "./chapterData";
-export * from "./videoSlideData";
-export * from "./speakerData";
-export * from "./fullEpisodeData";
-export * from "./reelsData";
+export * from "./chapters";
+export * from "./videoSlides";
+export * from "./speakers";
+export * from "./episodeDetails";
+export * from "./reels";

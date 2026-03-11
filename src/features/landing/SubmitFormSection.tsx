@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { JoinUsForm } from "../forms";
+import { JoinUsForm } from "../../components/forms";
 import { SECTION_DESCRIPTIONS, FORMS_CONTENT } from "@/constants/copy";
 
 export const SubmitFormSection = (): JSX.Element => {
@@ -24,7 +24,7 @@ export const SubmitFormSection = (): JSX.Element => {
   return (
     <section
       id="join-us"
-      className="flex w-full max-w-[1500px] flex-col lg:flex-row items-center lg:items-stretch justify-center gap-8 lg:gap-20 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-12 lg:py-20 relative bg-white mx-auto"
+      className="flex w-full max-w-[1440px] flex-col lg:flex-row items-center lg:items-stretch justify-center gap-8 lg:gap-20 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-12 lg:py-20 relative bg-white mx-auto"
     >
       {/* Left Side - Insights Box */}
       <motion.div
@@ -93,7 +93,7 @@ export const SubmitFormSection = (): JSX.Element => {
 
                 <div className="flex-1">
                   <p
-                    className="[font-family:'Poppins',Helvetica] font-normal text-[#444141]
+                    className="[font-family:'Geist',Helvetica] font-normal text-[#444141]
                           text-sm sm:text-base lg:text-[14.1px]
                           tracking-[0] leading-[1.6] sm:leading-[1.65] lg:leading-[19.9px]"
                   >

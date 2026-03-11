@@ -1,14 +1,15 @@
 // Layout components
-export { GlobalHeader } from "./layout/Header";
-export { FooterSection } from "./layout/Footer";
-export { ContactUsSection } from "./layout/ContactUs";
-export { SubmitFormSection } from "./layout/SubmitForm";
-export { MobileCarouselSection } from "./layout/MobileCarousel";
+export { GlobalHeader } from "./layout/GlobalHeader";
+export { FooterSection } from "./layout/FooterSection";
+export { EpisodeLayout } from "./layout/EpisodeLayout";
 
 // Common components
 export { ErrorBoundary, LoadingIndicator, ScrollToTopButton } from "./common";
 
-// Feature components
+// Feature re-exports (for convenience)
+export { AboutUsSection } from "../features/landing/AboutUsSection";
+export { SubmitFormSection } from "../features/landing/SubmitFormSection";
+export { MobileCarouselSection } from "../features/landing/MobileCarouselSection";
 export { ReelsSection } from "../features/landing/ReelsSection";
 
 // Form components

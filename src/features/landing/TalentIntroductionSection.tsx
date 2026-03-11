@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { LearnMoreModal } from "../schedule";
-import { MobileCarouselSection } from "../../components/layout/MobileCarousel";
+import { MobileCarouselSection } from "@/components";
 import { EditionFilter } from "../../components/forms/EditionFilter";
 import { getEditionContent } from "../../data";
-import { ASSETS } from "@/assets";
+import { ASSETS } from "@/constants/assets";
 import { ArrowRightIcon, VideoCircleFilledIcon, ExportIcon } from "@/components/common/Icons";
 import { SECTION_TITLES, SECTION_DESCRIPTIONS, BUTTONS, TALENT_INTRO_CONTENT } from "@/constants/copy";
 

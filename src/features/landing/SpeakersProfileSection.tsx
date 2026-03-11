@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { LANDING_SPEAKERS_DATA } from "@/data/speakerData";
+import { LANDING_SPEAKERS_DATA } from "@/data/speakers";
 import {
     BackArrowIcon, NextArrowIcon,
     PlayCircleFilledIcon,
@@ -21,7 +21,7 @@ export const SpeakersProfileSection = ({ edition, specificSpeakers }: SpeakersPr
     const allSpeakersData = LANDING_SPEAKERS_DATA;
 
     // Filter speakers based on active tab
-    const filteredSpeakers = allSpeakersData[0].filter(speaker => {
+    const filteredSpeakers = allSpeakersData.filter((speaker: Speaker) => {
         if (activeFilter === "All") return true;
         return speaker.edition === activeFilter;
     });

@@ -1,5 +1,5 @@
 /**
- * Centralized External Links
+ * Centralized External Links and Social Media URLs
  */
 
 export const LINKS = {
@@ -17,7 +17,6 @@ export const LINKS = {
         spotify: "https://open.spotify.com/show/...",
         applePodcasts: "https://podcasts.apple.com/...",
     },
-    // Career141 External Links
     executiveSearch: "https://career141.com/executive-search",
     culture: "https://career141.com/our-culture",
     ourJourney: "https://career141.com/our-journey",
@@ -25,3 +24,5 @@ export const LINKS = {
     contactUs: "https://career141.com/contact-us",
     CAREER141: "https://www.career141.com",
 };
+
+export default LINKS;

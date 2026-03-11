@@ -2,8 +2,9 @@ import { useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { PodcastEditionPage } from "./PodcastEditionPage";
 import { useEpisodeEdition } from "../hooks/useEpisodeEdition";
+import { EditionType } from "../types";
 
-type EditionType = "singapore" | "dubai" | "sri-lanka";
+
 
 /**
  * PodcastEditionWrapper

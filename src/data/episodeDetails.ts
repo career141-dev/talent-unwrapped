@@ -7,7 +7,6 @@ export interface ExpertProfile {
     subtitle?: string;
     linkedin: string;
     imageUrl: string;
-    imageStyles: string;
 }
 
 export interface Question {
@@ -35,7 +34,7 @@ export const EXPERT_PROFILES: ExpertProfile[] = [
         subtitle: "Toughness Expert",
         linkedin: "https://www.linkedin.com/in/echoleadership/",
         imageUrl: EXPERT_IMAGES.echoWu,
-        imageStyles: "w-[60px] h-[60px] object-cover",
+
     },
     {
         id: "avik-ghosh",
@@ -44,7 +43,7 @@ export const EXPERT_PROFILES: ExpertProfile[] = [
         subtitle: "",
         linkedin: "https://www.linkedin.com/in/avikghosh/",
         imageUrl: EXPERT_IMAGES.avikGhosh,
-        imageStyles: "mt-px w-[59px] h-[59px] object-cover",
+
     },
     {
         id: "ella-sherman",
@@ -53,7 +52,7 @@ export const EXPERT_PROFILES: ExpertProfile[] = [
         subtitle: "",
         linkedin: "https://www.linkedin.com/in/ella-sherman",
         imageUrl: EXPERT_IMAGES.ellaSherman,
-        imageStyles: "mt-[5px] w-[59px] h-[55px] object-cover",
+
     },
     {
         id: "mohammed-haffejee",
@@ -62,7 +61,7 @@ export const EXPERT_PROFILES: ExpertProfile[] = [
         subtitle: "Emirates NBD",
         linkedin: "https://www.linkedin.com/in/mohammed-haffejee-6b26543/",
         imageUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618640/1756292060602_1_df82j8.png",
-        imageStyles: "w-[60px] h-[60px] object-cover",
+
     },
     {
         id: "gargi-bannerjee",
@@ -71,7 +70,7 @@ export const EXPERT_PROFILES: ExpertProfile[] = [
         subtitle: "SkipperSeil Limited",
         linkedin: "https://www.linkedin.com/in/gargi-banerjee-strategichr/",
         imageUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618639/1621657233961_1_helgwf.png",
-        imageStyles: "w-[60px] h-[60px] object-cover",
+
     },
     {
         id: "franklyn-henriques",
@@ -80,7 +79,7 @@ export const EXPERT_PROFILES: ExpertProfile[] = [
         subtitle: "SGS (Middle East)",
         linkedin: "https://www.linkedin.com/in/franklyn-henriques-chartered-fcipd-339aa05/",
         imageUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618638/1545386579437_1_vl1nrk.png",
-        imageStyles: "w-[60px] h-[60px] object-cover",
+
     },
     {
         id: "ayin-shah-jahan",
@@ -89,7 +88,7 @@ export const EXPERT_PROFILES: ExpertProfile[] = [
         subtitle: "EY GDS Sri Lanka",
         linkedin: "https://www.linkedin.com/",
         imageUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1770618640/1756292060602_1_df82j8.png",
-        imageStyles: "w-[60px] h-[60px] object-cover",
+
     },
     {
         id: "sumudu-thanthirigoda",
@@ -98,7 +97,7 @@ export const EXPERT_PROFILES: ExpertProfile[] = [
         subtitle: "Maliban Group",
         linkedin: "https://www.linkedin.com/",
         imageUrl: "https://res.cloudinary.com/dvhxc6y0z/image/upload/v1771218003/1764928872339_j91re3.jpg",
-        imageStyles: "w-[60px] h-[60px] object-cover",
+
     },
 ];
 
@@ -270,7 +269,7 @@ export const getSessionContentByEdition = (edition: "dubai" | "singapore" | "sri
 // Deprecated: default export for backward compatibility
 export const SESSION_CONTENT = SINGAPORE_SESSION_CONTENT;
 
-export const EPISODE_3_CUSTOM_CONTENT = {
+export const AYIN_SHAH_JAHAN_CUSTOM_CONTENT = {
     expertName: "Ayin Shah Jahan",
     expertTitle: "Location Talent Leader",
     expertSubtitle: "EY GDS Sri Lanka",
@@ -293,7 +292,7 @@ export const EPISODE_3_CUSTOM_CONTENT = {
     ]
 };
 
-export const EPISODE_4_CUSTOM_CONTENT = {
+export const SUMUDU_THANTHIRIGODA_CUSTOM_CONTENT = {
     expertName: "Sumudu Thanthirigoda",
     expertTitle: "CEO",
     expertSubtitle: "Maliban Group, Milk and Agri",
@@ -316,7 +315,7 @@ export const EPISODE_4_CUSTOM_CONTENT = {
     ]
 };
 
-export const EPISODE_5_CUSTOM_CONTENT = {
+export const SURANI_AMARASINGHE_CUSTOM_CONTENT = {
     expertName: "Surani Amarasinghe",
     expertTitle: "Director Country People Partnering",
     expertSubtitle: "LSEG",
@@ -339,7 +338,7 @@ export const EPISODE_5_CUSTOM_CONTENT = {
     ]
 };
 
-export const EPISODE_6_CUSTOM_CONTENT = {
+export const ASHAN_RANSILIGE_CUSTOM_CONTENT = {
     expertName: "Ashan Ransilige",
     expertTitle: "CEO",
     expertSubtitle: "Link Natural Product (Pvt) Ltd",
@@ -362,7 +361,7 @@ export const EPISODE_6_CUSTOM_CONTENT = {
     ]
 };
 
-export const EPISODE_7_CUSTOM_CONTENT = {
+export const INOKA_DIAS_CUSTOM_CONTENT = {
     expertName: "Inoka Dias",
     expertTitle: "Senior Director/Head of Human Resource",
     expertSubtitle: "Virtusa",
@@ -385,7 +384,7 @@ export const EPISODE_7_CUSTOM_CONTENT = {
     ]
 };
 
-export const EPISODE_8_CUSTOM_CONTENT = {
+export const KARTHIK_BADRINATH_CUSTOM_CONTENT = {
     expertName: "Karthik Badrinath",
     expertTitle: "Head of Sales Development",
     expertSubtitle: "LinkedIn India",

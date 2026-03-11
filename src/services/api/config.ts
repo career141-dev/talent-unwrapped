@@ -27,6 +27,12 @@ export const API_CONFIG = {
     AUTH_PROFILE: "/auth/profile",
   },
 
+  // Headers
+  DEFAULT_HEADERS: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+
   // Request timeout in milliseconds
   TIMEOUT: 30000,
 

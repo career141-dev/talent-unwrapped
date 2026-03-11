@@ -1,13 +1,13 @@
 import { useState } from "react";
 import {
   getSessionContentByEdition,
-  EPISODE_3_CUSTOM_CONTENT,
-  EPISODE_4_CUSTOM_CONTENT,
-  EPISODE_5_CUSTOM_CONTENT,
-  EPISODE_6_CUSTOM_CONTENT,
-  EPISODE_7_CUSTOM_CONTENT,
-  EPISODE_8_CUSTOM_CONTENT
-} from "@/data/fullEpisodeData";
+  AYIN_SHAH_JAHAN_CUSTOM_CONTENT,
+  SUMUDU_THANTHIRIGODA_CUSTOM_CONTENT,
+  SURANI_AMARASINGHE_CUSTOM_CONTENT,
+  ASHAN_RANSILIGE_CUSTOM_CONTENT,
+  INOKA_DIAS_CUSTOM_CONTENT,
+  KARTHIK_BADRINATH_CUSTOM_CONTENT
+} from "@/data/episodeDetails";
 import { VideoCircleFilledIcon, ExportIcon } from "@/components/common/Icons";
 import { SECTION_TITLES, FORMS_CONTENT } from "@/constants/copy";
 
@@ -33,7 +33,7 @@ export const KeyQuestionsSection = ({ edition = "dubai", episodeId }: KeyQuestio
   let currentSession = baseContent[currentPage];
 
   // Helper to create custom session
-  const createCustomSession = (content: typeof EPISODE_3_CUSTOM_CONTENT) => {
+  const createCustomSession = (content: typeof AYIN_SHAH_JAHAN_CUSTOM_CONTENT) => {
     const customExpert = {
       profile: {
         id: `${content.expertName.toLowerCase().replace(/\s+/g, '-')}-custom`,
@@ -42,7 +42,6 @@ export const KeyQuestionsSection = ({ edition = "dubai", episodeId }: KeyQuestio
         subtitle: content.expertSubtitle,
         linkedin: content.linkedin,
         imageUrl: content.imageUrl,
-        imageStyles: content.imageStyles,
       },
       questions: content.questions,
     };
@@ -55,17 +54,17 @@ export const KeyQuestionsSection = ({ edition = "dubai", episodeId }: KeyQuestio
   // Override for specific episodes
   const epId = String(episodeId);
   if (epId === "3") {
-    currentSession = createCustomSession(EPISODE_3_CUSTOM_CONTENT);
+    currentSession = createCustomSession(AYIN_SHAH_JAHAN_CUSTOM_CONTENT);
   } else if (epId === "4") {
-    currentSession = createCustomSession(EPISODE_4_CUSTOM_CONTENT);
+    currentSession = createCustomSession(SUMUDU_THANTHIRIGODA_CUSTOM_CONTENT);
   } else if (epId === "5") {
-    currentSession = createCustomSession(EPISODE_5_CUSTOM_CONTENT);
+    currentSession = createCustomSession(SURANI_AMARASINGHE_CUSTOM_CONTENT);
   } else if (epId === "6") {
-    currentSession = createCustomSession(EPISODE_6_CUSTOM_CONTENT);
+    currentSession = createCustomSession(ASHAN_RANSILIGE_CUSTOM_CONTENT);
   } else if (epId === "7") {
-    currentSession = createCustomSession(EPISODE_7_CUSTOM_CONTENT);
+    currentSession = createCustomSession(INOKA_DIAS_CUSTOM_CONTENT);
   } else if (epId === "8") {
-    currentSession = createCustomSession(EPISODE_8_CUSTOM_CONTENT);
+    currentSession = createCustomSession(KARTHIK_BADRINATH_CUSTOM_CONTENT);
   }
 
   // Minimum swipe distance (in px)
@@ -269,7 +268,7 @@ export const KeyQuestionsSection = ({ edition = "dubai", episodeId }: KeyQuestio
                     <div className="flex items-start gap-4 flex-shrink-0 w-[280px]">
                       <div className="w-[60px] h-[60px] flex justify-center bg-[#00000033] rounded-full overflow-hidden border-2 border-solid border-white flex-shrink-0">
                         <img
-                          className={expert.profile.imageStyles}
+                          className="w-full h-full object-cover"
                           alt={expert.profile.name}
                           src={expert.profile.imageUrl}
                         />

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ASSETS } from "@/assets";
+import { ASSETS } from "@/constants/assets";
 import { ArrowRightIcon, VerticalLineIcon } from "@/components/common/Icons";
 import { WISDOM_CONTENT, NAV_LABELS, BUTTONS } from "@/constants/copy";
 

@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { Episode } from "../types";
+import { Episode, EditionType } from "../types";
 import { getEpisodesByEdition } from "../data";
 
-export type EditionType = "singapore" | "dubai" | "sri-lanka";
+
 
 interface UseEpisodeEditionReturn {
   episodes: Episode[];

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { REELS_DATA } from "@/data";
+import { BackArrowIcon, NextArrowIcon } from "@/components/common/Icons";
 
 interface ReelsSectionProps {
   edition?: "Dubai" | "Singapore" | "Sri Lanka";
@@ -75,67 +76,113 @@ export const ReelsSection = ({ edition }: ReelsSectionProps): JSX.Element => {
     }
   }, [activeIndex]);
 
+  const handleScroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 400;
+      setPlayingIndex(null); // Pause videos on scroll
+      if (direction === "left") {
+        scrollContainerRef.current.scrollBy({
+          left: -scrollAmount,
+          behavior: "smooth",
+        });
+      } else {
+        scrollContainerRef.current.scrollBy({
+          left: scrollAmount,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
+
   return (
     <section
       id="reels"
       ref={sectionRef}
       className="relative w-full bg-white pt-4 pb-4 sm:pt-8 sm:pb-8 md:pt-10 md:pb-10 lg:pt-12 lg:pb-12"
     >
-      <div
-        className="w-full max-w-full overflow-x-auto overscroll-x-contain scrollbar-hide snap-x snap-mandatory relative pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-8 md:pr-8 py-12"
-        ref={scrollContainerRef}
-        style={{
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-          WebkitOverflowScrolling: "touch",
-        }}
-      >
-        <div className="flex w-fit lg:w-full gap-4 sm:gap-6 lg:gap-6 lg:snap-none">
-          {reelVideos.map((reel, index) => (
-            <div
-              key={reel.id}
-              ref={(el) => (slideRefs.current[index] = el)}
-              className="relative flex-shrink-0 group overflow-hidden shadow-lg bg-black rounded-2xl md:rounded-3xl
+      <div className="relative w-full">
+        {/* Left Scroll Button */}
+        <button
+          className="hidden xl:flex absolute left-0 top-1/2 -translate-y-1/2 w-24 h-24 items-center justify-center cursor-pointer z-20 transition-transform hover:scale-110"
+          onClick={() => handleScroll("left")}
+          type="button"
+          aria-label="Scroll left"
+        >
+          <BackArrowIcon
+            className="w-full h-full object-contain pointer-events-none"
+            size="100%"
+          />
+        </button>
+
+        <div
+          className="w-full max-w-full overflow-x-auto overscroll-x-contain scrollbar-hide snap-x snap-mandatory relative pl-4 pr-4 sm:pl-6 sm:pr-6 md:pl-8 md:pr-8 py-12"
+          ref={scrollContainerRef}
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
+          <div className="flex w-fit lg:w-full gap-4 sm:gap-6 lg:gap-6 lg:snap-none">
+            {reelVideos.map((reel, index) => (
+              <div
+                key={reel.id}
+                ref={(el) => (slideRefs.current[index] = el)}
+                className="relative flex-shrink-0 group overflow-hidden shadow-lg bg-black rounded-2xl md:rounded-3xl
                 w-[85vw] sm:w-[60vw] md:w-[45vw] h-[600px] snap-center
                 lg:w-[calc((100%-72px)/3.5)] lg:h-[850px] lg:snap-align-none transition-all duration-300 transform hover:scale-[1.02] hover:z-10 origin-center"
-              onMouseEnter={() => setPlayingIndex(index)}
-              onMouseLeave={() => setPlayingIndex(null)}
-            >
-              {/* Media Container */}
-              <div className="absolute inset-0 w-full h-full bg-black">
-                {playingIndex === index ? (
-                  <iframe
-                    src={`${reel.videoUrl}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0&playsinline=1&loop=1`}
-                    className="w-full h-full"
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    allowFullScreen
-                    title={reel.title}
-                    style={{ border: 'none', pointerEvents: 'none' }}
-                  />
-                ) : (
-                  <img
-                    src={reel.thumbnailUrl}
-                    alt={reel.title}
-                    className="w-full h-full object-cover transition-opacity duration-300"
-                  />
-                )}
-              </div>
-
-              {/* Overlay with Title */}
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-100 pointer-events-none flex flex-col justify-end p-4 sm:p-5 md:p-6 transition-opacity duration-300"
-                style={{ opacity: playingIndex === index ? 0 : 1 }}
+                onMouseEnter={() => setPlayingIndex(index)}
+                onMouseLeave={() => setPlayingIndex(null)}
               >
-                <h3 className="[font-family:'Geist',Helvetica] font-semibold text-white text-lg sm:text-xl md:text-2xl lg:text-xl tracking-[-0.40px] leading-[normal] mb-2 sm:mb-3 lg:mb-2">
-                  {reel.title}
-                </h3>
-                <p className="[font-family:'Geist',Helvetica] font-normal text-white/80 text-sm sm:text-base lg:text-sm leading-[normal]">
-                  {reel.description}
-                </p>
+                {/* Media Container */}
+                <div className="absolute inset-0 w-full h-full bg-black">
+                  {playingIndex === index ? (
+                    <iframe
+                      src={`${reel.videoUrl}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&cc_load_policy=0&playsinline=1&loop=1`}
+                      className="w-full h-full"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
+                      title={reel.title}
+                      style={{ border: 'none', pointerEvents: 'none' }}
+                    />
+                  ) : (
+                    <img
+                      src={reel.thumbnailUrl}
+                      alt={reel.title}
+                      className="w-full h-full object-cover transition-opacity duration-300"
+                    />
+                  )}
+                </div>
+
+                {/* Overlay with Title */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-100 pointer-events-none flex flex-col justify-end p-4 sm:p-5 md:p-6 transition-opacity duration-300"
+                  style={{ opacity: playingIndex === index ? 0 : 1 }}
+                >
+                  <h3 className="[font-family:'Geist',Helvetica] font-semibold text-white text-lg sm:text-xl md:text-2xl lg:text-xl tracking-[-0.40px] leading-[normal] mb-2 sm:mb-3 lg:mb-2">
+                    {reel.title}
+                  </h3>
+                  <p className="[font-family:'Geist',Helvetica] font-normal text-white/80 text-sm sm:text-base lg:text-sm leading-[normal]">
+                    {reel.description}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
+        {/* Right Scroll Button */}
+        <button
+          className="hidden xl:flex absolute right-0 top-1/2 -translate-y-1/2 w-24 h-24 items-center justify-center cursor-pointer z-20 hover:scale-110"
+          onClick={() => handleScroll("right")}
+          type="button"
+          aria-label="Scroll right"
+        >
+          <NextArrowIcon
+            className="w-full h-full object-contain pointer-events-none"
+            size="100%"
+          />
+        </button>
       </div>
 
       <div className="flex lg:hidden justify-center items-center gap-2 mt-4">

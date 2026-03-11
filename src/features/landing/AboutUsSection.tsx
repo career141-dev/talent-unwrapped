@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import { DecorativeArrowIcon } from "@/components/common/Icons";
-import { LINKS } from "@/config/links";
+import { LINKS } from "@/constants/links";
 import { NAV_LABELS } from "@/constants/copy";
 
 interface Link {
@@ -16,7 +16,7 @@ interface Link {
  * Fully responsive with mobile-first design
  * Includes animations and consistent styling
  */
-export const ContactUsSection = (): JSX.Element => {
+export const AboutUsSection = (): JSX.Element => {
   const location = useLocation();
   const navigate = useNavigate();
 

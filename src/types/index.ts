@@ -55,9 +55,11 @@ export interface VideoSlide {
   videoUrl?: string;
 }
 
+export type EditionType = "singapore" | "dubai" | "sri-lanka";
+
 // Props for TheThreeChaptersSection component
 export interface TheThreeChaptersSectionProps {
-  edition?: "dubai" | "singapore" | "sri-lanka";
+  edition?: EditionType;
   hideTopSection?: boolean;
 }
 

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useParams, useLocation } from "react-router-dom";
 import {
   ReelsSection,
-  ContactUsSection,
+  AboutUsSection,
   GlobalHeader,
   FooterSection,
   SubmitFormSection,
@@ -541,7 +541,7 @@ export const FullEpisodePage = (): JSX.Element => {
         {/* Footer sections */}
         <div className="w-full overflow-x-clip">
           <SubmitFormSection />
-          <ContactUsSection />
+          <AboutUsSection />
           <FooterSection />
         </div>
       </main>
