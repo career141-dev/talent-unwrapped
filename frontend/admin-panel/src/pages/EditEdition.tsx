@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Plus } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import EditionFormUI from '../components/EditionFormUI';
 import EditionCard from '../components/EditionCard';
 
 const MOCK_EDITIONS = [
@@ -10,13 +10,26 @@ const MOCK_EDITIONS = [
   { id: '4', name: 'Riyadh Special', location: 'Saudi Arabia', date: 'May 2024', status: 'archived' },
 ];
 
-const Dashboard = () => {
+const EditEdition: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleArchive = (id: string) => {
-    console.log(`Archiving edition ${id}`);
+  const handleArchive = (archiveId: string) => {
+    console.log(`Archiving edition ${archiveId}`);
   };
 
+  useEffect(() => {
+    if (id) {
+      console.log(`Editing edition ID: ${id}`);
+    }
+  }, [id]);
+
+  // If we have an ID, render the actual form to edit it
+  if (id) {
+    return <EditionFormUI isEditing={true} />;
+  }
+
+  // Otherwise, render the list to select what to edit
   const activeEditions = MOCK_EDITIONS.filter(edition => edition.status !== 'archived');
 
   const filteredEditions = activeEditions.filter(edition => {
@@ -30,35 +43,7 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-10 md:space-y-16 animate-fade-in">
-      <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 md:gap-12">
-        <div className="space-y-4">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white italic">Editions</h2>
-          <p className="text-muted-foreground text-base md:text-lg max-w-2xl leading-relaxed opacity-60">
-            Oversee your global podcast landscape. Manage episodes, regions, and speaker deployments.
-          </p>
-        </div>
-        <Link to="/edition/new" className="btn-primary flex items-center gap-3 !px-8 md:!px-10 !py-4 md:!py-5 hover:scale-105 transition-all shadow-2xl w-full md:w-auto justify-center">
-          <Plus size={24} />
-          <span className="text-base md:text-lg">New Edition</span>
-        </Link>
-      </header>
-
-      {/* Professional Dashboard Sub-header */}
-      <div className="flex flex-col lg:flex-row gap-8 items-start lg:items-end justify-between pb-8 border-b border-white/5">
-        <div className="grid grid-cols-2 sm:flex gap-8 sm:gap-16 w-full lg:w-auto">
-          <div className="flex flex-col">
-            <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] mb-2">Total Volume</span>
-            <span className="text-2xl md:text-3xl font-black text-white">{activeEditions.length}</span>
-          </div>
-          <div className="flex flex-col sm:border-l border-white/10 sm:pl-16">
-            <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] mb-2">Production Live</span>
-            <span className="text-2xl md:text-3xl font-black text-[#7bb302]">2</span>
-          </div>
-          <div className="flex flex-col border-l border-white/10 pl-8 sm:pl-16 hidden sm:flex">
-            <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] mb-2">Pending Drafts</span>
-            <span className="text-2xl md:text-3xl font-black text-orange-400">1</span>
-          </div>
-        </div>
+      <div className="flex justify-end pb-8 border-b border-white/5">
         <div className="w-full lg:w-[400px] h-14 bg-white/5 border border-white/10 rounded-2xl px-6 flex items-center gap-4 text-muted-foreground hover:bg-white/[0.08] hover:border-[#7bb302]/40 transition-all group focus-within:border-[#7bb302]/50 focus-within:bg-white/10">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 group-focus-within:opacity-100 transition-opacity group-focus-within:text-[#7bb302]"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           <input 
@@ -90,4 +75,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default EditEdition;

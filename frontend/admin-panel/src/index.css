@@ -6,9 +6,11 @@
   --foreground: 210 40% 98%;
 }
 
-* {
-  margin: 5;
-  padding-left: 5;
+html {
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
